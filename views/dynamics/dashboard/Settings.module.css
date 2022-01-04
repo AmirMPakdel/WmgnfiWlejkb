@@ -1,0 +1,46 @@
+
+.con{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2rem 0;
+}
+
+.setting_card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 1rem;
+    padding: 2rem 1rem;
+    width: 18rem;
+}
+
+.setting_card_img{
+    height: 4rem;
+}
+
+.setting_card_t{
+    margin-top: 0.5rem;
+    font-weight: 700;
+}
+
+@media(max-width:1024px){
+
+    .setting_card{
+        width: calc(50% - 2rem);
+    }
+}
+
+@media(max-width:767px){
+
+    .con{
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem;
+    }
+
+    .setting_card{
+        width: 100%;
+    }
+}

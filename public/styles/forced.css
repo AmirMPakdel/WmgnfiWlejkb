@@ -1,0 +1,69 @@
+
+.ant-checkbox-checked .ant-checkbox-inner {
+    background-color: #FBAD16 !important;
+    border-color: #FBAD16 !important;
+}
+
+.ant-checkbox-wrapper:hover .ant-checkbox-inner{
+    border-color: #FBAD16 !important;
+}
+
+.ant-checkbox-checked::after{
+    border-color: #FBAD16 !important;
+    background-color: #FBAD16 !important;
+}
+
+.ant-checkbox-indeterminate .ant-checkbox-inner::after{
+    background-color: #FBAD16 !important;
+}
+
+.ant-checkbox-wrapper:hover .ant-checkbox-inner, 
+.ant-checkbox:hover .ant-checkbox-inner, 
+.ant-checkbox-input:focus + .ant-checkbox-inner{
+    border-color: #FBAD16 !important;
+}
+
+.ant-notification-notice-with-icon .ant-notification-notice-message{
+    direction: rtl !important;
+}
+
+/*when a modal shows up*/
+.ant-scrolling-effect{
+    width: 100% !important;
+}
+
+.ReactCollapse--collapse {
+    transition: height 500ms;
+}
+
+
+/* SelectSearch */
+.ant-select-selector{
+    height: 100% !important;
+    border-radius: 1rem !important;
+    border: solid 2px #939597 !important;
+}
+
+.ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input) .ant-select-selector{
+    box-shadow: none !important;
+}
+
+.ant-select-selection-item{
+    display: flex !important;
+    align-items: center !important;
+}
+
+.ant-select-selection-search{
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.ant-select-selection-search-input{
+    padding-top: 24px;
+}
+
+.ant-select-selection-placeholder{
+    display: flex !important;
+    align-items: center !important;
+}

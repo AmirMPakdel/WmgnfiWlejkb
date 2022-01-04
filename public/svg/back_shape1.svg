@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1506.202" height="697.534" viewBox="0 0 1506.202 697.534">
+  <defs>
+    <filter id="Path_195" x="0" y="0" width="1506.202" height="363.767" filterUnits="userSpaceOnUse">
+      <feOffset dy="5" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Rectangle_685" x="0" y="333.767" width="1506.202" height="363.767" filterUnits="userSpaceOnUse">
+      <feOffset dy="5" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="5" result="blur-2"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_259" data-name="Group 259" transform="translate(163.269 -706.5)">
+    <g transform="matrix(1, 0, 0, 1, -163.27, 706.5)" filter="url(#Path_195)">
+      <path id="Path_195-2" data-name="Path 195" d="M15,0H1470.4a15,15,0,0,1,15,15V62a15,15,0,0,1-15,15H15A15,15,0,0,1,0,62V15A15,15,0,0,1,15,0Z" transform="matrix(-0.98, -0.17, 0.17, -0.98, 1477.83, 343.77)" fill="#f5df4d"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, -163.27, 706.5)" filter="url(#Rectangle_685)">
+      <rect id="Rectangle_685-2" data-name="Rectangle 685" width="1485.398" height="77" rx="15" transform="matrix(-0.98, 0.17, -0.17, -0.98, 1491.2, 419.6)" fill="#f5df4d"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,47 @@
+.ccard_con{
+    margin-top: 1rem;
+    width: calc(86% - 14rem);
+    padding: 1rem;
+    font-weight: 700;
+    padding-right: 4rem;
+    padding-left: 2.5rem;
+    border-radius: 1rem 0 0 1rem;
+    background-color: #F9F9F9;
+    box-shadow: 0 0.5rem 1rem 0.1rem rgb(0, 0, 0, 0.15);
+}
+
+.iclne{
+    display: flex;
+}
+
+.iclne_img{
+    height: 1.5rem;
+    width: 1.5rem;
+    margin-left: 1rem;
+}
+
+.iclne_txt{
+    font-size: 1.1rem;
+    font-size: 700;
+}
+
+.icon_line{
+    margin-top: 0.3rem;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+@media(max-width:1024px){
+
+    .ccard_con{
+        width: calc(100% - 2rem);
+        padding-right: 5vw;
+    }
+}
+
+@media(max-width:767px){
+
+    .ccard_con{
+        width: 96%;
+    }
+}

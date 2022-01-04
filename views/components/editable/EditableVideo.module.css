@@ -1,0 +1,13 @@
+.con{
+    display: flex;
+    border-radius: 1rem;
+    border-width: 2px;
+    border-style: solid;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.video{
+    width: 100%;
+}

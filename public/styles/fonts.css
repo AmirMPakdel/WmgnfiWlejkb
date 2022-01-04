@@ -1,0 +1,91 @@
+@font-face{
+	font-family: IranSansEng;
+	font-style: normal;
+	font-weight: 400;
+	src: url("/fonts/IRANSansWeb.woff2");
+}
+@font-face {
+	font-family: IranSans;
+	font-style: normal;
+	font-weight: 400;
+	src: url("/fonts/IRANSansWeb\(FaNum\).woff") format("woff");
+}
+@font-face {
+	font-family: IranSans;
+	font-style: normal;
+	font-weight: 500;
+	src: url("/fonts/IRANSansWeb\(FaNum\)_Medium.woff") format("woff");
+}
+@font-face {
+	font-family: IranSans;
+	font-style: normal;
+	font-weight: 700;
+	src: url("/fonts/IRANSansWeb\(FaNum\)_Bold.woff") format("woff");
+}
+
+.cpnt{
+    font-size: 0.875rem;
+}
+
+.bdyt{
+    font-size: 1rem;
+}
+
+.tilt{
+    font-size: 1.125rem;
+}
+
+.hrot{
+    font-size: 1.25rem;
+}
+
+.cpnti{
+    font-size: 0.875rem !important;
+}
+
+.bdyti{
+    font-size: 1rem !important;
+}
+
+.tilti{
+    font-size: 1.125rem !important;
+}
+
+.hroti{
+    font-size: 1.25rem !important;
+}
+
+@media(max-width:767px){
+
+    .cpnt{
+        font-size: 0.75rem;
+    }
+    
+    .bdyt{
+        font-size: 0.875rem;
+    }
+    
+    .tilt{
+        font-size: 1rem;
+    }
+    
+    .hrot{
+        font-size: 1.125rem;
+    }
+
+    .cpnti{
+        font-size: 0.75rem !important;
+    }
+    
+    .bdyti{
+        font-size: 0.875rem !important;
+    }
+    
+    .tilti{
+        font-size: 1rem !important;
+    }
+    
+    .hroti{
+        font-size: 1.125rem !important;
+    }
+}

@@ -1,0 +1,45 @@
+.tput_con{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    height: 3.5rem;
+}
+
+.tput_title{
+    font-size: 0.86rem;
+    color: #666666;
+    margin-right: 0.2rem;
+    user-select: none;
+}
+
+.tput_input{
+    padding: 0.4rem 1rem;
+    border-radius: 1rem;
+    color: rgb(63, 63, 63);
+    width: 100%;
+    direction: rtl;
+}
+
+
+.message{
+    position: absolute;
+    bottom: -1.3rem;
+    font-size: 0.7rem;
+    right: 1rem;
+    font-weight: 500;
+    direction: rtl;
+}
+
+.loading_status{
+    position: absolute;
+    left: 0rem;
+    width: 2rem;
+    height: 2rem;
+}
+
+.success_status{
+    position: absolute;
+    left: 0.5rem;
+    width: 2rem;
+    height: 1.8rem;
+}

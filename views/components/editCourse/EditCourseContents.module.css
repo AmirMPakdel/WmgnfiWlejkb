@@ -1,0 +1,193 @@
+.con{
+    margin-top: 3rem;
+}
+
+.heading_item_con{
+    display: flex;
+    align-items: center;
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+    width: 92%;
+    max-width: 36rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.content_item_con{
+    display: flex;
+    align-items: center;
+    margin-top: 0.5rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.8rem;
+    width: 92%;
+    max-width: 36rem;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.nestable_item_text{
+    margin-right: 0.5rem;
+    user-select: none;
+}
+
+/*     not needed       */
+
+/* .heading_nestable{
+    width: 92%;
+    max-width: 36rem;
+    margin-right: 2rem;
+    margin-top: 2rem;
+}
+
+.heading_wrapper{
+    border-width: 2px;
+    border-style: dashed;
+    border-radius: 1rem;
+    padding: 0.5rem;
+}
+
+.heading_header{
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+}
+
+.nestable_handler{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+    margin-left: 1rem;
+}
+
+.heading_input{
+    margin-top: 0.8rem;
+    max-width: 24rem;
+}
+
+.heading_delete{
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 0.4rem;
+    position: absolute;
+    left: 0rem;
+}
+
+.add_heading_content_btn{
+    margin-top: 2rem;
+    margin-right: 3rem;
+    margin-bottom: 1rem;
+} */
+
+/* new */
+.hierarchy_con{
+    width: 36rem;
+}
+
+.heading_drag_wrapper{
+    padding: 0.6rem;
+    margin: 1rem;
+    border: 2px;
+    border-radius: 1rem;
+    border-style: solid;
+}
+
+.heading_title_bar{
+    cursor: default;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    height: 3rem;
+}
+
+.heading_drag_handle{
+    font-size: 1.2rem;
+    padding: 0.2rem;
+    cursor: move;
+}
+
+.heading_text{
+    user-select: none;
+    margin-right: 0.8rem;
+}
+
+.content_drag_bar{
+    display: flex;
+    align-items: center;
+    height: 3rem;
+    padding: 0.6rem;
+    margin: 0.5rem 1rem;
+    border-radius: 1rem;
+    font-weight: 700;
+}
+
+.content_drag_handle{
+    font-size: 1.2rem;
+    padding: 0.2rem;
+    cursor: move;
+}
+
+.content_text{
+    user-select: none;
+    margin-right: 0.8rem;
+}
+
+.heading_card_preview{
+    border-width: 2px;
+    border-style: dashed;
+    margin: 1rem;
+    border-radius: 1rem;
+    padding: 0.6rem;
+    opacity: 0.3;
+}
+
+.content_card_preview{
+    border-width: 2px;
+    border-style: dashed;
+    margin: 0.5rem 1rem;
+    border-radius: 1rem;
+    padding: 0.6rem;
+    opacity: 0.3;
+}
+
+.new_content_btn{
+    margin: 0.5rem 1rem;
+    height: 2.6rem;
+    width: 8rem;
+    white-space: nowrap;
+    font-size: 0.78rem !important;
+}
+
+.add_heading_btn{
+    margin-top: 1rem;
+    margin-right: 1rem;
+}
+
+.heading_edit{
+    height: 1.8rem;
+    width: 1.8rem;
+    border-radius: 0.4rem;
+    margin-right: 1.2rem;
+}
+
+.heading_delete{
+    height: 1.8rem;
+    width: 1.8rem;
+    border-radius: 0.4rem;
+    margin-right: 0.8rem;
+}
+
+.content_edit{
+    height: 1.4rem;
+    width: 1.4rem;
+    border-radius: 0.3rem;
+    position: absolute;
+    left: 3.4rem;
+}
+
+.content_delete{
+    height: 1.4rem;
+    width: 1.4rem;
+    border-radius: 0.3rem;
+    position: absolute;
+    left: 1rem;
+}

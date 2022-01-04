@@ -1,0 +1,38 @@
+
+.con{
+    width: 32rem;
+    min-height: 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 1rem;
+    border-width: 1px;
+    border-style: solid;
+    padding: 2rem 1.4rem;
+    direction: rtl;
+}
+
+.title{
+    max-width: 80%;
+    text-align: center;
+    margin-top: 1rem;
+    font-weight: 700;
+}
+
+.sec1{
+    margin-top: 4rem;
+    min-width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.right_btn,
+.left_btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.5rem;
+    min-width: 8rem;
+    border-radius: 1rem;
+}

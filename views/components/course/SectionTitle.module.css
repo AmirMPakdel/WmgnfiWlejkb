@@ -1,0 +1,27 @@
+.sectitle_con{
+    width: fit-content;
+    max-width: calc(86% - 14rem);
+    font-weight: 700;
+    padding: 1rem;
+    padding-right: 4rem;
+    padding-left: 2.5rem;
+    border-radius: 1rem 0 0 1rem;
+    background-color: #F9F9F9;
+    box-shadow: 0 0.5rem 1rem 0.1rem rgb(0, 0, 0, 0.15);
+}
+
+@media(max-width:1024px){
+
+    .sectitle_con{
+        width: calc(100% - 2rem);
+        max-width: none;
+        padding-right: 5vw;
+    }
+}
+
+@media(max-width:767px){
+
+    .sectitle_con{
+        width: 96%;
+    }
+}

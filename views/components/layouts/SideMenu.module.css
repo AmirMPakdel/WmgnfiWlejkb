@@ -1,0 +1,67 @@
+.sidemenu_con{
+    display: flex;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    right: 0;
+    transform: translateX(0);
+    flex-direction: column;
+    width: 10rem;
+    transition: ease 400ms;
+    background-color: #3A3A3A;
+    z-index: 55;
+}
+.sidemenu_title{
+    font-size: 1.875rem;
+    align-self: center;
+    margin-top: 2rem;
+    height: 4rem;
+    user-select: none;
+}
+.smbtn_con{
+    display: flex;
+    direction: rtl;
+    align-items: center;
+    height: 3rem;
+}
+
+.smbtn_right_line{
+    height: 2rem;
+    width: 0.25rem;
+    border-radius: 1rem;
+    margin-left: 0.6rem;
+    background-color: white;
+}
+.smbtn_icon{
+    height: 1.4rem;
+    width: 1.4rem;
+    margin-left: 0.6rem;
+}
+.smbtn_title{
+    color: white;
+    margin-right: 0.8rem;
+}
+.sidemenu_wrapper1{
+    width: 10rem;
+    min-height: 4rem;
+    height: calc(100% - 24.5rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+@media(max-width:1024px){
+    .sidemenu_con{
+        transform: translateX(10rem);
+        padding-top: 3.2rem;
+    }
+
+    .sidemenu_title{
+        display: none;
+    }
+
+    .sidemenu_wrapper1{
+        height: calc(100% - 22rem);
+    }
+}

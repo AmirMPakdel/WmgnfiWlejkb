@@ -1,0 +1,13 @@
+
+.con{
+    margin-top: 3rem;
+}
+
+.image{
+    width: 92vw;
+    max-width: 8rem;
+    height: calc(92vw * 1);
+    max-height: calc(8rem * 1);
+    margin-right: 2rem;
+    margin-top: 1rem;
+}

@@ -1,0 +1,16 @@
+.iclne{
+    width: 100%;
+    display: flex;
+    padding: 0.3rem 1rem;
+    direction: rtl;
+    align-items: flex-start;
+}
+
+.iclne_img{
+    height: 1.3rem;
+    width: 1.3rem;
+    margin-left: 0.25rem;
+}
+
+.iclne_txt{
+}

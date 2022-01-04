@@ -1,0 +1,16 @@
+.line{
+    width: 100%;
+    min-height: 1px;
+    margin-top: 1.2rem;
+    margin-bottom: 0.7rem;
+    background-color: #F5DF4D;
+}
+
+.background_image{
+    height: 15rem;
+    width: 45rem;
+}
+
+.complete_info_ta{
+    height: 20rem;
+}

@@ -1,0 +1,16 @@
+.con{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 1rem;
+}
+
+.input{
+    border-radius: 1rem;
+    width: 100%;
+    direction: rtl;
+    font-size: 1rem;
+    padding: 0.8rem 1.4rem;
+}

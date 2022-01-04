@@ -1,0 +1,42 @@
+
+
+.con{
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.title_con{
+    display: flex;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.title{
+    height: 4rem;
+    font-weight: 700;
+    padding: 1rem 4rem 1rem 3rem;
+    border-radius: 1rem 0 0 1rem;
+    margin-left: 1rem;
+}
+
+.wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.edit{
+    height: 3rem !important;
+    width: 3rem !important;
+    margin-top: 0 !important;
+}
+
+.loading{
+    height: 3rem !important;
+    width: 3rem !important;
+    margin: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0.7rem !important;
+    margin-right: 0.8rem !important;
+}

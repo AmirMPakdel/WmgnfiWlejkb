@@ -1,0 +1,26 @@
+.con{
+    height: 22rem;
+    width: calc(100% - 22rem);
+    margin-right: 2.2rem;
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 1rem;
+    padding-top: 2rem;
+    box-shadow: 0 0.5rem 1rem 0.1rem rgb(0, 0, 0, 0.15);
+}
+.header{
+    position: absolute;
+    top: -1.5rem;
+    height: 3rem;
+    width: 8rem;
+    right: calc(50% - 4rem);
+    display: flex;
+    font-size: 0.86rem;
+    font-weight: 700;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 0.2rem 1rem 0.04rem rgb(0, 0, 0, 0.15);
+}

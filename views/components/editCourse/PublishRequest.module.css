@@ -1,0 +1,39 @@
+.con{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.request_btn{
+    width: 16rem;
+    margin-right: 2rem;
+    margin-top: 1rem;
+}
+
+.info_list{
+    max-width: 64rem;
+    width: 92%;
+    margin-right: 2rem;
+    margin-top: 2rem;
+    line-height: 1.8rem;
+}
+
+.error_list{
+    max-width: 64rem;
+    width: 92%;
+    margin-right: 2rem;
+    margin-top: 1rem;
+    line-height: 1.8rem;
+}
+
+.error_title{
+    font-weight: 700;
+    margin-right: 2rem;
+    margin-top: 1rem;
+}
+
+.error_sub{
+    margin-bottom: 1rem;
+}

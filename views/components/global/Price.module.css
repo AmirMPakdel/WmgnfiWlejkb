@@ -1,0 +1,31 @@
+.con{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    direction: ltr;
+}
+
+.price{
+    display: flex;
+
+}
+
+.sec1{
+    display: flex;
+    align-items: center;
+}
+
+.offPercent{
+    border-radius: 0.3rem;
+    margin-right: 0.3rem;
+    padding: 0.1rem 0.15rem 0 0.15rem;
+}
+
+.orginalPrice{
+    text-decoration: line-through;
+}
+
+.currency{
+    margin-right: 0.2rem;
+    padding-top: 0.5rem;
+}

@@ -1,0 +1,11 @@
+.con{
+    margin-top: 3rem;
+}
+
+.edit_text{
+    width: 92%;
+    max-width: 42rem;
+    height: 12rem;
+    margin: 1rem;
+    margin-right: 2rem;
+}

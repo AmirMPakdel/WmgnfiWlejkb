@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+  <g id="Iconly_Bulk_Arrow_-_Right_Circle" data-name="Iconly/Bulk/Arrow - Right Circle" transform="translate(32 32) rotate(180)">
+    <g id="Arrow_-_Right_Circle" data-name="Arrow - Right Circle" transform="translate(2 32) rotate(-90)">
+      <path id="Fill_1" data-name="Fill 1" d="M30,15A15,15,0,1,1,15,0,15.016,15.016,0,0,1,30,15" fill="#f5df4d" opacity="0.4"/>
+      <path id="Fill_4" data-name="Fill 4" d="M12.664,1.124a1.12,1.12,0,0,1-.328.793L7.131,7.148a1.128,1.128,0,0,1-1.595,0L.328,1.918A1.125,1.125,0,0,1,1.923.331l4.41,4.43,4.41-4.43a1.125,1.125,0,0,1,1.922.793" transform="translate(8.667 11.712)" fill="#939597"/>
+    </g>
+  </g>
+</svg>

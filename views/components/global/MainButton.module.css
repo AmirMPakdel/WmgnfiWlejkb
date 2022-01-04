@@ -1,0 +1,39 @@
+.mbtn_con{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    border-radius: 1rem;
+    height: 3rem;
+    direction: rtl;
+    padding: 0 1rem;
+}
+
+.left_arrow{
+    margin-right: 0.8rem;
+}
+
+.right_arrow{
+    margin-left: 0.8rem;
+}
+
+.border_mode{
+    background-color: transparent;
+    opacity: 0.8;
+    border: rgb(104, 104, 104) solid 0.14rem;
+}
+
+.white_border{
+    background-color: transparent;
+    opacity: 0.9;
+    border: rgb(255, 255, 255) solid 0.14rem;
+}
+
+.more_padding{
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+}
+
+.title{
+    font-weight: 500;
+}
