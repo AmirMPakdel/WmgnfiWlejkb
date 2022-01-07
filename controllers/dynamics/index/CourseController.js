@@ -1,4 +1,4 @@
-import CourseModel from "@/models/index/CourseModel";
+import CourseModel from "@/models/dynamics/index/CourseModel";
 import { getUrlPart } from "@/utils/helpers";
 import Course from "@/views/dynamics/index/Course";
 

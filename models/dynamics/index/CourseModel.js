@@ -19,6 +19,10 @@ export default class CourseModel{
         myServer.Post(myServer.urls.COURSE_FETCH, params, {}, (err, data)=>{
     
             if(!err){
+
+                if(!data.data.intro_video){
+                    data.data.intro_video = {};
+                }
             
                 cb(null, data);
             

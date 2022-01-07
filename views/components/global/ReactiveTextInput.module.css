@@ -3,6 +3,7 @@
     align-items: center;
     margin-bottom: 1.5rem;
     height: 3.5rem;
+    background-color: white;
 }
 
 .tput_title{
@@ -32,7 +33,7 @@
 
 .loading_status{
     position: absolute;
-    left: 0rem;
+    left: 0.5rem;
     width: 2rem;
     height: 2rem;
 }

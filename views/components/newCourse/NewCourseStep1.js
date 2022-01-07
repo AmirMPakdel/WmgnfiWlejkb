@@ -15,8 +15,9 @@ export default class NewCourseStep1 extends Component {
     }
 
     componentDidMount(){
-        
-        fakeInput(this);
+
+        this.continueCheck();
+        //fakeInput(this);
     }
 
     onChangeInput = (k, v)=>{

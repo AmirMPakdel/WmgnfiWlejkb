@@ -102,7 +102,7 @@
 .heading_drag_handle{
     font-size: 1.2rem;
     padding: 0.2rem;
-    cursor: move;
+    cursor: grab;
 }
 
 .heading_text{
@@ -123,7 +123,7 @@
 .content_drag_handle{
     font-size: 1.2rem;
     padding: 0.2rem;
-    cursor: move;
+    cursor: grab;
 }
 
 .content_text{

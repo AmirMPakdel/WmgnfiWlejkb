@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import CourseController from "@/controllers/index/CourseController";
+import CourseController from "@/controllers/dynamics/index/CourseController";
 import CommentsSec from "@/views/components/course/CommentsSec";
-import ContentCard from "@/views/components/course/view/ContentCard";
-import CourseBanner from "@/views/components/course/view/CourseBanner";
-import CourseInfo from "@/views/components/course/view/CourseInfo";
-import FloatingCard from "@/views/components/course/view/FloatingCard";
-import IconLine from "@/views/components/course/view/IconLine";
-import RecommandedArticles from "@/views/components/course/view/RecommandedArticles";
-import RecommandedCourses from "@/views/components/course/view/RecommandedCourses";
-import SectionTitle from "@/views/components/course/view/SectionTitle";
+import ContentCard from "@/views/components/course/ContentCard";
+import CourseBanner from "@/views/components/course/CourseBanner";
+import CourseInfo from "@/views/components/course/CourseInfo";
+import FloatingCard from "@/views/components/course/FloatingCard";
+import IconLine from "@/views/components/course/IconLine";
+import RecommandedArticles from "@/views/components/course/RecommandedArticles";
+import RecommandedCourses from "@/views/components/course/RecommandedCourses";
+import SectionTitle from "@/views/components/course/SectionTitle";
 import Loading from "@/views/components/global/Loading";
 import IndexLayout from "@/views/layouts/IndexLayout";
 import WrapperT1 from "@/views/layouts/WrapperT1";
@@ -58,41 +58,54 @@ export default class Course extends Component {
 
                 <SectionTitle title="چه چیزی در این دوره یاد خواهید گرفت؟"/>
 
-                <div className={styles.sec3+" bglc1i"}>
-                    {
-                        c.subjects.map((v,i)=>(
-                            <IconLine key={i} className={styles.crs_points} 
-                            icon_className={styles.crs_points_icn}
-                            text_className={styles.crs_points_txt} 
-                            icon={"/svg/crs_point_icn.svg"} 
-                            text={v}/>
-                        ))
-                    }
-                </div>
+                {
+                    c.subjects?
+                    <div className={styles.sec3+" bglc1i"}>
+                        {
+                            
+                            c.subjects.map((v,i)=>(
+                                <IconLine key={i} className={styles.crs_points} 
+                                icon_className={styles.crs_points_icn}
+                                text_className={styles.crs_points_txt} 
+                                icon={"/svg/crs_point_icn.svg"} 
+                                text={v}/>
+                            ))
+                            
+                        }
+                    </div>
+                    :null
+                }
 
                 <div className={styles.space1}/>
 
                 <SectionTitle title="محتوای دوره"/>
                 {
+                    c.headings?
                     c.headings.map((v,i)=>(
                         <ContentCard key={i} 
                         data={v}
                         parent={this}/>
-                    ))
+                    )):
+                    null
                 }
                 <div className={styles.space1}/>
 
                 <SectionTitle title="پیش نیاز های دوره"/>
 
-                <div className={styles.req_sec}>
-                    {
-                        c.requirements.map((v,i)=>(
-                        <IconLine key={i} icon_className={styles.square_icon} 
-                        icon={"/svg/crs_square_icn.svg"} 
-                        text={v}/>
-                        ))
-                    }
-                </div>
+                {
+                    c.requirements?
+                    <div className={styles.req_sec}>
+                        {
+                            
+                            c.requirements.map((v,i)=>(
+                            <IconLine key={i} icon_className={styles.square_icon} 
+                            icon={"/svg/crs_square_icn.svg"} 
+                            text={v}/>
+                            ))
+                        }
+                    </div>
+                    :null
+                }
 
                 <div className={styles.space1}/>
 

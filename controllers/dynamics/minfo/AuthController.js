@@ -42,6 +42,10 @@ export default class AuthController{
                 }else if(data.result_code === env.SC.REPETITIVE_PHONE_NUMBER){
 
                     this.view.setState({page:"PasswordPage", loading:false});
+
+                }else{
+
+                    this.view.setState({loading:false});
                 }
             });
         }
@@ -157,10 +161,12 @@ export default class AuthController{
             }else if(data.result_code === env.SC.USER_ALREADY_VERIFIED){
 
                 //TODO: what to do?
+                this.view.setState({loading:false});
 
             }else{
 
-                //TODO: what about other stuff?
+                //TODO: handle other stuff?
+                this.view.setState({loading:false});
             }
 
             this.lock = false;
@@ -236,6 +242,10 @@ export default class AuthController{
                         loading:false,
                         verification_code_error: "کد تایید وارد شده اشتباه است."
                     });
+
+                }else{
+
+                    this.view.setState({loading:false});
                 }
 
                 this.lock = false;
@@ -296,6 +306,7 @@ export default class AuthController{
                 }else if(data.result_code===env.SC.REPETITIVE_USERNAME){
 
                     this.view.setState({subdomain_status:"error", subdomain_message:"این نام قبلا ثبت شده است"});
+
                 }
             })
 
@@ -334,15 +345,25 @@ export default class AuthController{
 
                     setCookie(env.TOKEN_KEY, data.data.token, 1);
 
+                    setCookie(env.TENANT_KEY, data.data.username, 1);
+
                     this.view.setState({page:"RegisterSuccessPage"});
 
                 }else if(data.result_code===env.SC.REPETITIVE_NATIONAL_CODE){
+
+                    this.view.setState({loading:false});
 
                     chest.openNotification("کد ملی وارد شده قبلا ثبت شده است.");
 
                 }else if(data.result_code===env.SC.INVALID_ID){
 
+                    this.view.setState({loading:false});
+
                     chest.openNotification("DEV::user_id was invalid!");
+
+                }else{
+                    
+                    this.view.setState({loading:false});
                 }
 
                 this.lock = false;

@@ -10,6 +10,7 @@
     position: absolute;
     right: 0;
     left: 0;
+    background-color: black;
 }
 
 .title{
@@ -60,6 +61,7 @@
     width: calc(100% - 20rem);
     padding: 0.8rem 0.8rem;
     line-height: 1.8rem;
+    min-height: 6rem;
 }
 
 .row3{

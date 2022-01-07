@@ -40,6 +40,10 @@ export default class EditCourseModel{
                     console.log(data.data.requirements);
                 }
 
+                if(!data.data.intro_video){
+                    data.data.intro_video = {};
+                }
+
                 if(!data.data.validation_status_message){
                     data.data.validation_status_message = [];
                 }

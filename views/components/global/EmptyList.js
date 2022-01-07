@@ -15,7 +15,7 @@ export default class EmptyList extends Component {
         return(
             <div className={styles.con+" "+this.props.className} style={this.props.style}>
 
-                <img className={styles.img} src={"/statics/svg/info_gray.svg"}/>
+                <img className={styles.img} src={"/svg/info_gray.svg"}/>
 
                 {
                     this.props.title?
