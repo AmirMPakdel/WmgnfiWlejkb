@@ -1,4 +1,5 @@
 import EditCourseLogoModel from "@/models/components/editCourse/EditCourseLogoModel";
+import chest from "@/utils/chest";
 import { getCookie } from "@/utils/cookie";
 import { fileType2Ext, getUrlPart } from "@/utils/helpers";
 import EditCourseLogo from "@/views/components/editCourse/EditCourseLogo";

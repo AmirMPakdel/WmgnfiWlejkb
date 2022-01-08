@@ -34,19 +34,20 @@ export default class NewContentTypeModal extends Component {
         
         let modal = <AddContentModal heading={this.props.heading} parent={this.props.parent} type={"video"}/>
 
-        chest.ModalLayout.setModal(2, modal, ()=>{
+        chest.ModalLayout.setModal(1, modal, ()=>{
 
-            chest.ModalLayout.visibleToggle(2, this.onCancel);
+            chest.ModalLayout.visibleToggle(1, true);
         });
+        
     }
 
     onAudio=()=>{
 
         let modal = <AddContentModal heading={this.props.heading} parent={this.props.parent} type={"audio"}/>
 
-        chest.ModalLayout.setModal(2, modal, ()=>{
+        chest.ModalLayout.setModal(1, modal, ()=>{
 
-            chest.ModalLayout.visibleToggle(2, this.onCancel);
+            chest.ModalLayout.visibleToggle(1, true);
         });
     }
 
@@ -54,9 +55,9 @@ export default class NewContentTypeModal extends Component {
 
         let modal = <AddContentModal heading={this.props.heading} parent={this.props.parent} type={"text"}/>
 
-        chest.ModalLayout.setModal(2, modal, ()=>{
+        chest.ModalLayout.setModal(1, modal, ()=>{
 
-            chest.ModalLayout.visibleToggle(2, this.onCancel);
+            chest.ModalLayout.visibleToggle(1, true);
         });
     }
     

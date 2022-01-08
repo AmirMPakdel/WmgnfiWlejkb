@@ -13,7 +13,7 @@ export default class AddContentController{
     }
     
     onCancel=()=>{
-        chest.ModalLayout.closeAndDelete(2);
+        chest.ModalLayout.closeAndDelete(1);
     }
 
     onInput=(t)=>{

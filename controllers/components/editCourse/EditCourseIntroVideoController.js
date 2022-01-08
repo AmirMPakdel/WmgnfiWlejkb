@@ -97,7 +97,7 @@ export default class EditCourseIntroVideoController{
                     course_id: getUrlPart(3),
                 }
 
-                if(this.view.props.parent.state.old_values.intro_video){
+                if(this.view.props.parent.state.old_values.intro_video.id){
 
                     params4.file_state = "ufs_replace";
 

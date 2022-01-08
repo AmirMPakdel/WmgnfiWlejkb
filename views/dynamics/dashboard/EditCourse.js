@@ -129,7 +129,7 @@ export default class EditCourse extends Component {
 
                     <EditCoruseDuration parent={this}/>
 
-                    <EditCourseHoldingStatus parent={this}/>
+                    {/* <EditCourseHoldingStatus parent={this}/> */}
 
                     <EditCourseShortDesc parent={this}/>
 

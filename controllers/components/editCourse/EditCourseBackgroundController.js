@@ -48,7 +48,7 @@ export default class EditCourseBackgroundController{
         }
 
         if(this.view.props.parent.state.old_values.cover){
-            params1.old_upload_key = this.view.props.parent.state.old_values.logo;
+            params1.old_upload_key = this.view.props.parent.state.old_values.cover;
         }
 
         this.model.getUploadKey(params1, (err, data)=>{

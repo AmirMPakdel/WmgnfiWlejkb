@@ -4,7 +4,7 @@
     width: 92vw;
     max-width: 46rem;
     height: 86vh;
-    transform: translateY(-4vh);
+    /* transform: translateY(-4vh); */
     border-radius: 1rem;
 }
 
@@ -69,7 +69,7 @@
     text-align: right;
     font-weight: 700;
     transform-origin: right;
-    transform: scale(0.9);
+    /* transform: scale(0.9); */
 }
 
 .upload_btn{

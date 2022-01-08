@@ -49,18 +49,13 @@ export default class ModalLayout extends Component {
             this.state["layer"+layer+"_visible"] = false;
             this.setState(this.state, cb)
         }else{
-            cb();
+            this.state["layer"+layer+"_destroy"] = true;
+            this.state["layer"+layer+"_visible"] = false;
+            this.setState(this.state, cb);
         }
     }
     
     render(){
-
-        //TODO: delete later, no need for this
-        // if(this.state.visible){
-        //     chest.disableBodyVerticalScroll();
-        // }else{
-        //     chest.enableBodyVerticalScroll();
-        // }
 
         let s = this.state;
 

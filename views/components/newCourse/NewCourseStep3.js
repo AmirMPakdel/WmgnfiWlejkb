@@ -105,8 +105,7 @@ export default class NewCourseStep3 extends Component {
 
                 chest.openNotification("دوره مورد نظر با موفقیت ایجاد شده.", "success");
 
-                alert(data.data.course_id)
-                //window.location.href = "/dashboard/editCourse/"+data.data.course_id
+                window.location.href = "/dashboard/editCourse/"+data.data.course_id
 
             }else{
 
