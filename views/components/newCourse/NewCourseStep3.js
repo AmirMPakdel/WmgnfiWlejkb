@@ -45,7 +45,6 @@ export default class NewCourseStep3 extends Component {
         chest.ModalLayout.setModal(1, modal, ()=>{
             chest.ModalLayout.visibleToggle(1, true);
         });
-        
     }
 
     onRemoveEducator=(obj)=>{
@@ -82,7 +81,7 @@ export default class NewCourseStep3 extends Component {
         //create mvc later
         this.props.parent.setState({step:"loading"});
 
-        let ps = this.props.parent.state
+        let ps = this.props.parent.state;
         let params = {
             title: ps.title,
             price: Number(ps.price),

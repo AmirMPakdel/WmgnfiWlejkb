@@ -172,7 +172,7 @@ export default class AddContentController{
 
                             this.view.setState({upload_loading:false});
         
-                            chest.ModalLayout.closeAndDelete(2);
+                            chest.ModalLayout.closeAndDelete(1);
                         }
                     });
                 });
