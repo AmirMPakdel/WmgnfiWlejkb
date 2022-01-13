@@ -3,9 +3,12 @@ import myServer from "@/utils/myServer"
 
 const MediaFiles = {
 
-    publicImage:(uploadKey)=>{
-        
-        return `${myServer.urls.MEDIA_PREFIX}/public_files/${getCookie(env.TENANT_KEY)}/${uploadKey}.jpg`
+    publicImage:(uploadKey, type)=>{
+
+        if(uploadKey)
+            return `${myServer.urls.MEDIA_PREFIX}/public_files/${getCookie(env.TENANT_KEY)}/${uploadKey}.jpg`;
+
+        return "/default_img/default_"+type+".png";
     },
 
     publicVideo:(uploadKey)=>{

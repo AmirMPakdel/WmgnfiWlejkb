@@ -360,6 +360,8 @@ class RegisterPage extends Component{
             inputFilter={InputFilter.nationalCodeInputFilter}
             onChange={(v)=>p.onInput("national_code",v)}/>
 
+            
+
             <TextInput placeholder={"رمزعبور"}
             className={styles.btn+" blc2"}
             value={ps.register_password}
@@ -383,6 +385,9 @@ class RegisterPage extends Component{
             title={"ثبت نام"}
             loading={ps.loading}
             onClick={p.onRegisterConfirm}/>
+
+            {/*for the browsers auto username password fill*/}
+            <input style={{height:0}} autoComplete="username" type={"text"} value={ps.mobile}/>
 
             </>
         )

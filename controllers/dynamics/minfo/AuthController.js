@@ -220,6 +220,7 @@ export default class AuthController{
 
             let params = {
                 code: this.view.state.verification_code,
+                phone_number : this.view.state.mobile,
             }
 
             this.model.getCheckVerificationCode(params, (err, data)=>{

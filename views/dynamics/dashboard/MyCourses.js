@@ -7,6 +7,7 @@ import EducatorDashboardLayout from "@/views/layouts/EducatorDashboardLayout";
 import WrapperT1 from "@/views/layouts/WrapperT1";
 import styles from "./MyCourses.module.css";
 import { priceFormat } from "@/utils/price";
+import myServer from "@/utils/myServer";
 
 export default class MyCourses extends Component {
 
@@ -73,7 +74,7 @@ class CourseCard extends Component{
                 <div className={styles.cc_sec1+" amp_btn"} onClick={this.onShow}>
 
                     <div className={styles.cc_img}
-                    style={{backgroundImage:`url(${"/fake_img/11.jpg"})`}}/>
+                    style={{backgroundImage:`url(${myServer.MediaFiles.publicImage(d.logo, "logo")})`}}/>
 
                     <div className={styles.cc_title}>{d.title}</div>
 
