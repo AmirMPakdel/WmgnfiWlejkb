@@ -79,6 +79,23 @@ export class IsValid {
 
 export class InputFilter {
 
+    static integer(old_val, new_val){
+
+        let obj = {
+            value:old_val,
+            error:false,
+        }
+
+        let num = Number(new_val);
+        if(!isNaN(num) && num===Math.floor(num)){
+            obj.value = new_val;
+        }else{
+            obj.error = "عدد صحیح وارد نمایید";
+        }
+
+        return obj;
+    }
+
     static phoneNumberInputFilter(old_val, new_val){
 
         let obj = {value:old_val, error:false};

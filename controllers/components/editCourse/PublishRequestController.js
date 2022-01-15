@@ -17,7 +17,7 @@ export default class PublishRequestController{
 
             this.view.setState({request_loading:true});
 
-            let params = {}
+            let params = {};
 
             this.model.sendRequest(params, (err, data)=>{
 
@@ -44,7 +44,23 @@ export default class PublishRequestController{
         }
 
         if(!ov.logo){
-            ve.push("برای انتشار دوره ")
+            ve.push("بارگذاری لوگوی دوره الزامی است.");
+        }
+
+        if(!ov.cover){
+            ve.push("بارگذاری عکس پس زمینه دوره الزامی است.");
+        }
+
+        if(!ov.intro_video || !ov.intro_video.id){
+            ve.push("بارگذاری فیلم معرفی دوره الزامی است.");
+        }
+
+        if(!ov.educators.length){
+            ve.push("برای هر دوره وارد کردن حداقل یک مدرس الزامی است.");
+        }
+
+        if(!ov.duration){
+            ve.push("مدت زمان دوره می بایست حداقل "+ env.LIMITS.MIN_VALID_COURSE_DURATION+" ساعت باید.")
         }
 
 

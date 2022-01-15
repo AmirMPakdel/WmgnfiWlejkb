@@ -1,5 +1,3 @@
-
-
 var env = {
 
     ENVIRONMENT_MODE: "dev",
@@ -30,6 +28,7 @@ var env = {
         MAX_COURSE_HEADING_CONTENTS: 5,
         MIN_VALID_CONTENTS_PUBLISH:5,
         MIN_VALID_TITLE_LENGTH:5,
+        MIN_VALID_COURSE_DURATION: 1,
     },
 
     STORAGE_KEYS:{

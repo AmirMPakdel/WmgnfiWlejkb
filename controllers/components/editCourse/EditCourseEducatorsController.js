@@ -77,6 +77,13 @@ export default class EditCourseEducatorsController{
     onRemoveEducator(obj){
         
         let p = this.view.props.parent;
+
+        if(p.state.new_values.educators.length === 1){
+
+            chest.openNotification("دوره باید حداقل یک مدرس داشته باشد", "alert");
+            return;
+        }
+
         let new_educator = p.state.new_values.educators.filter((v,i)=>{
             if(v.id !== obj.id){return v}
         });

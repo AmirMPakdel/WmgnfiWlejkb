@@ -11,6 +11,7 @@ import styles from "./EditableText.module.css";
 * @property {string} oldValue
 * @property {number} maxLength
 * @property {placeholder} placeholder
+* @property {function} inputFilter
 * 
 * @extends {Component<Props>}
 */
@@ -49,6 +50,24 @@ export default class EditableText extends Component {
         this.setState({readOnly : true});
     }
 
+    onChange = (e)=>{
+        if(!this.props.onChange) return;
+
+        if(this.props.inputFilter){
+
+            let {value , error} = 
+            this.props.inputFilter(this.props.value, e.target.value);
+
+            this.props.onChange(value);
+
+            this.setState({error});
+
+        }else{
+
+            this.props.onChange(e.target.value);
+        }
+    }
+
     render(){
         return(
             <div className={styles.con+" bgwi bdc2i "+this.props.className} style={this.props.style}>
@@ -59,7 +78,12 @@ export default class EditableText extends Component {
                 readOnly={this.state.readOnly} 
                 maxLength={this.props.maxLength}
                 placeholder={this.props.placeholder}
-                onChange={(e)=>this.props.onChange(e.target.value)}/>
+                onChange={this.onChange}/>
+
+                {
+                    this.props.error || this.state.error?
+                    <div className={styles.error+" fec"}>{this.props.error || this.state.error}</div>:null
+                }
                 
             </div>
         )

@@ -4,6 +4,7 @@ import EditCourseDurationController from "@/controllers/components/editCourse/Ed
 import EditableTitle from "@/views/components/editable/EditableTitle";
 import EditableText from "@/views/components/editable/EditableText";
 import EditCourse from "@/views/dynamics/dashboard/EditCourse";
+import { InputFilter } from "@/utils/validation";
 
 /**
 * Props of EditCourseDuration Component
@@ -20,11 +21,12 @@ export default class EditCourseDuration extends Component {
         super(props);
         this.controller = new EditCourseDurationController(this);
         this.state = {
-        
+            submint_disabled:false,
         }
     }
     
     componentDidMount(){
+        this.controller.onChange(this.EditableText.input.value);
     }
     
     onEdit=()=>{
@@ -58,7 +60,8 @@ export default class EditCourseDuration extends Component {
                 status={st.duration}
                 onEdit={this.onEdit}
                 onSubmit={this.onSubmit}
-                onCancel={this.onCancel}/>
+                onCancel={this.onCancel}
+                submintDisabled={this.state.submint_disabled}/>
 
                 <EditableText
                 className={styles.edit_text}
@@ -67,6 +70,7 @@ export default class EditCourseDuration extends Component {
                 value={nw.duration}
                 oldValue={od.duration}
                 placeholder={"مدت به ساعت"}
+                inputFilter={InputFilter.integer}
                 onChange={this.onChange}/>
 
             </div>

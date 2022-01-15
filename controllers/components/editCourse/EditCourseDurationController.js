@@ -68,12 +68,25 @@ export default class EditCourseDurationController{
         p.setState({status});
     }
 
+    /**
+     * @param {string} t 
+     */
     onChange(t){
 
         let newVal = this.view.props.parent.state.new_values;
 
+        this.view.state.submint_disabled = false;
+
+        t = Math.floor(Number(t));
+
+        if(t < env.LIMITS.MIN_VALID_COURSE_DURATION){
+            this.view.state.submint_disabled = true;
+        }
+
+        this.view.setState(this.view.state);
+
         newVal.duration = t;
 
-        this.view.props.parent.setState(newVal)
+        this.view.props.parent.setState(newVal);
     }
 }
