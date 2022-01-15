@@ -7,6 +7,7 @@ import TextInput from "@/views/components/global/TextInput";
 import styles from "./AddContentModal.module.css";
 import {InfoCircleFilled, CloseCircleFilled} from "@ant-design/icons"
 import MainButton from "@/views/components/global/MainButton";
+import { Radio } from "node_modules/antd/lib/index";
 
 /**
 * Props of AddContentModal Component
@@ -93,7 +94,11 @@ export default class AddContentModal extends Component {
     }
 
     onCreate=()=>{
-
+        
+        if(this.state.status==="uploading"){
+            return;
+        }
+        
         if(!this.state.can_continue){
             chest.openNotification("عنوان محتوا نامعتبر است.","error")
             return;
@@ -136,11 +141,12 @@ export default class AddContentModal extends Component {
                     </div>
 
                     <div className={styles.select_row+" bdyt"} onClick={()=>this.onAccess(1)}>
-                        <Checkbox className={styles.select} checked={this.state.is_free===1}/>
+
+                        <Radio className={styles.select} checked={this.state.is_free===1}/>
                         {"محتوای رایگان و قابل دانلود برای عموم"}
                     </div>
                     <div className={styles.select_row+" bdyt"} onClick={()=>this.onAccess(0)}>
-                        <Checkbox className={styles.select} checked={this.state.is_free===0}/>
+                        <Radio className={styles.select} checked={this.state.is_free===0}/>
                         {"محتوای قابل دانلود برای خریداران این دوره"}
                     </div>
 
@@ -188,7 +194,7 @@ export default class AddContentModal extends Component {
 
                         <MainButton className={styles.creat_btn}
                         title="بارگذاری و ثبت"
-                        disabled={!this.state.can_continue}
+                        disabled={!this.state.can_continue || this.state.status==="uploading"}
                         loading={this.upload_loading}
                         onClick={this.onCreate}/>
 

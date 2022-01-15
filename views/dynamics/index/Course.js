@@ -82,7 +82,8 @@ export default class Course extends Component {
                 {
                     c.headings?
                     c.headings.map((v,i)=>(
-                        <ContentCard key={i} 
+                        <ContentCard key={i}
+                        open={i===0}
                         data={v}
                         parent={this}/>
                     )):

@@ -1,14 +1,14 @@
-import EditTitleModel from "@/models/components/editCourse/EditTitleModel";
+import EditCourseTitleModel from "@/models/components/editCourse/EditCourseTitleModel";
 import chest from "@/utils/chest";
 import { getUrlPart } from "@/utils/helpers";
 import EditCourseTitle from "@/views/components/editCourse/EditCourseTitle";
 
-export default class EditTitleController{
+export default class EditCourseTitleController{
     
     /**@param {EditCourseTitle} view*/
     constructor(view){
         this.view = view;
-        this.model = new EditTitleModel();
+        this.model = new EditCourseTitleModel();
     }
     
     onEdit(){
@@ -70,9 +70,16 @@ export default class EditTitleController{
 
     onChange(t){
 
+        let submint_disabled = false;
         let newVal = this.view.props.parent.state.new_values;
 
         newVal.title = t;
+
+        if(t.length < env.LIMITS.MIN_VALID_TITLE_LENGTH){
+            submint_disabled = true;
+        }
+
+        this.view.setState({submint_disabled});
 
         this.view.props.parent.setState(newVal)
     }

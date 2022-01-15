@@ -1,6 +1,6 @@
 import myServer from "@/utils/myServer";
 
-export default class EditTitleModel{
+export default class EditCourseTitleModel{
     
     /**
     * 

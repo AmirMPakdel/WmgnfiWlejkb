@@ -29,6 +29,11 @@ export default class IconButton extends Component {
             add_class += "bgtc1 fdc1 ";
         }
 
+        if(p.disabled){
+
+            add_class += "bgdc2 ";
+        }
+
         return(
             <div className={styles.con+" bdyt "+add_class+" amp_btn "+this.props.className} style={this.props.style}
             onClick={this.props.onClick}>

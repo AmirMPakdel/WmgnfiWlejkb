@@ -17,6 +17,8 @@ export default class PublishRequestController{
 
             this.view.setState({request_loading:true});
 
+            let params = {}
+
             this.model.sendRequest(params, (err, data)=>{
 
                 if(data.result_code === env.SC.SUCCESS){
@@ -33,14 +35,22 @@ export default class PublishRequestController{
 
     continueCheck=()=>{
 
-        let can = true;
-        let completion_errors = [];
+        let p = this.view.props.parent;
+        let ov = p.state.old_values;
+        let ve = [];
 
-        //TODO: check the whole edit course data
+        if(ov.contents.length < env.LIMITS.MIN_VALID_CONTENTS_PUBLISH){
+            ve.push("(محتویات دوره) " + "برای انتشار می بایست حداقل "+env.LIMITS.MIN_VALID_CONTENTS_PUBLISH+" محتوا برای دوره خود بارگذاری نمایید.");
+        }
 
-        this.view.setState({completion_errors});
+        if(!ov.logo){
+            ve.push("برای انتشار دوره ")
+        }
 
-        return can;
+
+        p.setState({validation_errors:ve});
+
+        return ve.length===0;
     }
     
 }

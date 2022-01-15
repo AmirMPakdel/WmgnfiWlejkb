@@ -16,11 +16,17 @@ export default class SideMenu extends Component {
     }
 
     componentDidMount(){
-        this.setState({active_page:window.location.pathname.split("/")[2]});
+
+        let page = window.location.pathname.split("/")[2];
+        if(!page){page = "dashboard"};
+        this.setState({active_page:page});
+
         chest.openSideMenu = this.openSideMenu;
         chest.closeSideMenu = this.closeSideMenu;
+
         // chest.showBackdrop = this.showBackdrop;
         // chest.hideBackdrop = this.hideBackdrop;
+
         Observer.add("onResize", this.onResize);
         Observer.add("onSideMenuToggle", this.onSideMenuToggle);
     }

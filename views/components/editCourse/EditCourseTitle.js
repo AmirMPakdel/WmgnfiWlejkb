@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import EditTitleController from "@/controllers/components/editCourse/EditTitleController";
+import EditCourseTitleController from "@/controllers/components/editCourse/EditCourseTitleController";
 import EditableText from "@/views/components/editable/EditableText";
 import EditableTitle from "@/views/components/editable/EditableTitle";
 import Loading from "@/views/components/global/Loading";
@@ -19,9 +19,9 @@ export default class EditCourseTitle extends Component {
     
     constructor(props){
         super(props);
-        this.controller = new EditTitleController(this);
+        this.controller = new EditCourseTitleController(this);
         this.state = {
-
+            submint_disabled:false
         }
     }
     
@@ -60,7 +60,8 @@ export default class EditCourseTitle extends Component {
                 status={st.title}
                 onEdit={this.onEdit}
                 onSubmit={this.onSubmit}
-                onCancel={this.onCancel}/>
+                onCancel={this.onCancel}
+                submintDisabled={this.state.submint_disabled}/>
 
                 <EditableText
                 className={styles.edit_text}

@@ -10,6 +10,7 @@ import styles from "./EditableText.module.css";
 * @property {string} value
 * @property {string} oldValue
 * @property {number} maxLength
+* @property {placeholder} placeholder
 * 
 * @extends {Component<Props>}
 */
@@ -57,6 +58,7 @@ export default class EditableText extends Component {
                 value={this.props.value} 
                 readOnly={this.state.readOnly} 
                 maxLength={this.props.maxLength}
+                placeholder={this.props.placeholder}
                 onChange={(e)=>this.props.onChange(e.target.value)}/>
                 
             </div>

@@ -13,6 +13,7 @@ import styles from "./EditableTitle.module.css";
 * @property {()=>{}} onEdit
 * @property {()=>{}} onSubmit
 * @property {()=>{}} onCancel
+* @property {boolean} submintDisabled
 * 
 * @extends {Component<Props>}
 */
@@ -68,8 +69,15 @@ export default class EditableTitle extends Component {
                     {
                         this.props.status==="edit"?
                         <>
-                        <IconButton className={styles.edit+" bgsc "}
-                        onClick={this.onSubmit}/>
+                        {
+                            this.props.submintDisabled?
+                            <IconButton className={styles.edit}
+                            disabled={true}/>
+                            :
+                            <IconButton className={styles.edit+" bgsc "}
+                            onClick={this.onSubmit}/>
+                        }
+                        
 
                         <IconButton className={styles.edit+" bgec "}
                         onClick={this.onCancel}/>

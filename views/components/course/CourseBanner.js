@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import styles from "./CourseBanner.module.css";
-import { minutes2Hours } from "@/utils/helpers";
 import myServer from "@/utils/myServer";
 import { priceFormat } from "@/utils/price";
 import Course from "@/views/dynamics/index/Course";
@@ -74,9 +73,9 @@ export default class CourseBanner extends Component {
 
                     <div className={styles.tablet_sec1+" flc1"}>
 
-                        <IconLine icon={"/svg/crs_play_icn.svg"} text={minutes2Hours(c.duration)+" ساعت دوره"}/>
+                        <IconLine icon={"/svg/crs_play_icn.svg"} text={c.duration+" ساعت دوره"}/>
 
-                        <IconLine icon={"/svg/crs_document_icn.svg"} text={c.headings.length+" سرفصل دوره"}/>
+                        <IconLine icon={"/svg/crs_document_icn.svg"} text={c.headings.length+" سرفصل"}/>
 
                         <IconLine icon_className={styles.download_icon} 
                         icon={"/svg/crs_download_icn.svg"} text={c.contents.length+" محتوای قابل دانلود"}/>

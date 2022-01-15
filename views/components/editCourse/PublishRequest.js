@@ -35,8 +35,10 @@ export default class PublishRequest extends Component {
     
     render(){
 
-        //let nw = {validation_status:"not_valid", validation_status_message:fake_errors} 
-        let nw = this.props.parent.state.new_values;
+        //let nw = {validation_status:"not_valid", validation_status_message:fake_errors}
+        let p = this.props.parent;
+        let ps = p.state;
+        let nw = ps.new_values;
 
         let jsx = 
 
@@ -49,7 +51,6 @@ export default class PublishRequest extends Component {
 
             {
                 nw.validation_status === "not_valid" && !nw.validation_status_message.length?
-
                 <div className={styles.info_list+" bdyt "}>
 
                     <ul>
@@ -69,9 +70,29 @@ export default class PublishRequest extends Component {
 
                     <div className={styles.error_sub+" bdyt "}>{error1}</div>
 
-                    <ul>
+                    <ul className={styles.errors_ul+" fdc1"}>
                         {
                             nw.validation_status_message.map((v,i)=>(
+                                <li key={i}>{v}</li>
+                            ))
+                        }
+                    </ul>
+
+                </div>
+                </>:null
+            }
+            {
+                ps.validation_errors.length?
+                <>
+                <div className={styles.error_title+" fec tilt "}>{"خطای انتشار"}</div>
+
+                <div className={styles.error_list+" bdyt fec"}>
+
+                    <div className={styles.error_sub+" bdyt "}>{error2}</div>
+
+                    <ul className={styles.errors_ul+" fdc1"}>
+                        {
+                            ps.validation_errors.map((v,i)=>(
                                 <li key={i}>{v}</li>
                             ))
                         }
@@ -100,26 +121,6 @@ export default class PublishRequest extends Component {
                 loading={this.state.request_loading}
                 title="درخواست انتشار"/>:null
             }
-            {
-                nw.validation_status === "not_valid" && nw.validation_status_message.length?
-                <>
-                <div className={styles.error_title+" fec tilt "}>{"عدم تایید انتشار"}</div>
-
-                <div className={styles.error_list+" bdyt fec"}>
-
-                    <div className={styles.error_sub+" bdyt "}>{error1}</div>
-
-                    <ul>
-                        {
-                            nw.validation_status_message.map((v,i)=>(
-                                <li key={i}>{v}</li>
-                            ))
-                        }
-                    </ul>
-
-                </div>
-                </>:null
-            }
             </div>
 
         </>:null
@@ -135,4 +136,7 @@ const text3 = "در صورت عدم تایید مشکلات و قوانین رع
 const fake_errors = [
     "عکس لوگوی دوره کیفیت پایینی دارد. لطفا عکس با رزلوشن بالاتری بارگذاری نمایید.",
 ]
-const error1 = "درخواست انتشار شما به دلایل زیر تایید نشد:"
+
+const error1 = "درخواست انتشار شما به دلایل ذیل تایید نشد:"
+
+const error2 = "لطفا قبل از درخواست انتشار خطای های ذیل را برطرف کنید:"

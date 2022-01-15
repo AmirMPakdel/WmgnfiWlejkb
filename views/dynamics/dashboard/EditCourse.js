@@ -93,7 +93,9 @@ export default class EditCourse extends Component {
                 headings:"idle",
                 contents:"idle",
                 content_hierarchy:"idle",
-            }
+            },
+
+            validation_errors:[],
         }
     }
 

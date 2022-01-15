@@ -10,12 +10,20 @@ import Course from "@/views/dynamics/index/Course";
 * @property {string} className
 * @property {React.CSSProperties} style
 * @property {Course} parent
+* @property {boolean} open
 * 
 * @extends {Component<Props>}
 */
 export default class ContentCard extends Component {
     
-    state={ open:true }
+    constructor(props){
+        super(props);
+
+        this.state={ 
+            open:props.open
+        }
+    }
+    
 
     toggle = ()=>{
         this.setState({open:!this.state.open})

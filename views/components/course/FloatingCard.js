@@ -1,6 +1,5 @@
 import { Affix } from "antd";
 import React, { Component } from "react";
-import { minutes2Hours } from "@/utils/helpers";
 import Course from "@/views/dynamics/index/Course";
 import MainButton from "@/views/components/global/MainButton";
 import Price from "@/views/components/global/Price";
@@ -49,9 +48,9 @@ export default class FloatingCard extends Component {
 
                     <div className={styles.space1}/>
 
-                    <IconLine icon={"/svg/crs_play_icn.svg"} text={minutes2Hours(c.duration)+" ساعت دوره"}/>
+                    <IconLine icon={"/svg/crs_play_icn.svg"} text={c.duration+" ساعت دوره"}/>
 
-                    <IconLine icon={"/svg/crs_document_icn.svg"} text={c.headings.length+" سرفصل دوره"}/>
+                    <IconLine icon={"/svg/crs_document_icn.svg"} text={c.headings.length+" سرفصل"}/>
 
                     <IconLine icon_className={styles.download_icon} 
                     icon={"/svg/crs_download_icn.svg"} text={c.contents.length+" محتوای قابل دانلود"}/>
