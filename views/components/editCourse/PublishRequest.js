@@ -40,9 +40,8 @@ export default class PublishRequest extends Component {
         let ps = p.state;
         let nw = ps.new_values;
 
-        let jsx = 
-
-        nw.validation_status !== "valid"?
+        if(nw.validation_status !== "valid"){
+        return(
         <>
             <div className={styles.con}>
             <EditableTitle
@@ -123,9 +122,11 @@ export default class PublishRequest extends Component {
             }
             </div>
 
-        </>:null
-
-        return jsx;
+        </>
+        )
+        }else{
+            return null;
+        }
     }
 }
 

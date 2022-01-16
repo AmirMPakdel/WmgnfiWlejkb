@@ -3,12 +3,14 @@ import styles from "./EditCourseShortDesc.module.css";
 import EditCourseShortDescController from "@/controllers/components/editCourse/EditCourseShortDescController";
 import EditableTitle from "@/views/components/editable/EditableTitle";
 import EditableTextArea from "@/views/components/editable/EditableTextArea";
+import EditCourse from "@/views/dynamics/dashboard/EditCourse";
 
 /**
 * Props of EditCourseShortDesc Component
 * @typedef Props
 * @property {string} className
 * @property {React.CSSProperties} style
+* @property {EditCourse} parent
 * 
 * @extends {Component<Props>}
 */
@@ -18,11 +20,12 @@ export default class EditCourseShortDesc extends Component {
         super(props);
         this.controller = new EditCourseShortDescController(this);
         this.state = {
-        
+            submint_disabled:false,
         }
     }
     
     componentDidMount(){
+        this.onChange(this.EditableText.input.value);
     }
     
     onEdit=()=>{
@@ -56,7 +59,8 @@ export default class EditCourseShortDesc extends Component {
                 status={st.short_desc}
                 onEdit={this.onEdit}
                 onSubmit={this.onSubmit}
-                onCancel={this.onCancel}/>
+                onCancel={this.onCancel}
+                submintDisabled={this.state.submint_disabled}/>
 
                 <EditableTextArea
                 className={styles.edit_text}

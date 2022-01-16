@@ -18,11 +18,12 @@ export default class EditCourseLongDesc extends Component {
         super(props);
         this.controller = new EditCourseLongDescController(this);
         this.state = {
-        
+            submint_disabled:false,
         }
     }
     
     componentDidMount(){
+        this.onChange(this.EditableText.input.value);
     }
     
     onEdit=()=>{
@@ -56,7 +57,8 @@ export default class EditCourseLongDesc extends Component {
                 status={st.long_desc}
                 onEdit={this.onEdit}
                 onSubmit={this.onSubmit}
-                onCancel={this.onCancel}/>
+                onCancel={this.onCancel}
+                submintDisabled={this.state.submint_disabled}/>
 
                 <EditableTextArea
                 className={styles.edit_text}

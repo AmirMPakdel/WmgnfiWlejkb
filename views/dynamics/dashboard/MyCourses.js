@@ -62,7 +62,7 @@ class CourseCard extends Component{
         window.location.href = "/dashboard/editCourse/"+this.props.data.id;
     }
 
-    onShow=()=>{
+    preview=()=>{
         window.location.href = "/course/"+this.props.data.id;
     }
 
@@ -71,7 +71,7 @@ class CourseCard extends Component{
         return(
             <div className={styles.cc_con}>
 
-                <div className={styles.cc_sec1+" amp_btn"} onClick={this.onShow}>
+                <div className={styles.cc_sec1}>
 
                     <div className={styles.cc_img}
                     style={{backgroundImage:`url(${myServer.MediaFiles.publicImage(d.logo, "logo")})`}}/>
@@ -139,8 +139,10 @@ class CourseCard extends Component{
                         //<MainButton className={styles.cc_btn} border_mode title={"مقالات"}/>
                     }
                     
+                    <MainButton className={styles.cc_btn}title={"پیش نمایش"}
+                    onClick={this.preview}/>
 
-                    <MainButton className={styles.cc_btn}title={"ویرایش دوره"}
+                    <MainButton className={styles.cc_btn}title={"ویرایش"}
                     onClick={this.edit}/>
 
                 </div>

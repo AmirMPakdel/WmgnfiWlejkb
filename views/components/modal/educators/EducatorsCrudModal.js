@@ -172,6 +172,8 @@ export default class EducatorsCrudModal extends Component {
 
         this.props.onConfirm && this.props.onConfirm(this.state.selected_row_keys, this.state.selected_rows);
     }
+
+    
     
     render(){
         const columns = [
@@ -180,6 +182,9 @@ export default class EducatorsCrudModal extends Component {
               dataIndex: 'last_name',
               key: 'last_name',
               width: '35%',
+              sorter: (a, b) => compare(a.last_name, b.last_name),
+              defaultSortOrder:"descend",//start the table with last_name ordered descend
+              sortDirections:["descend","ascend"],//first descend then ascend
               ...this.getColumnSearchProps('last_name'),
             },
             {
@@ -187,6 +192,8 @@ export default class EducatorsCrudModal extends Component {
               dataIndex: 'first_name',
               key: 'first_name',
               width: '30%',
+              sorter: (a, b) => compare(a.first_name, b.first_name),
+              sortDirections:["descend","ascend"],
               ...this.getColumnSearchProps('first_name'),
             },
             {
@@ -216,8 +223,7 @@ export default class EducatorsCrudModal extends Component {
                     this.setState({
                         selected_row_keys : selectedRowKeys,
                         selected_rows : selectedRows,
-                    })
-                  console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+                    });
                 },
 
             };
@@ -280,4 +286,22 @@ export default class EducatorsCrudModal extends Component {
             </div>
         )
     }
+}
+
+const compareStrings = (a, b) => {
+    if (a < b) return 1;
+    if (a > b) return -1;
+  
+    return 0;
+  }
+  
+const compare = (a, b) => {
+    const splitA = a.split(" ");
+    const splitB = b.split(" ");
+    const lastA = splitA[splitA.length - 1];
+    const lastB = splitB[splitB.length - 1];
+
+    return lastA === lastB ?
+    compareStrings(splitA[0], splitB[0]) :
+    compareStrings(lastA, lastB);
 }

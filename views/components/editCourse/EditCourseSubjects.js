@@ -6,6 +6,7 @@ import MainButton from "@/views/components/global/MainButton";
 import Nestable from "react-nestable";
 import EditCourse from "@/views/dynamics/dashboard/EditCourse";
 import TextInput from "@/views/components/global/TextInput";
+import { Container, Draggable } from "react-smooth-dnd";
 
 /**
 * Props of EditCourseSubjects Component
@@ -91,6 +92,48 @@ export default class EditCourseSubjects extends Component {
         p.setState({new_values: nw});
     }
 
+    getCardPayload=(columnId, index)=>{
+        let p = this.props.parent;
+        let ps = p.state;
+        let nw = ps.new_values;
+        return nw.content_hierarchy.children.filter(p => p.id === columnId)[0].children[
+          index
+        ];
+    }
+
+    onColumnDrop=(dropResult)=>{
+        let p = this.props.parent;
+        let ps = p.state;
+        let nw = ps.new_values;
+
+        const new_ch = Object.assign({}, nw.content_hierarchy);
+        new_ch.children = applyDrag(new_ch.children, dropResult);
+
+        ps.new_values.content_hierarchy = new_ch;
+        p.setState(ps);
+    }
+
+    onCardDrop=(columnId, dropResult)=>{
+
+        // let p = this.props.parent;
+        // let ps = p.state;
+        // let nw = ps.new_values;
+
+        // if (dropResult.removedIndex !== null || dropResult.addedIndex !== null) {
+
+        //     const new_ch = Object.assign({}, nw.content_hierarchy);
+        //     const column = new_ch.children.filter(p => p.id === columnId)[0];
+        //     const columnIndex = new_ch.children.indexOf(column);
+    
+        //     const newColumn = Object.assign({}, column);
+        //     newColumn.children = applyDrag(newColumn.children, dropResult);
+        //     new_ch.children.splice(columnIndex, 1, newColumn);
+    
+        //     ps.new_values.content_hierarchy = new_ch;
+        //     p.setState(ps);
+        // }
+    }
+
     render(){
 
         let p = this.props.parent;
@@ -109,7 +152,7 @@ export default class EditCourseSubjects extends Component {
                 onSubmit={this.onSubmit}
                 onCancel={this.onCancel}/>
                 
-                {
+                {/* {
                     st.subjects === "edit"?
                     <Nestable className={styles.nestable}
                     ref={r=>this.Nestable=r}
@@ -130,7 +173,54 @@ export default class EditCourseSubjects extends Component {
                         ))
                     }
                     </div>
-                }
+                } */}
+
+                <Container
+                    dragHandleSelector={st.subjects == "edit"?undefined:"null"}
+                    groupName="content_group"
+                    onDrop={e => this.onCardDrop(e)}
+                    getChildPayload={index =>this.getCardPayload(item.id, index)}
+                    dropPlaceholder={{                      
+                        animationDuration: 150,
+                        showOnTop: true,
+                        className: styles.content_card_preview+" btc2 bgtc1"
+                    }}>
+                    {
+                    nw.subjects.map((v, i)=>{
+
+                        return(
+                            <Draggable key={i} className={styles.nestable}>
+                                {
+                                    st.subjects == "edit"?
+                                    <>
+                                    <div className={styles.nestable_card}>
+
+                                        <span className={styles.heading_drag_handle+" ftc2"}>&#x2630;</span>
+
+                                        <TextInput className={styles.nestable_inputs}
+                                        value={v.text}
+                                        onChange={(t)=>this.onNestableInputChange(t, v)}/>
+
+                                        <div className={styles.nestable_row_delete+" bgec amp_btn"}
+                                        onClick={()=>this.deleteNestableRow(v)}/>
+
+                                        </div>
+                                    </>
+                                    :
+                                    <div className={styles.nestable_card}>
+                                        <TextInput className={styles.nestable_inputs}
+                                        value={v}
+                                        disabled={true}
+                                        onChange={t=>t}/>
+                                    </div>
+                                }
+                                
+
+                            </Draggable>
+                        )
+                    })
+                    }
+                </Container>
 
                 {
                     st.subjects === "edit" && nw.subjects.length < env.LIMITS.MAX_COURSE_SUBJECTS?

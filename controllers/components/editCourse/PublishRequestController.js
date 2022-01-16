@@ -60,10 +60,23 @@ export default class PublishRequestController{
         }
 
         if(!ov.duration){
-            ve.push("مدت زمان دوره می بایست حداقل "+ env.LIMITS.MIN_VALID_COURSE_DURATION+" ساعت باید.")
+            ve.push("مدت زمان دوره می بایست حداقل "+ env.LIMITS.MIN_VALID_COURSE_DURATION+" ساعت باید.");
         }
 
+        if(!ov.short_desc || ov.short_desc.length < env.LIMITS.MIN_VALID_SHORT_DESC){
+            ve.push("معرفی دوره می بایست حداقل "+ env.LIMITS.MIN_VALID_SHORT_DESC+" کارکتر باشد.");
+        }
 
+        if(!ov.long_desc || ov.long_desc.length < env.LIMITS.MIN_VALID_LONG_DESC){
+            ve.push("توضیحات کامل دوره می بایست حداقل "+ env.LIMITS.MIN_VALID_LONG_DESC+" کارکتر باشد.");
+        }
+
+        //TODO: for price
+
+        if(ov.subjects.length < env.LIMITS.MIN_VALID_COURSE_SUBJECTS){
+            ve.push("تعداد مورادی که در این دوره  تدریس می شود می بایست حداقل "+ env.LIMITS.MIN_VALID_COURSE_SUBJECTS+" باشد.");
+        }
+        
         p.setState({validation_errors:ve});
 
         return ve.length===0;

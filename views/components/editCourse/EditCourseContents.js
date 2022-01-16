@@ -107,7 +107,7 @@ export default class EditCourseContents extends Component {
             ps.new_values.content_hierarchy = new_ch;
             p.setState(ps);
         }
-      }
+    }
 
     render(){
         let p = this.props.parent;

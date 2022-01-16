@@ -49,7 +49,7 @@ export default class EditCourseLongDescController{
                     
                     status.long_desc = "idle";
                     let old_values = ps.old_values;
-                    old_values.long_desc = params.long_desc;
+                    old_values.long_desc = params.desc;
                     p.setState({status, old_values});
                 }
 
@@ -71,6 +71,12 @@ export default class EditCourseLongDescController{
     onChange(t){
 
         let newVal = this.view.props.parent.state.new_values;
+
+        this.view.state.submint_disabled=false;
+        if(t.length < 3){
+            this.view.state.submint_disabled=true;
+        }
+        this.view.setState(this.view.state);
 
         newVal.long_desc = t;
 

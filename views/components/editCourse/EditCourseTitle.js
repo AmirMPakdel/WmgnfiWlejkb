@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import EditCourseTitleController from "@/controllers/components/editCourse/EditCourseTitleController";
 import EditableText from "@/views/components/editable/EditableText";
 import EditableTitle from "@/views/components/editable/EditableTitle";
-import Loading from "@/views/components/global/Loading";
 import styles from "./EditCourseTitle.module.css";
 import EditCourse from "@/views/dynamics/dashboard/EditCourse";
 

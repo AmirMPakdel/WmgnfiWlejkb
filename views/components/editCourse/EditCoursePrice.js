@@ -3,6 +3,7 @@ import styles from "./EditCoursePrice.module.css";
 import EditCoursePriceController from "@/controllers/components/editCourse/EditCoursePriceController";
 import EditableTitle from "@/views/components/editable/EditableTitle";
 import EditableText from "@/views/components/editable/EditableText";
+import { InputFilter } from "@/utils/validation";
 
 /**
 * Props of EditCoursePrice Component
@@ -65,6 +66,7 @@ export default class EditCoursePrice extends Component {
                 maxLength={12}
                 value={nw.price}
                 oldValue={od.price}
+                inputFilter={InputFilter.integer}
                 onChange={this.onChange}/>
 
             </div>
