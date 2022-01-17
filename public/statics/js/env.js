@@ -56,6 +56,8 @@ var env = {
         AA : "/api/app",
     },
 
+    THEME:theme,
+
     SC:consts.SC,
 
     CSC:consts.CSC,

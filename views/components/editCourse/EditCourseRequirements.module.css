@@ -7,35 +7,46 @@
     margin-right: 2rem;
 }
 
-.nestable{
-    margin-right: 2rem;
-    width: 92%;
+.content_card_preview{
+    border-width: 2px;
+    border-style: dashed;
+    opacity: 0.3;
+    height: 3rem;
     max-width: 48rem;
+    margin-right: 2rem;
+    margin-top: 1rem;
+    border-radius: 0.8rem;
 }
 
-.nestable_card{
-    width: 100%;
-    margin: 2rem 0 !important;
+.input_con{
     display: flex;
     align-items: center;
+    height: 3rem;
+    width: 92%;
+    max-width: 48rem;
+    margin-right: 2rem;
+    margin-top: 1rem;
 }
 
-.nestable_inputs{
-    margin: 0 !important;
-    width: calc(100% - 3rem) !important;
-}
-
-.nestable_handler{
-    width: 2rem;
+.drag_handler{
     height: 2rem;
-    border-radius: 0.5rem;
+    width: 1rem;
     margin-left: 1rem;
+    font-size: 1.6rem;
+    padding-bottom: 0.4rem;
+    cursor: grab;
 }
 
-.nestable_row_delete{
-    width: 1.6rem;
+.input{
+    margin: 0 !important;
+    height: 3rem;
+    width: calc(100% - 5rem);
+    border-radius: 0.8rem;
+}
+
+.delete_btn{
     height: 1.6rem;
-    border-radius: 0.4rem;
-    position: absolute;
-    left: -2.2rem;
+    width: 1.6rem;
+    margin-right: 0.5rem;
+    border-radius: 0.5rem;
 }

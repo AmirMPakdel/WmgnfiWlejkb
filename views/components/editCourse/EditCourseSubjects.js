@@ -3,7 +3,6 @@ import styles from "./EditCourseSubjects.module.css";
 import EditCourseSubjectsController from "@/controllers/components/editCourse/EditCourseSubjectsController";
 import EditableTitle from "@/views/components/editable/EditableTitle";
 import MainButton from "@/views/components/global/MainButton";
-import Nestable from "react-nestable";
 import EditCourse from "@/views/dynamics/dashboard/EditCourse";
 import TextInput from "@/views/components/global/TextInput";
 import { Container, Draggable } from "react-smooth-dnd";
@@ -46,45 +45,16 @@ export default class EditCourseSubjects extends Component {
         this.controller.onAddSubject();
     }
 
-    renderNestableItem=(item)=>{
-
-        return (
-            <div className={styles.nestable_card}>
-
-                {item.handler}
-
-                <TextInput className={styles.nestable_inputs}
-                value={item.item.text}
-                onChange={(t)=>this.onNestableInputChange(t, item)}/>
-
-                <div className={styles.nestable_row_delete+" bgec amp_btn"}
-                onClick={()=>this.deleteNestableRow(item)}/>
-
-            </div>
-        )
-    }
-
-    onNestableInputChange=(text, item)=>{
+    onInputChange=(text, index)=>{
 
         let p = this.props.parent;
         let ps = p.state;
         let nw = ps.new_values;
-        nw.subjects[item.index] = text
+        nw.subjects[index] = text
         p.setState({new_values: nw});
     }
 
-    onNesableChange=({items, dragItem, targetPath})=>{
-
-        let p = this.props.parent;
-        let ps = p.state;
-        let nw = ps.new_values;
-        let subjects = items.map(i=>i.text);
-        nw.subjects = subjects;
-        p.setState({new_values: nw});
-    }
-
-    deleteNestableRow=(item)=>{
-
+    onDelete=(item)=>{
         let p = this.props.parent;
         let ps = p.state;
         let nw = ps.new_values;
@@ -92,46 +62,27 @@ export default class EditCourseSubjects extends Component {
         p.setState({new_values: nw});
     }
 
-    getCardPayload=(columnId, index)=>{
+    getCardPayload=(index)=>{
         let p = this.props.parent;
         let ps = p.state;
         let nw = ps.new_values;
-        return nw.content_hierarchy.children.filter(p => p.id === columnId)[0].children[
-          index
-        ];
+        return nw.subjects[index];
     }
 
-    onColumnDrop=(dropResult)=>{
+    onCardDrop=(dropResult)=>{
+
         let p = this.props.parent;
         let ps = p.state;
         let nw = ps.new_values;
 
-        const new_ch = Object.assign({}, nw.content_hierarchy);
-        new_ch.children = applyDrag(new_ch.children, dropResult);
+        if (dropResult.removedIndex !== null || dropResult.addedIndex !== null) {
 
-        ps.new_values.content_hierarchy = new_ch;
-        p.setState(ps);
-    }
-
-    onCardDrop=(columnId, dropResult)=>{
-
-        // let p = this.props.parent;
-        // let ps = p.state;
-        // let nw = ps.new_values;
-
-        // if (dropResult.removedIndex !== null || dropResult.addedIndex !== null) {
-
-        //     const new_ch = Object.assign({}, nw.content_hierarchy);
-        //     const column = new_ch.children.filter(p => p.id === columnId)[0];
-        //     const columnIndex = new_ch.children.indexOf(column);
+            const new_arr = Object.assign([], nw.subjects);
+            new_arr = applyDrag(new_arr, dropResult);
     
-        //     const newColumn = Object.assign({}, column);
-        //     newColumn.children = applyDrag(newColumn.children, dropResult);
-        //     new_ch.children.splice(columnIndex, 1, newColumn);
-    
-        //     ps.new_values.content_hierarchy = new_ch;
-        //     p.setState(ps);
-        // }
+            ps.new_values.subjects = new_arr;
+            p.setState(ps);
+        }
     }
 
     render(){
@@ -151,74 +102,47 @@ export default class EditCourseSubjects extends Component {
                 onEdit={this.onEdit}
                 onSubmit={this.onSubmit}
                 onCancel={this.onCancel}/>
-                
-                {/* {
-                    st.subjects === "edit"?
-                    <Nestable className={styles.nestable}
-                    ref={r=>this.Nestable=r}
-                    items={apiSubjects2NestableItem(nw.subjects)}
-                    renderItem={this.renderNestableItem}
-                    onChange={this.onNesableChange}
-                    handler={<div className={styles.nestable_handler+" bgtc2"}/>}/>
-                    :
-                    <div className={styles.nestable}>
-                    {
-                        nw.subjects.map((v,i)=>(
-                            <div className={styles.nestable_card} key={i}>
-                                <TextInput className={styles.nestable_inputs}
-                                value={v}
-                                disabled={true}
-                                onChange={t=>t}/>
-                            </div>
-                        ))
-                    }
-                    </div>
-                } */}
 
                 <Container
                     dragHandleSelector={st.subjects == "edit"?undefined:"null"}
-                    groupName="content_group"
+                    groupName="subject_group"
                     onDrop={e => this.onCardDrop(e)}
-                    getChildPayload={index =>this.getCardPayload(item.id, index)}
+                    getChildPayload={index =>this.getCardPayload(index)}
                     dropPlaceholder={{                      
                         animationDuration: 150,
                         showOnTop: true,
                         className: styles.content_card_preview+" btc2 bgtc1"
                     }}>
                     {
-                    nw.subjects.map((v, i)=>{
+                    nw.subjects.map((v, i)=>(
+                        <Draggable key={i}>
+                            {
+                                st.subjects == "edit"?
+                                <>
+                                <div className={styles.input_con} key={i}>
 
-                        return(
-                            <Draggable key={i} className={styles.nestable}>
-                                {
-                                    st.subjects == "edit"?
-                                    <>
-                                    <div className={styles.nestable_card}>
+                                    <span className={styles.drag_handler+" ftc2"}>&#x2630;</span>
 
-                                        <span className={styles.heading_drag_handle+" ftc2"}>&#x2630;</span>
+                                    <TextInput className={styles.input+" bgwc"}
+                                    value={v}
+                                    onChange={(t)=>this.onInputChange(t, i)}/>
 
-                                        <TextInput className={styles.nestable_inputs}
-                                        value={v.text}
-                                        onChange={(t)=>this.onNestableInputChange(t, v)}/>
+                                    <div className={styles.delete_btn+" bgec amp_btn"}
+                                    onClick={()=>this.onDelete(v)}/>
 
-                                        <div className={styles.nestable_row_delete+" bgec amp_btn"}
-                                        onClick={()=>this.deleteNestableRow(v)}/>
+                                </div>
+                                </>
+                                :
+                                <div className={styles.input_con}>
 
-                                        </div>
-                                    </>
-                                    :
-                                    <div className={styles.nestable_card}>
-                                        <TextInput className={styles.nestable_inputs}
-                                        value={v}
-                                        disabled={true}
-                                        onChange={t=>t}/>
-                                    </div>
-                                }
-                                
+                                    <TextInput className={styles.input}
+                                    value={v}
+                                    disabled={true}/>
 
-                            </Draggable>
-                        )
-                    })
+                                </div>
+                            }
+                        </Draggable>
+                    ))
                     }
                 </Container>
 
@@ -234,17 +158,20 @@ export default class EditCourseSubjects extends Component {
     }
 }
 
-function apiSubjects2NestableItem(sub) {
-
-    if(!sub){
-        return [];
+const applyDrag = (arr, dragResult) => {
+    const { removedIndex, addedIndex, payload } = dragResult;
+    if (removedIndex === null && addedIndex === null) return arr;
+  
+    const result = [...arr];
+    let itemToAdd = payload;
+  
+    if (removedIndex !== null) {
+      itemToAdd = result.splice(removedIndex, 1)[0];
     }
-
-    let items = [];
-
-    sub.forEach((e, i) => {
-        items.push({id:i+1, text:e});
-    });
-
-    return items
-}
+  
+    if (addedIndex !== null) {
+      result.splice(addedIndex, 0, itemToAdd);
+    }
+  
+    return result;
+};

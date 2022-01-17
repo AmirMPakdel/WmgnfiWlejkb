@@ -2,25 +2,25 @@
 	font-family: IranSansEng;
 	font-style: normal;
 	font-weight: 400;
-	src: url("/fonts/IRANSansWeb.woff2");
+	src: url("/statics/fonts/IRANSansWeb.woff2");
 }
 @font-face {
 	font-family: IranSans;
 	font-style: normal;
 	font-weight: 400;
-	src: url("/fonts/IRANSansWeb\(FaNum\).woff") format("woff");
+	src: url("/statics/fonts/IRANSansWeb\(FaNum\).woff") format("woff");
 }
 @font-face {
 	font-family: IranSans;
 	font-style: normal;
 	font-weight: 500;
-	src: url("/fonts/IRANSansWeb\(FaNum\)_Medium.woff") format("woff");
+	src: url("/statics/fonts/IRANSansWeb\(FaNum\)_Medium.woff") format("woff");
 }
 @font-face {
 	font-family: IranSans;
 	font-style: normal;
 	font-weight: 700;
-	src: url("/fonts/IRANSansWeb\(FaNum\)_Bold.woff") format("woff");
+	src: url("/statics/fonts/IRANSansWeb\(FaNum\)_Bold.woff") format("woff");
 }
 
 .cpnt{

@@ -137,7 +137,7 @@ export default class EditCourseContents extends Component {
                     }}>
                     {nw.content_hierarchy.children.map((item, item_index) => {
                         return (
-                        <Draggable key={item_index}> 
+                        <Draggable key={item_index}>
 
                             <div className={styles.heading_drag_wrapper+" bdc2i bglc1"}>
 

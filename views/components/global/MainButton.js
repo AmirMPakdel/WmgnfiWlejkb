@@ -67,7 +67,7 @@ export default class MainButton extends Component {
             <div className={styles.mbtn_con+" bdyt "+add_class+" amp_btn"} onClick={this.onClick} style={this.props.style}>
                 {
                     this.props.loading?
-                    <Loading scale={0.4}/>:
+                    <Loading scale={0.3}/>:
                     <>
                         {
                             this.props.rightArrow?

@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import styles from "./SideMenu.module.css";
 import chest from '@/utils/chest';
 import Observer from '@/utils/observer';
+import CategorySvg from "@/views/svgs/Category";
+import ActivitySvg from "@/views/svgs/Activity";
+import DocumentSvg from "@/views/svgs/Document";
+import WorkSvg from "@/views/svgs/Work";
+import PlusSqrSvg from "@/views/svgs/PlusSqr";
+import SettingSvg from "@/views/svgs/Setting";
+import ArrowUpSqrSvg from "@/views/svgs/ArrowUpSqr";
+import ProfileSvg from "@/views/svgs/Profile";
 
 
 export default class SideMenu extends Component {
@@ -81,33 +88,33 @@ export default class SideMenu extends Component {
 
                 <div className={styles.sidemenu_title+" ftc2i"}>{"Minfo"}</div>
 
-                <SideMenuBtn title="داشبورد" icon={"/svg/ed_dbrd_dashboard.svg"}
+                <SideMenuBtn title="داشبورد" icon={CategorySvg}
                 onClick={this.onSelect} active_page={this.state.active_page} name="dashboard"/>
 
-                <SideMenuBtn title="دوره های من" icon={"/svg/ed_dbrd_mycourses.svg"}
+                <SideMenuBtn title="دوره های من" icon={WorkSvg}
                 onClick={this.onSelect} active_page={this.state.active_page} name="myCourses"/>
 
-                <SideMenuBtn title="مقالات" icon={"/svg/ed_dbrd_articles.svg"}
+                <SideMenuBtn title="مقالات" icon={DocumentSvg}
                 onClick={this.onSelect} active_page={this.state.active_page} name="myArticles"/>
 
-                <SideMenuBtn title="ایجاد دوره" icon={"/svg/ed_dbrd_addcourses.svg"}
+                <SideMenuBtn title="ایجاد دوره" icon={PlusSqrSvg}
                 onClick={this.onSelect} active_page={this.state.active_page} name="newCourse"/>
 
                 {/* <SideMenuBtn title="تالار گفتگو" icon={"/svg/ed_dbrd_forum.svg"}
                 onClick={this.onSelect} active_page={this.state.active_page} name="forum"/> */}
 
-                <SideMenuBtn title="تنظیمات" icon={"/svg/ed_dbrd_services.svg"}
+                <SideMenuBtn title="تنظیمات" icon={SettingSvg}
                 onClick={this.onSelect} active_page={this.state.active_page} name="settings"/>
 
-                <SideMenuBtn title="گزارش‌های مالی" icon={"/svg/ed_dbrd_finance.svg"}
+                <SideMenuBtn title="گزارش‌های مالی" icon={ActivitySvg}
                 onClick={this.onSelect} active_page={this.state.active_page} name="finances"/>
 
-                <SideMenuBtn title="افزایش اعتبار" icon={"/svg/ed_dbrd_increase_credit.svg"}
+                <SideMenuBtn title="افزایش اعتبار" icon={ArrowUpSqrSvg}
                 onClick={this.onSelect} active_page={this.state.active_page} name="increaseCredit"/>
 
                 <div className={styles.sidemenu_wrapper1}>
 
-                    <SideMenuBtn title="امیرمحمد پاکدل" icon={"/svg/ed_dbrd_user.svg"}
+                    <SideMenuBtn title="امیرمحمد پاکدل" icon={ProfileSvg}
                     onClick={this.onSelect} active_page={this.state.active_page} name="profile" active/>
 
                 </div>
@@ -126,10 +133,11 @@ function SideMenuBtn(props){
         if(!props.active)s.opacity = 0.5;
         line_s.opacity = 0;
     }
+    const Icon = props.icon;
     return(
         <div className={styles.smbtn_con+" amp_btn"} style={s} onClick={()=>props.onClick(props.name)}>
             <div className={styles.smbtn_right_line} style={line_s}/>
-                <img src={props.icon}/>
+                <Icon className={styles.smbtn_icon}/>
             <div className={styles.smbtn_title}>{props.title}</div>
         </div>
     )

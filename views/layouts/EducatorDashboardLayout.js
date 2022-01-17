@@ -6,6 +6,11 @@ import styles from "./EducatorDashboardLayout.module.css";
 import AccessLayout from "@/views/layouts/AccessLayout";
 import ModalLayout from "@/views/layouts/ModalLayout";
 import Observer from "@/utils/observer";
+import LogoutSvg from "@/views/svgs/Logout";
+import NotificationSvg from "@/views/svgs/Notification";
+import HamburgerSvg from "@/views/svgs/Hamburger";
+import CrossSvg from "@/views/svgs/Cross";
+
 
 /**
  * @typedef Props 
@@ -55,11 +60,9 @@ export default class EducatorDashboardLayout extends Component {
 
                                 {
                                     this.state.menu_is_open?
-                                    <img className={styles.menu_btn+" amp_btn"} 
-                                    src={"/svg/dashboard/menu_close.svg"}
+                                    <CrossSvg className={styles.menu_btn+" amp_btn"}
                                     onClick={this.onToggleMenu}/>:
-                                    <img className={styles.menu_btn+" amp_btn"} 
-                                    src={"/svg/dashboard/menu_open.svg"}
+                                    <HamburgerSvg className={styles.menu_btn+" amp_btn"}
                                     onClick={this.onToggleMenu}/>
                                 }
 
@@ -68,13 +71,11 @@ export default class EducatorDashboardLayout extends Component {
                             <div className={styles.header_left_sec}>
 
                                 <div>
-                                    <img className={styles.notification_img+" amp_btn"} src={"/svg/edu_notification.svg"}
-                                    onClick={this.onNitifications}/>
+                                    <NotificationSvg className={styles.notification_img+" amp_btn"} onClick={this.onNitifications}/>
                                     <div className={styles.badge}>{"21"}</div>
                                 </div>
 
-                                
-                                <img className={styles.logout_img+" amp_btn"} src={"/svg/edu_logout.svg"}/>
+                                <LogoutSvg className={styles.logout_img+" amp_btn"}/>
 
                             </div>
                             

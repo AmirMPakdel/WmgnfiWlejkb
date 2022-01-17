@@ -3,8 +3,8 @@ import styles from "./EditCourseRequirements.module.css";
 import EditCourseRequirementsController from "@/controllers/components/editCourse/EditCourseRequirementsController";
 import EditableTitle from "@/views/components/editable/EditableTitle";
 import TextInput from "@/views/components/global/TextInput";
-import Nestable from "react-nestable";
 import MainButton from "@/views/components/global/MainButton";
+import { Container, Draggable } from "react-smooth-dnd";
 
 /**
 * Props of EditCourseRequirements Component
@@ -43,50 +43,44 @@ export default class EditCourseRequirements extends Component {
         this.controller.onAddSubject();
     }
 
-    renderNestableItem=(item)=>{
-
-        return (
-            <div className={styles.nestable_card}>
-
-                {item.handler}
-
-                <TextInput className={styles.nestable_inputs}
-                value={item.item.text}
-                onChange={(t)=>this.onNestableInputChange(t, item)}/>
-
-                <div className={styles.nestable_row_delete+" bgec amp_btn"}
-                onClick={()=>this.deleteNestableRow(item)}/>
-
-            </div>
-        )
-    }
-
-    onNestableInputChange=(text, item)=>{
+    onInputChange=(text, index)=>{
 
         let p = this.props.parent;
         let ps = p.state;
         let nw = ps.new_values;
-        nw.requirements[item.index] = text
+        nw.requirements[index] = text
         p.setState({new_values: nw});
     }
 
-    onNesableChange=({items, dragItem, targetPath})=>{
-
-        let p = this.props.parent;
-        let ps = p.state;
-        let nw = ps.new_values;
-        let requirements = items.map(i=>i.text);
-        nw.requirements = requirements;
-        p.setState({new_values: nw});
-    }
-
-    deleteNestableRow=(item)=>{
-
+    onDelete=(item)=>{
         let p = this.props.parent;
         let ps = p.state;
         let nw = ps.new_values;
         nw.requirements.splice(item.index, 1);
         p.setState({new_values: nw});
+    }
+
+    getCardPayload=(index)=>{
+        let p = this.props.parent;
+        let ps = p.state;
+        let nw = ps.new_values;
+        return nw.requirements[index];
+    }
+
+    onCardDrop=(dropResult)=>{
+
+        let p = this.props.parent;
+        let ps = p.state;
+        let nw = ps.new_values;
+
+        if (dropResult.removedIndex !== null || dropResult.addedIndex !== null) {
+
+            const new_arr = Object.assign([], nw.requirements);
+            new_arr = applyDrag(new_arr, dropResult);
+    
+            ps.new_values.requirements = new_arr;
+            p.setState(ps);
+        }
     }
 
     render(){
@@ -107,28 +101,48 @@ export default class EditCourseRequirements extends Component {
                 onSubmit={this.onSubmit}
                 onCancel={this.onCancel}/>
                 
-                {
-                    st.requirements === "edit"?
-                    <Nestable className={styles.nestable}
-                    ref={r=>this.Nestable=r}
-                    items={apiRequirements2NestableItem(nw.requirements)}
-                    renderItem={this.renderNestableItem}
-                    onChange={this.onNesableChange}
-                    handler={<div className={styles.nestable_handler+" bgtc2"}/>}/>
-                    :
-                    <div className={styles.nestable}>
+                <Container
+                    dragHandleSelector={st.requirements == "edit"?undefined:"null"}
+                    groupName="subject_group"
+                    onDrop={e => this.onCardDrop(e)}
+                    getChildPayload={index =>this.getCardPayload(index)}
+                    dropPlaceholder={{                      
+                        animationDuration: 150,
+                        showOnTop: true,
+                        className: styles.content_card_preview+" btc2 bgtc1"
+                    }}>
                     {
-                        nw.requirements.map((v,i)=>(
-                            <div className={styles.nestable_card} key={i}>
-                                <TextInput className={styles.nestable_inputs}
-                                value={v}
-                                disabled={true}
-                                onChange={t=>t}/>
-                            </div>
-                        ))
+                    nw.requirements.map((v, i)=>(
+                        <Draggable key={i}>
+                            {
+                                st.requirements == "edit"?
+                                <>
+                                <div className={styles.input_con} key={i}>
+
+                                    <span className={styles.drag_handler+" ftc2"}>&#x2630;</span>
+
+                                    <TextInput className={styles.input+" bgwc"}
+                                    value={v}
+                                    onChange={(t)=>this.onInputChange(t, i)}/>
+
+                                    <div className={styles.delete_btn+" bgec amp_btn"}
+                                    onClick={()=>this.onDelete(v)}/>
+
+                                </div>
+                                </>
+                                :
+                                <div className={styles.input_con}>
+
+                                    <TextInput className={styles.input}
+                                    value={v}
+                                    disabled={true}/>
+
+                                </div>
+                            }
+                        </Draggable>
+                    ))
                     }
-                    </div>
-                }
+                </Container>
 
                 {
                     st.requirements === "edit" && nw.requirements.length < env.LIMITS.MAX_COURSE_REQUIREMENTS?
@@ -142,17 +156,20 @@ export default class EditCourseRequirements extends Component {
     }
 }
 
-function apiRequirements2NestableItem(sub) {
-
-    if(!sub){
-        return [];
+const applyDrag = (arr, dragResult) => {
+    const { removedIndex, addedIndex, payload } = dragResult;
+    if (removedIndex === null && addedIndex === null) return arr;
+  
+    const result = [...arr];
+    let itemToAdd = payload;
+  
+    if (removedIndex !== null) {
+      itemToAdd = result.splice(removedIndex, 1)[0];
     }
-
-    let items = [];
-
-    sub.forEach((e, i) => {
-        items.push({id:i+1, text:e});
-    });
-
-    return items
-}
+  
+    if (addedIndex !== null) {
+      result.splice(addedIndex, 0, itemToAdd);
+    }
+  
+    return result;
+};
