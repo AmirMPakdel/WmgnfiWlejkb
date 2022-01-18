@@ -64,6 +64,7 @@
 .download_icon{
     width: 1.15rem;
     margin-left: 0.4rem;
+    transform: translateX(-0.1rem);
 }
 
 

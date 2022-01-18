@@ -4,6 +4,7 @@ import EditCourse from "@/views/dynamics/dashboard/EditCourse";
 import EditableTitle from "@/views/components/editable/EditableTitle";
 import EditableVideo from "@/views/components/editable/EditableVideo";
 import styles from "./EditCourseIntroVideo.module.css";
+import UploadSvg from "@/views/svgs/Upload";
 
 /**
 * Props of EditCourseIntroVideo Component
@@ -60,6 +61,7 @@ export default class EditCourseIntroVideo extends Component {
 
                 <EditableTitle
                 title={"ویدیو معرفی دوره"}
+                editIcon={UploadSvg}
                 status={st.intro_video}
                 onEdit={this.onEdit}
                 onSubmit={this.onSubmit}

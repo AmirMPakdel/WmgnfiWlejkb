@@ -4,6 +4,7 @@ import styles from "./EditCourseLogo.module.css";
 import EditCourseLogoController from "@/controllers/components/editCourse/EditCourseLogoController"
 import EditableImage from "@/views/components/editable/EditableImage";
 import EditCourse from "@/views/dynamics/dashboard/EditCourse";
+import UploadSvg from "@/views/svgs/Upload";
 
 /**
 * Props of EditCourseLogo Component
@@ -60,6 +61,7 @@ export default class EditCourseLogo extends Component {
 
                 <EditableTitle
                 title={"لوگوی دوره"}
+                editIcon={UploadSvg}
                 status={st.logo}
                 onEdit={this.onEdit}
                 onSubmit={this.onSubmit}

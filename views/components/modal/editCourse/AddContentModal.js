@@ -1,4 +1,4 @@
-import { Checkbox, ConfigProvider, Progress, Tooltip } from "antd";
+import { ConfigProvider, Progress, Tooltip } from "antd";
 import React, { Component } from "react";
 import AddContentController from "@/controllers/components/modals/editCourse/AddContentController";
 import chest from "@/utils/chest";
@@ -8,6 +8,8 @@ import styles from "./AddContentModal.module.css";
 import {InfoCircleFilled, CloseCircleFilled} from "@ant-design/icons"
 import MainButton from "@/views/components/global/MainButton";
 import { Radio } from "node_modules/antd/lib/index";
+import CrossSvg from "@/views/svgs/Cross";
+
 
 /**
 * Props of AddContentModal Component
@@ -114,8 +116,8 @@ export default class AddContentModal extends Component {
         return(
             <div className={styles.con+" bglc1 "}>
 
-                <img className={styles.close_btn + " bglc1 amp_btn md_card_shd"} 
-                src={"/svg/modal_close.svg"}
+                <CrossSvg className={styles.close_btn + " bglc1 amp_btn md_card_shd"} 
+                stroke={env.THEME.dc1}
                 onClick={this.onCancel}/>
 
                 <div className={styles.wrapper}>

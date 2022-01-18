@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import styles from "./SelectBox.module.css";
+import PlusSqrSvg from "@/views/svgs/PlusSqr";
+import CrossSvg from "@/views/svgs/Cross";
 
 /**
  * @typedef Props 
@@ -66,8 +68,8 @@ export default class SelectBox extends Component {
 
                 {
                     this.props.editable?
-                    <img className={styles.add_btn+" amp_btn bgtc1"} 
-                    src={"/svg/closed_ccard_icn.svg"}
+                    <PlusSqrSvg className={styles.add_btn+" amp_btn bgtc1"}
+                    stroke={env.THEME.dc1}
                     onClick={this.onAdd}/>:null
                 }
 
@@ -90,7 +92,8 @@ function Label(props){
 
             {
                 props.editable?
-                <img className={styles.label_remove_icon} src={"/svg/modal_close.svg"}/>:
+                <CrossSvg className={styles.label_remove_icon}
+                stroke={env.THEME.dc1}/>:
                 null
             }
             

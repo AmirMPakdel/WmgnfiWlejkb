@@ -3,6 +3,7 @@ import styles from "./DeleteContentModal.module.css";
 import DeleteContentController from "@/controllers/components/modals/editCourse/DeleteContentController";
 import EditCourseContents from "@/views/components/editCourse/EditCourseContents";
 import MainButton from "@/views/components/global/MainButton";
+import CrossSvg from "@/views/svgs/Cross";
 
 /**
 * Props of DeleteContentModal Component
@@ -41,8 +42,8 @@ export default class DeleteContentModal extends Component {
         return(
             <div className={styles.con+" bglc2 "}>
 
-                <img className={styles.close_btn + " bglc1 amp_btn md_card_shd"} 
-                src={"/svg/modal_close.svg"}
+                <CrossSvg className={styles.close_btn + " bglc1 amp_btn md_card_shd"} 
+                stroke={env.THEME.dc1}
                 onClick={this.onCancel}/>
 
                 <div className={styles.title+" tilt"}>{"محتوای "+content.title+" حذف شود؟"}</div>
@@ -56,6 +57,7 @@ export default class DeleteContentModal extends Component {
 
                     <MainButton className={styles.cancel_btn}
                     title={"انصراف"}
+                    borderMode
                     onClick={this.onCancel}/>
 
                 </div>

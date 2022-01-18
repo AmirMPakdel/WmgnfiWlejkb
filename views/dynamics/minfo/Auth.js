@@ -176,7 +176,8 @@ class MobilePage extends Component{
             error={ps.mobile_error}
             maxLength={11}
             inputFilter={InputFilter.phoneNumberInputFilter}
-            onChange={p.onMobileInput}/>
+            onChange={p.onMobileInput}
+            OnEnterKeyPressed={p.onMobileConfirm}/>
 
             <MainButton  style={{marginTop:"2rem", width:"20rem"}} 
             loading={ps.loading}
@@ -221,7 +222,8 @@ class PasswordPage extends Component{
             error={ps.password_error}
             type={"password"}
             inputFilter={InputFilter.passwordInputFilter}
-            onChange={p.onPasswordInput}/>
+            onChange={p.onPasswordInput}
+            OnEnterKeyPressed={p.onPasswordConfirm}/>
 
             <a onClick={p.onForgotLink}
             style={{direction:"rtl", textAlign:"center", marginTop:"1rem", fontSize:"13px"}}>
@@ -276,7 +278,8 @@ class VerificationPage extends Component{
             value={ps.sms_code}
             error={ps.verification_code_error}
             inputFilter={InputFilter.verificationCodeInputFilter}
-            onChange={p.onVerificationCodeInput}/>
+            onChange={p.onVerificationCodeInput}
+            OnEnterKeyPressed={p.onSmsCodeConfirm}/>
 
             {
                 this.state.show_timer_bar?
@@ -379,7 +382,8 @@ class RegisterPage extends Component{
             type={"password"}
             error={ps.password_confirm_error}
             inputFilter={InputFilter.passwordInputFilter}
-            onChange={(v)=>p.onInput("password_confirm",v)}/>
+            onChange={(v)=>p.onInput("password_confirm",v)}
+            OnEnterKeyPressed={p.onRegisterConfirm}/>
 
             <MainButton  style={{marginTop:"0.8rem", width:"20rem"}} 
             title={"ثبت نام"}
@@ -396,12 +400,27 @@ class RegisterPage extends Component{
 
 /**
 * Props of RegisterSuccessPage Component
-* @typedef Props
+* @typedef RegisterSuccessProps
 * @property {Auth} parent
 * 
-* @extends {Component<Props>}
+* @extends {Component<RegisterSuccessProps>}
 */
 class RegisterSuccessPage extends Component{
+
+    componentDidMount(){
+        window.addEventListener("keyup", this.onEnterKeyPressed);
+    }
+
+    componentWillUnmount(){
+        window.removeEventListener("keyup", this.onEnterKeyPressed);
+    }
+
+    onEnterKeyPressed = (e)=>{
+        if (e.keyCode === 13) {
+            e.preventDefault();
+            p.onRegisterSuccessConfirm();
+        }
+    }
 
     render(){
         let p = this.props.parent;

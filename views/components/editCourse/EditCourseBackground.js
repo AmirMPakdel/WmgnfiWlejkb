@@ -4,6 +4,7 @@ import styles from "./EditCourseBackground.module.css";
 import EditCourseBackgroundController from "@/controllers/components/editCourse/EditCourseBackgroundController"
 import EditableImage from "@/views/components/editable/EditableImage";
 import EditCourse from "@/views/dynamics/dashboard/EditCourse";
+import UploadSvg from "@/views/svgs/Upload";
 
 /**
 * Props of EditCourseBackground Component
@@ -60,6 +61,7 @@ export default class EditCourseBackground extends Component {
 
                 <EditableTitle
                 title={"عکس پس زمینه دوره"}
+                editIcon={UploadSvg}
                 status={st.cover}
                 onEdit={this.onEdit}
                 onSubmit={this.onSubmit}

@@ -29,7 +29,18 @@
 .edit{
     height: 3rem !important;
     width: 3rem !important;
+    padding: 0 !important;
     margin-top: 0 !important;
+}
+
+.submit_icon{
+    width: 1.8rem !important;
+    height: 1.8rem !important;
+}
+
+.cancel_icon{
+    width: 0.9rem !important;
+    height: 0.9rem !important;
 }
 
 .loading{

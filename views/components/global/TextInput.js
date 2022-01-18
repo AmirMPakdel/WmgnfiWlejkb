@@ -18,6 +18,7 @@ import styles from "./TextInput.module.css";
 * @property {"password"|"price"} type
 * @property {string} autocomplete
 * @property {boolean} disabled
+* @property {function} OnEnterKeyPressed
 * 
 * @extends {Component<Props>}
 */
@@ -25,6 +26,11 @@ export default class TextInput extends Component {
 
     state={
         error:"",
+    }
+
+    componentDidMount(){
+
+        this.input.addEventListener("keyup", this.onKeyUp)
     }
 
     onChange=(e)=>{
@@ -53,6 +59,19 @@ export default class TextInput extends Component {
             block: 'center',
             inline: 'center'
         });
+    }
+
+    onKeyUp=(e)=>{
+
+        if (e.keyCode === 13) {
+
+            e.preventDefault();
+
+            if(this.props.OnEnterKeyPressed){
+
+                this.props.OnEnterKeyPressed();
+            }
+        }
     }
     
     render(){

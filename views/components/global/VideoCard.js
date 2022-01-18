@@ -34,7 +34,6 @@ export default class VideoCard extends Component {
 
         return(
             <div className={styles.con+" "+this.props.className+" "+addClass}
-            // style={{backgroundImage:`url(${this.props.thumbnail})`}}
             >
 
                 <video className={styles.video} 
@@ -45,7 +44,7 @@ export default class VideoCard extends Component {
                 {
                     !this.state.is_playing?
                     <img className={styles.play_btn+" "+this.props.playBtnClassName+" amp_btn"} 
-                    src={"/svg/video_play_big.svg"}
+                    src={"/statics/img/play_h.svg"}
                     onClick={this.onPlay}/>:null
                 }
                 

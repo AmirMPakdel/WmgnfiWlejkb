@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import DeleteHeadingController from "@/controllers/components/modals/editCourse/DeleteHeadingController";
 import MainButton from "@/views/components/global/MainButton";
 import styles from "./DeleteHeadingModal.module.css";
+import CrossSvg from "@/views/svgs/Cross";
 
 /**
 * Props of DeleteHeadingModal Component
@@ -38,8 +39,8 @@ export default class DeleteHeadingModal extends Component {
         return(
             <div className={styles.con+" bglc2 "}>
 
-                <img className={styles.close_btn + " bglc1 amp_btn md_card_shd"} 
-                src={"/svg/modal_close.svg"}
+                <CrossSvg className={styles.close_btn + " bglc1 amp_btn md_card_shd"} 
+                stroke={env.THEME.dc1}
                 onClick={this.onCancel}/>
 
                 {
@@ -49,8 +50,9 @@ export default class DeleteHeadingModal extends Component {
 
                     <div className={styles.sec1}>
 
-                        <MainButton className={styles.back_btn+" bgec"}
+                        <MainButton className={styles.back_btn}
                         title={"متوجه شدم"}
+                        borderMode
                         onClick={this.onCancel}/>
 
                     </div>
@@ -68,6 +70,7 @@ export default class DeleteHeadingModal extends Component {
 
                         <MainButton className={styles.cancel_btn}
                         title={"انصراف"}
+                        borderMode
                         onClick={this.onCancel}/>
 
                     </div>

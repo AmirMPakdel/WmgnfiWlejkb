@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import IconButton from "@/views/components/global/IconButton";
 import Loading from "@/views/components/global/Loading";
 import styles from "./EditableTitle.module.css";
+import EditSqrSvg from "@/views/svgs/EditSqr";
+import CrossSvg from "@/views/svgs/Cross";
+import TickSqrSvg from "@/views/svgs/TickSqr";
 
 /**
 * Props of EditableTitle Component
@@ -9,6 +12,7 @@ import styles from "./EditableTitle.module.css";
 * @property {string} className
 * @property {React.CSSProperties} style
 * @property {string} title
+* @property {class} editIcon
 * @property {"idle"|"edit"|"loading"} status
 * @property {()=>{}} onEdit
 * @property {()=>{}} onSubmit
@@ -59,6 +63,7 @@ export default class EditableTitle extends Component {
                     {
                         this.props.status==="idle"?
                         <IconButton className={styles.edit+" bgtc1 "}
+                        icon={this.props.editIcon || EditSqrSvg}
                         onClick={this.onEdit}/>
                         :null
                     }
@@ -72,14 +77,21 @@ export default class EditableTitle extends Component {
                         {
                             this.props.submintDisabled?
                             <IconButton className={styles.edit}
+                            icon={TickSqrSvg}
+                            iconClassName={styles.submit_icon}
                             disabled={true}/>
                             :
                             <IconButton className={styles.edit+" bgsc "}
+                            icon={TickSqrSvg}
+                            iconClassName={styles.submit_icon}
                             onClick={this.onSubmit}/>
                         }
                         
 
                         <IconButton className={styles.edit+" bgec "}
+                        icon={CrossSvg}
+                        iconClassName={styles.cancel_icon}
+                        iconProps={{stroke:env.THEME.dc1}}
                         onClick={this.onCancel}/>
                         </>:null
                     }

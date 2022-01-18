@@ -3,6 +3,7 @@ import chest from "@/utils/chest";
 import EditCourseContents from "@/views/components/editCourse/EditCourseContents";
 import AddContentModal from "@/views/components/modal/editCourse/AddContentModal";
 import styles from "./NewContentTypeModal.module.css";
+import CrossSvg from "@/views/svgs/Cross";
 
 /**
 * Props of NewContentTypeModal Component
@@ -66,8 +67,8 @@ export default class NewContentTypeModal extends Component {
         return(
             <div className={styles.con+" bglc1 "}>
 
-                <img className={styles.close_btn + " bglc1 amp_btn md_card_shd"} 
-                src={"/svg/modal_close.svg"}
+                <CrossSvg className={styles.close_btn + " bglc1 amp_btn md_card_shd"} 
+                stroke={env.THEME.dc1}
                 onClick={this.onCancel}/>
 
                 <div className={styles.title+" tilt"}>{"نوع محتوای جدید را انتخاب کنید."}</div>

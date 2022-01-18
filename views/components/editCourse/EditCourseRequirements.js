@@ -5,6 +5,8 @@ import EditableTitle from "@/views/components/editable/EditableTitle";
 import TextInput from "@/views/components/global/TextInput";
 import MainButton from "@/views/components/global/MainButton";
 import { Container, Draggable } from "react-smooth-dnd";
+import VeggieBurgerSvg from "@/views/svgs/VeggieBurger";
+import DeleteSvg from "@/views/svgs/Delete";
 
 /**
 * Props of EditCourseRequirements Component
@@ -119,13 +121,14 @@ export default class EditCourseRequirements extends Component {
                                 <>
                                 <div className={styles.input_con} key={i}>
 
-                                    <span className={styles.drag_handler+" ftc2"}>&#x2630;</span>
+                                    <VeggieBurgerSvg className={styles.drag_handler+" ftc2"}
+                                    stroke={env.THEME.tc2}/>
 
                                     <TextInput className={styles.input+" bgwc"}
                                     value={v}
                                     onChange={(t)=>this.onInputChange(t, i)}/>
 
-                                    <div className={styles.delete_btn+" bgec amp_btn"}
+                                    <DeleteSvg className={styles.delete_btn+" bgec amp_btn"}
                                     onClick={()=>this.onDelete(v)}/>
 
                                 </div>

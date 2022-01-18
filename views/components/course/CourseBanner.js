@@ -73,12 +73,13 @@ export default class CourseBanner extends Component {
 
                     <div className={styles.tablet_sec1+" flc1"}>
 
-                        <IconLine icon={"/svg/crs_play_icn.svg"} text={c.duration+" ساعت دوره"}/>
+                        <IconLine icon={"/statics/img/play_l.svg"} text={c.duration+" ساعت دوره"}/>
 
-                        <IconLine icon={"/svg/crs_document_icn.svg"} text={c.headings.length+" سرفصل"}/>
+                        <IconLine icon={"/statics/img/paper_l.svg"} text={c.headings.length+" سرفصل"}/>
 
                         <IconLine icon_className={styles.download_icon} 
-                        icon={"/svg/crs_download_icn.svg"} text={c.contents.length+" محتوای قابل دانلود"}/>
+                        icon={"/statics/img/downlaod_l.svg"} 
+                        text={c.contents.length+" محتوای قابل دانلود"}/>
 
                         {/* <IconLine icon={"/svg/crs_complete_icn.svg"} text={txt4}/> */}
 

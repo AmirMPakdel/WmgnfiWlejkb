@@ -4,6 +4,7 @@ import TextInput from "@/views/components/global/TextInput";
 import styles from "./UpdateContentModal.module.css";
 import UpdateContentController from "@/controllers/components/modals/editCourse/UpdateContentController";
 import EditCourseContents from "@/views/components/editCourse/EditCourseContents";
+import CrossSvg from "@/views/svgs/Cross";
 
 /**
 * Props of UpdateContentModal Component
@@ -60,8 +61,8 @@ export default class UpdateContentModal extends Component {
         return(
             <div className={styles.con+" bglc2 "}>
 
-                <img className={styles.close_btn + " bglc1 amp_btn md_card_shd"} 
-                src={"/svg/modal_close.svg"}
+                <CrossSvg className={styles.close_btn + " bglc1 amp_btn md_card_shd"} 
+                stroke={env.THEME.dc1}
                 onClick={this.onCancel}/>
 
                 <div className={styles.title+" tilt"}>{"ویرایش عنوان محتوا"}</div>

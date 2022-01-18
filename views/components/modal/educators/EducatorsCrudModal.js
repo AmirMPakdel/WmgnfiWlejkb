@@ -10,6 +10,7 @@ import Loading from "@/views/components/global/Loading";
 import EducatorsCrudController from "@/controllers/components/modals/educators/EducatorsCrudController";
 import AskDeleteEducatorModal from "@/views/components/modal/educators/AskDeleteEducatorModal";
 import EditEducatorModal from "@/views/components/modal/educators/EditEducatorModal";
+import CrossSvg from "@/views/svgs/Cross";
 
 /**
  * Props of EducatorsCrudModal Component
@@ -232,8 +233,8 @@ export default class EducatorsCrudModal extends Component {
         return(
             <div className={styles.con+" bglc1 btc2 xl_card_shd"}>
 
-                <img className={styles.close_btn + " bglc1 amp_btn md_card_shd"} 
-                src={"/svg/modal_close.svg"}
+                <CrossSvg className={styles.close_btn + " bglc1 amp_btn md_card_shd"}
+                stroke={env.THEME.dc1}
                 onClick={this.onCancel}/>
 
                 {

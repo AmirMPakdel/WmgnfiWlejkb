@@ -17,6 +17,9 @@
 }
 
 .title{
+    min-width: 16rem;
+    direction: rtl;
+    text-align: center;
     font-weight: 700;
     margin-top: 0.8rem;
 }

@@ -29,11 +29,12 @@
 }
 
 .drag_handler{
-    height: 2rem;
-    width: 1rem;
-    margin-left: 1rem;
+    height: 1.4rem;
+    width: 1.4rem;
+    margin-bottom: 0.3rem;
+    margin-left: 0.6rem;
+    margin-right: 0.4rem;
     font-size: 1.6rem;
-    padding-bottom: 0.4rem;
     cursor: grab;
 }
 
@@ -47,6 +48,7 @@
 .delete_btn{
     height: 1.6rem;
     width: 1.6rem;
+    padding: 0.1rem;
     margin-right: 0.5rem;
     border-radius: 0.5rem;
 }

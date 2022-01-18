@@ -9,10 +9,10 @@ import * as React from "react"
  * @param {Props} props 
  * @returns 
  */
-const Document = (props) => {
+const EditSqr = (props) => {
 
     let p = Object.assign({}, props);
-    p.stroke = props.stroke? props.stroke : env.THEME.lc1;
+    p.stroke = props.stroke? props.stroke : env.THEME.dc1;
 
     return(
         <div className={p.className} {...p}>
@@ -20,7 +20,7 @@ const Document = (props) => {
             <svg xmlns="http://www.w3.org/2000/svg" 
             fill={p.fill} 
             stroke={p.stroke}
-            viewBox="0 0 24 24">
+            viewBox="0 0 23 23">
 
                 <svg x="0" y="0">
                     <g
@@ -29,15 +29,17 @@ const Document = (props) => {
                     strokeLinejoin="round"
                     strokeMiterlimit={10}
                     strokeWidth={1.5}
-                    data-name="Iconly/Light/Document"
+                    data-name="Iconly/Light/EditSqr"
                     >
-                    <path data-name="Stroke 1" d="M15.716 16.223h-7.22" />
-                    <path data-name="Stroke 2" d="M15.716 12.037h-7.22" />
-                    <path data-name="Stroke 3" d="M11.251 7.86H8.496" />
                     <path
-                        data-name="Stroke 4"
-                        d="M15.909 2.75H8.22a4.251 4.251 0 0 0-4.469 4.607v9.2a4.254 4.254 0 0 0 4.506 4.603h7.689a4.252 4.252 0 0 0 4.47-4.6v-9.2a4.255 4.255 0 0 0-4.507-4.61Z"
+                        data-name="Stroke 1"
+                        d="M11.492 2.789H7.75c-3.072 0-5 2.177-5 5.259v8.314c0 3.082 1.919 5.259 5 5.259h8.824c3.085 0 5-2.177 5-5.259v-4.028"
                     />
+                    <path
+                        data-name="Stroke 3"
+                        d="m8.828 10.92 7.471-7.47a2.385 2.385 0 0 1 3.371 0l1.219 1.214a2.383 2.383 0 0 1 0 3.371l-7.509 7.51a2.171 2.171 0 0 1-1.535.636H8.099l.094-3.78a2.17 2.17 0 0 1 .635-1.481Z"
+                    />
+                    <path data-name="Stroke 5" d="m15.165 4.602 4.566 4.566" />
                     </g>
                 </svg>
                 
@@ -47,4 +49,4 @@ const Document = (props) => {
     )
 }
 
-export default Document;
+export default EditSqr;

@@ -10,6 +10,9 @@ import styles from "./IconButton.module.css";
 * @property {boolean} disabled
 * @property {boolean} borderMode
 * @property {(event:Event)=>{}} onClick
+* @property {string|class} icon
+* @property {string} iconClassName
+* @property {object} iconProps
 * 
 * @extends {Component<Props>}
 */
@@ -38,8 +41,18 @@ export default class IconButton extends Component {
             <div className={styles.con+" bdyt "+add_class+" amp_btn "+this.props.className} style={this.props.style}
             onClick={this.props.onClick}>
 
-                <img className={styles.icon} src={this.props.icon}/>
-
+                {
+                    this.props.icon?
+                    <>
+                        {
+                            typeof this.props.icon === "string"?
+                            <img className={styles.icon} src={this.props.icon}/>:
+                            <this.props.icon className={styles.icon +" "+this.props.iconClassName}
+                            {...this.props.iconProps}/>
+                        }
+                    </>
+                    :null
+                }
                 {
                     this.props.title?
                     <div className={styles.title} >{this.props.title}</div>:null

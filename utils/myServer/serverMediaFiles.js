@@ -8,7 +8,7 @@ const MediaFiles = {
         if(uploadKey)
             return `${myServer.urls.MEDIA_PREFIX}/public_files/${getCookie(env.TENANT_KEY)}/${uploadKey}.jpg`;
 
-        return "/default_img/default_"+type+".png";
+        return "/statics/default_img/default_"+type+".png";
     },
 
     publicVideo:(uploadKey)=>{

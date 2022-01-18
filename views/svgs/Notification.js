@@ -12,7 +12,7 @@ import * as React from "react"
 const Notification = (props) => {
 
     let p = Object.assign({}, props);
-    p.stroke = env.THEME.dc1;
+    p.stroke = props.stroke? props.stroke : env.THEME.dc1;
 
     return(
         <div className={p.className} {...p}>

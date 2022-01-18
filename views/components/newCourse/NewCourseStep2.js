@@ -40,7 +40,7 @@ export default class NewCourseStep2 extends Component {
 
             <div className={styles.secure_sec}  onClick={this.onSecure}>
 
-                <img className={styles.icon} src="/svg/play_secure.svg"/>
+                <img className={styles.icon} src="/statics/img/shield-done_h.svg"/>
                 <div className={styles.title}>{"نحوه پخش ایمن"}</div>
                 <div className={styles.info_con}>
                     {t}
@@ -52,7 +52,7 @@ export default class NewCourseStep2 extends Component {
 
             <div className={styles.not_secure_sec} onClick={this.onInsecure}>
 
-                <img className={styles.icon} src="/svg/play_not_secure.svg"/>
+                <img className={styles.icon} src="/statics/img/shield-fail_h.svg"/>
                 <div className={styles.title}>{"نحوه پخش عادی"}</div>
                 <div className={styles.info_con}>
                     {t}

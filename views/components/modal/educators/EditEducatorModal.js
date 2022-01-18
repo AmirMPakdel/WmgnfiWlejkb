@@ -7,6 +7,7 @@ import TextArea from "@/views/components/global/TextArea";
 import TextInput from "@/views/components/global/TextInput";
 import styles from "./EditEducatorModal.module.css";
 import UploadEducatorImage from "@/views/components/educator/UploadEducatorImage";
+import CrossSvg from "@/views/svgs/Cross";
 
 /**
 * Props of EditEducatorModal Component
@@ -68,8 +69,8 @@ export default class EditEducatorModal extends Component {
         return( 
             <div className={styles.con+" bglc1 btc2 xl_card_shd"}>
 
-                <img className={styles.close_btn + " bglc1 amp_btn md_card_shd"} 
-                src={"/svg/modal_close.svg"}
+                <CrossSvg className={styles.close_btn + " bglc1 amp_btn md_card_shd"}
+                stroke={env.THEME.dc1}
                 onClick={this.onCancel}/>
 
                 <div className={styles.wrapper}>
@@ -77,20 +78,6 @@ export default class EditEducatorModal extends Component {
                     <div className={styles.title+" tilt "}>{"ویرایش دبیر"}</div>
 
                     <div className={styles.form_body}>
-
-                        {/* <FileUpload onFile={this.onImage}>
-
-                            <div className={styles.img_con+" btc1 amp_btn"}>
-                                
-                                {
-                                    this.state.img_src?
-                                    <img className={styles.img} src={this.state.img_src}/>:
-                                    <div className={styles.add_img+" ftc2"}>+</div>
-                                }
-
-                            </div>
-
-                        </FileUpload> */}
 
                         <UploadEducatorImage
                         uploadKey={this.state.image}

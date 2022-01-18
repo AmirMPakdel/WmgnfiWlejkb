@@ -9,10 +9,10 @@ import * as React from "react"
  * @param {Props} props 
  * @returns 
  */
-const Document = (props) => {
+const Upload = (props) => {
 
     let p = Object.assign({}, props);
-    p.stroke = props.stroke? props.stroke : env.THEME.lc1;
+    p.stroke = props.stroke? props.stroke : env.THEME.dc1;
 
     return(
         <div className={p.className} {...p}>
@@ -29,15 +29,14 @@ const Document = (props) => {
                     strokeLinejoin="round"
                     strokeMiterlimit={10}
                     strokeWidth={1.5}
-                    data-name="Iconly/Light/Document"
+                    data-name="Iconly/Light/Upload"
                     >
-                    <path data-name="Stroke 1" d="M15.716 16.223h-7.22" />
-                    <path data-name="Stroke 2" d="M15.716 12.037h-7.22" />
-                    <path data-name="Stroke 3" d="M11.251 7.86H8.496" />
                     <path
-                        data-name="Stroke 4"
-                        d="M15.909 2.75H8.22a4.251 4.251 0 0 0-4.469 4.607v9.2a4.254 4.254 0 0 0 4.506 4.603h7.689a4.252 4.252 0 0 0 4.47-4.6v-9.2a4.255 4.255 0 0 0-4.507-4.61Z"
+                        data-name="Stroke 1"
+                        d="M7.389 8.984h-.933a3.685 3.685 0 0 0-3.685 3.685v4.875a3.685 3.685 0 0 0 3.685 3.684h11.13a3.685 3.685 0 0 0 3.685-3.684v-4.885a3.675 3.675 0 0 0-3.674-3.675h-.943"
                     />
+                    <path data-name="Stroke 3" d="M12.021 2.191v12.041" />
+                    <path data-name="Stroke 5" d="m9.106 5.119 2.915-2.928 2.916 2.928" />
                     </g>
                 </svg>
                 
@@ -47,4 +46,4 @@ const Document = (props) => {
     )
 }
 
-export default Document;
+export default Upload;

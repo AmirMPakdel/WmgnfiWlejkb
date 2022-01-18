@@ -12,7 +12,7 @@ import * as React from "react"
 const Document = (props) => {
 
     let p = Object.assign({}, props);
-    p.stroke = env.THEME.lc1;
+    p.stroke = props.stroke? props.stroke : env.THEME.lc1;
 
     return(
         <div className={p.className} {...p}>

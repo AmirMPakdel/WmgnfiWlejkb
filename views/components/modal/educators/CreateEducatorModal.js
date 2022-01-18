@@ -7,6 +7,7 @@ import TextArea from "@/views/components/global/TextArea";
 import CreateEducatorController from "@/controllers/components/modals/educators/CreateEducatorController";
 import { InputFilter } from "@/utils/validation";
 import UploadEducatorImage from "@/views/components/educator/UploadEducatorImage";
+import CrossSvg from "@/views/svgs/Cross";
 
 /**
  * Props of CreateEducatorModal Component
@@ -70,8 +71,8 @@ export default class CreateEducatorModal extends Component {
         return(
             <div className={styles.con+" bglc1 btc2 xl_card_shd"}>
 
-                <img className={styles.close_btn + " bglc1 amp_btn md_card_shd"} 
-                src={"/svg/modal_close.svg"}
+                <CrossSvg className={styles.close_btn + " bglc1 amp_btn md_card_shd"}
+                stroke={env.THEME.dc1}
                 onClick={this.onCancel}/>
 
                 <div className={styles.wrapper}>

@@ -31,7 +31,6 @@ export default class Settings extends Component {
 
                         <div className={styles.setting_card+" md_card_shd amp_btn bglc1"} onClick={this.onEducators}>
 
-                            <img className={styles.setting_card_img} src={"/svg2/educators.svg"}/>
                             <div className={styles.setting_card_t+" tilt"}>{"ویرایش دبیران"}</div>
 
                         </div>

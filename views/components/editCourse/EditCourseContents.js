@@ -5,6 +5,9 @@ import EditableTitle from "@/views/components/editable/EditableTitle";
 import EditCourse from "@/views/dynamics/dashboard/EditCourse";
 import MainButton from "@/views/components/global/MainButton";
 import { Container, Draggable } from "react-smooth-dnd";
+import VeggieBurgerSvg from "@/views/svgs/VeggieBurger";
+import EditSqrSvg from "@/views/svgs/EditSqr";
+import DeleteSvg from "@/views/svgs/Delete";
 
 /**
 * Props of EditCourseContents Component
@@ -145,11 +148,16 @@ export default class EditCourseContents extends Component {
                                     {
                                         st.content_hierarchy == "edit"?
                                         <>
-                                        <span className={styles.heading_drag_handle+" ftc2"}>&#x2630;</span>
+
+                                        <VeggieBurgerSvg className={styles.heading_drag_handle+" ftc2"}
+                                        stroke={env.THEME.tc2}/>
+
                                         <div className={styles.heading_text+" tilt"}>{item.title}</div>
-                                        <div className={styles.heading_edit+" amp_btn bgtc1"}
+
+                                        <EditSqrSvg className={styles.heading_edit+" amp_btn bgtc1"}
                                         onClick={()=>this.onUpdateHeading(item)}/>
-                                        <div className={styles.heading_delete+" amp_btn bgec"}
+
+                                        <DeleteSvg className={styles.heading_delete+" amp_btn bgec"}
                                         onClick={()=>this.onDeleteHeading(item)}/>
                                         </>
                                         :
@@ -177,10 +185,14 @@ export default class EditCourseContents extends Component {
                                                 {
                                                     st.content_hierarchy == "edit"?
                                                     <>
-                                                    <span className={styles.content_drag_handle+" ftc2"}>&#x2630;</span>
-                                                    <div className={styles.content_edit+" amp_btn bgtc1"}
+
+                                                    <VeggieBurgerSvg className={styles.heading_drag_handle+" ftc2"}
+                                                    stroke={env.THEME.tc2}/>
+
+                                                    <EditSqrSvg className={styles.content_edit+" amp_btn bgtc1"}
                                                     onClick={()=>this.onUpdateContent(item, sub)}/>
-                                                    <div className={styles.content_delete+" amp_btn bgec"}
+
+                                                    <DeleteSvg className={styles.content_delete+" amp_btn bgec"}
                                                     onClick={()=>this.onDeleteContent(item, sub)}/>
                                                     </>
                                                     :null
