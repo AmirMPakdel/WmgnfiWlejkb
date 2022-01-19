@@ -25,6 +25,8 @@
   width: 1.5rem;
   border-radius: 0.5rem;
   animation: lds_facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+  border-width: 1px;
+  border-style: solid;
 }
 .lds_facebook div:nth-child(1) {
   left: 0.75rem;

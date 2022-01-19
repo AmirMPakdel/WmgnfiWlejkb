@@ -39,8 +39,6 @@ export default class FloatingCard extends Component {
 
                     </div>
 
-                    <img className={styles.fltcrd_dash} src={"/svg/dash_line.svg"}/>
-
                     {/* <MainButton className={styles.fltcrd_btn1} title={"افزودن به سبد خرید"}/>
 
                     <MainButton className={styles.fltcrd_btn2} title={"خرید سریع"} borderMode/> */}

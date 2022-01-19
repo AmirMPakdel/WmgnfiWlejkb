@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Loading from "./Loading";
 import styles from "./ReactiveTextInput.module.css";
+import { CheckCircleOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 
 /**
 * Props of ReactiveTextInput Component
@@ -11,6 +12,7 @@ import styles from "./ReactiveTextInput.module.css";
 * @property {string} title
 * @property {string} placeholder
 * @property {"loading" | "error" | "success"} status 
+* @property {number} maxLength
 * 
 * @extends {Component<Props>}
 */
@@ -91,6 +93,7 @@ export default class ReactiveTextInput extends Component {
                 value={this.props.value}
                 onChange={this.onChange} 
                 style={input_st}
+                maxLength={this.props.maxLength}
                 ref={r=>this.input=r}/>
 
                 {
@@ -99,13 +102,13 @@ export default class ReactiveTextInput extends Component {
                 }
                 {
                     this.props.status==="success"?
-                    <img className={styles.success_status} src={"/svg2/success_green.svg"}/>:null
+                    <CheckCircleOutlined className={styles.success_status} style={{ color: env.THEME.sc }}/>:null
+                    
                 }
                 {
                     this.props.status==="error"?
-                    <img className={styles.success_status} src={"/svg2/error_red.svg"}/>:null
+                    <ExclamationCircleOutlined className={styles.success_status} style={{ color: env.THEME.ec }}/>:null
                 }
-
                 {
                     this.props.message || this.state.error?
                     <div className={styles.message + message_add_class}>{this.props.message || this.state.error}</div>:null

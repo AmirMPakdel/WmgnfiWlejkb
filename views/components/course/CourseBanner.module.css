@@ -53,7 +53,7 @@
 .dashed{
     width: calc(100% - 20rem);
     height: 2px;
-    opacity: 0.7;
+    opacity: 0.4;
 }
 
 .row2{

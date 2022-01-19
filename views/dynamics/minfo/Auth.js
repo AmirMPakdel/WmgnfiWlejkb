@@ -336,6 +336,7 @@ class RegisterPage extends Component{
             value={ps.subdomain}
             status={ps.subdomain_status}
             message={ps.subdomain_message}
+            maxLength={24}
             inputFilter={InputFilter.tenantInputFilter}
             onChange={p.onSubdomain}/>
 

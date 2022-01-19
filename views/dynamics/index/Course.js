@@ -62,15 +62,13 @@ export default class Course extends Component {
                     c.subjects?
                     <div className={styles.sec3+" bglc1i"}>
                         {
-                            
                             c.subjects.map((v,i)=>(
                                 <IconLine key={i} className={styles.crs_points} 
                                 icon_className={styles.crs_points_icn}
                                 text_className={styles.crs_points_txt} 
-                                icon={"/svg/crs_point_icn.svg"} 
+                                icon={"/statics/img/square_b.svg"} 
                                 text={v}/>
                             ))
-                            
                         }
                     </div>
                     :null
@@ -100,7 +98,7 @@ export default class Course extends Component {
                             
                             c.requirements.map((v,i)=>(
                             <IconLine key={i} icon_className={styles.square_icon} 
-                            icon={"/svg/crs_square_icn.svg"} 
+                            icon={"/statics/img/square_b.svg"} 
                             text={v}/>
                             ))
                         }

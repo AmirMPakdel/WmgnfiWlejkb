@@ -118,9 +118,9 @@ export class ChestComponent extends Component{
       
         if(!options.description){options.description = ""};
       
-        if(icon=="error"){icon=<ExclamationCircleOutlined style={{ color: '#C70000' }}/>}
-        if(icon=="success"){icon=<CheckCircleOutlined style={{ color: '#129826' }}/>}
-        if(icon=="alert"){icon=<ExclamationCircleOutlined style={{ color: '#EFB569' }}/>}
+        if(icon=="error"){icon=<ExclamationCircleOutlined style={{ color: env.THEME.ec }}/>}
+        if(icon=="success"){icon=<CheckCircleOutlined style={{ color: env.THEME.sc }}/>}
+        if(icon=="alert"){icon=<ExclamationCircleOutlined style={{ color: env.THEME.tc2 }}/>}
       
         notification.open({
           message: title,
