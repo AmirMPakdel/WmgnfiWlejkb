@@ -15,8 +15,8 @@ export default class MyCoursesController{
         this.view.setState({loading:true});
 
         let params = {
-            page_count:1,
-            chunk_count:20,
+            page_count: this.view.state.currentPage,
+            chunk_count: this.view.state.pageSize,
             filters:null,
             sorting_mode: "sm_newest", //TODO
         }
@@ -30,7 +30,7 @@ export default class MyCoursesController{
                 this.view.setState({
                     loading:false,
                     list: d.list,
-                    total_size: d.total_size,
+                    total: d.total_size,
                 });
 
             }else if(data.result_code === env.SC.NO_DATA){

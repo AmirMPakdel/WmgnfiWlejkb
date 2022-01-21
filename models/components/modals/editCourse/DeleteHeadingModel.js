@@ -5,7 +5,7 @@ export default class DeleteHeadingModel{
     /**
     * 
     * @param {object} params
-    * @param {import("../../jsdoc/RequestCallback").RequestCallback} cb 
+    * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
     */
     delete(params, cb){
     

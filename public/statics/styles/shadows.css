@@ -1,10 +1,10 @@
 
 .sm_card_shd{
-    box-shadow: 0 2px 6px 0px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 12px 0px rgba(0,0,0,0.3);
 }
 
 .md_card_shd{
-    box-shadow: 0 3px 10px 1px rgba(0,0,0,0.3);
+    box-shadow: 0 3px 12px 1px rgba(0,0,0,0.3);
 }
 
 .lg_card_shd{

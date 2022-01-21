@@ -65,6 +65,7 @@ export default class EditCourseDuration extends Component {
 
                 <EditableText
                 className={styles.edit_text}
+                inpuClassName={styles.edit_text_input}
                 ref={r=>this.EditableText=r}
                 maxLength={2}
                 value={nw.duration}

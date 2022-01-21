@@ -1,0 +1,33 @@
+.con{
+    width: 80%;
+    min-height: 6rem;
+    border-radius: 1rem;
+    margin-top: 4rem;
+    padding: 1.5rem;
+    padding-top: 3rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.title{
+    position: absolute;
+    width: 12rem;
+    height: 3rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    top: -1.5rem;
+    right: calc(50% - 6rem);
+}
+
+.input{
+    width: 16rem;
+}
+
+.confirm_btn{
+    width: 12rem;
+    margin-top: 2rem;
+}

@@ -5,7 +5,7 @@ export default class AddContentModel{
     /**
     * 
     * @param {object} params
-    * @param {import("../../jsdoc/RequestCallback").RequestCallback} cb 
+    * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
     */
     create(params, cb){
     
@@ -32,7 +32,7 @@ export default class AddContentModel{
     /**
     * 
     * @param {object} params
-    * @param {import("../../jsdoc/RequestCallback").RequestCallback} cb 
+    * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
     */
     getUploadKey(params, cb){
     
@@ -64,7 +64,7 @@ export default class AddContentModel{
     /**
     * 
     * @param {object} params
-    * @param {import("../../jsdoc/RequestCallback").RequestCallback} cb 
+    * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
     */
      checkUploadKey(params, cb){
     
@@ -98,7 +98,7 @@ export default class AddContentModel{
     /**
     * 
     * @param {object} params
-    * @param {import("../../jsdoc/RequestCallback").RequestCallback} cb 
+    * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
     */
     uploadFile(params, onUploadProgress, cb){
     
@@ -127,7 +127,7 @@ export default class AddContentModel{
     /**
     * 
     * @param {object} params
-    * @param {import("../../jsdoc/RequestCallback").RequestCallback} cb 
+    * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
     */
     save(params, cb){
     

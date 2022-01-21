@@ -39,3 +39,18 @@
     font-family: IranSansEng;
     margin: 0 0.5rem;
 }
+
+@media(max-width:1024px){
+    
+}
+
+@media(max-width:767px){
+
+    .con{
+        width: 86vw;
+    }
+
+    .type_btn{
+        width: 16rem;
+    }
+}

@@ -133,7 +133,7 @@ export default class EditCourseContents extends Component {
                     <Container
                     dragHandleSelector={st.content_hierarchy == "edit"?undefined:"null"}
                     onDrop={this.onColumnDrop}
-                    dropPlaceholder={{      
+                    dropPlaceholder={{
                         animationDuration: 150,
                         showOnTop: true,
                         className: styles.heading_card_preview+" btc2 bgtc1"

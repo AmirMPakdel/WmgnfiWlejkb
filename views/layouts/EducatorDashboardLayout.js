@@ -10,6 +10,7 @@ import LogoutSvg from "@/views/svgs/Logout";
 import NotificationSvg from "@/views/svgs/Notification";
 import HamburgerSvg from "@/views/svgs/Hamburger";
 import CrossSvg from "@/views/svgs/Cross";
+import { deleteCookie } from "@/utils/cookie";
 
 
 /**
@@ -44,6 +45,12 @@ export default class EducatorDashboardLayout extends Component {
     onToggleMenu=()=>{
         Observer.execute("onSideMenuToggle", !this.state.menu_is_open);
     }
+
+    onLogout=()=>{
+        deleteCookie(env.TENANT_KEY);
+        deleteCookie(env.TOKEN_KEY);
+        window.location.href = env.PATHS.USER_AUTHENTICATION;
+    }
     
     render(){
         return(
@@ -70,12 +77,13 @@ export default class EducatorDashboardLayout extends Component {
 
                             <div className={styles.header_left_sec}>
 
-                                <div>
+                                {/* <div>
                                     <NotificationSvg className={styles.notification_img+" amp_btn"} onClick={this.onNitifications}/>
                                     <div className={styles.badge}>{"21"}</div>
-                                </div>
+                                </div> */}
 
-                                <LogoutSvg className={styles.logout_img+" amp_btn"}/>
+                                <LogoutSvg className={styles.logout_img+" amp_btn"}
+                                onClick={this.onLogout}/>
 
                             </div>
                             

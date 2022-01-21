@@ -8,6 +8,7 @@ import WrapperT1 from "@/views/layouts/WrapperT1";
 import styles from "./MyCourses.module.css";
 import { priceFormat } from "@/utils/price";
 import myServer from "@/utils/myServer";
+import Pagination from "@/views/components/global/Pagination"
 
 export default class MyCourses extends Component {
 
@@ -16,12 +17,20 @@ export default class MyCourses extends Component {
         this.controller = new MyCoursesController(this);
         this.state = {
             loading:true,
-            list:[]
+            list:[],
+            pageSize:1,
+            currentPage:1,
+            total:0,
         }
     }
     
     componentDidMount(){
         document.title="دوره های من";
+        this.controller.load();
+    }
+
+    onPageChange=(page)=>{
+        this.state.currentPage = page;
         this.controller.load();
     }
 
@@ -44,6 +53,12 @@ export default class MyCourses extends Component {
                                 )):
                                 <EmptyList style={{minHeight:"75vh"}}/>
                             }
+
+                            <Pagination
+                            pageSize={this.state.pageSize}
+                            currentPage={this.state.currentPage}
+                            total={this.state.total}
+                            onPageChange={this.onPageChange}/>
                             </>
                         }
 
@@ -76,7 +91,7 @@ class CourseCard extends Component{
                     <div className={styles.cc_img}
                     style={{backgroundImage:`url(${myServer.MediaFiles.publicImage(d.logo, "logo")})`}}/>
 
-                    <div className={styles.cc_title}>{d.title}</div>
+                    <div className={styles.cc_title+" bdyt"}>{d.title}</div>
 
                 </div>
 
@@ -89,29 +104,29 @@ class CourseCard extends Component{
 
                             {priceFormat(d.sells)}
 
-                            <div className={styles.cc_number_tag}>{"عدد"}</div>
+                            <div className={styles.cc_number_tag+" cpnt"}>{"عدد"}</div>
 
                         </div>
 
-                        <div className={styles.cc_num_title}>{"دوره فروش رفته"}</div>
+                        <div className={styles.cc_num_title+" bdyt"}>{"دوره فروش رفته"}</div>
                         </>
                         :
                         <>
                         {
                             
                             <>
-                            <div className={styles.cc_num_title}>{"وضعیت انتشار"}</div>
+                            <div className={styles.cc_num_title+" bdyt"}>{"وضعیت انتشار"}</div>
 
                             <div className={styles.cc_number}>
                                 {
                                     d.validation_status === "not_valid"?
 
-                                    <div className={styles.cc_number_tag}>{"تایید نشده"}</div>:null
+                                    <div className={styles.cc_number_tag+" bdyt"}>{"تایید نشده"}</div>:null
                                 }
                                 {
                                     d.validation_status === "is_checking"?
 
-                                    <div className={styles.cc_number_tag}>{"درحال بررسی"}</div>:null
+                                    <div className={styles.cc_number_tag+" bdyt"}>{"درحال بررسی"}</div>:null
                                 }
                             </div>
                             </>

@@ -5,7 +5,7 @@ export default class UploadEducatorModel{
     /**
     * 
     * @param {object} params
-    * @param {import("../jsdoc/RequestCallback").RequestCallback} cb 
+    * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
     */
     getUploadKey(params, cb){
     
@@ -32,7 +32,7 @@ export default class UploadEducatorModel{
     /**
     * 
     * @param {object} params
-    * @param {import("../jsdoc/RequestCallback").RequestCallback} cb 
+    * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
     */
     getUploadCheck(params, cb){
 
@@ -59,7 +59,7 @@ export default class UploadEducatorModel{
     /**
     * 
     * @param {object} params
-    * @param {import("../jsdoc/RequestCallback").RequestCallback} cb 
+    * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
     */
     getUploadFile(params, cb){
 

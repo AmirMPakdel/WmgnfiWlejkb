@@ -62,6 +62,7 @@ export default class EditCoursePrice extends Component {
 
                 <EditableText
                 className={styles.edit_text}
+                inpuClassName={styles.edit_text_input}
                 ref={r=>this.EditableText=r}
                 maxLength={12}
                 value={nw.price}

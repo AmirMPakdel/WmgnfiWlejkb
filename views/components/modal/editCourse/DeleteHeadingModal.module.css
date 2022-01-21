@@ -45,3 +45,24 @@
 .back_btn{
     width: 12rem;
 }
+
+@media(max-width:1024px){
+    
+}
+
+@media(max-width:767px){
+
+    .con{
+        width: 86vw;
+    }
+
+    .submit_btn{
+        width: 7rem;
+        margin-left: 0.5rem;
+    }
+    
+    .cancel_btn{
+        width: 7rem;
+        margin-right: 0.5rem;
+    }
+}

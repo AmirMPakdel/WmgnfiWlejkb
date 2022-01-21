@@ -1,0 +1,32 @@
+.con{
+    width: 86%;
+    max-width: 48rem;
+    min-width: 20.7rem;
+    display: flex;
+    direction: ltr !important;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+    border-radius: 0.6rem;
+    padding: 0.8rem;
+}
+
+.next{
+    position: absolute;
+    direction: ltr;
+    right: 1rem;
+    top: 1rem;
+    font-size: 00.75rem;
+    display: flex;
+    align-items: center;
+}
+
+.back{
+    position: absolute;
+    direction: ltr;
+    left: 1rem;
+    top: 1rem;
+    font-size: 00.75rem;
+    display: flex;
+    align-items: center;
+}

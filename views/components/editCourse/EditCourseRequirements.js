@@ -136,7 +136,7 @@ export default class EditCourseRequirements extends Component {
                                 :
                                 <div className={styles.input_con}>
 
-                                    <TextInput className={styles.input}
+                                    <TextInput className={styles.input_show}
                                     value={v}
                                     disabled={true}/>
 

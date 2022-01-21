@@ -5,7 +5,7 @@ export default class DeleteContentModel{
     /**
     * 
     * @param {object} params
-    * @param {import("../../jsdoc/RequestCallback").RequestCallback} cb 
+    * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
     */
     delete(params, content_type, cb){
 

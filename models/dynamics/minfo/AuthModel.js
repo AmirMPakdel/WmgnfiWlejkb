@@ -5,7 +5,7 @@ export default class AuthModel{
     /**
      * 
      * @param {object} params
-     * @param {import("../jsdoc/RequestCallback").RequestCallback} cb 
+     * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
      */
     getPhoneNumberCheck(params, cb){
 
@@ -33,7 +33,7 @@ export default class AuthModel{
     /**
      * 
      * @param {object} params
-     * @param {import("../jsdoc/RequestCallback").RequestCallback} cb 
+     * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
      */
     getLoginWithPassword(params, cb){
 
@@ -66,7 +66,7 @@ export default class AuthModel{
     /**
      * 
      * @param {object} params
-     * @param {import("../jsdoc/RequestCallback").RequestCallback} cb 
+     * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
      */
     getSendVerificationCode(params, cb){
 
@@ -96,7 +96,7 @@ export default class AuthModel{
     /**
      * 
      * @param {object} params
-     * @param {import("../jsdoc/RequestCallback").RequestCallback} cb 
+     * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
      */
     getCheckVerificationCode(params, cb){
 
@@ -126,7 +126,7 @@ export default class AuthModel{
     /**
      * 
      * @param {object} params
-     * @param {import("../jsdoc/RequestCallback").RequestCallback} cb 
+     * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
      */
     getCheckUsername(params, cb){
 
@@ -158,7 +158,7 @@ export default class AuthModel{
     /**
      * 
      * @param {object} params
-     * @param {import("../jsdoc/RequestCallback").RequestCallback} cb 
+     * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
      */
     getCompeleteRegisteration(params, cb){
 

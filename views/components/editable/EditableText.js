@@ -5,6 +5,7 @@ import styles from "./EditableText.module.css";
 * Props of EditableText Component
 * @typedef Props
 * @property {string} className
+* @property {string} inpuClassName
 * @property {React.CSSProperties} style
 * @property {(text)=>{}} onChange
 * @property {string} value
@@ -73,7 +74,7 @@ export default class EditableText extends Component {
             <div className={styles.con+" bgwi bdc2i "+this.props.className} style={this.props.style}>
 
                 <input ref={r=>this.input=r} 
-                className={styles.input} 
+                className={styles.input+" "+this.props.inpuClassName} 
                 value={this.props.value} 
                 readOnly={this.state.readOnly} 
                 maxLength={this.props.maxLength}

@@ -5,7 +5,7 @@ export default class EditCourseDurationModel{
     /**
     * 
     * @param {object} params
-    * @param {import("../jsdoc/RequestCallback").RequestCallback} cb 
+    * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
     */
      saveDuration(params, cb){
     

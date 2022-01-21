@@ -45,10 +45,36 @@
     border-radius: 0.8rem;
 }
 
+.input_show{
+    margin: 0 !important;
+    height: 3rem;
+    width: calc(100%);
+    border-radius: 0.8rem;
+}
+
 .delete_btn{
     height: 1.6rem;
     width: 1.6rem;
     padding: 0.1rem;
     margin-right: 0.5rem;
     border-radius: 0.5rem;
+}
+
+@media(max-width:1024px){
+    
+}
+
+@media(max-width:767px){
+    
+    .con{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .input_con{
+        width: 92vw;
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+    }
 }

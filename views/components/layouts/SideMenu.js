@@ -110,7 +110,7 @@ export default class SideMenu extends Component {
                 onClick={this.onSelect} active_page={this.state.active_page} name="finances"/>
 
                 <SideMenuBtn title="افزایش اعتبار" icon={ArrowUpSqrSvg}
-                onClick={this.onSelect} active_page={this.state.active_page} name="increaseCredit"/>
+                onClick={this.onSelect} active_page={this.state.active_page} name="buyCredit"/>
 
                 <div className={styles.sidemenu_wrapper1}>
 

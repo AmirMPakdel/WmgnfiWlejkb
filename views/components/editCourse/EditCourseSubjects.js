@@ -8,6 +8,7 @@ import TextInput from "@/views/components/global/TextInput";
 import { Container, Draggable } from "react-smooth-dnd";
 import VeggieBurgerSvg from "@/views/svgs/VeggieBurger";
 import DeleteSvg from "@/views/svgs/Delete";
+import TextArea from "../global/TextArea";
 
 /**
 * Props of EditCourseSubjects Component
@@ -138,7 +139,7 @@ export default class EditCourseSubjects extends Component {
                                 :
                                 <div className={styles.input_con}>
 
-                                    <TextInput className={styles.input}
+                                    <TextInput className={styles.input_show}
                                     value={v}
                                     disabled={true}/>
 

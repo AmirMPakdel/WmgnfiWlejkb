@@ -5,7 +5,7 @@ export default class EditCourseIntroVideoModel{
     /**
     * 
     * @param {object} params
-    * @param {import("../../jsdoc/RequestCallback").RequestCallback} cb 
+    * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
     */
      getUploadKey(params, cb){
     
@@ -38,7 +38,7 @@ export default class EditCourseIntroVideoModel{
     /**
     * 
     * @param {object} params
-    * @param {import("../../jsdoc/RequestCallback").RequestCallback} cb 
+    * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
     */
     checkUploadKey(params, cb){
     
@@ -74,7 +74,7 @@ export default class EditCourseIntroVideoModel{
     /**
     * 
     * @param {object} params
-    * @param {import("../../jsdoc/RequestCallback").RequestCallback} cb 
+    * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
     */
     uploadFile(params, cb){
     
@@ -103,7 +103,7 @@ export default class EditCourseIntroVideoModel{
     /**
     * 
     * @param {object} params
-    * @param {import("../../jsdoc/RequestCallback").RequestCallback} cb 
+    * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
     */
     save(params, cb){
     

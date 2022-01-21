@@ -16,7 +16,7 @@
 
 .cc_sec1{
     display: flex;
-    width: calc(95% - 39rem);
+    width: calc(100% - 38rem);
     min-width: 14rem;
     border-radius: 0 1rem 1rem 0;
     align-items: center;
@@ -36,7 +36,6 @@
 }
 
 .cc_title{
-    font-size: 0.92rem;
     margin: 0 1rem;
     align-items: center;
 }
@@ -44,7 +43,7 @@
 .cc_sec2{
     display: flex;
     flex-direction: column;
-    width: 11rem;
+    width: 10rem;
     align-items: center;
     justify-content: center;
     direction: rtl;
@@ -55,13 +54,11 @@
 .cc_number{
     display: flex;
     align-items: flex-end;
-    font-size: 1rem;
     font-weight: 700;
 }
 
 .cc_number_tag{
-    font-size: 0.8rem;
-    font-size: 400;
+    font-weight: 400;
     color: rgb(148, 148, 148);
     margin-right: 0.3rem;
 }
@@ -73,7 +70,7 @@
 .cc_sec3{
     display: flex;
     padding: 0 0.5rem;
-    width: calc(5% + 16rem);
+    width: 16.8rem;
     justify-content: space-evenly;
     align-items: center;
     border-radius: 1rem 0 0 1rem;
@@ -84,4 +81,56 @@
 .cc_btn{
     width: 7.2rem;
     white-space: nowrap;
+}
+
+@media(max-width:1024px){
+
+    .cc_con{
+        height: 6.6rem;
+    }
+
+    .cc_sec1{
+        width: calc(100% - 29rem);
+    }
+
+    .cc_sec2{
+        width: 9rem;
+    }
+
+    .cc_sec3{
+        width: 10rem;
+        flex-direction: column;
+    }
+
+}
+
+@media(max-width:767px){
+    
+    .cc_con{
+        height: auto;
+        width: 92%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-bottom: 1rem;
+    }
+
+    .cc_sec1{
+        width: 100%;
+        height: 5rem;
+        border-radius: 1rem 1rem 0 0;
+    }
+
+    .cc_sec2{
+        width: 50%;
+        height: 4rem;
+        border-radius: 0;
+        box-shadow: none !important;
+    }
+
+    .cc_sec3{
+        width: 100%;
+        height: 5rem;
+        flex-direction: row;
+        border-radius: 0 0 1rem 1rem;
+    }
 }

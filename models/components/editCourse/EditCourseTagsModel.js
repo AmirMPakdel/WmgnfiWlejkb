@@ -5,7 +5,7 @@ export default class EditCourseTagsModel{
     /**
     * 
     * @param {object} params
-    * @param {import("../jsdoc/RequestCallback").RequestCallback} cb 
+    * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
     */
     getData(params, cb){
     

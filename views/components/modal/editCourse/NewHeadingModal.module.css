@@ -30,3 +30,18 @@
     width: 12rem;
     margin-top: 1rem;
 }
+
+@media(max-width:1024px){
+    
+}
+
+@media(max-width:767px){
+
+    .con{
+        width: 86vw;
+    }
+
+    .input{
+        width: 16rem;
+    }
+}

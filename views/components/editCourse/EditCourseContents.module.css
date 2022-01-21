@@ -2,83 +2,6 @@
     margin-top: 3rem;
 }
 
-.heading_item_con{
-    display: flex;
-    align-items: center;
-    padding: 0.8rem;
-    border-radius: 0.5rem;
-    width: 92%;
-    max-width: 36rem;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-}
-
-.content_item_con{
-    display: flex;
-    align-items: center;
-    margin-top: 0.5rem;
-    border-radius: 0.5rem;
-    padding: 0.5rem 0.8rem;
-    width: 92%;
-    max-width: 36rem;
-    border-style: solid;
-    border-width: 1px;
-}
-
-.nestable_item_text{
-    margin-right: 0.5rem;
-    user-select: none;
-}
-
-/*     not needed       */
-
-/* .heading_nestable{
-    width: 92%;
-    max-width: 36rem;
-    margin-right: 2rem;
-    margin-top: 2rem;
-}
-
-.heading_wrapper{
-    border-width: 2px;
-    border-style: dashed;
-    border-radius: 1rem;
-    padding: 0.5rem;
-}
-
-.heading_header{
-    display: flex;
-    align-items: center;
-    font-weight: 700;
-}
-
-.nestable_handler{
-    width: 2rem;
-    height: 2rem;
-    border-radius: 0.5rem;
-    margin-left: 1rem;
-}
-
-.heading_input{
-    margin-top: 0.8rem;
-    max-width: 24rem;
-}
-
-.heading_delete{
-    width: 1.6rem;
-    height: 1.6rem;
-    border-radius: 0.4rem;
-    position: absolute;
-    left: 0rem;
-}
-
-.add_heading_content_btn{
-    margin-top: 2rem;
-    margin-right: 3rem;
-    margin-bottom: 1rem;
-} */
-
-/* new */
 .hierarchy_con{
     width: 36rem;
 }
@@ -95,8 +18,7 @@
     cursor: default;
     font-weight: 700;
     display: flex;
-    align-items: center;
-    height: 3rem;
+    min-height: 3rem;
 }
 
 .heading_drag_handle{
@@ -109,12 +31,12 @@
 .heading_text{
     user-select: none;
     margin-right: 0.8rem;
+    width: calc(100% - 5rem);
 }
 
 .content_drag_bar{
     display: flex;
-    align-items: center;
-    height: 3rem;
+    min-height: 3rem;
     padding: 0.6rem;
     margin: 0.5rem 1rem;
     border-radius: 1rem;
@@ -130,6 +52,7 @@
 .content_text{
     user-select: none;
     margin-right: 0.8rem;
+    width: calc(100% - 7.4rem);
 }
 
 .heading_card_preview{
@@ -195,4 +118,36 @@
     border-radius: 0.3rem;
     position: absolute;
     left: 1rem;
+}
+
+
+@media(max-width:1024px){
+    
+}
+
+@media(max-width:767px){
+    
+    .con{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .hierarchy_con{
+        width: 92vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .heading_drag_wrapper{
+        width: 92vw;
+        padding: 0.6rem;
+        margin: 1rem 0;
+    }
+
+    .content_drag_bar{
+        margin: 0.5rem 0;
+    }
 }
