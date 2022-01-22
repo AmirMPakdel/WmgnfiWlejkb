@@ -24,6 +24,15 @@ export default class UserAmountInput extends Component {
     
     componentDidMount(){
     }
+
+    scrollInto=()=>{
+
+        this.anchor.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+            inline: 'nearest'
+        });
+    }
     
     onUserInput=(amount)=>{
         let p = this.props.parent;
@@ -40,7 +49,9 @@ export default class UserAmountInput extends Component {
         let ps = p.state;
 
         return(
-            <div className={styles.con+" md_card_shd bglc1"}>
+            <div className={styles.con+" md_card_shd bgw"} ref={r=>this.con=r}>
+
+                <div ref={r=>this.anchor=r} style={{position:"absolute",top:"-6rem"}}/>
 
                 <div className={styles.title+" tilt md_card_shd bglc1"}>{"وارد کردن مبلغ دلخواه"}</div>
 

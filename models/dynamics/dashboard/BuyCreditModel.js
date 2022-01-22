@@ -17,24 +17,24 @@ export default class BuyCreditModel{
                         credit: 325000,
                         incomes: 640000,
                         daily_expense: 26300,
-                        banks:[
+                        portals:[
                             {
                                 id:1,
                                 title:"بانک ملت",
                                 url:"https://www.bankmellat.ir/default.aspx",
-                                icon:"https://www.bankmellat.ir/Public/11/portaj.ico",
+                                icon:"https://www.rade.ir/wp-content/uploads/2019/09/mellat-300-c.png",
                             },
                             {
                                 id:2,
                                 title:"بانک ملت",
                                 url:"https://www.bankmellat.ir/default.aspx",
-                                icon:"https://www.bankmellat.ir/Public/11/portaj.ico",
+                                icon:"https://www.rade.ir/wp-content/uploads/2019/09/mellat-300-c.png",
                             },
                             {
                                 id:3,
                                 title:"بانک ملت",
                                 url:"https://www.bankmellat.ir/default.aspx",
-                                icon:"https://www.bankmellat.ir/Public/11/portaj.ico",
+                                icon:"https://www.rade.ir/wp-content/uploads/2019/09/mellat-300-c.png",
                             },
                         ]
                     }

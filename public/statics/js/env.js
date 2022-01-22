@@ -35,7 +35,6 @@ var env = {
     },
 
     STORAGE_KEYS:{
-
         PHONE_NUMBER:"phone_number",
     },
 
@@ -55,6 +54,16 @@ var env = {
         STA : "/api/tenant/student",
         AA : "/api/app",
     },
+
+    CREDIT_BUY_AMOUNTS:[
+        100000,
+        200000,
+        500000,
+        800000,
+        1000000,
+        1500000,
+        2000000,
+    ],
 
     THEME:theme,
 

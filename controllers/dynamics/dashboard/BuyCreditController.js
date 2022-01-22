@@ -20,7 +20,7 @@ export default class BuyCreditController{
                     credit: d.credit,
                     incomes: d.incomes,
                     daily_expense: d.daily_expense,
-                    banks: d.banks,
+                    portals: d.portals,
                 });
             }
         });

@@ -1,8 +1,10 @@
 import BuyCreditController from "@/controllers/dynamics/dashboard/BuyCreditController";
 import AmountSelection from "@/views/components/buyCredit/AmountSelection";
 import PaymentTypeSelection from "@/views/components/buyCredit/PaymentTypeSelection";
+import PortalSelection from "@/views/components/buyCredit/PortalSelection";
 import UserAmountInput from "@/views/components/buyCredit/UserAmountInput";
 import Loading from "@/views/components/global/Loading";
+import MainButton from "@/views/components/global/MainButton";
 import EducatorDashboardLayout from "@/views/layouts/EducatorDashboardLayout";
 import React, { Component } from "react";
 import styles from "./BuyCredit.module.css";
@@ -28,6 +30,9 @@ export default class BuyCredit extends Component {
             payment_type: 1,
             amount: 0,
             user_input: true,
+            portals:[],
+            selected_portal:null,
+            show_invoice:true,
         }
     }
     
@@ -45,18 +50,46 @@ export default class BuyCredit extends Component {
                     </div>
                     :
                     <div className={styles.con}>
-
-                        <PaymentTypeSelection
-                        parent={this}
-                        ref={r=>this.PaymentTypeSelection=r}/>
                         
-                        <AmountSelection
-                        parent={this}
-                        ref={r=>this.AmountSelection=r}/>
+                        {
+                            !this.state.show_invoice?
+                            <>
+                                <PaymentTypeSelection
+                                parent={this}
+                                ref={r=>this.PaymentTypeSelection=r}/>
+                                
+                                <AmountSelection
+                                parent={this}
+                                ref={r=>this.AmountSelection=r}/>
 
-                        <UserAmountInput
-                        parent={this}
-                        ref={r=>this.AmountSelection=r}/>
+                                {
+                                    this.state.user_input?
+                                    <UserAmountInput
+                                    parent={this}
+                                    ref={r=>this.UserAmountInput=r}/>
+                                    :null
+                                }
+                                {
+                                    this.state.payment_type==1?
+                                    <PortalSelection
+                                    parent={this}
+                                    ref={r=>this.PortalSelection=r}/>
+                                    :null
+                                }
+                                
+                                <div className={styles.btn_wrapper}>
+
+                                    <MainButton
+                                    ref={r=>this.ConfirmBtn=r}
+                                    className={styles.confirm_btn}
+                                    title="تایید"
+                                    onClick={this.onConfirm}/>
+
+                                </div>
+                            
+                            </>:
+                            <BuyCreditInvoice/>
+                        }
 
                     </div>
                 }

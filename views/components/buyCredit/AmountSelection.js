@@ -24,15 +24,35 @@ export default class AmountSelection extends Component {
     
     componentDidMount(){
     }
+
+    scrollInto=()=>{
+
+        this.anchor.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+            inline: 'nearest'
+        });
+    }
     
     onAmount=(amount)=>{
         let p = this.props.parent;
-        p.setState({amount, user_input: false});
+        p.setState({amount, user_input: false}, ()=>{
+
+            if(p.state.payment_type==1){
+                p.PortalSelection.scrollInto();
+            }else{
+                p.ConfirmBtn.centerize();
+            }
+            
+        });
     }
 
     onAmountInput=()=>{
         let p = this.props.parent;
-        p.setState({user_input: true, amount:0});
+        p.setState({user_input: true, amount:0}, ()=>{
+
+            p.UserAmountInput.scrollInto();
+        });
     }
     
     render(){
@@ -41,25 +61,33 @@ export default class AmountSelection extends Component {
         let ps = p.state;
 
         return(
-            <div className={styles.con+" md_card_shd bglc1"}>
+            <div className={styles.con+" md_card_shd bgw"} ref={r=>this.con=r}>
+
+                <div ref={r=>this.anchor=r} style={{position:"absolute",top:"-6rem"}}/>
 
                 <div className={styles.title+" tilt md_card_shd bglc1"}>{"انتخاب مبلغ"}</div>
 
                 {
                     generatePrices(ps.payment_type, ps.incomes).map((v,i)=>(
 
-                        <div key={i} className={styles.item_con+" blc2 amp_btn"}
+                        <div key={i} className={styles.item_con+" amp_btn "+((ps.amount==v)?"btc2 ":"blc2 ")}
                         onClick={()=>this.onAmount(v)}>
+
                             <Radio checked={ps.amount == v}/>
+
                             <div className={styles.item_text+" bdyt"}>{priceFormat(v)+" تومان"}</div>
+
                         </div>
                     ))
                 }
                 
-                <div className={styles.item_con+" blc2 amp_btn"}
+                <div className={styles.item_con+" amp_btn "+((ps.user_input)?"btc2 ":"blc2 ")}
                 onClick={this.onAmountInput}>
+
                     <Radio checked={ps.user_input}/>
+
                     <div className={styles.item_text+" bdyt"}>{"مبلغ دلخواه"}</div>
+
                 </div>
 
             </div>
@@ -67,30 +95,14 @@ export default class AmountSelection extends Component {
     }
 }
 
-const generatePrices = (type, maxAmount=-1)=>{
+const generatePrices = (type, maxAmount)=>{
 
     if(type==1){
 
-        return [
-            100000,
-            200000,
-            500000,
-            800000,
-            1000000,
-            1500000,
-            2000000,
-        ]
+        return env.CREDIT_BUY_AMOUNTS;
 
     }else if(type==2){
-        //TODO: calculate this
-        return [
-            100000,
-            200000,
-            500000,
-            800000,
-            1000000,
-            1500000,
-            2000000,
-        ]
+        
+        return env.CREDIT_BUY_AMOUNTS.filter(v=>v<maxAmount);
     }
 }

@@ -12,4 +12,16 @@
     align-items: center;
     width: 100%;
     padding: 2rem 0;
+    padding-bottom: 12rem;
+}
+
+.btn_wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.confirm_btn{
+    width: 16rem;
+    margin-top: 2rem;
 }

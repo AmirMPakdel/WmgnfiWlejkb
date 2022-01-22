@@ -21,6 +21,15 @@ import styles from "./MainButton.module.css";
  */
 export default class MainButton extends Component {
 
+    centerize=()=>{
+
+        this.con.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+            inline: 'center'
+        });
+    }
+
     onClick=(e)=>{
 
         if(this.props.loading)return;
@@ -64,7 +73,11 @@ export default class MainButton extends Component {
         }
 
         return(
-            <div className={styles.mbtn_con+" bdyt "+add_class+" amp_btn"} onClick={this.onClick} style={this.props.style}>
+            <div className={styles.mbtn_con+" bdyt "+add_class+" amp_btn"} 
+            onClick={this.onClick} 
+            style={this.props.style}
+            ref={r=>this.con=r}>
+
                 {
                     this.props.loading?
                     <Loading scale={0.3}/>:

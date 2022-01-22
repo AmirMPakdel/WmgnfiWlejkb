@@ -24,9 +24,33 @@ export default class PaymentTypeSelection extends Component {
     componentDidMount(){
     }
 
+    scrollInto=()=>{
+
+        this.anchor.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+            inline: 'nearest'
+        });
+    }
+
     onPaymentType=(type)=>{
+
         let p = this.props.parent;
-        p.setState({payment_type: type});
+
+        p.state.payment_type = type;
+
+        if(type == 2 && p.state.amount > p.state.incomes){
+
+            env.CREDIT_BUY_AMOUNTS.forEach(v=>{
+                if(v <= p.state.incomes){
+                    p.state.amount = v;
+                }
+            });
+        }
+
+        p.setState(p.state, ()=>{
+            p.AmountSelection.scrollInto();
+        });
     }
     
     render(){
@@ -35,17 +59,19 @@ export default class PaymentTypeSelection extends Component {
         let ps = p.state;
 
         return(
-            <div className={styles.con+" md_card_shd bglc1"}>
+            <div className={styles.con+" md_card_shd bgw"}>
+
+                <div ref={r=>this.anchor=r} style={{position:"absolute",top:"-6rem"}}/>
 
                 <div className={styles.title+" tilt md_card_shd bglc1"}>{"نوع پرداخت"}</div>
 
-                <div className={styles.item_con+" blc2 amp_btn"}
+                <div className={styles.item_con+" amp_btn "+((ps.payment_type == 1)?"btc2 ":"blc2 ")}
                 onClick={()=>this.onPaymentType(1)}>
                     <Radio checked={ps.payment_type == 1}/>
                     <div className={styles.item_text+" bdyt"}>{"خرید اینترنتی"}</div>
                 </div>
 
-                <div className={styles.item_con+" blc2 amp_btn"}
+                <div className={styles.item_con+" amp_btn "+((ps.payment_type == 2)?"btc2 ":"blc2 ")}
                 onClick={()=>this.onPaymentType(2)}>
                     <Radio checked={ps.payment_type == 2}/>
                     <div className={styles.item_text+" bdyt"}>{"صندوق درآمد"}</div>
