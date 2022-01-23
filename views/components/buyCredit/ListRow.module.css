@@ -1,0 +1,41 @@
+.con{
+    width: 100%;
+    display: flex;
+    min-height: 3rem;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding-bottom: 0.2rem;
+    margin-top: 0.5rem;
+}
+
+.title{
+    padding-right: 0.2rem;
+    font-weight: 500;
+    min-width: 50%;
+}
+
+.value{
+    padding-left: 0.2rem;
+    text-align: left;
+    min-width: 50%;
+}
+
+.vertical_con{
+    flex-direction: column;
+    align-items: flex-start;
+    direction: rtl;
+}
+
+.vertical_title{
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    margin-top: 1rem;
+}
+
+.vertical_value{
+    margin-top: 1rem;
+    direction: rtl;
+    text-align: justify;
+}

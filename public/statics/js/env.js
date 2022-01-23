@@ -44,6 +44,9 @@ var env = {
         MINFO_TERMS: "/minfo/terms",
         MINFO_PRIVACY: "/minfo/privacy",
         USER_DASHBOARD: "/dashboard",
+        USER_MYCOURSES: "/dashboard/myCourses",
+        USER_NEW_COURSE: "/dashboar/newCourse",
+        USER_BUY_CREDIT: "/dashboard/buyCredit",
     },
 
     PREFIXES:{

@@ -27,7 +27,6 @@ export default class PaymentTypeSelection extends Component {
     scrollInto=()=>{
 
         this.anchor.scrollIntoView({
-            behavior: 'smooth',
             block: 'start',
             inline: 'nearest'
         });

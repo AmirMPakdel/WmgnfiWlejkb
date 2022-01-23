@@ -28,7 +28,6 @@ export default class UserAmountInput extends Component {
     scrollInto=()=>{
 
         this.anchor.scrollIntoView({
-            behavior: 'smooth',
             block: 'start',
             inline: 'nearest'
         });

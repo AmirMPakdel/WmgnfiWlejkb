@@ -25,5 +25,12 @@ export default class BuyCreditController{
             }
         });
     }
+
+    onConfirm=()=>{
+
+        this.view.setState({show_invoice: true}, ()=>{
+            window.scrollTo(0,0)
+        });
+    }
     
 }

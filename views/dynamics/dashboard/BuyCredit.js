@@ -1,5 +1,6 @@
 import BuyCreditController from "@/controllers/dynamics/dashboard/BuyCreditController";
 import AmountSelection from "@/views/components/buyCredit/AmountSelection";
+import BuyCreditInvoice from "@/views/components/buyCredit/BuyCreditInvoice";
 import PaymentTypeSelection from "@/views/components/buyCredit/PaymentTypeSelection";
 import PortalSelection from "@/views/components/buyCredit/PortalSelection";
 import UserAmountInput from "@/views/components/buyCredit/UserAmountInput";
@@ -29,15 +30,19 @@ export default class BuyCredit extends Component {
             daily_expense: 0,
             payment_type: 1,
             amount: 0,
-            user_input: true,
+            user_input: false,
             portals:[],
-            selected_portal:null,
-            show_invoice:true,
+            selected_portal: null,
+            show_invoice: false,
         }
     }
     
     componentDidMount(){
         this.controller.initialize();
+    }
+
+    onConfirm=()=>{
+        this.controller.onConfirm();
     }
     
     render(){
@@ -88,7 +93,9 @@ export default class BuyCredit extends Component {
                                 </div>
                             
                             </>:
-                            <BuyCreditInvoice/>
+                            <BuyCreditInvoice
+                            parent={this}
+                            ref={r=>this.BuyCreditInvoice=r}/>
                         }
 
                     </div>

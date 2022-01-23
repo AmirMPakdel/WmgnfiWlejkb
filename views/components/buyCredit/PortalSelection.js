@@ -28,7 +28,6 @@ export default class PortalSelection extends Component {
     scrollInto=()=>{
 
         this.anchor.scrollIntoView({
-            behavior: 'smooth',
             block: 'start',
             inline: 'nearest'
         });

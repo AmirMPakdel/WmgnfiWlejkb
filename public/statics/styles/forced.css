@@ -5,6 +5,9 @@
 
 /********************* AntDesign *********************/
 /*ant-checkbox*/
+.ant-checkbox-inner{
+    border-color: #FBAD16 !important;
+}
 .ant-checkbox-checked .ant-checkbox-inner {
     background-color: #FBAD16 !important;
     border-color: #FBAD16 !important;
