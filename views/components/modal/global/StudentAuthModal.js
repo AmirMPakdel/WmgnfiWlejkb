@@ -1,30 +1,27 @@
 import React, { Component } from "react";
-import AuthController from "@/controllers/dynamics/minfo/AuthController";
-import Storage from "@/utils/storage";
+import styles from "./StudentAuthModal.module.css";
+import CrossSvg from "@/views/svgs/Cross";
+import chest from "@/utils/chest";
+import TextInput from "../../global/TextInput";
+import MainButton from "../../global/MainButton";
 import { InputFilter } from "@/utils/validation";
-import Loading from "@/views/components/global/Loading";
-import MainButton from "@/views/components/global/MainButton";
-import ReactiveTextInput from "@/views/components/global/ReactiveTextInput";
-import TextInput from "@/views/components/global/TextInput";
-import styles from "./Auth.module.css";
+import Loading from "../../global/Loading";
+import StudentAuthController from "@/controllers/components/modals/global/StudentAuthController";
 
 /**
-* Props of Auth Component
+* Props of StudentAuthModal Component
 * @typedef Props
 * @property {string} className
 * @property {React.CSSProperties} style
 * 
 * @extends {Component<Props>}
 */
-export default class Auth extends Component {
-
+export default class StudentAuthModal extends Component {
+    
     constructor(props){
-
         super(props);
-
-        this.controller = new AuthController(this);
-
-        this.state={
+        this.controller = new StudentAuthController(this);
+        this.state = {
             page: "MobilePage",
             loading:false,
 
@@ -57,8 +54,12 @@ export default class Auth extends Component {
             can_send_sms_again:false,
         }
     }
-
+    
     componentDidMount(){
+    }
+
+    onCancel=()=>{
+        chest.ModalLayout.visibleToggle(1, false);
     }
 
     onMobileInput=(v)=>{
@@ -109,44 +110,39 @@ export default class Auth extends Component {
     onRegisterConfirm=()=>{
         this.controller.registerConfirm();
     }
-
-    onRegisterSuccessConfirm=()=>{
-        window.location.href = env.PATHS.USER_DASHBOARD;
-    }
     
     render(){
         return(
-                <div style={{width:"100%", display:"flex", flexDirection:"column", 
-                alignItems:"center", paddingBottom:"4rem"}}>
+            <div className={styles.con+" bglc1 "}>
 
-                    <h1 style={{marginTop:"4rem"}}>Authentication Page</h1>
+                <CrossSvg className={styles.close_btn + " bglc1 amp_btn md_card_shd"}
+                stroke={env.THEME.dc1}
+                onClick={this.onCancel}/>
 
-                    {
-                        this.state.page === "Loading"?
-                        <Loading style={{minHeight:"50vh"}}/>:null
-                    }
-                    {
-                        this.state.page === "MobilePage"?
-                        <MobilePage parent={this}/>:null
-                    }
-                    {
-                        this.state.page === "PasswordPage"?
-                        <PasswordPage parent={this}/>:null
-                    }
-                    {
-                        this.state.page === "VerificationPage"?
-                        <VerificationPage parent={this}/>:null
-                    }
-                    {
-                        this.state.page === "RegisterPage"?
-                        <RegisterPage parent={this}/>:null
-                    }
-                    {
-                        this.state.page === "RegisterSuccessPage"?
-                        <RegisterSuccessPage parent={this}/>:null
-                    }
-                    
+                <div className={styles.wrapper}>
+                {
+                    this.state.page === "Loading"?
+                    <Loading/>:null
+                }
+                {
+                    this.state.page === "MobilePage"?
+                    <MobilePage parent={this}/>:null
+                }
+                {
+                    this.state.page === "PasswordPage"?
+                    <PasswordPage parent={this}/>:null
+                }
+                {
+                    this.state.page === "VerificationPage"?
+                    <VerificationPage parent={this}/>:null
+                }
+                {
+                    this.state.page === "RegisterPage"?
+                    <RegisterPage parent={this}/>:null
+                }
                 </div>
+            
+            </div>
         )
     }
 }
@@ -170,13 +166,15 @@ class MobilePage extends Component{
         return(
             <>
 
-            <div className={styles.info}>
+            <div className={styles.title1+" hrot fdc1"}>{"ورود‌ /‌ ثبت نام"}</div>
+
+            <div className={styles.info1}>
                 {"برای ثبت نام یا ورود ابتدا شماره موبایل خود را وارد نمایید."}
             </div>
 
             <TextInput placeholder={"شماره موبایل"}
             ref={r=>this.TextInput=r}
-            className={styles.btn+" blc2"}
+            className={styles.input1+" blc2"}
             value={ps.mobile}
             error={ps.mobile_error}
             maxLength={11}
@@ -184,15 +182,16 @@ class MobilePage extends Component{
             onChange={p.onMobileInput}
             OnEnterKeyPressed={p.onMobileConfirm}/>
 
-            <MainButton  style={{marginTop:"2rem", width:"20rem"}} 
+            <MainButton
+            className={styles.btn1}
             loading={ps.loading}
             title={"تایید"}
             onClick={p.onMobileConfirm}/>
 
-            <p style={{direction:"rtl", width:"20rem", textAlign:"center", marginTop:"1rem", fontSize:"11px"}}>
-                با ورود و یا ثبت نام در مینفو شما 
+            <p style={{direction:"rtl", maxWidth:"20rem", textAlign:"center", marginTop:"1rem", fontSize:"11px"}}>
+                با ورود و یا ثبت نام شما 
                 <a href={env.PATHS.MINFO_TERMS}> شرایط و قوانین </a>
-                استفاده از سرویس های سایت مینفو و 
+                استفاده از سرویس های سایت و 
                 <a href={env.PATHS.MINFO_PRIVACY}> قوانین حریم خصوصی </a>
                 آن را می‌پذیرید.
             </p>
@@ -220,13 +219,15 @@ class PasswordPage extends Component{
         let ps = p.state;
         return(
             <>
+
+            <div className={styles.title1+" hrot fdc1"}>{"ورود"}</div>
                     
-            <div className={styles.info}>
+            <div className={styles.info1}>
                 {"برای ورود، رمزعبور حساب کاربری خودرا وارد نمایید."}
             </div>
 
             <TextInput placeholder={"رمز عبور"}
-            className={styles.btn+" blc2"}
+            className={styles.input1+" blc2"}
             ref={r=>this.TextInput=r}
             value={ps.password}
             error={ps.password_error}
@@ -240,7 +241,8 @@ class PasswordPage extends Component{
                 {"فراموشی رمزعبور"}
             </a>
 
-            <MainButton  style={{marginTop:"1rem", width:"20rem"}} 
+            <MainButton
+            className={styles.btn1}
             title={"تایید"}
             loading={ps.loading}
             onClick={p.onPasswordConfirm}/>
@@ -264,6 +266,7 @@ class VerificationPage extends Component{
     }
 
     componentDidMount(){
+
         this.props.parent.controller.sendVerificationCode(()=>{
             this.setState({show_timer_bar:true});
         });
@@ -276,15 +279,17 @@ class VerificationPage extends Component{
         let ps = p.state;
         return(
             <>
+
+            <div className={styles.title1+" hrot fdc1"}>{"کد تایید"}</div>
                         
-            <div className={styles.info} style={{display:"inline"}}>
+            <div className={styles.info1} style={{display:"inline"}}>
                 {"حساب کاربری با این شماره موبایل وجود ندارد. برای ثبت نام کد ارسالی به شماره موبایل "}
                 <span className={"ftc2"}>{ps.mobile}</span>
                 {" را وارد نمایید."}
             </div>
 
             <TextInput placeholder={"کد تایید"}
-            className={styles.btn+" blc2"}
+            className={styles.input1+" blc2"}
             ref={r=>this.TextInput=r}
             style={{marginBottom:"0.5rem"}}
             inputStyle={{textAlign:"center", direction:"ltr"}}
@@ -315,7 +320,8 @@ class VerificationPage extends Component{
                 <div style={{height:"3rem"}}/>
             }
 
-            <MainButton  style={{marginTop:"0.5rem", width:"20rem"}} 
+            <MainButton
+            className={styles.btn1}
             title={"تایید"}
             loading={ps.loading}
             onClick={p.onSmsCodeConfirm}/>
@@ -335,7 +341,7 @@ class VerificationPage extends Component{
 class RegisterPage extends Component{
 
     componentDidMount(){
-        this.ReactiveTextInput.input.focus();
+        this.TextInput.input.focus();
     }
 
     render(){
@@ -344,22 +350,13 @@ class RegisterPage extends Component{
         return(
             <>
 
-            <div className={styles.info} style={{marginTop:"4rem"}}>
-                {"ثبت نام در مینفو"}
-            </div>
+            <div className={styles.title1+" hrot fdc1"}>{"ثبت نام"}</div>
 
-            <ReactiveTextInput placeholder={"نام سایت"}
-            className={styles.btn+" blc2"}
-            ref={r=>this.ReactiveTextInput=r}
-            value={ps.subdomain}
-            status={ps.subdomain_status}
-            message={ps.subdomain_message}
-            maxLength={24}
-            inputFilter={InputFilter.tenantInputFilter}
-            onChange={p.onSubdomain}/>
+            <div style={{marginTop:"2rem"}}/>
 
             <TextInput placeholder={"نام"}
-            className={styles.btn+" blc2"}
+            className={styles.input1+" blc2"}
+            ref={r=>this.TextInput=r}
             value={ps.first_name}
             style={{marginTop:"0rem"}}
             error={ps.first_name_error}
@@ -367,25 +364,15 @@ class RegisterPage extends Component{
             onChange={(v)=>p.onInput("first_name",v)}/>
 
             <TextInput placeholder={"نام خانوادگی"}
-            className={styles.btn+" blc2"}
+            className={styles.input1+" blc2"}
             value={ps.last_name}
             style={{marginTop:"0rem"}}
             error={ps.last_name_error}
             inputFilter={InputFilter.persianNameInputFilter}
             onChange={(v)=>p.onInput("last_name",v)}/>
 
-            <TextInput placeholder={"کدملی"}
-            className={styles.btn+" blc2"}
-            value={ps.national_code}
-            style={{marginTop:"0rem"}}
-            error={ps.national_code_error}
-            inputFilter={InputFilter.nationalCodeInputFilter}
-            onChange={(v)=>p.onInput("national_code",v)}/>
-
-            
-
             <TextInput placeholder={"رمزعبور"}
-            className={styles.btn+" blc2"}
+            className={styles.input1+" blc2"}
             value={ps.register_password}
             style={{marginTop:"0rem"}}
             type={"password"}
@@ -395,7 +382,7 @@ class RegisterPage extends Component{
             onChange={(v)=>p.onInput("register_password",v)}/>
 
             <TextInput placeholder={"تکرار رمزعبور"}
-            className={styles.btn+" blc2"}
+            className={styles.input1+" blc2"}
             value={ps.password_confirm}
             style={{marginTop:"0rem"}}
             type={"password"}
@@ -404,57 +391,14 @@ class RegisterPage extends Component{
             onChange={(v)=>p.onInput("password_confirm",v)}
             OnEnterKeyPressed={p.onRegisterConfirm}/>
 
-            <MainButton  style={{marginTop:"0.8rem", width:"20rem"}} 
+            <MainButton
+            className={styles.btn1}
             title={"ثبت نام"}
             loading={ps.loading}
             onClick={p.onRegisterConfirm}/>
 
             {/*for the browsers auto username password fill*/}
             <input style={{height:0}} autoComplete="username" type={"text"} value={ps.mobile}/>
-
-            </>
-        )
-    }
-}
-
-/**
-* Props of RegisterSuccessPage Component
-* @typedef RegisterSuccessProps
-* @property {Auth} parent
-* 
-* @extends {Component<RegisterSuccessProps>}
-*/
-class RegisterSuccessPage extends Component{
-
-    componentDidMount(){
-        window.addEventListener("keyup", this.onEnterKeyPressed);
-    }
-
-    componentWillUnmount(){
-        window.removeEventListener("keyup", this.onEnterKeyPressed);
-    }
-
-    onEnterKeyPressed = (e)=>{
-        if (e.keyCode === 13) {
-            e.preventDefault();
-            p.onRegisterSuccessConfirm();
-        }
-    }
-
-    render(){
-        let p = this.props.parent;
-        let ps = p.state;
-        return(
-            <>
-
-            <div className={styles.info}>
-                <img style={{width:"4rem", marginBottom:"2rem"}} src={"/svg2/success_green.svg"}/>
-                {"به مینفو خوش آمدید."}
-            </div>
-            
-            <MainButton  style={{marginTop:"4rem", width:"20rem"}} 
-            title={"ورود"}
-            onClick={p.onRegisterSuccessConfirm}/>
 
             </>
         )

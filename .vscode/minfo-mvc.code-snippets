@@ -41,7 +41,7 @@
     "Create Next.js Model": {
 		"prefix": "njcm",
 		"body": [
-			"import myServer from \"../../utils/myServer\";",
+			"import myServer from \"@/utils/myServer\";",
 			"",
 			"export default class $TM_FILENAME_BASE{",
             "\t",

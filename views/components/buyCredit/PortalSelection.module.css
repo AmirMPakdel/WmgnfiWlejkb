@@ -33,6 +33,7 @@
     border-width: 2px;
     margin: 0.8rem;
     border-radius: 0.8rem;
+    min-width: 8rem;
 }
 
 .item_icon{

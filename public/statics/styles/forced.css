@@ -94,3 +94,8 @@
 .ant-pagination-item:focus-visible a, .ant-pagination-item:hover a{
     color: #FBAD16 !important;
 }
+
+/*Modal*/
+.ant-modal-body{
+    padding: 0 !important;
+}
