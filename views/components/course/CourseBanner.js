@@ -20,6 +20,10 @@ import Rating from "@/views/components/course/Rating";
 * @extends {Component<Props>}
 */
 export default class CourseBanner extends Component {
+
+    onBuy=()=>{
+        window.location.href = env.PATHS.COURSE_INVOICE+getUrlPart(2);
+    }
     
     render(){
         let ps = this.props.parent.state;
@@ -109,6 +113,7 @@ export default class CourseBanner extends Component {
                     whiteBorder={true}/> */}
 
                     <MainButton className={styles.tablet_buy_btn} title={"خرید"}
+                    onClick={this.onBuy}
                     whiteBorder={false}/>
 
                 </div>

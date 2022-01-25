@@ -6,6 +6,7 @@ import Price from "@/views/components/global/Price";
 import VideoCard from "@/views/components/global/VideoCard";
 import styles from "./FloatingCard.module.css";
 import IconLine from "@/views/components/course/IconLine";
+import { getUrlPart } from "@/utils/helpers";
 
 /**
 * Props of FloatingCard Component
@@ -17,6 +18,10 @@ import IconLine from "@/views/components/course/IconLine";
 * @extends {Component<Props>}
 */
 export default class FloatingCard extends Component {
+
+    onBuy=()=>{
+        window.location.href = env.PATHS.COURSE_INVOICE+getUrlPart(2);
+    }
     
     render(){
         let ps = this.props.parent.state;
@@ -42,7 +47,8 @@ export default class FloatingCard extends Component {
                     {/* <MainButton className={styles.fltcrd_btn1} title={"افزودن به سبد خرید"}/>
 
                     <MainButton className={styles.fltcrd_btn2} title={"خرید سریع"} borderMode/> */}
-                    <MainButton className={styles.fltcrd_btn2} title={"خرید"}/>
+                    <MainButton className={styles.fltcrd_btn2} title={"خرید"}
+                    onClick={this.onBuy}/>
 
                     <div className={styles.space1}/>
 

@@ -7,11 +7,13 @@ function MyApp({ Component, pageProps }) {
   <>
     <Head>
 
+      
       <link rel="stylesheet" href="/statics/styles/global.css"/>
       <link rel="stylesheet" href="/statics/styles/colors.css"/>
       <link rel="stylesheet" href="/statics/styles/fonts.css"/>
       <link rel="stylesheet" href="/statics/styles/forced.css"/>
       <link rel="stylesheet" href="/statics/styles/shadows.css"/>
+      <link rel="stylesheet" href="/statics/styles/animate.min.css"/>
 
       <script src="/statics/js/theme.js"/>
       <script src="/statics/js/consts.js"/>

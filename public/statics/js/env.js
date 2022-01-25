@@ -43,6 +43,8 @@ var env = {
         CHANGE_PASSWORD_PAGE: "/minfo/changePassword",
         MINFO_TERMS: "/minfo/terms",
         MINFO_PRIVACY: "/minfo/privacy",
+        COURSE: "/course/",
+        COURSE_INVOICE: "/courseInvoice/",
         USER_DASHBOARD: "/dashboard",
         USER_MYCOURSES: "/dashboard/myCourses",
         USER_NEW_COURSE: "/dashboar/newCourse",
