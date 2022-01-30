@@ -102,6 +102,8 @@ export default class TextInput extends Component {
         let m_input_type = "";
         if(this.props.type==="password"){
             m_input_type = "password";
+        }else if(this.props.type==="price"){
+            m_input_type = "tel";
         }
 
         return(

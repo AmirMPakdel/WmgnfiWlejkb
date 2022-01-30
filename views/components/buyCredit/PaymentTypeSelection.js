@@ -2,6 +2,7 @@ import { Radio } from "node_modules/antd/lib/index";
 import React, { Component } from "react";
 import styles from "./PaymentTypeSelection.module.css";
 import BuyCredit from "@/views/dynamics/dashboard/BuyCredit";
+import { priceFormat } from "@/utils/price";
 
 /**
 * Props of PaymentTypeSelection Component
@@ -63,6 +64,14 @@ export default class PaymentTypeSelection extends Component {
                 <div ref={r=>this.anchor=r} style={{position:"absolute",top:"-6rem"}}/>
 
                 <div className={styles.title+" tilt md_card_shd bglc1"}>{"نوع پرداخت"}</div>
+
+                <div className={styles.wrapper1}>
+
+                    <div className={styles.credit_sec+" bdyt"}>{"مقدار اعتبار باقی مانده : "}<span className="ftc2 bdyt">{priceFormat(ps.credit)+" تومان"}</span></div>
+                    
+                    <div className={styles.credit_sec+" bdyt"}>{"مقدار صندوق درآمد : "}<span className="ftc2 bdyt">{priceFormat(ps.incomes)+" تومان"}</span></div>
+
+                </div>
 
                 <div className={styles.item_con+" amp_btn "+((ps.payment_type == 1)?"btc2 ":"blc2 ")}
                 onClick={()=>this.onPaymentType(1)}>

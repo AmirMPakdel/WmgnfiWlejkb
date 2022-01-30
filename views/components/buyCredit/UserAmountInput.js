@@ -59,6 +59,7 @@ export default class UserAmountInput extends Component {
                 inputStyle={{textAlign:"center", direction:"ltr"}}
                 maxLength={12}
                 placeholder="به تومان"
+                type="price"
                 inputFilter={InputFilter.integer}
                 value={ps.user_amount_input}
                 onChange={this.onUserInput}
