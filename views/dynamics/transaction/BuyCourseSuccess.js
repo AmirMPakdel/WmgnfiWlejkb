@@ -32,7 +32,7 @@ export default class BuyCourseSuccess extends Component {
     }
 
     onConfirm=()=>{
-        window.location.href = env.PATHS.USER_DASHBOARD;
+        window.location.href = env.PATHS.USER_OVERVIEW;
     }
 
     onPrint=()=>{

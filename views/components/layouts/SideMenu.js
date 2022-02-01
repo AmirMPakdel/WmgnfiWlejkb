@@ -76,9 +76,6 @@ export default class SideMenu extends Component {
 
     onSelect = (name)=>{
         let prefix = "/dashboard/";
-        if(name === "dashboard"){
-            prefix = "/";
-        }
         window.location.href = prefix + name;
     }
 
@@ -89,13 +86,16 @@ export default class SideMenu extends Component {
                 <div className={styles.sidemenu_title+" ftc2i"}>{"Minfo"}</div>
 
                 <SideMenuBtn title="داشبورد" icon={CategorySvg}
-                onClick={this.onSelect} active_page={this.state.active_page} name="dashboard"/>
+                onClick={this.onSelect} active_page={this.state.active_page} name="overview"/>
 
                 <SideMenuBtn title="دوره های من" icon={WorkSvg}
                 onClick={this.onSelect} active_page={this.state.active_page} name="myCourses"/>
 
                 <SideMenuBtn title="مقالات" icon={DocumentSvg}
                 onClick={this.onSelect} active_page={this.state.active_page} name="myArticles"/>
+
+                <SideMenuBtn title="صفحه اصلی" icon={PlusSqrSvg}
+                onClick={this.onSelect} active_page={this.state.active_page} name="homePage"/>
 
                 <SideMenuBtn title="ایجاد دوره" icon={PlusSqrSvg}
                 onClick={this.onSelect} active_page={this.state.active_page} name="newCourse"/>

@@ -1,0 +1,79 @@
+.con{
+    width: 92%;
+    max-width: 64rem;
+    display: flex;
+    min-height: 6rem;
+    border-radius: 1rem;
+    margin-top: 1.4rem;
+}
+
+.right_sec{
+    width: calc(100% - 8rem);
+    display: flex;
+    flex-direction: column;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-right: 1.5rem;
+}
+
+.title_con{
+    display: flex;
+}
+
+.title{
+    font-weight: 700;
+}
+
+.visiblity{
+    width: 1.6rem;
+    transform: translateY(-0.1rem);
+    margin-right: 0.4rem;
+    user-select: none;
+}
+
+.info_box{
+    width: 100%;
+}
+
+.controllers{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.icon_btn1{
+    width: 2.4rem !important;
+    height: 2rem !important;
+    padding: 0 !important;
+    padding-left: 2px !important;
+    margin: 0 !important;
+    border-radius: 0.5rem !important;
+}
+
+.icon_btn2{
+    width: 2.4rem !important;
+    height: 2rem !important;
+    padding: 0 !important;
+    border-radius: 0.5rem !important;
+    margin: 0 !important;
+    margin-right: 1rem !important;
+}
+
+.icon_btn_icon{
+    width: 1.2rem !important;
+    height: 1.2rem !important;
+}
+
+.left_sec{
+    width: 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 1.5rem;
+}
+
+.icon{
+    width: 100%;
+    user-select: none;
+}

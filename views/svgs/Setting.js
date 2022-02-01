@@ -20,7 +20,7 @@ const Setting = (props) => {
             <svg xmlns="http://www.w3.org/2000/svg" 
             fill={p.fill} 
             stroke={p.stroke}
-            viewBox="0 0 24 24">
+            viewBox="0 0 21 21">
 
                 <svg x="0" y="0">
                     <g

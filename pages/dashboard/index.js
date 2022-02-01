@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import dynamic from 'next/dynamic'
 
-const Dashboard = dynamic(() => import("@/views/dynamics/dashboard/Dashboard"), { ssr: false });
-
 export default class index extends Component {
 
-  
+  componentDidMount(){
+    window.location.href=env.PATHS.USER_OVERVIEW;
+  }
+
   render(){
     return(
-      <Dashboard/>
+      <div/>
     )
   }
 }

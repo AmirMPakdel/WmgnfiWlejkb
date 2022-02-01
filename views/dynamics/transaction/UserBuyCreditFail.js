@@ -32,7 +32,7 @@ export default class UserBuyCreditFail extends Component {
     }
 
     onConfirm=()=>{
-        window.location.href = env.PATHS.USER_DASHBOARD;
+        window.location.href = env.PATHS.USER_OVERVIEW;
     }
 
     onRetry=()=>{
