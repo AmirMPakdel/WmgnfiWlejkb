@@ -102,7 +102,7 @@ export default class AuthController{
 
                     setCookie(env.TENANT_KEY, data.data.username, 365);
 
-                    window.location.href = env.PATHS.USER_DASHBOARD;
+                    window.location.href = env.PATHS.USER_OVERVIEW;
 
                 }else{
 

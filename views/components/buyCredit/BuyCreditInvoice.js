@@ -56,8 +56,18 @@ export default class BuyCreditInvoice extends Component {
                 <div className={styles.list_wrapper}>
 
                     <ListRow title={"نام پرداخت کننده"} value={"امیرمحمد پاکدل"}/>
+
+                    {
+                        ps.payment_type===1?
+                        <ListRow title={"شیوه پرداخت"} value={"پرداخت اینترنتی"}/>:
+                        <ListRow title={"شیوه پرداخت"} value={"از صندوق درآمد"}/>
+                    }
                     
-                    <ListRow title={"درگاه پرداخت"} value={"بانک ملت"}/>
+                    {
+                        ps.payment_type===1?
+                        <ListRow title={"درگاه پرداخت"} value={"بانک ملت"}/>:
+                        null
+                    }
 
                     <ListRow title={"تاریخ پرداخت"} value={"1400/02/16"}/>
 

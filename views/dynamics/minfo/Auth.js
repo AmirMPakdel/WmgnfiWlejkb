@@ -111,7 +111,7 @@ export default class Auth extends Component {
     }
 
     onRegisterSuccessConfirm=()=>{
-        window.location.href = env.PATHS.USER_DASHBOARD;
+        window.location.href = env.PATHS.USER_OVERVIEW;
     }
     
     render(){

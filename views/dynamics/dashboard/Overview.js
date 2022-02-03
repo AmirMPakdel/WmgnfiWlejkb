@@ -3,10 +3,10 @@ import DashboardCard from "@/views/components/dashboard/DashboardCard";
 import IncomeChart from "@/views/components/dashboard/IncomeChart";
 import IncomesChestCard from "@/views/components/dashboard/IncomesChestCard";
 import EducatorDashboardLayout from "@/views/layouts/EducatorDashboardLayout";
-import styles from "./Dashboard.module.css";
+import styles from "./Overview.module.css";
 import WrapperT1 from "@/views/layouts/WrapperT1";
 
-export default class Dashboard extends Component {
+export default class Overview extends Component {
     
     render(){
         return(

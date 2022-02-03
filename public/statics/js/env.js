@@ -39,15 +39,18 @@ var env = {
     },
 
     PATHS:{
+        //minfo
         USER_AUTHENTICATION: "/minfo/auth",
         CHANGE_PASSWORD_PAGE: "/minfo/changePassword",
         MINFO_TERMS: "/minfo/terms",
         MINFO_PRIVACY: "/minfo/privacy",
+        //user index
         COURSE: "/course/",
         COURSE_INVOICE: "/courseInvoice/",
-        USER_DASHBOARD: "/dashboard",
+        //user dashboard
+        USER_OVERVIEW: "/dashboard/overview",
         USER_MYCOURSES: "/dashboard/myCourses",
-        USER_NEW_COURSE: "/dashboar/newCourse",
+        USER_NEW_COURSE: "/dashboard/newCourse",
         USER_BUY_CREDIT: "/dashboard/buyCredit",
     },
 
