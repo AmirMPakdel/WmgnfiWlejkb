@@ -333,7 +333,7 @@ export default class AuthController{
             let params = {
                 user_id:vs.user_id,
                 phone_number:vs.mobile,
-                username:vs.subdomain,
+                user_name:vs.subdomain,
                 first_name:vs.first_name,
                 last_name:vs.last_name,
                 national_code:vs.national_code,
