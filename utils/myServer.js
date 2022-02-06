@@ -26,6 +26,7 @@ const urls = {
     UPLOAD_FILE_TO_CONVERTOR: env.CONVERTOR_DOMAIN+"/upload_progress",
 
     //minfo educators
+    DASH_USER_INFO: domain+prefixes.UTA+"/profile/load",
     DASH_CREATE_EDUCATOR: domain+prefixes.UTA+"/educators/create",
     DASH_FETCH_EDUCATORS: domain+prefixes.UTA+"/educators/fetch",
     DASH_UPDATE_EDUCATOR: domain+prefixes.UTA+"/educators/update",
@@ -42,6 +43,10 @@ const urls = {
 
     //MyCourses
     MY_COURSES_FETCH: domain+prefixes.UTA+"/courses/fetch/",
+
+    //TRANSACTION
+    PAY_FOR_PRODUCT: domain+prefixes.UTA+"/product/page",
+    GET_TRANSACTION: domain+prefixes.UTA+"/transaction/get",
 }
 
 /**

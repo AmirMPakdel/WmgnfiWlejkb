@@ -1,19 +1,33 @@
+import myServer from "@/utils/myServer";
+
 export default class UserModel{
-
-    async getUser(){
-
-        await new Promise(resolve => setTimeout(resolve, 2000));
-
-        return {
-            first_name : "امیرمحمد",
-            last_name : "پاکدل",
-            phone_number : "09118015081",
-            accessLevel : {
-                "1":true,
-                "2":true,
-                "3":false,
-                "4":false,
-            }
+    
+    /**
+    * 
+    * @param {object} params
+    * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
+    */
+    getUser(params, cb){
+    
+        if(env.MOCKING_SERVER){
+            setTimeout(()=>{
+                cb(null, {result_code:env.SC.SUCCESS});
+            }, 2000, cb);
+            return;
         }
+    
+        myServer.Get(myServer.urls.DASH_USER_INFO, {}, (err, data)=>{
+    
+            if(!err){
+            
+                cb(null, data);
+            
+            }else{
+            
+                myServer.ErrorHandler.type1(err);
+            }
+        });
     }
+    
+    
 }

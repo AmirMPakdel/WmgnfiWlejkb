@@ -15,7 +15,15 @@ export default class AccessLayoutController{
 
     async loadUser(){
 
-        let user = await this.model.getUser();
+        let user = {};
+        
+        this.model.getUser(null, (err, data)=>{
+
+            if(data.result_code === env.SC.SUCCESS){
+
+                chest.user = user;
+            }
+        });
 
         chest.user = user;
 
