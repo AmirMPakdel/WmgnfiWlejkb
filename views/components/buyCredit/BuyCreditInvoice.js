@@ -1,3 +1,4 @@
+import BuyCreditInvoiceController from "@/controllers/components/buyCredit/BuyCreditInvoiceController";
 import { priceFormat } from "@/utils/price";
 import BuyCredit from "@/views/dynamics/dashboard/BuyCredit";
 import { Checkbox } from "node_modules/antd/lib/index";
@@ -20,12 +21,14 @@ export default class BuyCreditInvoice extends Component {
     
     constructor(props){
         super(props);
+        this.controller = new BuyCreditInvoiceController(this);
         this.state = {
             accept:false,
         }
     }
     
     componentDidMount(){
+
     }
 
     onAccept=()=>{
@@ -33,7 +36,7 @@ export default class BuyCreditInvoice extends Component {
     }
 
     onConfirm=()=>{
-
+        this.controller.onConfirm();
     }
 
     onCancel=()=>{

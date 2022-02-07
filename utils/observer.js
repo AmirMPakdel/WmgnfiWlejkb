@@ -1,17 +1,29 @@
 export default class Observer{
 
+    /**
+     * @typedef {("onResize"|"onUserChange"|
+     * "onSideMenuToggle")} EventName
+     */
     static observers = {
         
         onResize:[],
-        onUserFetched:[],
+        onUserChange:[],
         onSideMenuToggle:[],
     }
 
+    /**
+     * @param {EventName} name 
+     * @param  {(...any)=>{}} func 
+     */
     static add(name, func){
 
         Observer.observers[name].push(func);
     }
 
+    /**
+     * @param {EventName} name 
+     * @param  {(...any)=>{}} func 
+     */
     static remove(name, func){
 
         Observer.observers[name].forEach((e,i) => {
@@ -22,6 +34,10 @@ export default class Observer{
         });
     }
     
+    /**
+     * @param {EventName} name 
+     * @param  {...any} params 
+     */
     static execute(name, ...params){
     
         Observer.observers[name].forEach(func => {

@@ -5,10 +5,9 @@ import "@/models/jsdoc/User"
 import Observer from "@/utils/observer";
 
 let chest = {
-
-    /**@type {User} */
-    user : null,
     
+    user:null,
+
     UserPanel:{
         userChangeTab: (jsx)=>{},
     },

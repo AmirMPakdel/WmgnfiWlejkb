@@ -18,11 +18,14 @@ export default class SideMenu extends Component {
         super(props);
         this.state = {
             active_page : "dashboard",
-            showBackdrop:false
+            showBackdrop:false,
+            name: "",
         }
     }
 
     componentDidMount(){
+
+        this.handleUser();
 
         let page = window.location.pathname.split("/")[2];
         if(!page){page = "dashboard"};
@@ -41,6 +44,20 @@ export default class SideMenu extends Component {
     componentWillUnmount(){
         Observer.remove("onResize", this.onResize);
         Observer.remove("onSideMenuToggle", this.onSideMenuToggle);
+        Observer.remove("onUserChange", this.onUserChange)
+    }
+
+    handleUser=()=>{
+
+        if(chest.user){
+            this.setState({name:chest.user.first_name+" "+chest.user.last_name});
+        }
+
+        Observer.add("onUserChange", this.onUserChange);
+    }
+
+    onUserChange=(user)=>{
+        this.setState({name:user.first_name+" "+user.last_name});
     }
 
     onResize=()=>{
@@ -114,7 +131,7 @@ export default class SideMenu extends Component {
 
                 <div className={styles.sidemenu_wrapper1}>
 
-                    <SideMenuBtn title="امیرمحمد پاکدل" icon={ProfileSvg}
+                    <SideMenuBtn title={this.state.name} icon={ProfileSvg}
                     onClick={this.onSelect} active_page={this.state.active_page} name="profile" active/>
 
                 </div>
