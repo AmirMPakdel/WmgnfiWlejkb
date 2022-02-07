@@ -1,29 +1,37 @@
 import UserModel from "@/models/global/UserModel";
 import chest from "@/utils/chest";
-import Storage from "@/utils/storage";
+import Observer from "@/utils/observer";
 import AccessLayout from "@/views/layouts/AccessLayout";
 
 export default class AccessLayoutController{
     
-    /**@param {AccessLayout} AccessLayoutView*/
-    constructor(AccessLayoutView){
+    /**@param {AccessLayout} view*/
+    constructor(view){
 
-        this.view = AccessLayoutView;
+        this.view = view;
 
         this.model = new UserModel();
     }
 
-    async loadUser(){
+    loadUser(){
+        
+        this.model.getUser(null, (err, data)=>{
 
-        let user = await this.model.getUser();
+            if(data.result_code === env.SC.SUCCESS){
 
-        chest.user = user;
+                console.log(data.data);
 
-        Storage.store("user", user);
+                let user = data.data;
 
-        this.view.setState({
-            loading:false,
-            userAccessLevel: user.accessLevel,
+                chest.user = user;
+
+                Observer.execute("onUserChange", user);
+
+                this.view.setState({
+                    loading:false,
+                    userAccessLevel: user.accessLevel,
+                });
+            }
         });
     }
     
