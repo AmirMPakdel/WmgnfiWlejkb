@@ -71,7 +71,7 @@ export default class EditCourseIntroVideo extends Component {
                 ref={r=>this.EditableImage=r}
                 onSelect={this.onSelect}
                 className={styles.video}
-                defaultPoster={"/default_img/default_intro_video.png"}
+                defaultPoster={"/statics/default_img/default_intro_video.png"}
                 uploadKey={nw.intro_video.url}
                 oldUploadKey={od.intro_video.url}/>
                 

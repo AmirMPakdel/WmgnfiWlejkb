@@ -20,7 +20,6 @@ export default class BuyCreditInvoiceController{
             //days: 10,
             portal:"zarinpal",
             redirect_url:"http://localhost/transaction/userBuyCreditSuccess"
-
         }
 
         this.model.pay(params);

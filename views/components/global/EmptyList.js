@@ -13,14 +13,14 @@ export default class EmptyList extends Component {
     
     render(){
         return(
-            <div className={styles.con+" "+this.props.className} style={this.props.style}>
+            <div className={styles.con+" bgw "+this.props.className} style={this.props.style}>
 
-                <img className={styles.img} src={"/svg/info_gray.svg"}/>
+                <img className={styles.img} src={"/statics/svg2/info_b.svg"}/>
 
                 {
                     this.props.title?
-                    <div className={styles.text}>{this.props.title}</div>:
-                    <div className={styles.text}>{"آیتمی برای نمایش موجود نیست"}</div>
+                    <div className={styles.text+" hrot"}>{this.props.title}</div>:
+                    <div className={styles.text+" hrot"}>{"آیتمی برای نمایش موجود نیست"}</div>
                 }
                 
             </div>

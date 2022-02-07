@@ -8,6 +8,7 @@ import { Container, Draggable } from "react-smooth-dnd";
 import VeggieBurgerSvg from "@/views/svgs/VeggieBurger";
 import EditSqrSvg from "@/views/svgs/EditSqr";
 import DeleteSvg from "@/views/svgs/Delete";
+import { clearDragMousemoveTimer, handleDragMousemoveY } from "@/utils/dragListener";
 
 /**
 * Props of EditCourseContents Component
@@ -29,9 +30,14 @@ export default class EditCourseContents extends Component {
     }
     
     componentDidMount(){
+        // this.con.onmousemove = this.onMouseMoveListener;
+        // this.con.onmouseleave = this.onMouseLeaves;
+        // this.con.onmouseenter = this.onMouseEnters;
     }
 
-    componentDidMount(){
+    componentWillUnmount(){
+        this.con.onmousemove = undefined;
+        this.con.onmouseout = undefined;
     }
     
     onEdit=()=>{
@@ -112,6 +118,32 @@ export default class EditCourseContents extends Component {
         }
     }
 
+    /**@param {Event} e */
+    onMouseMoveListener = (e)=>{
+
+        // if(this.isDragging && this.isMouseInside){
+        //     handleDragMousemoveY(e);
+        // }
+    }
+
+    onMouseEnters=()=>{
+        //this.isMouseInside=true;
+    }
+
+    onMouseLeaves=()=>{
+        //clearDragMousemoveTimer();
+        //this.isMouseInside=false;
+    }
+
+    onDragStart=()=>{
+        //this.isDragging=true;
+    }
+
+    onDragEnd=()=>{
+        //clearDragMousemoveTimer();
+        //this.isDragging=false;
+    }
+
     render(){
         let p = this.props.parent;
         let ps = p.state;
@@ -120,7 +152,7 @@ export default class EditCourseContents extends Component {
         let nw = ps.new_values;
 
         return(
-            <div className={styles.con}>
+            <div className={styles.con} ref={r=>this.con=r}>
 
                 <EditableTitle
                 title={"محتویات دوره"}
@@ -131,7 +163,10 @@ export default class EditCourseContents extends Component {
 
                 <div className={styles.hierarchy_con}>
                     <Container
-                    dragHandleSelector={st.content_hierarchy == "edit"?undefined:"null"}
+                    //onDragStart={this.onDragStart}
+                    //onDragEnd={this.onDragEnd}
+                    //lockAxis={"y"}
+                    dragHandleSelector={st.content_hierarchy == "edit"?".title_bar_grabber":"null"}
                     onDrop={this.onColumnDrop}
                     dropPlaceholder={{
                         animationDuration: 150,
@@ -149,7 +184,7 @@ export default class EditCourseContents extends Component {
                                         st.content_hierarchy == "edit"?
                                         <>
 
-                                        <VeggieBurgerSvg className={styles.heading_drag_handle+" ftc2"}
+                                        <VeggieBurgerSvg className={styles.heading_drag_handle+" title_bar_grabber  ftc2"}
                                         stroke={env.THEME.tc2}/>
 
                                         <div className={styles.heading_text+" tilt"}>{item.title}</div>
@@ -166,7 +201,8 @@ export default class EditCourseContents extends Component {
                                 </div>
 
                                 <Container
-                                dragHandleSelector={st.content_hierarchy == "edit"?undefined:"null"}
+                                //lockAxis={"y"}
+                                dragHandleSelector={st.content_hierarchy == "edit"?".content_bar_grabber":"null"}
                                 groupName="content_group"
                                 onDrop={e => this.onCardDrop(item.id, e)}
                                 getChildPayload={index =>this.getCardPayload(item.id, index)}
@@ -186,7 +222,7 @@ export default class EditCourseContents extends Component {
                                                     st.content_hierarchy == "edit"?
                                                     <>
 
-                                                    <VeggieBurgerSvg className={styles.heading_drag_handle+" ftc2"}
+                                                    <VeggieBurgerSvg className={styles.heading_drag_handle+" content_bar_grabber ftc2"}
                                                     stroke={env.THEME.tc2}/>
 
                                                     <EditSqrSvg className={styles.content_edit+" amp_btn bgtc1"}

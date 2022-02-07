@@ -71,7 +71,7 @@ export default class EditCourseLogo extends Component {
                 ref={r=>this.EditableImage=r}
                 onSelect={this.onSelect}
                 className={styles.image}
-                defaultSrc={"/default_img/default_logo.png"}
+                defaultSrc={"/statics/default_img/default_logo.png"}
                 uploadKey={nw.logo}
                 oldUploadKey={od.logo}/>
 

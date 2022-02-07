@@ -448,7 +448,7 @@ class RegisterSuccessPage extends Component{
             <>
 
             <div className={styles.info}>
-                <img style={{width:"4rem", marginBottom:"2rem"}} src={"/svg2/success_green.svg"}/>
+                <img style={{width:"4rem", marginBottom:"2rem"}} src={"/statics/svg2/success_green.svg"}/>
                 {"به مینفو خوش آمدید."}
             </div>
             
