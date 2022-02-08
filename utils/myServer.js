@@ -45,7 +45,8 @@ const urls = {
     MY_COURSES_FETCH: domain+prefixes.UTA+"/courses/fetch/",
 
     //TRANSACTION
-    PAY_FOR_PRODUCT: domain+prefixes.UTA+"/product/pay",
+    CREATE_TRANSACTION: domain+prefixes.UTA+"/transaction/generate",
+    OPEN_TRANSACTION_PORTAL: domain+prefixes.UTA+"/product/pay",
     GET_TRANSACTION: domain+prefixes.UTA+"/transaction/get",
 }
 

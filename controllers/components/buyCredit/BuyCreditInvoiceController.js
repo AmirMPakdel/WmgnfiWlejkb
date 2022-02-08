@@ -1,4 +1,6 @@
 import BuyCreditInvoiceModel from "@/models/components/buyCredit/BuyCreditInvoiceModel";
+import { getCookie } from "@/utils/cookie";
+import myServer from "@/utils/myServer";
 import BuyCreditInvoice from "@/views/components/buyCredit/BuyCreditInvoice";
 
 export default class BuyCreditInvoiceController{
@@ -19,10 +21,21 @@ export default class BuyCreditInvoiceController{
             //value: 10,
             //days: 10,
             portal:"zarinpal",
-            redirect_url:"http://localhost/transaction/userBuyCreditSuccess"
+            redirect_url:"http://localhost:3000/transaction/userBuyCredit"
         }
 
-        this.model.pay(params);
+        this.model.pay(params, (err, data)=>{
+
+            if(data.result_code === env.SC.SUCCESS){
+
+                let d = data.data;
+                console.log(d);
+                window.location.href = myServer.urls.OPEN_TRANSACTION_PORTAL+
+                `?transaction_id=${d.id}&`+
+                `tenant=${getCookie(env.TENANT_KEY)}&`+
+                `token=${getCookie(env.TOKEN_KEY)}`
+            }
+        });
     }
     
 }

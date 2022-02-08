@@ -7,13 +7,13 @@ export default class BuyCreditInvoiceModel{
     * @param {object} params
     * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
     */
-     pay(params){
+     pay(params, cb){
 
-        myServer.Get(myServer.urls.PAY_FOR_PRODUCT, {params}, (err, data)=>{
+        myServer.Post(myServer.urls.CREATE_TRANSACTION, params, {}, (err, data)=>{
 
             if(!err){
-            
-                console.log(data);
+                
+                cb(null, data);
             
             }else{
             
