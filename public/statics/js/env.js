@@ -32,6 +32,7 @@ var env = {
         MIN_VALID_SHORT_DESC:50,
         MIN_VALID_LONG_DESC:100,
         MIN_VALID_COURSE_SUBJECTS:3,
+        MIN_CREDIT_BUY_AMOUNT:50000,
     },
 
     STORAGE_KEYS:{

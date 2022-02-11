@@ -2,7 +2,7 @@ const moment = require("jalali-moment");
 
 const time = {
     secondsToTime,
-    getCurrentMiladiDate,
+    getCurrentShamsiDate,
     shamsi2Miladi,
 }
 
@@ -24,14 +24,13 @@ export function secondsToTime(seconds){
     }
 }
 
-export function getCurrentMiladiDate() {
-    
+export function getCurrentShamsiDate(){
     let today = new Date();
     let dd = String(today.getDate()).padStart(2, '0');
     let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     let yyyy = today.getFullYear();
     today = yyyy+"/"+mm+"/"+dd;
-    return moment.from(today,"YYYY/MM/DD").locale('fa').format('YYYY/MM/DD')
+    return moment.from(today,"YYYY/MM/DD").locale('fa').format('YYYY/MM/DD');
 }
 
 export function shamsi2Miladi(shamsi, seperator){

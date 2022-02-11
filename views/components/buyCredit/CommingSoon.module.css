@@ -1,0 +1,36 @@
+.con{
+    width: 80%;
+    min-height: 6rem;
+    border-radius: 1rem;
+    margin-top: 4rem;
+    padding: 1.5rem;
+    padding-top: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    transition: ease 400ms;
+}
+
+.title{
+    position: absolute;
+    width: 12rem;
+    height: 3rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    top: -1.5rem;
+    right: calc(50% - 6rem);
+}
+
+.soon_text{
+    margin: 4rem;
+}
+
+@media(max-width:1024px){
+    
+}
+
+@media(max-width:767px){
+}

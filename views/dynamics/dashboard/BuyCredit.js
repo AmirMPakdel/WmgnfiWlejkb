@@ -1,6 +1,7 @@
 import BuyCreditController from "@/controllers/dynamics/dashboard/BuyCreditController";
 import AmountSelection from "@/views/components/buyCredit/AmountSelection";
 import BuyCreditInvoice from "@/views/components/buyCredit/BuyCreditInvoice";
+import CommingSoon from "@/views/components/buyCredit/CommingSoon";
 import PaymentTypeSelection from "@/views/components/buyCredit/PaymentTypeSelection";
 import PortalSelection from "@/views/components/buyCredit/PortalSelection";
 import UserAmountInput from "@/views/components/buyCredit/UserAmountInput";
@@ -31,9 +32,11 @@ export default class BuyCredit extends Component {
             payment_type: 1,
             amount: 0,
             user_input: false,
+            user_amount_input:"",
             portals:[],
-            selected_portal: null,
+            selected_portal: {},
             show_invoice: false,
+            can_continue:false,
         }
     }
     
@@ -43,6 +46,10 @@ export default class BuyCredit extends Component {
 
     onConfirm=()=>{
         this.controller.onConfirm();
+    }
+
+    continueCheck=()=>{
+        this.controller.continueCheck();
     }
     
     render(){
@@ -63,10 +70,12 @@ export default class BuyCredit extends Component {
                                 parent={this}
                                 ref={r=>this.PaymentTypeSelection=r}/>
                                 
-                                <AmountSelection
-                                parent={this}
-                                ref={r=>this.AmountSelection=r}/>
-
+                                {
+                                    this.state.payment_type==1?
+                                    <AmountSelection
+                                    parent={this}
+                                    ref={r=>this.AmountSelection=r}/>:null
+                                }
                                 {
                                     this.state.user_input?
                                     <UserAmountInput
@@ -81,17 +90,25 @@ export default class BuyCredit extends Component {
                                     ref={r=>this.PortalSelection=r}/>
                                     :null
                                 }
-                                
-                                <div className={styles.btn_wrapper}>
+                                {
+                                    this.state.payment_type==2?
+                                    <CommingSoon/>
+                                    :null
+                                }
+                                {
+                                    this.state.payment_type==1?
+                                    <div className={styles.btn_wrapper}>
 
                                     <MainButton
                                     ref={r=>this.ConfirmBtn=r}
                                     className={styles.confirm_btn}
                                     title="تایید"
+                                    disabled={!this.state.can_continue}
                                     onClick={this.onConfirm}/>
 
-                                </div>
-                            
+                                    </div>:null
+                                }
+                                
                             </>:
                             <BuyCreditInvoice
                             parent={this}

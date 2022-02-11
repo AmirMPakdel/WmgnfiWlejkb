@@ -1,5 +1,7 @@
 import BuyCreditInvoiceController from "@/controllers/components/buyCredit/BuyCreditInvoiceController";
 import { priceFormat } from "@/utils/price";
+import Storage from "@/utils/storage";
+import { getCurrentShamsiDate } from "@/utils/time";
 import BuyCredit from "@/views/dynamics/dashboard/BuyCredit";
 import { Checkbox } from "node_modules/antd/lib/index";
 import React, { Component } from "react";
@@ -23,12 +25,23 @@ export default class BuyCreditInvoice extends Component {
         super(props);
         this.controller = new BuyCreditInvoiceController(this);
         this.state = {
+            buyers_name:"",
+            purchase_date:"",
             accept:false,
+            confirm_loading:false,
         }
     }
     
     componentDidMount(){
 
+        let user = Storage.retrive("user");
+        let buyers_name = user.first_name+" "+user.last_name;
+        let purchase_date = getCurrentShamsiDate();
+
+        this.setState({
+            buyers_name,
+            purchase_date,
+        })
     }
 
     onAccept=()=>{
@@ -51,6 +64,11 @@ export default class BuyCreditInvoice extends Component {
         let p = this.props.parent;
         let ps = p.state;
 
+        let price = ps.amount;
+        if(ps.user_input){
+            price = ps.user_amount_input;
+        }
+
         return(
             <div className={styles.con+" md_card_shd bgw"}>
 
@@ -58,7 +76,7 @@ export default class BuyCreditInvoice extends Component {
 
                 <div className={styles.list_wrapper}>
 
-                    <ListRow title={"نام پرداخت کننده"} value={"امیرمحمد پاکدل"}/>
+                    <ListRow title={"نام پرداخت کننده"} value={this.state.buyers_name}/>
 
                     {
                         ps.payment_type===1?
@@ -68,23 +86,23 @@ export default class BuyCreditInvoice extends Component {
                     
                     {
                         ps.payment_type===1?
-                        <ListRow title={"درگاه پرداخت"} value={"بانک ملت"}/>:
+                        <ListRow title={"درگاه پرداخت"} value={ps.selected_portal.title}/>:
                         null
                     }
 
-                    <ListRow title={"تاریخ پرداخت"} value={"1400/02/16"}/>
+                    <ListRow title={"تاریخ پرداخت"} value={this.state.purchase_date}/>
 
-                    <ListRow title={"مقدار اعتبار"} value={priceFormat(200000)+" تومان"}/>
+                    <ListRow title={"مقدار اعتبار"} value={priceFormat(price)+" تومان"}/>
 
-                    <ListRow title={"مبلغ پرداخت"} value={priceFormat(200000)+" تومان"}/>
+                    <ListRow title={"مبلغ پرداخت"} value={priceFormat(price)+" تومان"}/>
 
                     <ListRow title={"درصد تخفیف"} value={0+"%"}/>
 
-                    <ListRow title={"مبلغ با احتساب تخفیف"} value={priceFormat(200000)+" تومان"}/>
+                    <ListRow title={"مبلغ با احتساب تخفیف"} value={priceFormat(price)+" تومان"}/>
 
-                    <ListRow title={"مبلغ کل به حروف"} value={persianNToText.getText(200000)+" تومان"}/>
+                    <ListRow title={"مبلغ کل به حروف"} value={persianNToText.getText(price)+" تومان"}/>
 
-                    <ListRow title={"مبلغ کل"} value={priceFormat(200000)+" تومان"}/>
+                    <ListRow title={"مبلغ کل"} value={priceFormat(price)+" تومان"}/>
 
                     <div className={styles.checkbox_con}>
 
@@ -96,6 +114,7 @@ export default class BuyCreditInvoice extends Component {
 
                     <MainButton className={styles.confirm_btn}
                     title={"پرداخت"}
+                    loading={this.state.confirm_loading}
                     disabled={!this.state.accept}
                     onClick={this.onConfirm}/>
 

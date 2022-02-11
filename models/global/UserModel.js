@@ -19,7 +19,7 @@ export default class UserModel{
 
         let user = Storage.retrive("user");
 
-        if(user){
+        if(user && !user.should_update){
             cb(null, {result_code:env.SC.SUCCESS, data:user});
             return;
         }
@@ -39,6 +39,8 @@ export default class UserModel{
                         "3":true,
                         "4":true,
                     }
+
+                    user.should_update = false;
 
                     Storage.store("user", user);
                 }

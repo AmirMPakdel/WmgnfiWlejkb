@@ -23,6 +23,7 @@ export default class PaymentTypeSelection extends Component {
     }
     
     componentDidMount(){
+
     }
 
     scrollInto=()=>{
@@ -49,7 +50,11 @@ export default class PaymentTypeSelection extends Component {
         }
 
         p.setState(p.state, ()=>{
-            p.AmountSelection.scrollInto();
+            if(p.state.payment_type==1){
+                p.AmountSelection.scrollInto();
+            }else{
+                //TODO: after added the exchange feature
+            }
         });
     }
     

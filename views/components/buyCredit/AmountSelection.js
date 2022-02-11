@@ -42,7 +42,8 @@ export default class AmountSelection extends Component {
             }else{
                 p.ConfirmBtn.centerize();
             }
-            
+
+            p.continueCheck();
         });
     }
 

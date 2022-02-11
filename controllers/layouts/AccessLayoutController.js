@@ -19,8 +19,6 @@ export default class AccessLayoutController{
 
             if(data.result_code === env.SC.SUCCESS){
 
-                console.log(data.data);
-
                 let user = data.data;
 
                 chest.user = user;

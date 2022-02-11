@@ -1,7 +1,9 @@
+import { priceFormat } from "@/utils/price";
 import { InputFilter } from "@/utils/validation";
 import React, { Component } from "react";
 import MainButton from "../global/MainButton";
 import TextInput from "../global/TextInput";
+import BuyCredit from "@/views/dynamics/dashboard/BuyCredit";
 import styles from "./UserAmountInput.module.css";
 const persianNToText = require('number-to-persian-text');
 
@@ -10,6 +12,7 @@ const persianNToText = require('number-to-persian-text');
 * @typedef Props
 * @property {string} className
 * @property {React.CSSProperties} style
+* @property {BuyCredit} parent
 * 
 * @extends {Component<Props>}
 */
@@ -18,7 +21,7 @@ export default class UserAmountInput extends Component {
     constructor(props){
         super(props);
         this.state = {
-        
+            error:false,
         }
     }
     
@@ -35,11 +38,36 @@ export default class UserAmountInput extends Component {
     
     onUserInput=(amount)=>{
         let p = this.props.parent;
-        p.setState({user_amount_input: amount});
+
+        this.lazyInputCheck();
+        
+        p.setState({user_amount_input: amount}, p.continueCheck);
     }
 
-    onConfirm=()=>{
-        
+    lazyInputCheck=()=>{
+
+        clearTimeout(this.input_check_timeout);
+
+        this.input_check_timeout = setTimeout(()=>{
+
+            let amount = this.props.parent.state.user_amount_input;
+            let error = false;
+
+            if(amount === ""){
+
+                this.setState({error});
+                return;
+
+            }else{
+
+                amount = Number(amount);
+                if(isNaN(amount) || amount<env.LIMITS.MIN_CREDIT_BUY_AMOUNT){
+                    error = "مبلغ ورودی باید حداقل "+priceFormat(env.LIMITS.MIN_CREDIT_BUY_AMOUNT)+" تومان باشد"
+                }
+                this.setState({error});
+            }
+
+        }, 2000);
     }
     
     render(){
@@ -60,6 +88,7 @@ export default class UserAmountInput extends Component {
                 maxLength={12}
                 placeholder="به تومان"
                 type="price"
+                error={this.state.error}
                 inputFilter={InputFilter.integer}
                 value={ps.user_amount_input}
                 onChange={this.onUserInput}

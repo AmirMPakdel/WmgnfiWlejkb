@@ -40,6 +40,13 @@ export default class Storage{
             return;
         }
 
+        // let prev_item = window.localStorage.getItem("_type_"+key);
+
+        // if(prev_item){
+        //     window.localStorage.removeItem("_type_"+key);
+        //     window.localStorage.removeItem(key);
+        // }
+
         window.localStorage.setItem("_type_"+key, typeof(obj));
 
         window.localStorage.setItem(key, modified_obj);
@@ -83,6 +90,16 @@ export default class Storage{
 
             return null;
         }
+    }
+
+    /**
+     * retrive the data from browser storage
+     * @param {string} key 
+     * @returns {Object}
+     */
+    static get=(key)=>{
+
+        return Storage.retrive(key);
     }
 
     /**
