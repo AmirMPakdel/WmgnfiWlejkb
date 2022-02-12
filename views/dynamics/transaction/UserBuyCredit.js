@@ -1,5 +1,6 @@
 import UserBuyCreditController from "@/controllers/transaction/UserBuyCreditController";
 import { priceFormat } from "@/utils/price";
+import { sqlTimeStamp2ShamsiDateTime } from "@/utils/time";
 import ListRow from "@/views/components/buyCredit/ListRow";
 import Loading from "@/views/components/global/Loading";
 import MainButton from "@/views/components/global/MainButton";
@@ -59,6 +60,10 @@ export default class UserBuyCredit extends Component {
 
         let dt = this.state.details;
 
+        let dateTime = sqlTimeStamp2ShamsiDateTime(dt.date).split("-");
+        let date = dateTime[0];
+        let time = dateTime[1];
+
         return(
             <IndexLayout>
             
@@ -79,20 +84,38 @@ export default class UserBuyCredit extends Component {
                         {
                             dt.success?
                             <ListRow title={"نتیجه تراکنش"} value={"موفق"} valueClassName={"fsc"}/>:
-                            <ListRow title={"نتیجه تراکنش"} value={"ناموفق"} valueClassName={"fec"}/>
+                            <>
+                                <ListRow title={"نتیجه تراکنش"} value={"ناموفق"} valueClassName={"fec"}/>
+                                
+                                <ListRow title={"پیغام خطا"}  value={dt.error_msg}
+                                vertical={true} titleClassName=" fec "/>
+                            </>
                         }
                         
-                        <ListRow title={"شماره فاکتور"} value={"#"+dt.id}
+                        <ListRow title={"شماره فاکتور"} value={"#"+dt.order_no}
                         valueClassName={"eng_num"}/>
-
-                        <ListRow title={"شناسه پرداخت"} value={dt.order_no}
-                        valueClassName={"eng_num"}/>
+                        
+                        {
+                            dt.success?
+                            <ListRow title={"شناسه پرداخت"} value={dt.ref_id}
+                            valueClassName={"eng_num"}/>:null
+                        }
 
                         <ListRow title={"نام پرداخت کننده"} value={"امیرمحمد پاکدل"}/>
                         
                         <ListRow title={"درگاه پرداخت"} value={dt.portal}/>
-
-                        <ListRow title={"تاریخ پرداخت"} value={"1400/02/16"}/>
+                        
+                        {
+                            dt.success?
+                            <>
+                            <ListRow title={"تاریخ پرداخت"} value={date}/>
+                            <ListRow title={"ساعت پرداخت"} value={time}/>
+                            </>:
+                            <>
+                            <ListRow title={"تاریخ تلاش"} value={date}/>
+                            <ListRow title={"ساعت تلاش"} value={time}/>
+                            </>
+                        }
 
                         <ListRow title={"مقدار اعتبار افزوده شده"} value={priceFormat(dt.price)+" تومان"}/>
 
@@ -113,13 +136,13 @@ export default class UserBuyCredit extends Component {
                             title={"پنل کاربری"}
                             onClick={this.onConfirm}/>
 
-                            {
+                            {/* {
                                 dt.success?
                                 <MainButton className={styles.pring_btn}
                                 title={"چاپ"}
                                 borderMode={true}
                                 onClick={this.onPrint}/>:null
-                            }
+                            } */}
                             
                         </div>
 

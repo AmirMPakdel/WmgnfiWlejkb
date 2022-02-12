@@ -47,3 +47,17 @@ export function shamsi2Miladi(shamsi, seperator){
 
     return res;
 }
+
+export function sqlTimeStamp2ShamsiDateTime(sts){
+
+    let dt = moment.from(sts).locale('fa').format('YYYY/MM/DD-HH:mm');
+
+    return dt;
+}
+
+export function sqlTimeStamp2ShamsiDate(sts){
+
+    let dt = moment.from(sts).locale('fa').format('YYYY/MM/DD');
+
+    return dt;
+}
