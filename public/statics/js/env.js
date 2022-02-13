@@ -45,6 +45,11 @@ var env = {
         CHANGE_PASSWORD_PAGE: "/minfo/changePassword",
         MINFO_TERMS: "/minfo/terms",
         MINFO_PRIVACY: "/minfo/privacy",
+        //studen panel
+        STUDENT_COURSES: "/stdPanel/myCourses",
+        STUDENT_WISHLIST: "/stdPanel/myWishlist",
+        STUDENT_RECIEPTS: "/stdPanel/myReciepts",
+        STUDENT_VIEW_RECIEPT: "/stdPanel/viewReciept/",
         //user index
         COURSE: "/course/",
         COURSE_INVOICE: "/courseInvoice/",
@@ -53,6 +58,8 @@ var env = {
         USER_MYCOURSES: "/dashboard/myCourses",
         USER_NEW_COURSE: "/dashboard/newCourse",
         USER_BUY_CREDIT: "/dashboard/buyCredit",
+        USER_EDIT_COURSE: "/dashboard/editCourse/",
+        USER_PREVIEW_COURSE: "/dashboard/previewCourse/",
     },
 
     PREFIXES:{

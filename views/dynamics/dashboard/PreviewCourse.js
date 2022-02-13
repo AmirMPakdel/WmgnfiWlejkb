@@ -12,20 +12,28 @@ import SectionTitle from "@/views/components/course/SectionTitle";
 import Loading from "@/views/components/global/Loading";
 import IndexLayout from "@/views/layouts/IndexLayout";
 import WrapperT1 from "@/views/layouts/WrapperT1";
-import styles from "./Course.module.css";
+import PreviewCourseController from "@/controllers/dynamics/dashboard/PreviewCourseController";
+import styles from "./PreviewCourse.module.css";
 
-export default class Course extends Component {
-
+/**
+* Props of PreviewCourse Component
+* @typedef Props
+* @property {string} className
+* @property {React.CSSProperties} style
+* 
+* @extends {Component<Props>}
+*/
+export default class PreviewCourse extends Component {
+    
     constructor(props){
         super(props);
-
-        this.controller = new CourseController(this);
+        this.controller = new PreviewCourseController(this);
         this.state={
             loading:true,
             course:{},
         }
     }
-
+    
     componentDidMount(){
         
         this.controller.getCourse();

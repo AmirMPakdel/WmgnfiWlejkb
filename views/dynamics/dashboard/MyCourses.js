@@ -74,11 +74,11 @@ export default class MyCourses extends Component {
 class CourseCard extends Component{
 
     edit=()=>{
-        window.location.href = "/dashboard/editCourse/"+this.props.data.id;
+        window.location.href = env.PATHS.USER_EDIT_COURSE + this.props.data.id;
     }
 
     preview=()=>{
-        window.location.href = "/course/"+this.props.data.id;
+        window.location.href = env.PATHS.USER_PREVIEW_COURSE + this.props.data.id;
     }
 
     render(){
