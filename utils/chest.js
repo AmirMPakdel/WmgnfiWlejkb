@@ -14,6 +14,7 @@ let chest = {
 
     ModalLayout:{
         setModal: (layer, jsx, cb)=>{},
+        setAndShowModal: (layer, jsx, cb)=>{},
         visibleToggle: (layer, visible, cb)=>{},
         closeAndDelete:(layer, cb)=>{},
     },

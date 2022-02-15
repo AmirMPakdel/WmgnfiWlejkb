@@ -71,8 +71,8 @@ export default class MainButton extends Component {
             add_class += " bdc2 bglc1 "+styles.border_mode;
 
         }
-
         return(
+            
             <div className={styles.mbtn_con+" bdyt "+add_class+" amp_btn"} 
             onClick={this.onClick} 
             style={this.props.style}

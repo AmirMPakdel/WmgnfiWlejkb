@@ -22,6 +22,7 @@ export default class ModalLayout extends Component {
 
     componentDidMount(){
         chest.ModalLayout.setModal = this.setModal;
+        chest.ModalLayout.setAndShowModal = this.setAndShowModal;
         chest.ModalLayout.visibleToggle = this.visibleToggle;
         chest.ModalLayout.closeAndDelete = this.closeAndDelete;
     }
@@ -32,6 +33,15 @@ export default class ModalLayout extends Component {
     setModal = (layer, jsx, cb)=>{
         this.closeAndDelete(layer, ()=>{
             this.state["layer"+layer+"_destroy"] = false;
+            this.state["layer"+layer] = jsx;
+            this.setState(this.state, cb);
+        });
+    }
+
+    setAndShowModal= (layer, jsx, cb)=>{
+        this.closeAndDelete(layer, ()=>{
+            this.state["layer"+layer+"_destroy"] = false;
+            this.state["layer"+layer+"_visible"] = true;
             this.state["layer"+layer] = jsx;
             this.setState(this.state, cb);
         });

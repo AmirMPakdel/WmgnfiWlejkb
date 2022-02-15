@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import AccessLayout from "./AccessLayout";
+import IndexHeader from "./IndexHeader";
 import ModalLayout from "./ModalLayout";
 import styles from "./StudentPanelLayout.module.css";
 
@@ -27,11 +28,20 @@ export default class StudentPanelLayout extends Component {
         return(
             <AccessLayout accessLevel={this.props.accessLevel}>
                 <ModalLayout>
+                    
                     <div className={styles.layout}>
+
+                        <IndexHeader/>
+
+                        <div className={styles.upper_sec}>
+
+                        </div>
                         
                         <div className={styles.wrapper}>
                             {this.props.children}
                         </div>
+
+                        <div className={styles.mock_footer}>FOOTER</div>
 
                     </div>
                 </ModalLayout>
