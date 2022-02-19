@@ -30,7 +30,6 @@ export default class StudentAuthModal extends Component {
             verification_code:"",
 
             user_id:"",// will be set by server
-            subdomain:"",
             first_name:"",
             last_name:"",
             national_code:"",
@@ -41,8 +40,6 @@ export default class StudentAuthModal extends Component {
             password_error:false,
             verification_code_error:false,
 
-            subdomain_status: "",
-            subdomain_message: "",
             first_name_error:"",
             last_name_error:"",
             national_code_error:"",
@@ -348,11 +345,11 @@ class RegisterPage extends Component{
         let p = this.props.parent;
         let ps = p.state;
         return(
-            <>
+            <div className={styles.scroll_wrapper}>
 
             <div className={styles.title1+" hrot fdc1"}>{"ثبت نام"}</div>
 
-            <div style={{marginTop:"2rem"}}/>
+            <div style={{marginTop:"1rem"}}/>
 
             <TextInput placeholder={"نام"}
             className={styles.input1+" blc2"}
@@ -370,6 +367,14 @@ class RegisterPage extends Component{
             error={ps.last_name_error}
             inputFilter={InputFilter.persianNameInputFilter}
             onChange={(v)=>p.onInput("last_name",v)}/>
+
+            <TextInput placeholder={"کدملی"}
+            className={styles.input1+" blc2"}
+            value={ps.national_code}
+            style={{marginTop:"0rem"}}
+            error={ps.national_code_error}
+            inputFilter={InputFilter.nationalCodeInputFilter}
+            onChange={(v)=>p.onInput("national_code",v)}/>
 
             <TextInput placeholder={"رمزعبور"}
             className={styles.input1+" blc2"}
@@ -400,7 +405,7 @@ class RegisterPage extends Component{
             {/*for the browsers auto username password fill*/}
             <input style={{height:0}} autoComplete="username" type={"text"} value={ps.mobile}/>
 
-            </>
+            </div>
         )
     }
 }

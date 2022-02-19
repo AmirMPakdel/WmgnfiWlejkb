@@ -5,6 +5,7 @@ import { setCookie } from "@/utils/cookie";
 import { secondsToTime } from "@/utils/time";
 import Validation, { IsValid } from "@/utils/validation";
 import Observer from "@/utils/observer";
+import StudentModel from "@/models/global/StudentModel";
 
 export default class StudentAuthController{
     
@@ -97,11 +98,16 @@ export default class StudentAuthController{
 
                     this.view.setState({loading:false});
 
-                    setCookie(env.TOKEN_KEY, data.data.token, 365);
+                    setCookie(env.STUDENT_TOKEN_KEY, data.data.token, 365);
 
                     //TODO: save user in localstorage
                     //TODO: call observer execute
-                    chest.ModalLayout.closeAndDelete(1);
+
+                    this.getStudent((student)=>{
+
+                        Observer.execute("onStudentChange", student);
+                        chest.ModalLayout.closeAndDelete(1);
+                    });
 
                 }else{
 
@@ -228,7 +234,7 @@ export default class StudentAuthController{
                     
                     this.clearSmsCountdown();
 
-                    let user_id = data.data.user_id;
+                    let user_id = data.data.student_id;
 
                     this.view.setState({
                         loading:false,
@@ -281,40 +287,6 @@ export default class StudentAuthController{
         this.view.setState(this.view.state);
     }
 
-    subdomainInputCheck=()=>{
-
-        clearTimeout(this.subdomain_input_timeout);
-
-        if(!IsValid.tenantIsValid(this.view.state.subdomain)){
-            this.view.setState({subdomain_status:"", subdomain_message:""});
-            return;
-        }
-
-        this.subdomain_input_timeout = setTimeout(()=>{
-
-            this.view.setState({subdomain_status:"loading", subdomain_message:""});
-
-            let params = {username:this.view.state.subdomain};
-
-            this.model.getCheckUsername(params, (err, data)=>{
-
-                console.log(data);
-                if(data.result_code===env.SC.SUCCESS){
-
-                    this.view.setState({subdomain_status:"success", subdomain_message:"این نام قابل رزرو است"});
-
-                }else if(data.result_code===env.SC.REPETITIVE_USERNAME){
-
-                    this.view.setState({subdomain_status:"error", subdomain_message:"این نام قبلا ثبت شده است"});
-
-                }
-            })
-
-        }, 1000);
-    }
-
-    
-
     registerConfirm(){
 
         if(this.lock)return;
@@ -330,9 +302,8 @@ export default class StudentAuthController{
             this.view.setState({loading:true});
 
             let params = {
-                user_id:vs.user_id,
+                student_id:vs.user_id,
                 phone_number:vs.mobile,
-                username:vs.subdomain,
                 first_name:vs.first_name,
                 last_name:vs.last_name,
                 national_code:vs.national_code,
@@ -341,13 +312,19 @@ export default class StudentAuthController{
             
             this.model.getCompeleteRegisteration(params, (err, data)=>{
 
-                if(data.result_code===env.SC.SUCCESS){
+                if(data.result_code === env.SC.SUCCESS){
 
-                    setCookie(env.TOKEN_KEY, data.data.token, 1);
+                    setCookie(env.STUDENT_TOKEN_KEY, data.data.token, 1);
                     
                     //TODO: save user in localstorage
                     //TODO: call observer execute
-                    chest.ModalLayout.closeAndDelete(1);
+
+                    this.getStudent((student)=>{
+
+                        Observer.execute("onStudentChange", student);
+
+                        chest.ModalLayout.closeAndDelete(1);
+                    });
 
                 }else if(data.result_code===env.SC.REPETITIVE_NATIONAL_CODE){
 
@@ -376,6 +353,7 @@ export default class StudentAuthController{
         let vs = this.view.state;
         let fn = Validation.persianName(vs.first_name);
         let ln = Validation.persianName(vs.last_name);
+        let nc = Validation.nationalCode(vs.national_code);
         let pw = Validation.password(vs.register_password);
 
         let newState = {};
@@ -413,5 +391,17 @@ export default class StudentAuthController{
         this.view.setState(newState);
 
         return can;
+    }
+
+    getStudent(cb){
+
+        let studentModel = new StudentModel();
+        studentModel.getStudent({}, (err, data)=>{
+
+            if(data.result_code === env.SC.SUCCESS){
+
+                cb(data.data);
+            }
+        });
     }
 }

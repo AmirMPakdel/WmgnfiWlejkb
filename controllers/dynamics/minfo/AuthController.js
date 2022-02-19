@@ -314,8 +314,6 @@ export default class AuthController{
         }, 1000);
     }
 
-    
-
     registerConfirm(){
 
         if(this.lock)return;
@@ -416,7 +414,6 @@ export default class AuthController{
             newState.register_password_error = pw.message;
             can = false;
         }
-
         
         if(pw.valid && vs.register_password === vs.password_confirm){
             newState.password_confirm_error = false;

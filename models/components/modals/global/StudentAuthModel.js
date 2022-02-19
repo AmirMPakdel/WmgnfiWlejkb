@@ -9,7 +9,7 @@ export default class StudentAuthModel{
      */
      getPhoneNumberCheck(params, cb){
 
-        if(env.MOCKING_SERVER || 1){
+        if(env.MOCKING_SERVER){
             setTimeout(()=>{
                 //cb(null, {result_code:env.SC.SUCCESS});
                 cb(null, {result_code:env.SC.REPETITIVE_PHONE_NUMBER});
@@ -17,7 +17,7 @@ export default class StudentAuthModel{
             return;
         }
 
-        myServer.Post(myServer.urls.MINFO_REGISTER_CHECK_PHONE_NUMBER, params, {}, (err, data)=>{
+        myServer.Post(myServer.urls.STD_CHECK_PHONENUMBER, params, {}, (err, data)=>{
 
             if(!err){
 
@@ -38,7 +38,7 @@ export default class StudentAuthModel{
      */
     getLoginWithPassword(params, cb){
 
-        if(env.MOCKING_SERVER || 1){
+        if(env.MOCKING_SERVER){
             setTimeout(()=>{
                 cb(null, {
                     result_code:env.SC.SUCCESS, 
@@ -51,7 +51,7 @@ export default class StudentAuthModel{
             return;
         }
 
-        myServer.Post(myServer.urls.MINFO_LOGIN_WITH_PASSWORD, params, {}, (err, data)=>{
+        myServer.Post(myServer.urls.STD_LOGIN, params, {}, (err, data)=>{
 
             if(!err){
 
@@ -71,7 +71,7 @@ export default class StudentAuthModel{
      */
     getSendVerificationCode(params, cb){
 
-        if(env.MOCKING_SERVER || 1){
+        if(env.MOCKING_SERVER){
             setTimeout(()=>{
                 cb(null, {
                     result_code:env.SC.SUCCESS,
@@ -80,7 +80,7 @@ export default class StudentAuthModel{
             return;
         }
 
-        myServer.Post(myServer.urls.MINFO_REGISTER_SEND_VERIFICATION_CODE, params, {}, (err, data)=>{
+        myServer.Post(myServer.urls.STD_SEND_VERIFICATION_CODE, params, {}, (err, data)=>{
 
             if(!err){
 
@@ -101,7 +101,7 @@ export default class StudentAuthModel{
      */
     getCheckVerificationCode(params, cb){
 
-        if(env.MOCKING_SERVER || 1){
+        if(env.MOCKING_SERVER){
             setTimeout(()=>{
                 cb(null, {
                     result_code:env.SC.SUCCESS,
@@ -111,7 +111,7 @@ export default class StudentAuthModel{
             return;
         }
 
-        myServer.Post(myServer.urls.MINFO_REGISTER_CHECK_VERIFICATION_CODE, params, {}, (err, data)=>{
+        myServer.Post(myServer.urls.STD_CHECK_VERIFICATION_CODE, params, {}, (err, data)=>{
 
             if(!err){
 
@@ -121,38 +121,6 @@ export default class StudentAuthModel{
 
                 myServer.ErrorHandler.type1(err);
             }
-        });
-    }
-
-    /**
-     * 
-     * @param {object} params
-     * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
-     */
-    getCheckUsername(params, cb){
-
-        if(env.MOCKING_SERVER || 1){
-            setTimeout(()=>{
-                if(Math.random() > 0.5){
-                    cb(null, {result_code:env.SC.SUCCESS});
-                }else{
-                    cb(null, {result_code:env.SC.REPETITIVE_USERNAME});
-                }
-            }, 2000, cb);
-            return;
-        }
-
-        myServer.Get(myServer.urls.MINFO_REGISTER_CHECK_TENANT+"/"+params.username, {}, (err, data)=>{
-
-            if(!err){
-
-                cb(null, data);
-            
-            }else{
-
-                myServer.ErrorHandler.type1(err);
-            }
-
         });
     }
 
@@ -163,7 +131,7 @@ export default class StudentAuthModel{
      */
     getCompeleteRegisteration(params, cb){
 
-        if(env.MOCKING_SERVER || 1){
+        if(env.MOCKING_SERVER){
             setTimeout(()=>{
                 cb(null, {
                     result_code:env.SC.SUCCESS,
@@ -175,7 +143,7 @@ export default class StudentAuthModel{
             return;
         }
 
-        myServer.Post(myServer.urls.MINFO_REGISTER_COMPLELTE_REGISTRATION, params, {}, (err,data)=>{
+        myServer.Post(myServer.urls.STD_REGISTRATION, params, {}, (err,data)=>{
 
             if(!err){
 

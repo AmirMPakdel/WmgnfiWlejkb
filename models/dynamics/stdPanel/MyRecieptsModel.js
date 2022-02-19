@@ -9,9 +9,15 @@ export default class MyRecieptsModel{
     */
     getMyReciepts(params, cb){
     
-        if(env.MOCKING_SERVER){
+        if(env.MOCKING_SERVER || 1){
             setTimeout(()=>{
-                cb(null, {result_code:env.SC.SUCCESS});
+                cb(null, {
+                    result_code:env.SC.SUCCESS,
+                    data:{
+                        total:83,
+                        list: getFakeRecieptsList(20),
+                    }
+                });
             }, 2000, cb);
             return;
         }
@@ -27,7 +33,19 @@ export default class MyRecieptsModel{
                 myServer.ErrorHandler.type1(err);
             }
         });
+    }   
+}
+
+const getFakeRecieptsList=(number)=>{
+    let list = [];
+    for(let i=0; i<number; i++){
+        list.push({
+            id: number - i,
+            order_id: 1242 - i,
+            date: "1400/02/15-13:20",
+            price: 460000,
+            success: true,
+        })
     }
-    
-    
+    return list;
 }

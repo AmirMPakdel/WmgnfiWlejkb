@@ -15,8 +15,9 @@ export default class CourseModel{
             }, 2000, cb);
             return;
         }
+
     
-        myServer.Post(myServer.urls.COURSE_FETCH, params, {}, (err, data)=>{
+        myServer.Post(myServer.urls.STD_VIEW_COURSE, params, {}, (err, data)=>{
     
             if(!err){
 

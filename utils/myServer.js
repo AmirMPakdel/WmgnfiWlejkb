@@ -12,7 +12,10 @@ const urls = {
     DOMAIN:domain,
     MEDIA_PREFIX:env.MEDIA_PREFIX,
 
-    //minfo register
+    //global
+    PORTALS_LIST: domain+prefixes.MA+"/portals/get",
+
+    //user register
     MINFO_REGISTER_CHECK_PHONE_NUMBER: domain+prefixes.MA+"/user/checkphonenumber",
     MINFO_LOGIN_WITH_PASSWORD: domain+prefixes.MA+"/user/login",
     MINFO_REGISTER_SEND_VERIFICATION_CODE: domain+prefixes.MA+"/user/verificationcode/send",
@@ -20,35 +23,62 @@ const urls = {
     MINFO_REGISTER_CHECK_TENANT: domain+prefixes.MA+"/user/tenant/check",
     MINFO_REGISTER_COMPLELTE_REGISTRATION: domain+prefixes.MA+"/user/register",
 
-    // upload
+    //user upload
     UPLOAD_GET_UPLOAD_KEY: domain+prefixes.UTA+"/upload/uploadkey",
     UPLOAD_COVERTOR_CHECK: env.CONVERTOR_DOMAIN+"/upload_check",
     UPLOAD_FILE_TO_CONVERTOR: env.CONVERTOR_DOMAIN+"/upload_progress",
 
-    //minfo educators
+    //user educators
     DASH_USER_INFO: domain+prefixes.UTA+"/profile/load",
     DASH_CREATE_EDUCATOR: domain+prefixes.UTA+"/educators/create",
     DASH_FETCH_EDUCATORS: domain+prefixes.UTA+"/educators/fetch",
     DASH_UPDATE_EDUCATOR: domain+prefixes.UTA+"/educators/update",
     DASH_DELETE_EDUCATOR: domain+prefixes.UTA+"/educators/delete",
 
-    //course category
+    //user course category
     CATEGORY_FETCH: domain+prefixes.PTA+"/categories/fetch",
 
-    //course
+    //user course
     COURSE_CREATE: domain+prefixes.UTA+"/courses/create",
     COURSE_FETCH: domain+prefixes.UTA+"/course/load",
     COURSE_EDIT: domain+prefixes.UTA+"/course/edit/",
     COURSE_PUBLISH_REQUEST: domain+prefixes.MA+"/user/course/validation/check",
 
-    //MyCourses
+    //user MyCourses
     MY_COURSES_FETCH: domain+prefixes.UTA+"/courses/fetch/",
 
-    //TRANSACTION
-    PORTALS_LIST: domain+prefixes.MA+"/portals/get",
+    //user transaction
     CREATE_TRANSACTION: domain+prefixes.UTA+"/transaction/generate",
     OPEN_TRANSACTION_PORTAL: domain+prefixes.UTA+"/product/pay",
     GET_TRANSACTION: domain+prefixes.UTA+"/transaction/get",
+
+    //student auth
+    STD_CHECK_PHONENUMBER: domain+prefixes.PSTA+"/checkphonenumber",
+    STD_LOGIN: domain+prefixes.PSTA+"/login",
+    STD_SEND_VERIFICATION_CODE: domain+prefixes.PSTA+"/verificationcode/send",
+    STD_CHECK_VERIFICATION_CODE: domain+prefixes.PSTA+"/verificationcode/check",
+    STD_REGISTRATION: domain+prefixes.PSTA+"/register",
+
+    //student profile
+    STD_PROFILE: domain+prefixes.STA+"/profile/load",
+    STD_UPDATE_PROFILE: domain+prefixes.STA+"/profile/update",
+
+    //student panel
+    STD_COURSES_LIST: domain+prefixes.STA+"/courses/fetch",
+    STD_WISHLIST: domain+prefixes.STA+"/courses/favorite",
+    STD_RECIEPTS: domain+prefixes.STA+"/courses/favorite",
+
+    //student course
+    STD_VIEW_COURSE: domain+prefixes.STA+"/course/load",
+    STD_ADD_WISHLIST: domain+prefixes.STA+"/course/favorite/add",
+    STD_REMOVE_WISHLIST: domain+prefixes.STA+"/course/favorite/remove",
+    STD_GET_COURSE_SCORE: domain+prefixes.STA+"/course/score/get",
+    STD_SET_COURSE_SCORE: domain+prefixes.STA+"/course/score/update",
+
+    //student transaction
+    STD_CREATE_TRANSACTION: domain+prefixes.STA+"/transaction/generate",
+    STD_GET_TRANSACTION: domain+prefixes.STA+"/transaction/get",
+    STD_OPEN_TRANSACTION_PORTAL: domain+prefixes.STA+"/course/pay",
 }
 
 /**
@@ -66,7 +96,12 @@ function Get(url, config, cb){
 
     if(!config.noToken){
         if(!config.params){config.params = {};}
-        config.params["token"] = getCookie(env.TOKEN_KEY);
+
+        if( url.search(env.PREFIXES.PSTA) == -1 && url.search(env.PREFIXES.STA) == -1){
+            data["token"] = getCookie(env.TOKEN_KEY);
+        }else{
+            data["token"] = getCookie(env.STUDENT_TOKEN_KEY);
+        }
     }
 
     axios.get(url, config).then(res=>{
@@ -98,7 +133,12 @@ function Post(url, data, config={}, cb){
 
     if(!config.noToken){
         if(!data){data = {}};
-        data["token"] = getCookie(env.TOKEN_KEY);
+
+        if( url.search(env.PREFIXES.PSTA) == -1 && url.search(env.PREFIXES.STA) == -1){
+            data["token"] = getCookie(env.TOKEN_KEY);
+        }else{
+            data["token"] = getCookie(env.STUDENT_TOKEN_KEY);
+        }
     }
 
     if(config.formData){

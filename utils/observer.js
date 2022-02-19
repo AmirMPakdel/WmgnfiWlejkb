@@ -9,6 +9,7 @@ export default class Observer{
         onResize:[],
         onUserChange:[],
         onSideMenuToggle:[],
+        onStudentChange:[],
     }
 
     /**
@@ -40,6 +41,11 @@ export default class Observer{
      */
     static execute(name, ...params){
     
+        if(!Observer.observers[name]){
+            console.log("No such Observer name");
+            return;
+        }
+        
         Observer.observers[name].forEach(func => {
             
             if(typeof func === "function"){

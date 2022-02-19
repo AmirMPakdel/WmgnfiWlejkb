@@ -7,7 +7,7 @@ export default class ViewRecieptModel{
     * @param {object} params
     * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
     */
-    getReciept(params, cb){
+    getMyReciepts(params, cb){
     
         if(env.MOCKING_SERVER){
             setTimeout(()=>{
