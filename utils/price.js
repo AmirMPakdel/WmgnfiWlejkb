@@ -80,3 +80,16 @@ export function rangePrice(min, max){
     return " "+startPrice+" "+" تا "+endPrice+" "+unit;
 }
 
+export function calcDiscountPercent(price, discount_price){
+
+    if(discount_price){
+
+        price = Number(price);
+        discount_price = Number(discount_price);
+        let p = (discount_price*100) / price;
+        return Math.floor(p);
+    }else{
+        return 0;
+    }
+}
+

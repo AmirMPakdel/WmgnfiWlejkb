@@ -1,5 +1,8 @@
 import CourseInvoiceController from "@/controllers/dynamics/index/CourseInvoiceController";
-import { priceFormat } from "@/utils/price";
+import myServer from "@/utils/myServer";
+import { calcDiscountPercent, priceFormat } from "@/utils/price";
+import Storage from "@/utils/storage";
+import { getCurrentShamsiDate } from "@/utils/time";
 import ListRow from "@/views/components/buyCredit/ListRow";
 import Loading from "@/views/components/global/Loading";
 import MainButton from "@/views/components/global/MainButton";
@@ -25,14 +28,20 @@ export default class CourseInvoice extends Component {
         this.controller = new CourseInvoiceController(this);
         this.state = {
             loading:true,
+            student:{},
             portals:[],
+            course:{},
             selected_portal:null,
             rules_accept:false,
+            confirm_loading:false,
         }
     }
     
     componentDidMount(){
         this.controller.initialize();
+
+        let student = Storage.get("student");
+        this.setState({ student });
     }
 
     onPortal=(id)=>{
@@ -42,8 +51,18 @@ export default class CourseInvoice extends Component {
     onAccept=()=>{
         this.setState({rules_accept:!this.state.rules_accept})
     }
+
+    onConfirm=()=>{
+        if(!(this.state.rules_accept && this.state.selected_portal)){return};
+        this.controller.onConfirm();
+    }
     
     render(){
+        let crs = this.state.course;
+        let edu = getEducator(crs);
+        let user_fullname = this.state.student.first_name+" "+this.state.student.last_name;
+        let {price, total_price, off_percent} = getPriceData(crs);
+
         return(
             <IndexLayout>
 
@@ -58,19 +77,19 @@ export default class CourseInvoice extends Component {
                             <div className={styles.course_info_wrapper}>
 
                                 <div className={styles.course_logo} 
-                                style={{backgroundImage:`url(${"https://cdn.iconscout.com/icon/free/png-256/adobe-illustrator-2522532-2132720.png"})`}}/>
+                                style={{backgroundImage:`url(${myServer.MediaFiles.publicImage(crs.logo)})`}}/>
 
                                 <div className={styles.course_info}>
 
                                     <div className={styles.c_info_column}>
-                                        <div className={styles.c_info_1+" tilt"}>{"دوره مبتی تا پیشرفته ادوبی adobe illustrator و یادگیری نقاشی دیجیتال"}</div>
-                                        <div className={styles.c_info_2}>{"مدرس : علیرضا رمضانی"}</div>
+                                        <div className={styles.c_info_1+" tilt"}>{crs.title}</div>
+                                        <div className={styles.c_info_2}>{edu}</div>
                                     </div>
 
                                     <Price className={styles.c_price} 
-                                    price={400000}
-                                    offPercent={10}
-                                    orginalPrice={440000}/>
+                                    price={crs.price}
+                                    offPercent={0}
+                                    orginalPrice={0}/>
 
                                 </div>
 
@@ -84,21 +103,21 @@ export default class CourseInvoice extends Component {
 
                             <div className={styles.invoice_list_wrapper}>
 
-                                <ListRow title={"عنوان دوره"} value={"دوره مبتی تا پیشرفته ادوبی adobe illustrator و یادگیری نقاشی دیجیتال"}/>
+                                <ListRow title={"عنوان دوره"} value={crs.title}/>
 
-                                <ListRow title={"نام پرداخت کننده"} value={"امیرمحمد پاکدل"}/>
+                                <ListRow title={"نام پرداخت کننده"} value={user_fullname}/>
 
-                                <ListRow title={"تاریخ"} value={"1400/02/16"}/>
+                                <ListRow title={"تاریخ"} value={getCurrentShamsiDate()}/>
 
-                                <ListRow title={"قیمت دوره"} value={priceFormat(440000)+" تومان"}/>
+                                <ListRow title={"قیمت دوره"} value={priceFormat(price)+" تومان"}/>
 
-                                <ListRow title={"درصد تخفیف"} value={10+"%"}/>
+                                <ListRow title={"درصد تخفیف"} value={off_percent+"%"}/>
 
-                                <ListRow title={"مبلغ با احتساب تخفیف"} value={priceFormat(400000)+" تومان"}/>
+                                <ListRow title={"مبلغ با احتساب تخفیف"} value={priceFormat(total_price)+" تومان"}/>
 
-                                <ListRow title={"مبلغ کل به حروف"} value={persianNToText.getText(400000)+" تومان"}/>
+                                <ListRow title={"مبلغ کل به حروف"} value={persianNToText.getText(total_price)+" تومان"}/>
 
-                                <ListRow title={"مبلغ کل"} value={priceFormat(400000)+" تومان"}/>
+                                <ListRow title={"مبلغ کل"} value={priceFormat(total_price)+" تومان"}/>
 
                                 <div className={styles.protal_title+" tilt"}>{"انتخاب درگاه پرداخت"}</div>
 
@@ -107,13 +126,13 @@ export default class CourseInvoice extends Component {
                                         this.state.portals.map((v,i)=>(
 
                                             <div key={i} className={styles.portal_item_con+" amp_btn "+ ((this.state.selected_portal==v.id)?"btc2 ":"blc2 ")}
-                                            onClick={()=>this.onPortal(v.id)}>
+                                            onClick={()=>this.onPortal(v.name)}>
 
-                                                <img className={styles.portal_item_icon} src={v.icon}/>
+                                                <img className={styles.portal_item_icon} src={v.logo}/>
                                                 
                                                 <div className={styles.portal_item_text+" cpnt"}>{v.title}</div>
 
-                                                <Radio checked={this.state.selected_portal==v.id}/>
+                                                <Radio checked={this.state.selected_portal==v.name}/>
 
                                             </div>
                                         ))
@@ -133,6 +152,7 @@ export default class CourseInvoice extends Component {
                                 <MainButton className={styles.invoice_confirm_btn}
                                 title={"پرداخت"}
                                 disabled={!(this.state.rules_accept && this.state.selected_portal)}
+                                loading={this.state.confirm_loading}
                                 onClick={this.onConfirm}/>
 
                             </div>
@@ -145,4 +165,45 @@ export default class CourseInvoice extends Component {
             </IndexLayout>
         )
     }
+}
+
+const getEducator = (course)=>{
+
+    let str = "";
+    if(course && course.educators){
+
+        let edus = course.educators;
+        if(edus.length > 1){
+            str += "مدرسین : ";
+        }else{
+            str += "مدرس : ";
+        }
+        edus.forEach((v, i, a)=>{
+            str+= v.first_name +" "+ v.last_name;
+            if(i+1 != a.length){
+                str+=", ";
+            }
+        });
+    }
+    return str;
+}
+
+const getPriceData = (course)=>{
+
+    let data = {
+        price:"",
+        total_price:"",
+        off_percent:"",
+    }
+    if(course){
+        data.price = course.price;
+        if(course.discount_price){
+            data.total_price = course.discount_price;
+            data.off_percent = calcDiscountPercent(course.price, course.discount_price);
+        }else{
+            data.total_price = course.price;
+            data.off_percent = "0";
+        }
+    }
+    return data;
 }

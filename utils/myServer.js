@@ -96,12 +96,6 @@ function Get(url, config, cb){
 
     if(!config.noToken){
         if(!config.params){config.params = {};}
-
-        if( url.search(env.PREFIXES.PSTA) == -1 && url.search(env.PREFIXES.STA) == -1){
-            data["token"] = getCookie(env.TOKEN_KEY);
-        }else{
-            data["token"] = getCookie(env.STUDENT_TOKEN_KEY);
-        }
     }
 
     axios.get(url, config).then(res=>{
@@ -113,6 +107,7 @@ function Get(url, config, cb){
     }).catch(e=>{
         
         //TODO: handle this error
+        console.log(e);
 
     });
 }

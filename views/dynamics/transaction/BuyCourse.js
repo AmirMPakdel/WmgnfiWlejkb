@@ -1,4 +1,4 @@
-import UserBuyCreditController from "@/controllers/transaction/UserBuyCreditController";
+import BuyCourseController from "@/controllers/transaction/BuyCourseController";
 import { priceFormat } from "@/utils/price";
 import { sqlTimeStamp2ShamsiDateTime } from "@/utils/time";
 import ListRow from "@/views/components/buyCredit/ListRow";
@@ -6,22 +6,22 @@ import Loading from "@/views/components/global/Loading";
 import MainButton from "@/views/components/global/MainButton";
 import IndexLayout from "@/views/layouts/IndexLayout";
 import React, { Component } from "react";
-import styles from "./UserBuyCredit.module.css";
+import styles from "./BuyCourse.module.css";
 const persianNToText = require('number-to-persian-text');
 
 /**
-* Props of UserBuyCredit Component
+* Props of BuyCourse Component
 * @typedef Props
 * @property {string} className
 * @property {React.CSSProperties} style
 * 
 * @extends {Component<Props>}
 */
-export default class UserBuyCredit extends Component {
+export default class BuyCourse extends Component {
     
     constructor(props){
         super(props);
-        this.controller = new UserBuyCreditController(this);
+        this.controller = new BuyCourseController(this);
         this.state = {
             loading:true,
             details:{},
@@ -33,7 +33,7 @@ export default class UserBuyCredit extends Component {
     }
 
     onConfirm=()=>{
-        window.location.href = env.PATHS.USER_OVERVIEW;
+        window.location.href = env.PATHS.STUDENT_COURSES;
     }
 
     onPrint=()=>{
