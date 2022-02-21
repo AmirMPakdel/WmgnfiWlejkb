@@ -47,9 +47,15 @@ export default class FloatingCard extends Component {
                     {/* <MainButton className={styles.fltcrd_btn1} title={"افزودن به سبد خرید"}/>
 
                     <MainButton className={styles.fltcrd_btn2} title={"خرید سریع"} borderMode/> */}
-                    <MainButton className={styles.fltcrd_btn2} title={"خرید"}
-                    onClick={this.onBuy}/>
-
+                    
+                    {
+                        c.registered?
+                        <div className={styles.fltcrd_btn3+" bgsc fdc1 bdyt"}>{"خریداری شده"}</div>
+                        :
+                        <MainButton className={styles.fltcrd_btn2} title={"خرید"}
+                        onClick={this.onBuy}/>
+                    }
+                    
                     <div className={styles.space1}/>
 
                     <IconLine icon={"/statics/img/play_l.svg"} text={c.duration+" ساعت دوره"}/>

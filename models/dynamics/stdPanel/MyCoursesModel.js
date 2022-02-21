@@ -9,7 +9,7 @@ export default class MyCoursesModel{
     */
     getMyCourses(params, cb){
     
-        if(env.MOCKING_SERVER || 1){
+        if(env.MOCKING_SERVER){
             setTimeout(()=>{
                 cb(null, {
                     result_code:env.SC.SUCCESS,
@@ -19,7 +19,7 @@ export default class MyCoursesModel{
             return;
         }
     
-        myServer.Post(myServer.urls.SOME_URL, params, {}, (err, data)=>{
+        myServer.Post(myServer.urls.STD_COURSES_LIST, params, {}, (err, data)=>{
     
             if(!err){
             

@@ -23,8 +23,8 @@ export default class MyRecieptsController{
             if(data.result_code === env.SC.SUCCESS){
                 this.view.setState({
                     loading:false,
-                    list: d.list,
-                    total: d.total,
+                    list: d,
+                    total: d.length,
                     currentPage: page,
                 })
             }

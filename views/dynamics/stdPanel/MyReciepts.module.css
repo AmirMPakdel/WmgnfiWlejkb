@@ -6,38 +6,68 @@
     align-content: flex-start;
 }
 
-.mcc_con{
+.itm_con{
     width: calc(50% - 1.5rem);
-    height: 5rem;
     margin-top: 2rem;
+    padding: 0.5rem 0;
     border-radius: 1rem;
     display: flex;
     align-items: center;
 }
 
-.mcc_con:nth-child(odd){
+.itm_con:nth-child(odd){
     margin-left: 3rem;
 }
 
-.mcc_icon{
-    background-color: black;
-    height: 3rem;
-    width: 3rem;
-    border-radius: 0.7rem;
-    background-position: center;
-    background-size: cover;
-    margin-right: 1.25rem;
+.itm_right_sec{
+    width: calc(100% - 7rem);
+    max-width: calc(100% - 7rem);
+    padding-right: 1rem;
 }
 
-.mcc_title{
-    width: calc(100% - 13.5rem);
-    margin-right: 1rem;
+.itm_title{
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
     font-weight: 500;
 }
 
-.mcc_show_btn{
-    margin-right: 1rem !important;
-    width: 4rem !important;
+.itm_row{
+    display: flex;
+    width: 100%;
+    margin-top: 0.5rem;
+    justify-content: space-between;
+}
+
+.itm_success{
+    font-weight: 700;
+}
+
+.itm_date{
+    font-weight: 500;
+    direction: ltr;
+}
+
+.itm_order_no{
+    font-weight: 500;
+}
+
+.itm_price{
+    font-weight: 700;
+}
+
+.itm_left_sec{
+    width: 7rem;
+    min-width: 7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.itm_show_btn{
+    width: 5rem !important;
+    margin: 0 !important;
 }
 
 .remove_icon{
@@ -57,34 +87,34 @@
 
 @media(max-width:1024px){
     
-    .mcc_con{
+    .itm_con{
         width: 90%;
         margin-right: 5%;
     }
     
-    .mcc_con:nth-child(odd){
+    .itm_con:nth-child(odd){
         margin-left: 0;
     }
 }
 
 @media(max-width:767px){
-    .mcc_con{
+    .itm_con{
         width: 96%;
         margin-right: 2%;
     }
 
-    .mcc_icon{
+    .itm_icon{
         height: 2.5rem;
         width: 2.5rem;
         margin-right: 0.6rem;
     }
     
-    .mcc_title{
+    .itm_title{
         width: calc(100% - 10.9rem);
         margin-right: 0.6rem;
     }
     
-    .mcc_show_btn{
+    .itm_show_btn{
         margin-right: 0.6rem !important;
         width: 4rem !important;
     }

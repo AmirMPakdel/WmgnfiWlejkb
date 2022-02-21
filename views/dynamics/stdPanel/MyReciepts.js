@@ -7,6 +7,8 @@ import MainButton from "@/views/components/global/MainButton";
 import StudentPanelLayout from "@/views/layouts/StudentPanelLayout";
 import WrapperT1 from "@/views/layouts/WrapperT1";
 import Pagination from "@/views/components/global/Pagination";
+import {sqlTimeStamp2ShamsiDateTime} from "@/utils/time";
+import {priceFormat} from "@/utils/price";
 
 /**
 * Props of MyReciepts Component
@@ -83,14 +85,38 @@ class MyRecieptItem extends Component{
     render(){
         let d = this.props.data;
         return(
-            <div className={styles.mcc_con+" bgw"}>
+            <div className={styles.itm_con+" bgw"}>
 
-                <div className={styles.mcc_title+" bdyt"}>{d.title}</div>
+                <div className={styles.itm_right_sec}>
 
-                <MainButton className={styles.mcc_show_btn}
-                title={"نمایش"}
-                onClick={this.onShow}/>
+                    <div className={styles.itm_title+" bdyt"}>{d.title}</div>
 
+                    <div className={styles.itm_row}>
+
+                        <div className={styles.itm_success+(d.success?" fsc":" fec")}>{d.success?"موفق":"ناموفق"}</div>
+
+                        <div className={styles.itm_date}>{sqlTimeStamp2ShamsiDateTime(d.date)}</div>
+
+                    </div>
+
+                    <div className={styles.itm_row}>
+
+                        <div className={styles.itm_order_no}>{"#" + d.order_no}</div>
+
+                        <div className={styles.itm_price}>{priceFormat(d.price)+" تومان"}</div>
+
+                    </div>
+                    
+                </div>
+
+                <div className={styles.itm_left_sec}>
+
+                    <MainButton className={styles.itm_show_btn}
+                    title={"نمایش"}
+                    onClick={this.onShow}/>
+
+                </div>
+                
             </div>
         )
     }

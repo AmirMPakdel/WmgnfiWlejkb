@@ -103,7 +103,7 @@ export default class UserBuyCredit extends Component {
 
                         <ListRow title={"نام پرداخت کننده"} value={dt.name}/>
                         
-                        <ListRow title={"درگاه پرداخت"} value={dt.portal}/>
+                        {/* <ListRow title={"درگاه پرداخت"} value={dt.portal}/> */}
                         
                         {
                             dt.success?

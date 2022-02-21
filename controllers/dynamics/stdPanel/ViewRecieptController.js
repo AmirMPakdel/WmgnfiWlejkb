@@ -1,4 +1,5 @@
 import ViewRecieptModel from "@/models/dynamics/stdPanel/ViewRecieptModel";
+import { getUrlPart } from "@/utils/helpers";
 import ViewReciept from "@/views/dynamics/stdPanel/ViewReciept";
 
 export default class ViewRecieptController{
@@ -9,5 +10,22 @@ export default class ViewRecieptController{
         this.model = new ViewRecieptModel();
     }
     
+    getReciept(){
+
+        let params = {
+            transaction_id: getUrlPart(3)
+        }
+
+        this.model.getReciept(params, (err, data)=>{
+
+            if(data.result_code === env.SC.SUCCESS){
+
+                this.view.setState({
+                    loading: false,
+                    details: data.data,
+                });
+            }
+        });
+    }
     
 }

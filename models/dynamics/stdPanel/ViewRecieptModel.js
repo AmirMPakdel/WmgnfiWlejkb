@@ -7,7 +7,7 @@ export default class ViewRecieptModel{
     * @param {object} params
     * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
     */
-    getMyReciepts(params, cb){
+    getReciept(params, cb){
     
         if(env.MOCKING_SERVER){
             setTimeout(()=>{
@@ -16,7 +16,7 @@ export default class ViewRecieptModel{
             return;
         }
     
-        myServer.Post(myServer.urls.SOME_URL, params, {}, (err, data)=>{
+        myServer.Post(myServer.urls.STD_GET_TRANSACTION, params, {}, (err, data)=>{
     
             if(!err){
             

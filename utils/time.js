@@ -50,7 +50,7 @@ export function shamsi2Miladi(shamsi, seperator){
 
 export function sqlTimeStamp2ShamsiDateTime(sts){
 
-    let dt = moment.from(sts).locale('fa').format('YYYY/MM/DD-HH:mm');
+    let dt = moment.from(sts).locale('fa').format('YYYY/MM/DD - HH:mm');
 
     return dt;
 }

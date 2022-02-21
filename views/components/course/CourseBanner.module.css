@@ -74,6 +74,22 @@
     display: none;
 }
 
+.tablet_buy_btn{
+    
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    user-select: none;
+}
+
+.tablet_icon_btn_t{
+    width: 8rem;
+    white-space: normal;
+    padding-top: 0.2rem;
+}
+
 @media(max-width:1024px){
 
     .title{
@@ -136,6 +152,12 @@
     }
 
     .tablet_buy_btn{
+        width: 60% !important;
+        margin-top: 1rem !important;
+        min-width: 16rem;
+    }
+
+    .tablet_buy_btn2{
         width: 60% !important;
         margin-top: 1rem !important;
         min-width: 16rem;

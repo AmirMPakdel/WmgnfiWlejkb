@@ -66,7 +66,7 @@ const urls = {
     //student panel
     STD_COURSES_LIST: domain+prefixes.STA+"/courses/fetch",
     STD_WISHLIST: domain+prefixes.STA+"/courses/favorite",
-    STD_RECIEPTS: domain+prefixes.STA+"/courses/favorite",
+    STD_RECIEPTS: domain+prefixes.STA+"/transaction/get/list",
 
     //student course
     STD_VIEW_COURSE: domain+prefixes.STA+"/course/load",

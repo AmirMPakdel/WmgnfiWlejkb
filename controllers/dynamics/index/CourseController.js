@@ -33,5 +33,57 @@ export default class CourseController{
             }
         });
     }
+
+    addToWishlist(){
+
+        let v = this.view;
+        if(v.fav_btn_lock){return};
+
+        v.fav_btn_lock = true;
+
+        v.state.course.is_favorite = 1;
+        v.setState(v.state);
+
+        let params = {
+            course_id: getUrlPart(2)
+        }
+
+        this.model.addToWishlist(params, (err, data)=>{
+
+            if(data.result_code !== env.SC.SUCCESS){
+
+                v.state.course.is_favorite = 0;
+                v.setState(v.state);
+            }
+
+            this.view.fav_btn_lock = false;
+        });
+    }
+
+    removeFromWishlist(){
+
+        let v = this.view;
+        if(v.fav_btn_lock){return};
+
+        v.fav_btn_lock = true;
+
+        v.state.course.is_favorite = 0;
+        v.setState(v.state);
+
+        let params = {
+            course_id: getUrlPart(2)
+        }
+
+        this.model.removeFromWishlist(params, (err, data)=>{
+
+            if(data.result_code !== env.SC.SUCCESS){
+
+                v.state.course.is_favorite = 1;
+                v.setState(v.state);
+            }
+
+            this.view.fav_btn_lock = false;
+        });
+    }
     
 }

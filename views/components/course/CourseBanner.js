@@ -64,11 +64,19 @@ export default class CourseBanner extends Component {
                     icon={"/statics/img/send_l-w.svg"} title={"به اشتراک گذاری"}/>
 
                     {
-                        Math.random()>0.5?
-                        <IconButton className={styles.tablet_icon_btn} borderMode
-                        icon={"/statics/img/heart_l-w.svg"} title={"افزودن به علاقمندی ها"}/>:
-                        <IconButton className={styles.tablet_icon_btn} borderMode
-                        icon={"/statics/img/heart_b.svg"} title={"حذف از علاقمندی ها"}/>
+                        c.is_favorite?
+                        <IconButton className={styles.tablet_icon_btn} 
+                        borderMode
+                        icon={"/statics/img/heart_b.svg"} 
+                        title={<div className={styles.tablet_icon_btn_t}>{"حذف از علاقمندی ها"}</div>}
+                        onClick={this.props.parent.removeFromWishlist}/>
+                        :
+                        <IconButton className={styles.tablet_icon_btn} 
+                        borderMode
+                        icon={"/statics/img/heart_l-w.svg"}
+                        title={<div className={styles.tablet_icon_btn_t}>{"افزودن به علاقمندی ها"}</div>}
+                        onClick={this.props.parent.addToWishlist}/>
+                        
                     }
                     
                 </div>
@@ -112,9 +120,16 @@ export default class CourseBanner extends Component {
                     {/* <MainButton className={styles.tablet_buy_btn} title={"خرید سریع"}
                     whiteBorder={true}/> */}
 
-                    <MainButton className={styles.tablet_buy_btn} title={"خرید"}
-                    onClick={this.onBuy}
-                    whiteBorder={false}/>
+                    {
+                        c.registered?
+                        <div className={styles.tablet_buy_btn+" bgsc fdc1 bdyt"}>{"خریداری شده"}</div>
+                        :
+                        <MainButton className={styles.tablet_buy_btn} 
+                        title={"خرید"}
+                        onClick={this.onBuy}
+                        whiteBorder={false}/>
+                    }
+                    
 
                 </div>
             </>

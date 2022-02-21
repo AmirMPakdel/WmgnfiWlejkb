@@ -30,7 +30,15 @@ export default class Course extends Component {
         
         this.controller.getCourse();
     }
-    
+
+    addToWishlist=()=>{
+        this.controller.addToWishlist();
+    }
+
+    removeFromWishlist=()=>{
+        this.controller.removeFromWishlist();
+    }
+
     render(){
         let c = this.state.course;
         return(
