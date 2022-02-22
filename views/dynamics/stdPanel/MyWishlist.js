@@ -64,6 +64,7 @@ export default class MyWishlist extends Component {
 
                         <div className={styles.pagination_con}>
                             <Pagination 
+                            onPageChange={this.onChangePage}
                             currentPage={this.state.currentPage}
                             total={this.state.total}
                             pageSize={this.state.pageSize}/>
@@ -97,7 +98,7 @@ class MyWishListCard extends Component{
             <div className={styles.mcc_con+" bgw"}>
 
                 <div className={styles.mcc_icon}
-                style={{ backgroundImage:`url("${myServer.MediaFiles.publicImage(d.image)}")`}}/>
+                style={{ backgroundImage:`url("${myServer.MediaFiles.publicImage(d.logo)}")`}}/>
 
                 <div className={styles.mcc_title+" bdyt"}>{d.title}</div>
 

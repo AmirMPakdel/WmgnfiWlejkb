@@ -61,6 +61,7 @@ export default class MyCourses extends Component {
 
                         <div className={styles.pagination_con}>
                             <Pagination 
+                            onPageChange={this.onChangePage}
                             currentPage={this.state.currentPage}
                             total={this.state.total}
                             pageSize={this.state.pageSize}/>

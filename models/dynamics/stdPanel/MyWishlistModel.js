@@ -9,11 +9,11 @@ export default class MyWishlistModel{
     */
     getMyWishlist(params, cb){
     
-        if(env.MOCKING_SERVER || 1){
+        if(env.MOCKING_SERVER){
             setTimeout(()=>{
                 cb(null, {
                     result_code:env.SC.SUCCESS,
-                    data: fakeMyCourseData,
+                    data: getFakeMyCourseData(42),
                 });
             }, 2000, cb);
             return;
@@ -56,4 +56,19 @@ const fakeMyCourseData = {
             image: "620bf70c653919.06551221",
         }
     ]
+}
+
+const getFakeMyCourseData=(number, page, per_page)=>{
+    let list = [];
+    for(let i=0; i<10; i++){
+        list.push({
+            id: number - i,
+            logo: "620bf70c653919.06551221",
+            title: "دروه آموزش ساخت بازی ویدیویی با unreal engine",
+        });
+    }
+    return {
+        list,
+        total:number
+    };
 }

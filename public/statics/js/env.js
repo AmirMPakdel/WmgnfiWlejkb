@@ -51,6 +51,7 @@ var env = {
         STUDENT_COURSES: "/stdPanel/myCourses",
         STUDENT_WISHLIST: "/stdPanel/myWishlist",
         STUDENT_RECIEPTS: "/stdPanel/myReciepts",
+        STUDENT_EDIT_PROFILE: "/stdPanel/editProfile",
         STUDENT_VIEW_RECIEPT: "/stdPanel/viewReciept/",
         //user index
         COURSE: "/course/",
