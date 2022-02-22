@@ -23,6 +23,7 @@
     z-index: 2;
     margin-top: 2rem;
     user-select: none;
+    direction: rtl;
 }
 
 .row1{
@@ -35,7 +36,7 @@
     margin-bottom: 1rem;
 }
 
-.row1 div{
+.row1_div{
     margin: 0 0.5rem;
     white-space: nowrap;
 }
@@ -48,6 +49,7 @@
 
 .rating{
     padding-top: 0;
+    margin-left: 0.5rem;
 }
 
 .dashed{
@@ -75,13 +77,13 @@
 }
 
 .tablet_buy_btn{
-    
     border-radius: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
     font-weight: 500;
     user-select: none;
+    height: 2.6rem;
 }
 
 .tablet_icon_btn_t{
@@ -170,15 +172,15 @@
         flex-direction: column-reverse;
     }
 
-    .row1 div{
+    .row1_div{
         line-height: 1.5rem;
     }
 
-    .row1 div:nth-child(2){
+    .row1_div:nth-child(2){
         display: none;
     }
 
-    .row1 div:nth-child(4){
+    .row1_div:nth-child(4){
         display: none;
     }
 

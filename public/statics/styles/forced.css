@@ -99,3 +99,14 @@
 .ant-modal-body{
     padding: 0 !important;
 }
+
+/*Rate*/
+.ant-rate-star-second{
+    position: unset !important;
+}
+.ant-rate-star-second span{
+    position: unset !important;
+}
+.ant-rate-star-second svg{
+    position: unset !important;
+}

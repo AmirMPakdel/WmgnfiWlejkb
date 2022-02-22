@@ -26,6 +26,7 @@ export default class MyReciepts extends Component {
         this.state = {
             loading:true,
             list:[],
+            pageSize:10,
             currentPage:0,
             total:0,
         }
@@ -63,7 +64,7 @@ export default class MyReciepts extends Component {
                             <Pagination 
                             currentPage={this.state.currentPage}
                             total={this.state.total}
-                            pageSize={20}/>
+                            pageSize={this.state.pageSize}/>
                         </div>
                         </>
                     }

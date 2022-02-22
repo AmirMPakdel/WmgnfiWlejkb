@@ -24,6 +24,10 @@ export default class CourseBanner extends Component {
     onBuy=()=>{
         window.location.href = env.PATHS.COURSE_INVOICE+getUrlPart(2);
     }
+
+    // onRate=(rate)=>{
+    //     this.props.parent.onRate(rate);
+    // }
     
     render(){
         let ps = this.props.parent.state;
@@ -38,13 +42,16 @@ export default class CourseBanner extends Component {
 
                 <div className={styles.row1+"  flc1i cpnt"}>
 
-                    <div>{"آخرین بروزرسانی : 1400/02/05"}</div>
-                    <div>|</div>
-                    <div>{"شرکت کننده در دوره"+ " : " +priceFormat(c.sells)}</div>
-                    <div>|</div>
-                    <div className={styles.rating_sec}>
-                        <Rating className={styles.rating} rate={c.score}/>
-                        {c.score+" (466,551)"}
+                    <div className={styles.row1_div}>{"آخرین بروزرسانی : 1400/02/05"}</div>
+                    <div className={styles.row1_div}>|</div>
+                    <div className={styles.row1_div}>{"شرکت کننده در دوره"+ " : " +priceFormat(c.sells)}</div>
+                    <div className={styles.row1_div}>|</div>
+                    <div className={styles.rating_sec+" "+styles.row1_div}>
+                        <Rating className={styles.rating}
+                        rate={c.score}
+                        disabled={1}
+                        onChange={this.onRate}/>
+                        {"( "+c.score+" )"}
                     </div>
                     
 

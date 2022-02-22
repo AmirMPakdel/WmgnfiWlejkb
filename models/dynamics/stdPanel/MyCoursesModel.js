@@ -9,17 +9,19 @@ export default class MyCoursesModel{
     */
     getMyCourses(params, cb){
     
+        
         if(env.MOCKING_SERVER){
             setTimeout(()=>{
-                cb(null, {
-                    result_code:env.SC.SUCCESS,
-                    data: fakeMyCourseData,
-                });
+                cb(null, {result_code:env.SC.SUCCESS});
             }, 2000, cb);
             return;
         }
+
+        let url_params = params.chunk_count+"/"+params.page_count;
+        params.chunk_count = undefined;
+        params.page_count = undefined;
     
-        myServer.Post(myServer.urls.STD_COURSES_LIST, params, {}, (err, data)=>{
+        myServer.Post(myServer.urls.STD_COURSES_LIST+url_params, params, {}, (err, data)=>{
     
             if(!err){
             

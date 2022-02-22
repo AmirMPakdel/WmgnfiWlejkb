@@ -21,8 +21,12 @@ export default class MyRecieptsModel{
             }, 2000, cb);
             return;
         }
+
+        let url_params = params.chunk_count+"/"+params.page_count;
+        params.chunk_count = undefined;
+        params.page_count = undefined;
     
-        myServer.Post(myServer.urls.STD_RECIEPTS, params, {}, (err, data)=>{
+        myServer.Post(myServer.urls.STD_RECIEPTS+url_params, params, {}, (err, data)=>{
 
             if(!err){
             

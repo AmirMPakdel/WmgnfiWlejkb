@@ -11,11 +11,21 @@ export default class MyCoursesController{
 
     loadCoursePage(page){
 
-        this.view.setState({
+        window.scrollTo(null, 0);
+        
+        let v = this.view;
+        let vs = v.state;
+
+        v.setState({
             loading:true
         });
 
-        this.model.getMyCourses(null, (err, data)=>{
+        let params={
+            chunk_count: vs.pageSize,
+            page_count: page,
+        }
+
+        this.model.getMyCourses(params, (err, data)=>{
 
             let d = data.data;
             if(data.result_code === env.SC.SUCCESS){
