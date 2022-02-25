@@ -89,7 +89,7 @@ class MyCourseCard extends Component{
             <div className={styles.mcc_con+" bgw"}>
 
                 <div className={styles.mcc_icon}
-                style={{ backgroundImage:`url("${myServer.MediaFiles.publicImage(d.image)}")`}}/>
+                style={{ backgroundImage:`url("${myServer.MediaFiles.publicImage(d.logo)}")`}}/>
 
                 <div className={styles.mcc_title+" bdyt"}>{d.title}</div>
 
