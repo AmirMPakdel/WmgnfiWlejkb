@@ -54,6 +54,7 @@ var env = {
         STUDENT_EDIT_PROFILE: "/stdPanel/editProfile",
         STUDENT_VIEW_RECIEPT: "/stdPanel/viewReciept/",
         //user index
+        HOMEPAGE: "/",
         COURSE: "/course/",
         COURSE_INVOICE: "/courseInvoice/",
         //user dashboard

@@ -33,14 +33,60 @@ export default class EditHomePageSecCard extends Component {
         let pr = this.props;
         let d = this.props.data;
 
-        if(pr.type=="slider" || pr.type=="footer"){
-            deletable = false;
+        let control_sec = styles.control_sec;
+        if(d.type==1 || d.type==2){
+            control_sec = styles.control_sec2;
         }
 
         return(
             <div className={styles.con+" bgw md_card_shd"}>
 
-                <div className={styles.right_sec}>
+                <div className={styles.visible_sec}>
+
+                {
+                    d.visible?
+                    <img className={styles.visiblity+" amp_btn"} 
+                    src={"/statics/svg2/visible_icon.svg"}/>
+                    :
+                    <img className={styles.visiblity+" amp_btn"} 
+                    src={"/statics/svg2/visible_not_icon.svg"}/>
+                }
+
+                </div>
+
+                <div className={styles.wrapper1}>
+
+                    <div className={styles.name_sec+" tilt bgtc1"}>
+                        {
+                            type2Name(d.type)
+                        }
+                    </div>
+
+                    <div className={styles.title_sec+" bdyt"}>
+                        {
+                            d.title
+                        }
+                    </div>
+
+                </div>
+
+                <div className={control_sec+" bgtc1"}>
+
+                    <img className={styles.edit_icon+" amp_btn"} 
+                    src={"/statics/svg2/edit.svg"}
+                    onClick={this.onEdit}/>
+
+                    {
+                        (d.type==1 || d.type==2)?
+                        null:
+                        <img className={styles.delete_icon+" amp_btn"} 
+                        src={"/statics/svg2/delete.svg"}
+                        onClick={this.onDelete}/>
+                    }
+
+                </div>
+
+                {/* <div className={styles.right_sec}>
                     
                     <div className={styles.title_con}>
                         {
@@ -91,43 +137,35 @@ export default class EditHomePageSecCard extends Component {
 
                     <img className={styles.icon} src={this.props.icon}/>
 
-                </div>
+                </div> */}
                 
             </div>
         )
     }
 }
 
-function type2Info(type){
+function type2Name(type){
 
     let text = "";
-
+    type = type.toString();
     switch(type){
 
-        case "slider":
-            text="نمایش عکس ها به صورت اسلایدر در ابتدای سایت";
+        case "1":
+            text="شروع سایت";
             break;
         
-        case "info-box":
-            text="نمایش عنوان، متن و دکمه ارجاع به یک لینک درکنار یک عکس یا ویدیو";
+        case "2":
+            text="فوتر";
             break;
         
-        case "image":
-            text="نمایش یک عکس بصورت بنر";
+        case "3":
+            text="لیست دوره ها";
             break;
 
-        case "video":
-            text="نمایش یک ویدیو";
-            break;
-
-        case "list":
-            text="نمایش لیست افقی دوره ها یا مقالات";
-            break;
-
-        case "footer":
-            text="ویرایش اطلاعات فوتر سایت";
+        case "4":
+            text="جعبه اطلاعاتی";
             break;
     }
 
-    return <div className={" bdyt"}>{text}</div>
+    return text
 }

@@ -1,5 +1,6 @@
 import HomePageController from "@/controllers/dynamics/dashboard/HomePageController";
 import EditHomePageSecCard from "@/views/components/editHomePage/EditHomePageSecCard";
+import Loading from "@/views/components/global/Loading";
 import MainButton from "@/views/components/global/MainButton";
 import EducatorDashboardLayout from "@/views/layouts/EducatorDashboardLayout";
 import React, { Component } from "react";
@@ -19,89 +20,115 @@ export default class HomePage extends Component {
         super(props);
         this.controller = new HomePageController(this);
         this.state = {
-        
+            loading: true,
+            sortMode: false,
+            elements: [],
+            hierarchy: [],
         }
     }
     
     componentDidMount(){
+        this.controller.getElements();
     }
 
     onAddNewSection=()=>{
 
+    }
+
+    onSortElements=()=>{
+        this.controller.onSortElements();
+    }
+
+    onCancelSortElements=()=>{
+        this.controller.onCancelSortElements();
+    }
+
+    onConfirmSortElements=()=>{
+        this.controller.onConfirmSortElements();
+    }
+
+    openHomePage=()=>{
+        if(this.hompPageWin){
+            this.hompPageWin.location.reload();
+            this.hompPageWin.focus();
+        }else{
+            this.hompPageWin = window.open(env.PATHS.HOMEPAGE);
+        }
     }
     
     render(){
         return(
             <EducatorDashboardLayout>
 
-                <div className={styles.con}>
+                <div className={styles.top_sec}>
+                    {
+                        !this.state.sortMode?
+                        
+                        <div className={styles.control_bar_sec}>
 
-                    <div className={styles.control_bar_sec}>
+                            <MainButton
+                            className={styles.new_element_btn}
+                            title={"ایجاد آیتم جدید"}
+                            onClick={this.onAddNewSection}/>
 
+                            <MainButton
+                            className={styles.sort_btn}
+                            title={"ویرایش ترتیب نمایش"}
+                            onClick={this.onSortElements}/>
+
+                        </div>:
+                        <div className={styles.control_bar_sec}>
+
+                            <MainButton
+                            className={styles.confirm_sort+" bgsc"}
+                            title={"ثبت"}
+                            onClick={this.onConfirmSortElements}/>
+
+                            <MainButton
+                            className={styles.cancel_sort}
+                            borderMode
+                            title={"انصراف"}
+                            onClick={this.onCancelSortElements}/>
+
+                        </div>
+                    }
+                    {
+                        !this.state.sortMode?
                         <MainButton
-                        className={styles.control_bar_btn}
-                        title={"ایجاد بخش جدید"}
-                        onClick={this.onAddNewSection}/>
-
-                        <MainButton
-                        className={styles.control_bar_btn}
-                        title={"ویرایش ترتیب نمایش"}
-                        onClick={this.onAddNewSection}/>
-
-                    </div>
-
+                        className={styles.open_homePage_btn}
+                        title={"نمایش صفحه اصلی وبسایت"}
+                        onClick={this.openHomePage}/>
+                        :null
+                    }
+                    
                 </div>
 
                 <div className={styles.sec_list+" bdc2"}>
 
-                    <EditHomePageSecCard
-                    title={"اسلایدر"}
-                    type={"slider"}
-                    visible={true}
-                    icon={"/statics/svg2/slider_icon.svg"}/>
-
-                    <EditHomePageSecCard
-                    title={"جدیدترین دوره ها"}
-                    type={"list"}
-                    visible={true}
-                    icon={"/statics/svg2/row_icon.svg"}/>
-
-                    <EditHomePageSecCard
-                    title={"بنر آموزشگاه"}
-                    type={"image"}
-                    visible={false}
-                    icon={"/statics/svg2/image_icon.svg"}/>
-
-                    <EditHomePageSecCard
-                    title={"فروش ویژه دوره کنکور"}
-                    type={"info-box"}
-                    visible={true}
-                    icon={"/statics/svg2/image_text_icon.svg"}/>
-
-                    <EditHomePageSecCard
-                    title={"پرفروش ترین دوره ها"}
-                    type={"list"}
-                    visible={true}
-                    icon={"/statics/svg2/row_icon.svg"}/>
-
-                    <EditHomePageSecCard
-                    title={"فیلم آموزشگاه"}
-                    type={"video"}
-                    visible={true}
-                    icon={"/statics/svg2/video_icon.svg"}/>
-
-                    <EditHomePageSecCard
-                    title={"درباره آموزشگاه"}
-                    type={"info-box"}
-                    visible={true}
-                    icon={"/statics/svg2/image_text_icon.svg"}/>
-
-                    <EditHomePageSecCard
-                    title={"فوتر سایت"}
-                    type={"footer"}
-                    visible={true}
-                    icon={"/statics/svg2/footer_icon.svg"}/>
-
+                {
+                    this.state.loading?
+                    <Loading style={{minHeight:"70vh"}}/>:
+                    <>
+                        {
+                            !this.state.sortMode?
+                            <>
+                            {
+                                this.state.elements.map((v,i)=>(
+                                    <EditHomePageSecCard
+                                    key={i}
+                                    data={v}/>
+                                ))
+                            }
+                            </>:
+                            <>
+                            {
+                                <div>SORT MODE</div>
+                            }
+                            </>
+                        }
+                    </>
+                }
+                
                 </div>
 
             </EducatorDashboardLayout>

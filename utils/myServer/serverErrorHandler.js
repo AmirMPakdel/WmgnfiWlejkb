@@ -6,7 +6,11 @@ const ErrorHandler = {
         console.log(error);
     },
 
-    errorCheck:(data)=>{
+    errorCheck:(data, config)=>{
+
+        if(config.hideError){
+            return;
+        }
 
         if(data.result_code === env.SC.REPETITIVE_PHONE_NUMBER){
             return;

@@ -100,7 +100,7 @@ function Get(url, config, cb){
 
     axios.get(url, config).then(res=>{
 
-        serverErrorHandler.errorCheck(res.data);
+        serverErrorHandler.errorCheck(res.data, config);
 
         cb(null, res.data);
 
@@ -144,7 +144,7 @@ function Post(url, data, config={}, cb){
 
         if(res.status == 200){
 
-            serverErrorHandler.errorCheck(res.data);
+            serverErrorHandler.errorCheck(res.data, config);
 
             cb(null, res.data);
         }
