@@ -1,5 +1,6 @@
 import HomePageController from "@/controllers/dynamics/dashboard/HomePageController";
-import EditHomePageSecCard from "@/views/components/editHomePage/EditHomePageSecCard";
+import EditHomePageSecCard from "@/views/components/editHomePage/EditableElementCard";
+import SortElementList from "@/views/components/editHomePage/SortElementList";
 import Loading from "@/views/components/global/Loading";
 import MainButton from "@/views/components/global/MainButton";
 import EducatorDashboardLayout from "@/views/layouts/EducatorDashboardLayout";
@@ -31,8 +32,8 @@ export default class HomePage extends Component {
         this.controller.getElements();
     }
 
-    onAddNewSection=()=>{
-
+    onAddNewElement=()=>{
+        this.controller.onAddNewElement();
     }
 
     onSortElements=()=>{
@@ -69,7 +70,7 @@ export default class HomePage extends Component {
                             <MainButton
                             className={styles.new_element_btn}
                             title={"ایجاد آیتم جدید"}
-                            onClick={this.onAddNewSection}/>
+                            onClick={this.onAddNewElement}/>
 
                             <MainButton
                             className={styles.sort_btn}
@@ -77,7 +78,7 @@ export default class HomePage extends Component {
                             onClick={this.onSortElements}/>
 
                         </div>:
-                        <div className={styles.control_bar_sec}>
+                        <div className={styles.control_bar_sec2}>
 
                             <MainButton
                             className={styles.confirm_sort+" bgsc"}
@@ -111,7 +112,7 @@ export default class HomePage extends Component {
                     <>
                         {
                             !this.state.sortMode?
-                            <>
+                            <div className={styles.item_wrapper}>
                             {
                                 this.state.elements.map((v,i)=>(
                                     <EditHomePageSecCard
@@ -119,12 +120,10 @@ export default class HomePage extends Component {
                                     data={v}/>
                                 ))
                             }
-                            </>:
-                            <>
-                            {
-                                <div>SORT MODE</div>
-                            }
-                            </>
+                            </div>
+                            :
+                            <SortElementList
+                            parent={this}/>
                         }
                     </>
                 }

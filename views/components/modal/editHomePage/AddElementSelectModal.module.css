@@ -1,0 +1,95 @@
+.con{
+    width: 48rem;
+    min-height: 40vh;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    border-width: 1px;
+    border-style: solid;
+    padding: 0.8rem 1.4rem;
+    direction: rtl;
+}
+
+.close_btn{
+    width: 2.2rem;
+    height: 2.2rem;
+    padding: 0.6rem;
+    border-radius: 0.5rem;
+    position: absolute;
+    right: -1.1rem;
+    top: -1.1rem;
+}
+
+.wrapper{
+    width: 100%;
+    height: auto;
+    overflow-y: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.title{
+    display: flex;
+    justify-content: space-between;
+    height: 2rem;
+    font-weight: 700;
+    margin-top: 1rem;
+    margin-bottom: 1.4rem;
+    margin-right: 1rem;
+    direction: rtl;
+}
+
+.items_con{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: calc(92vw - 1.4rem);
+    margin-top: 1rem;
+}
+
+.confirm_btn{
+    width: 16rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.ts_con{
+    display: flex;
+    align-items: center;
+    margin: 0.6rem;
+}
+
+.ts_title{
+    margin-right: 0.3rem;
+}
+
+.ts_help{
+    width: 1rem;
+    margin-right: 0.3rem;
+}
+
+.ts_pop_overlay{
+    border-radius: 0.6rem;
+    overflow: hidden;
+    padding: 0 !important;
+}
+
+.ts_pop_con{
+    width: 24rem;
+    max-width: 92vw;
+}
+
+@media(max-width:1024px){
+
+    .con{
+        width: 46rem;
+    }
+}
+
+@media(max-width:767px){
+
+    .con{
+        width: 96vw;
+        padding: 0.8rem 0rem;
+    }
+}

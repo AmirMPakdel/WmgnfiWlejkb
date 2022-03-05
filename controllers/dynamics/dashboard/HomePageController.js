@@ -1,4 +1,6 @@
 import HomePageModel from "@/models/dynamics/dashboard/HomePageModel";
+import chest from "@/utils/chest";
+import AddElementSelectModal from "@/views/components/modal/editHomePage/AddElementSelectModal";
 import HomePage from "@/views/dynamics/dashboard/HomePage";
 
 export default class HomePageController{
@@ -54,6 +56,25 @@ export default class HomePageController{
     onCancelSortElements(){
 
         this.view.setState({sortMode: false});
+    }
+
+    onAddNewElement(){
+
+        chest.ModalLayout.setAndShowModal( 1,
+            <AddElementSelectModal 
+            onCancel={this.onCancelAddNewElement}
+            onContinue={this.onContinueAddNewElement}/>
+        );
+    }
+
+    onCancelAddNewElement(){
+        
+        chest.ModalLayout.closeAndDelete(1);
+    }
+
+    onContinueAddNewElement(){
+
+        
     }
     
 }

@@ -1,0 +1,18 @@
+.con{
+    width: 100%;
+    height: calc(100vh - (2.375rem + 2rem + 70px));
+    overflow: auto;
+    scroll-behavior: auto;
+}
+
+
+@media(max-width:1024px){
+    
+}
+
+@media(max-width:767px){
+    
+    .con{
+        height: calc(100vh - (2.375rem + 2rem + 45px));
+    }
+}

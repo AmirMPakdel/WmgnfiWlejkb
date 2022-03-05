@@ -110,3 +110,8 @@
 .ant-rate-star-second svg{
     position: unset !important;
 }
+
+/*Popover*/
+.ant-popover-inner-content{
+    padding: 0 !important;
+}

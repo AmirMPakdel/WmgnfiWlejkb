@@ -11,6 +11,12 @@
     display: flex;
 }
 
+.control_bar_sec2{
+    width: calc(100% - 16rem);
+    min-width: 28rem;
+    display: flex;
+}
+
 .new_element_btn{
     margin: 1rem !important;
     margin-bottom: 0 !important;
@@ -41,10 +47,14 @@
 }
 
 .sec_list{
+    width: 100%;
+    padding-right: 2rem;
+}
+
+.item_wrapper{
     display: flex;
     width: 100%;
     flex-direction: column;
-    padding-right: 2rem;
     padding-bottom: 4rem;
 }
 
