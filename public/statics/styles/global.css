@@ -76,3 +76,8 @@ textarea{
 	resize: none !important;
 	border: none;
 }
+
+textarea::placeholder{
+    user-select: none;
+	opacity: 0.5;
+}

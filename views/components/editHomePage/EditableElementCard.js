@@ -1,4 +1,5 @@
 import EditableElementCardController from "@/controllers/components/editHomePage/EditableElementCardController";
+import HomePage from "@/views/dynamics/dashboard/HomePage";
 import Delete from "@/views/svgs/Delete";
 import Setting from "@/views/svgs/Setting";
 import VeggieBurger from "@/views/svgs/VeggieBurger";
@@ -10,8 +11,8 @@ import styles from "./EditableElementCard.module.css";
 * Props of EditableElementCard Component
 * @typedef Props
 * @property {string} className
-* @property {React.CSSProperties} style
-* @property {"slider"|"info-box"|"image"|"video"|"list"|"footer"} type
+* @property {React.CSSProperties} styles
+* @property {HomePage} parent
 * 
 * @extends {Component<Props>}
 */
@@ -31,6 +32,10 @@ export default class EditableElementCard extends Component {
     onDelete=()=>{
         this.controller.onDelete();
     }
+
+    onToggleVisibility=()=>{
+        this.controller.onToggleVisibility();
+    }
     
     render(){
         let d = this.props.data;
@@ -47,11 +52,11 @@ export default class EditableElementCard extends Component {
 
                 {
                     d.visible?
-                    <img className={styles.visiblity+" amp_btn"} 
-                    src={"/statics/svg2/visible_icon.svg"}/>
+                    <img className={styles.visiblity+((d.type==1 || d.type==2)?"":" amp_btn")} 
+                    src={"/statics/svg2/visible_icon.svg"} onClick={this.onToggleVisibility}/>
                     :
                     <img className={styles.visiblity+" amp_btn"} 
-                    src={"/statics/svg2/visible_not_icon.svg"}/>
+                    src={"/statics/svg2/visible_not_icon.svg"} onClick={this.onToggleVisibility}/>
                 }
 
                 </div>

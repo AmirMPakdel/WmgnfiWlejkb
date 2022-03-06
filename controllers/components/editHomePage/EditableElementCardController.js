@@ -47,5 +47,99 @@ export default class EditableElementCardController{
             this.AskDeleteElementModal.setState({loading:false});
         });
     }
+
+    onToggleVisibility=()=>{
+
+        let v = this.view;
+
+        let type = this.view.props.data.type;
+        
+        if(type == "1" || type == "2"){
+
+            chest.openNotification("شروع سایت و فوتر قابل پنهان سازی نمی باشند.", "alert");
+            return;
+        }
+
+        let visible = v.props.data.visible;
+
+        if(visible){
+            this.hideElement();
+        }else{
+            this.showElement();
+        }
+    }
+
+    showElement(){
+
+        let v = this.view;
+        
+        this.changeVisiblity(true);
+
+        let params = {
+            element_id: v.props.data.id
+        }
+
+        let title = v.props.data.title;
+
+        this.model.show(params, (err, data)=>{
+
+            if(data.result_code === env.SC.SUCCESS){
+
+                chest.openNotification(
+                    "آیتم "+title+" "
+                    +"برای عموم قابل نمایش شد.", "success");
+                
+            }else{
+
+                this.changeVisiblity(false);
+
+                chest.openNotification("خطا در تغییر وضعیت نمایش آیتم", "error");
+            }
+        });
+    }
+
+    hideElement(){
+
+        let v = this.view;
+        
+        this.changeVisiblity(false);
+
+        let params = {
+            element_id: v.props.data.id
+        }
+
+        let title = v.props.data.title;
+
+        this.model.show(params, (err, data)=>{
+
+            if(data.result_code === env.SC.SUCCESS){
+
+                chest.openNotification(
+                    "آیتم "+title+" "
+                    +"برای عموم پنهان شد.", "success");
+                
+            }else{
+
+                this.changeVisiblity(true);
+
+                chest.openNotification("خطا در تغییر وضعیت نمایش آیتم", "error");
+            }
+        });
+    }
+
+    changeVisiblity(visible, cb){
+
+        let v = this.view;
+        let HomePage = v.props.parent;
+
+        let newElements = HomePage.state.elements.map((e, i)=>{
+            if(e.id === v.props.data.id){
+                e.visible = visible;
+            }
+            return e;
+        });
+
+        HomePage.setState({elements: newElements}, cb);
+    }
     
 }

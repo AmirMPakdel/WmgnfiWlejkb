@@ -18,7 +18,6 @@ export default class AddElementSelectModal extends Component {
     
     constructor(props){
         super(props);
-        //this.controller = new AddElementSelectModalController(this);
         this.state = {
             selected_type: null,
         }
@@ -35,7 +34,7 @@ export default class AddElementSelectModal extends Component {
 
     onContinue=()=>{
         if(this.props.onContinue){
-            this.props.onContinue();
+            this.props.onContinue(this.state.selected_type);
         }
     }
 

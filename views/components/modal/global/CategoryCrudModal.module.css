@@ -1,5 +1,7 @@
+
 .con{
     width: 48rem;
+    height: 80vh;
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
@@ -36,46 +38,21 @@
     margin-top: 1rem;
     margin-bottom: 1.4rem;
     margin-right: 1rem;
-    direction: rtl;
 }
 
-.items_con{
+
+.form_body{
     display: flex;
-    flex-wrap: wrap;
-    max-width: calc(92vw - 1.4rem);
-    margin-top: 1rem;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    direction: ltr;
+    overflow-y: auto;
+    height: calc(80vh - 8rem);
 }
 
 .confirm_btn{
     width: 16rem;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-}
-
-.ts_con{
-    display: flex;
-    align-items: center;
-    margin: 0.6rem;
-}
-
-.ts_title{
-    margin-right: 0.3rem;
-}
-
-.ts_help{
-    width: 1rem;
-    margin-right: 0.3rem;
-}
-
-.ts_pop_overlay{
-    border-radius: 0.6rem;
-    overflow: hidden;
-    padding: 0 !important;
-}
-
-.ts_pop_con{
-    width: 24rem;
-    max-width: 92vw;
 }
 
 @media(max-width:1024px){
@@ -89,6 +66,17 @@
 
     .con{
         width: 96vw;
+        height: 80vh;
         padding: 0.8rem 0rem;
+    }
+
+    .title{
+        margin-top: 0.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .confirm_btn{
+        width: 12rem;
+        height: 2.6rem;
     }
 }

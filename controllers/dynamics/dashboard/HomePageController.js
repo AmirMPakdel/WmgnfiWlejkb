@@ -1,5 +1,6 @@
 import HomePageModel from "@/models/dynamics/dashboard/HomePageModel";
 import chest from "@/utils/chest";
+import AddEditInfoBoxElementModal from "@/views/components/modal/editHomePage/AddEditInfoBoxElementModal";
 import AddElementSelectModal from "@/views/components/modal/editHomePage/AddElementSelectModal";
 import HomePage from "@/views/dynamics/dashboard/HomePage";
 
@@ -72,9 +73,16 @@ export default class HomePageController{
         chest.ModalLayout.closeAndDelete(1);
     }
 
-    onContinueAddNewElement(){
+    onContinueAddNewElement(type){
 
-        
+        let modal = null;
+
+        if(type === "3"){
+            modal = <AddEditInfoBoxElementModal
+            mode="add"/>
+        }
+
+        chest.ModalLayout.setAndShowModal(1, modal);
     }
     
 }

@@ -4,6 +4,7 @@ import EducatorsCrudModal from "@/views/components/modal/educators/EducatorsCrud
 import EducatorDashboardLayout from "@/views/layouts/EducatorDashboardLayout";
 import WrapperT1 from "@/views/layouts/WrapperT1";
 import styles from "./Settings.module.css";
+import CategoryCrudModal from "@/views/components/modal/global/CategoryCrudModal";
 
 /**
 * Props of Settings Component
@@ -17,9 +18,12 @@ export default class Settings extends Component {
 
     onEducators=()=>{
         let modal = <EducatorsCrudModal editable={true}/>
-        chest.ModalLayout.setModal(1, modal, ()=>{
-            chest.ModalLayout.visibleToggle(1, true);
-        });
+        chest.ModalLayout.setAndShowModal(1, modal);
+    }
+
+    onCategories=()=>{
+        let modal = <CategoryCrudModal/>
+        chest.ModalLayout.setAndShowModal(1, modal);
     }
     
     render(){
@@ -32,6 +36,12 @@ export default class Settings extends Component {
                         <div className={styles.setting_card+" md_card_shd amp_btn bglc1"} onClick={this.onEducators}>
 
                             <div className={styles.setting_card_t+" tilt"}>{"ویرایش دبیران"}</div>
+
+                        </div>
+
+                        <div className={styles.setting_card+" md_card_shd amp_btn bglc1"} onClick={this.onCategories}>
+
+                            <div className={styles.setting_card_t+" tilt"}>{"ویرایش دسته بندی"}</div>
 
                         </div>
 

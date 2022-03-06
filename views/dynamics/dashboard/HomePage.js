@@ -115,9 +115,9 @@ export default class HomePage extends Component {
                             <div className={styles.item_wrapper}>
                             {
                                 this.state.elements.map((v,i)=>(
-                                    <EditHomePageSecCard
-                                    key={i}
-                                    data={v}/>
+                                    <EditHomePageSecCard key={i}
+                                    data={v}
+                                    parent={this}/>
                                 ))
                             }
                             </div>
