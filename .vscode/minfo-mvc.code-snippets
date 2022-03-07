@@ -46,7 +46,6 @@
 			"export default class $TM_FILENAME_BASE{",
             "\t",
             "\t/**",
-            "\t* ",
             "\t* @param {object} params",
             "\t* @param {import(\"@/models/jsdoc/RequestCallback\").RequestCallback} cb ",
             "\t*/",

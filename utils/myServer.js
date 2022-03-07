@@ -36,6 +36,17 @@ const urls = {
     DASH_UPDATE_EDUCATOR: domain+prefixes.UTA+"/educators/update",
     DASH_DELETE_EDUCATOR: domain+prefixes.UTA+"/educators/delete",
 
+    //user groups
+    DASH_CREATE_GROUP_L1: domain+prefixes.UTA+"/levelonegroups/create",
+    DASH_EDIT_GROUP_L1: domain+prefixes.UTA+"/levelonegroups/edit",
+    DASH_DELETE_GROUP_L1: domain+prefixes.UTA+"/levelonegroups/delete",
+    DASH_CREATE_GROUP_L2: domain+prefixes.UTA+"/leveltwogroups/create",
+    DASH_EDIT_GROUP_L2: domain+prefixes.UTA+"/leveltwogroups/edit",
+    DASH_DELETE_GROUP_L2: domain+prefixes.UTA+"/leveltwogroups/delete",
+    DASH_CREATE_GROUP_L3: domain+prefixes.UTA+"/levelthreegroups/create",
+    DASH_EDIT_GROUP_L3: domain+prefixes.UTA+"/levelthreegroups/edit",
+    DASH_DELETE_GROUP_L3: domain+prefixes.UTA+"/levelthreegroups/delete",
+
     //user course category
     CATEGORY_FETCH: domain+prefixes.PTA+"/categories/fetch",
 

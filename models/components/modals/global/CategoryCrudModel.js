@@ -3,7 +3,6 @@ import myServer from "@/utils/myServer";
 export default class CategoryCrudModel{
     
     /**
-    * 
     * @param {object} params
     * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
     */
@@ -31,8 +30,117 @@ export default class CategoryCrudModel{
             }
         });
     }
+
+    /**
+    * @param {object} params
+    * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
+    */
+    createGroup(params, cb){
     
+        if(env.MOCKING_SERVER || 1){
+            setTimeout(()=>{
+                cb(null, {
+                    result_code:env.SC.SUCCESS,
+                    data: fakeData(),
+                });
+            }, 2000, cb);
+            return;
+        }
+
+        let url = myServer.urls.DASH_CREATE_GROUP_L1;
+        if(params.level == 2){
+            url = myServer.urls.DASH_CREATE_GROUP_L2;
+        }else if(params.level == 3){
+            url = myServer.urls.DASH_CREATE_GROUP_L3;
+        }
+        params.level = undefined;
+
+        myServer.Post(url, params,{}, (err, data)=>{
     
+            if(!err){
+            
+                cb(null, data);
+            
+            }else{
+            
+                myServer.ErrorHandler.type1(err);
+            }
+        });
+    }
+    
+    /**
+    * @param {object} params
+    * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
+    */
+    editGroup(params, cb){
+    
+        if(env.MOCKING_SERVER || 1){
+            setTimeout(()=>{
+                cb(null, {
+                    result_code:env.SC.SUCCESS,
+                    data: fakeData(),
+                });
+            }, 2000, cb);
+            return;
+        }
+
+        let url = myServer.urls.DASH_EDIT_GROUP_L1;
+        if(params.level == 2){
+            url = myServer.urls.DASH_EDIT_GROUP_L2;
+        }else if(params.level == 3){
+            url = myServer.urls.DASH_EDIT_GROUP_L3;
+        }
+        params.level = undefined;
+
+        myServer.Post(url, params,{}, (err, data)=>{
+    
+            if(!err){
+            
+                cb(null, data);
+            
+            }else{
+            
+                myServer.ErrorHandler.type1(err);
+            }
+        });
+    }
+
+    /**
+    * @param {object} params
+    * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
+    */
+    deleteGroup(params, cb){
+    
+        if(env.MOCKING_SERVER || 1){
+            setTimeout(()=>{
+                cb(null, {
+                    result_code:env.SC.SUCCESS,
+                    data: fakeData(),
+                });
+            }, 2000, cb);
+            return;
+        }
+
+        let url = myServer.urls.DASH_DELETE_GROUP_L1;
+        if(params.level == 2){
+            url = myServer.urls.DASH_DELETE_GROUP_L2;
+        }else if(params.level == 3){
+            url = myServer.urls.DASH_DELETE_GROUP_L3;
+        }
+        params.level = undefined;
+
+        myServer.Post(url, params,{}, (err, data)=>{
+    
+            if(!err){
+            
+                cb(null, data);
+            
+            }else{
+            
+                myServer.ErrorHandler.type1(err);
+            }
+        });
+    }
 }
 
 const fakeData = ()=>{
