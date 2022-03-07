@@ -1,7 +1,6 @@
 
 .con{
     width: 48rem;
-    height: 80vh;
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
@@ -45,14 +44,50 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    align-items: center;
     direction: ltr;
     overflow-y: auto;
-    height: calc(80vh - 8rem);
+    min-height: calc(50vh - 8rem);
+    max-height: calc(80vh - 8rem);
+    padding-left: 5%;
+}
+
+.addLevel1{
+    margin-bottom: 1rem;
+    margin-bottom: 2rem;
+    min-height: 2.4rem;
 }
 
 .confirm_btn{
     width: 16rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.parent_node{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    height: 1.8rem;
+    min-width:  18rem;
+    border-bottom: solid 1px rgb(221, 221, 221);
+}
+
+.parent_node_operation{
+    display: flex;
+    align-items: center;
+    direction: rtl;
+}
+
+.parent_node_add{
+    margin-left: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.node_input{
+    border-width: 1px;
+    border-style: solid;
+    width: 8rem;
 }
 
 @media(max-width:1024px){

@@ -14,6 +14,7 @@ const urls = {
 
     //global
     PORTALS_LIST: domain+prefixes.MA+"/portals/get",
+    GET_COURSE_CATEGORIES: domain+prefixes.PTA+"/groups/fetch/gt_course",
 
     //user register
     MINFO_REGISTER_CHECK_PHONE_NUMBER: domain+prefixes.MA+"/user/checkphonenumber",

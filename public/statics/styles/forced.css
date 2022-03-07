@@ -115,3 +115,8 @@
 .ant-popover-inner-content{
     padding: 0 !important;
 }
+
+/*Tree*/
+.ant-tree{
+    background-color: unset !important;
+}
