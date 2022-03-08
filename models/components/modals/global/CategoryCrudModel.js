@@ -8,7 +8,7 @@ export default class CategoryCrudModel{
     */
     getCategories(params, cb){
     
-        if(env.MOCKING_SERVER || 1){
+        if(env.MOCKING_SERVER){
             setTimeout(()=>{
                 cb(null, {
                     result_code:env.SC.SUCCESS,
@@ -37,7 +37,7 @@ export default class CategoryCrudModel{
     */
     createGroup(params, cb){
     
-        if(env.MOCKING_SERVER || 1){
+        if(env.MOCKING_SERVER){
             setTimeout(()=>{
                 cb(null, {
                     result_code:env.SC.SUCCESS,
@@ -54,6 +54,7 @@ export default class CategoryCrudModel{
             url = myServer.urls.DASH_CREATE_GROUP_L3;
         }
         params.level = undefined;
+        params.type = "gt_course";
 
         myServer.Post(url, params,{}, (err, data)=>{
     
@@ -111,7 +112,7 @@ export default class CategoryCrudModel{
     */
     deleteGroup(params, cb){
     
-        if(env.MOCKING_SERVER || 1){
+        if(env.MOCKING_SERVER){
             setTimeout(()=>{
                 cb(null, {
                     result_code:env.SC.SUCCESS,

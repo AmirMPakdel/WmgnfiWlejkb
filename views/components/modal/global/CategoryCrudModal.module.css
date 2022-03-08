@@ -10,6 +10,14 @@
     direction: rtl;
 }
 
+.loading{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
 .close_btn{
     width: 2.2rem;
     height: 2.2rem;
