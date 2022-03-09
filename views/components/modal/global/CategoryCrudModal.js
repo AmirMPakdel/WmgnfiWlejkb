@@ -55,7 +55,7 @@ export default class CategoryCrudModal extends Component {
     }
 
     editChild=(node, level)=>{
-        alert(node.id)
+        //alert(node.id)
     }
 
     deleteChild=(node, level, parent_node)=>{

@@ -1,6 +1,6 @@
 
 .con{
-    width: 48rem;
+    width: 38rem;
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
@@ -29,6 +29,13 @@
     flex-direction: column;
 }
 
+.form_body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
 .title{
     display: flex;
     justify-content: space-between;
@@ -37,6 +44,72 @@
     margin-top: 1rem;
     margin-bottom: 1.4rem;
     margin-right: 1rem;
+}
+
+.title_input{
+    width: 100% !important;
+    margin-top: 1rem !important;
+    margin-bottom: 0 !important;
+}
+
+.text_input{
+    width: 100% !important;
+    margin-top: 1rem !important;
+}
+
+.links_sec{
+    display: flex;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.link_con1{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.add_link_btn{
+    width: 14rem;
+    margin-right: 1.5rem;
+    margin-left: 0.5rem;
+}
+
+.link_help{
+    width: 1rem;
+}
+
+.link_pop_overlay{
+    border-radius: 0.6rem;
+    overflow: hidden;
+    padding: 0 !important;
+}
+
+.link_pop_con{
+    width: 24rem;
+    max-width: 92vw;
+}
+
+.type_select_sec{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.rads_con{
+    margin: 0.5rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.rads_title{
+    margin-right: 0.3rem;
 }
 
 .confirm_btn{
