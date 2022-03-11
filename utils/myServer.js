@@ -47,6 +47,10 @@ const urls = {
     DASH_EDIT_GROUP_L3: domain+prefixes.UTA+"/levelthreegroups/edit",
     DASH_DELETE_GROUP_L3: domain+prefixes.UTA+"/levelthreegroups/delete",
 
+    //user edit homepage
+    DASH_EDIT_HOMEPAGE: domain+prefixes.UTA+"/mainpage/edit/",
+    DASH_PREVIEW_HOMEPAGE: domain+prefixes.UTA+"/mainpage/load",
+
     //user course category
     CATEGORY_FETCH: domain+prefixes.PTA+"/categories/fetch",
 

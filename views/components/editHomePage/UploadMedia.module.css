@@ -1,0 +1,66 @@
+.con{
+    margin-bottom: 1rem;
+}
+
+.wrapper{
+    width: 100%;
+    display: flex;
+    border-radius: 1rem;
+    border-width: 2px;
+    border-style: solid;
+    height: 3.2rem;
+    align-items: center;
+    justify-content: space-between;
+    direction: ltr;
+    overflow: hidden;
+}
+
+.upload_btn{
+    height: 100%;
+    width: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.9rem 0 0 0.9rem;
+    padding-top: 0.2rem;
+}
+
+.upload_svg{
+    width: 50%;
+}
+
+.image{
+    width: 16rem;
+    height: 16rem;
+    position: absolute;
+    left: 6rem;
+    background-position: center;
+    background-size: cover;
+}
+
+.video{
+    width: 16rem;
+    height: 16rem;
+    position: absolute;
+    left: 6rem;
+}
+
+.show_media{
+    position: absolute;
+    right: 7.8rem;
+    text-decoration: underline;
+}
+
+.title{
+    min-width: 5rem;
+    padding-right: 0.8rem;
+    user-select: none;
+}
+
+.caption{
+    position: absolute;
+    right: 0.2rem;
+    bottom: -1.5rem;
+    font-size: 0.7rem;
+    direction: rtl;
+}

@@ -6,7 +6,7 @@ export default class AddEditInfoBoxElementModel{
     * @param {object} params
     * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
     */
-    getData(params, cb){
+    save(params, cb){
     
         if(env.MOCKING_SERVER){
             setTimeout(()=>{
@@ -14,8 +14,13 @@ export default class AddEditInfoBoxElementModel{
             }, 2000, cb);
             return;
         }
+
+        let ep = env.EP.EDIT_PARAM_MAIN_INFO_BOX_ADD;
+        if(params.mode==="edit"){
+            ep = env.EP.EDIT_PARAM_MAIN_INFO_BOX_DELETE;
+        }
     
-        myServer.Post(myServer.urls.SOME_URL, params, {}, (err, data)=>{
+        myServer.Post(myServer.urls.DASH_EDIT_HOMEPAGE+ep, params, {}, (err, data)=>{
     
             if(!err){
             

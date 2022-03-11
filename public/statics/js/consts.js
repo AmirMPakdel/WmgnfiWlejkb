@@ -1,5 +1,5 @@
 
-var consts={
+var consts = {
 
     //main server constant result codes
     SC:{
@@ -72,6 +72,7 @@ var consts={
         EDIT_PARAM_TITLE : "ep_title",
         EDIT_PARAM_DURATION : "ep_duration",
         EDIT_PARAM_PRICE : "ep_price",
+        EDIT_PARAM_DISCOUNT_PRICE : "ep_discount_price",
         EDIT_PARAM_SUGGESTED_COURSES : "ep_suggested_courses",
         EDIT_PARAM_SUGGESTED_POSTS : "ep_suggested_posts",
         EDIT_PARAM_HOLDING_STATUS : "ep_holding_status",
@@ -130,6 +131,9 @@ var consts={
         EDIT_PARAM_POST_FORM_ADD : "ep_content_post_form_add",
         EDIT_PARAM_POST_FORM_UPDATE : "ep_content_post_form_update",
         EDIT_PARAM_POST_FORM_DELETE : "ep_content_post_form_delete",
+        EDIT_PARAM_MAIN_INFO_BOX_ADD : "ep_content_main_box_info_add",
+        EDIT_PARAM_MAIN_INFO_BOX_UPDATE : "ep_content_main_box_info_update",
+        EDIT_PARAM_MAIN_INFO_BOX_DELETE : "ep_content_main_box_info_delete",
     },
 
     //uploading file types
@@ -164,5 +168,6 @@ var consts={
         CONTENT_TYPE_VOICE: "ct_voice",
         CONTENT_TYPE_TEXT: "ct_text",
         CONTENT_TYPE_SLIDER: "ct_slider",
+        CONTENT_TYPE_NONE: "ct_none",
     }
 }

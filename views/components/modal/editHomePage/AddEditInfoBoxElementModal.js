@@ -7,6 +7,8 @@ import styles from "./AddEditInfoBoxElementModal.module.css";
 import { InputFilter } from "@/utils/validation";
 import chest from "@/utils/chest";
 import { Popover, Radio } from "node_modules/antd/lib/index";
+import UploadMedia from "../../editHomePage/UploadMedia";
+import AddEditInfoBoxElementController from "@/controllers/components/modals/editHomePage/AddEditInfoBoxElementController";
 
 /**
 * Props of AddEditInfoBoxElementModal Component
@@ -22,6 +24,7 @@ export default class AddEditInfoBoxElementModal extends Component {
     
     constructor(props){
         super(props);
+        this.controller = new AddEditInfoBoxElementController(this);
         this.state = {
 
             title:"",
@@ -32,7 +35,7 @@ export default class AddEditInfoBoxElementModal extends Component {
 
             has_link:false,
 
-            media_type:"3"
+            media_type:"image",
         }
     }
     
@@ -49,8 +52,24 @@ export default class AddEditInfoBoxElementModal extends Component {
         this.setState(this.state);
     }
 
+    onHasLink=()=>{
+
+        this.setState({has_link:true});
+    }
+
+    onRemoveLink=()=>{
+
+        this.setState({has_link:false});
+    }
+
     onMediaTypeSelect=(type)=>{
-        this.setState({media_type:type})
+
+        this.setState({media_type:type});
+    }
+
+    onConfirm=()=>{
+
+        this.contr
     }
     
     render(){
@@ -61,18 +80,17 @@ export default class AddEditInfoBoxElementModal extends Component {
                 stroke={env.THEME.dc1}
                 onClick={this.onCancel}/>
 
-                <div className={styles.wrapper}>
+                {
+                    this.props.mode=="edit"?
+                    <div className={styles.title+" tilt "}>{"تنظیمات آیتم جعبه اطلاعاتی"}</div>:
+                    <div className={styles.title+" tilt "}>{"ایجاد آیتم جعبه اطلاعاتی"}</div>
+                }
 
-                    {
-                        this.props.mode=="edit"?
-                        <div className={styles.title+" tilt "}>{"تنظیمات آیتم جعبه اطلاعاتی"}</div>:
-                        <div className={styles.title+" tilt "}>{"ایجاد آیتم جعبه اطلاعاتی"}</div>
-                    }
+                <div className={styles.wrapper}>
 
                     <div className={styles.form_body}>
 
                         <TextInput className={styles.title_input}
-                        style={{marginTop:"2.5rem"}}
                         placeholder={"عنوان جعبه اطلاعاتی"}
                         onChange={t=>this.onInput("title", t)}
                         value={this.state.title}
@@ -93,7 +111,8 @@ export default class AddEditInfoBoxElementModal extends Component {
                             <div className={styles.link_con1}>
 
                                 <MainButton className={styles.add_link_btn}
-                                title={"اضافه کردن لینک"}/>
+                                title={"اضافه کردن لینک"}
+                                onClick={this.onHasLink}/>
 
                                 <Popover overlayClassName={styles.link_pop_overlay}
                                 content={<img className={styles.link_pop_con} 
@@ -103,11 +122,30 @@ export default class AddEditInfoBoxElementModal extends Component {
                                 
                                 </Popover>
 
-
                             </div>:
                             <div className={styles.link_con2}>
                                 
-                                
+                                <div className={styles.link_row1}>
+
+                                    <MainButton className={styles.remove_link_btn+" bgeci"}
+                                    titleClassName={"flc1i"}
+                                    title={"حذف لینک"}
+                                    onClick={this.onRemoveLink}/>
+
+                                    <TextInput className={styles.link_title_input}
+                                    placeholder={"عنوان دکمه لینک"}
+                                    onChange={t=>this.onInput("link_title", t)}
+                                    value={this.state.link_title}
+                                    error={this.state.link_title_error}
+                                    inputFilter={InputFilter.persianNameInputFilter}/>
+
+                                </div>
+
+                                <TextInput className={styles.link_url_input}
+                                placeholder={"URL لینک"}
+                                onChange={t=>this.onInput("link_url", t)}
+                                value={this.state.link_url}
+                                error={this.state.link_url_error}/>
 
                             </div>
                         }
@@ -118,29 +156,46 @@ export default class AddEditInfoBoxElementModal extends Component {
 
                             <RadioSelect
                             title={"آپلود عکس"}
-                            checked={this.state.media_type==="1"}
-                            onSelect={()=>this.onMediaTypeSelect("1")}/>
+                            checked={this.state.media_type==="image"}
+                            onSelect={()=>this.onMediaTypeSelect("image")}/>
 
                             <RadioSelect
                             title={"آپلود ویدیو"}
-                            checked={this.state.media_type==="2"}
-                            onSelect={()=>this.onMediaTypeSelect("2")}/>
+                            checked={this.state.media_type==="video"}
+                            onSelect={()=>this.onMediaTypeSelect("video")}/>
 
                             <RadioSelect
                             title={"هیچکدام"}
-                            checked={this.state.media_type==="3"}
-                            onSelect={()=>this.onMediaTypeSelect("3")}/>
+                            checked={this.state.media_type==="none"}
+                            onSelect={()=>this.onMediaTypeSelect("none")}/>
 
                         </div>
+
+                        {
+                            this.state.media_type==="image"?
+                            <UploadMedia
+                            className={styles.updload_media}
+                            title={"بارگذاری تصویر"}
+                            type="image"
+                            />:null
+                        }
+                        {
+                            this.state.media_type==="video"?
+                            <UploadMedia
+                            className={styles.updload_media}
+                            title={"بارگذاری ویدیو"}
+                            type="video"
+                            />:null
+                        }
 
                     </div>
 
                     <div className={styles.sec1}>
                         
                         <MainButton className={styles.confirm_btn}
-                        title={"ویرایش"}
+                        title={this.props.mode=="edit"?"ویرایش":"ایجاد"}
                         loading={this.state.btn_loading}
-                        onClick={this.onEdit}/>
+                        onClick={this.onConfirm}/>
 
                     </div>
 
