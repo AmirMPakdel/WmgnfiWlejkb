@@ -20,7 +20,7 @@ export default class TextArea extends Component {
             <div className={styles.con+" blc2 "+add_class}>
                 
                 {/* <div className={styles.title} style={title_st}>{this.props.title}</div> */}
-                <textarea className={styles.textarea} 
+                <textarea className={styles.textarea+" bdyt "} 
                 placeholder={this.props.title}
                 value={this.props.value} 
                 maxLength={this.props.maxLength}

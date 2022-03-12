@@ -1,10 +1,15 @@
 import EditableElementCardController from "@/controllers/components/editHomePage/EditableElementCardController";
+import chest from "@/utils/chest";
 import HomePage from "@/views/dynamics/dashboard/HomePage";
 import Delete from "@/views/svgs/Delete";
 import Setting from "@/views/svgs/Setting";
 import VeggieBurger from "@/views/svgs/VeggieBurger";
 import React, { Component } from "react";
 import IconButton from "../global/IconButton";
+import AddEditCourseListElementModal from "../modal/editHomePage/AddEditCourseListElementModal";
+import AddEditInfoBoxElementModal from "../modal/editHomePage/AddEditInfoBoxElementModal";
+import EditFooterElementModal from "../modal/editHomePage/EditFooterElementModal";
+import EditIntroElementModal from "../modal/editHomePage/EditIntroElementModal";
 import styles from "./EditableElementCard.module.css";
 
 /**
@@ -27,6 +32,24 @@ export default class EditableElementCard extends Component {
     }
     
     componentDidMount(){
+    }
+
+    onEdit=()=>{
+
+        let modal = null;
+        let d = this.props.data;
+
+        if(d.type==1){
+            modal = <EditIntroElementModal data={d}/>
+        }else if(d.type==2){
+            modal = <EditFooterElementModal data={d}/>
+        }else if(d.type==3){
+            modal = <AddEditInfoBoxElementModal data={d}/>
+        }else if(d.type==4){
+            modal = <AddEditCourseListElementModal data={d}/>
+        }
+
+        chest.ModalLayout.setAndShowModal(1, modal);
     }
 
     onDelete=()=>{

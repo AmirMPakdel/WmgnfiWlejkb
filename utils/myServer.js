@@ -49,7 +49,7 @@ const urls = {
 
     //user edit homepage
     DASH_EDIT_HOMEPAGE: domain+prefixes.UTA+"/mainpage/edit/",
-    DASH_PREVIEW_HOMEPAGE: domain+prefixes.UTA+"/mainpage/load",
+    DASH_LOAD_HOMEPAGE: domain+prefixes.UTA+"/mainpage/load",
 
     //user course category
     CATEGORY_FETCH: domain+prefixes.PTA+"/categories/fetch",

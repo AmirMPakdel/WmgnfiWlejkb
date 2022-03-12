@@ -9,7 +9,7 @@ export default class HomePageModel{
     */
     getElements(params, cb){
     
-        if(env.MOCKING_SERVER || 1){
+        if(env.MOCKING_SERVER){
             setTimeout(()=>{
                 cb(null, {
                     result_code:env.SC.SUCCESS,
@@ -18,20 +18,64 @@ export default class HomePageModel{
             }, 1000, cb);
             return;
         }
-    
-        myServer.Post(myServer.urls.SOME_URL, params, {}, (err, data)=>{
-    
+
+        myServer.Post(myServer.urls.DASH_LOAD_HOMEPAGE, params, {}, (err, data)=>{
+
+            try{
+
+            let d = data;
+
+            let constElements  = [
+                {
+                    id:"start", title:"نمایی کلی و مختصر", type:1, visible:1,
+                },
+                {
+                    id:"footer", title:"اطلاعات سایت و لینک ها", type:2, visible:1,
+                },
+            ]
+
+            let elements = constElements.concat(d.contents);
+            elements.concat(d.course_lists);
+
+            let data2 = {
+                hierarchy: d.content_hierarchy || newHierarchy,
+                elements,
+            }
+
+            
+
+            delete d.content_hierarchy;
+            delete d.contents;
+            delete d.course_lists;
+
+            Object.assign(data2, d);
+
+            let data3 = {
+                result_code: env.SC.SUCCESS,
+                data: data2
+            }
+
+            console.log(data3);
+
             if(!err){
             
-                cb(null, data);
+                cb(null, data3);
             
             }else{
             
                 myServer.ErrorHandler.type1(err);
             }
+            }catch(e){
+
+                console.log(e);
+            }
         });
-    }   
+    }
 }
+
+const newHierarchy = [
+    "start", "footer"
+]
 
 const getFakeElements = ()=>{
     return {

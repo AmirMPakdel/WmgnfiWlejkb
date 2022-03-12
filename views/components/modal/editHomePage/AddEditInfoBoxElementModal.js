@@ -40,9 +40,11 @@ export default class AddEditInfoBoxElementModal extends Component {
     }
     
     componentDidMount(){
+        
     }
 
     onCancel=()=>{
+
         chest.ModalLayout.closeAndDelete(1);
     }
 
@@ -69,7 +71,6 @@ export default class AddEditInfoBoxElementModal extends Component {
 
     onConfirm=()=>{
 
-        this.contr
     }
     
     render(){
