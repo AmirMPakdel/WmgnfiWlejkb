@@ -120,3 +120,8 @@
 .ant-tree{
     background-color: unset !important;
 }
+
+/*Dropdown*/
+.ant-dropdown-menu-item:hover, .ant-dropdown-menu-submenu-title:hover{
+    background-color: #F5DF4D !important;
+}
