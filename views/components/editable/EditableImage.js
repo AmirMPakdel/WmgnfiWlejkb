@@ -43,6 +43,11 @@ export default class EditableImage extends Component {
     onInputChange=(e)=>{
 
         let file = e.target.files[0];
+        
+        if(!file){
+            return;
+        }
+
         let url = URL.createObjectURL(file);
         let img = new Image();
         img.src = url;

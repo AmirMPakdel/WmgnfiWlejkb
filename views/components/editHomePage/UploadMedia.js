@@ -18,10 +18,57 @@ export default class UploadMedia extends Component {
         this.state = {
             //src: "/statics/fake_img/15.jpg",
             src: null,
+            file: null,
         }
     }
     
     componentDidMount(){
+
+        this.file_input.onchange=this.onInputChange;
+    }
+
+    onSelect=()=>{
+
+        this.file_input.click();
+        this.file_input.onClick=this.onInputClick;
+    }
+
+    onInputClick=()=>{
+        //!important - reset the values so selection same file would fire "onChange" event
+        this.file_input.files = null;
+        this.file_input.value = null;
+    }
+
+    onInputChange=(e)=>{
+
+        let file = e.target.files[0];
+        
+        if(!file){
+            return;
+        }
+
+        let maxSize = 5;
+        if(this.props.type==="video"){
+            maxSize = 50;
+        }
+
+        if(file.size < (maxSize*1024*1024)){
+
+            this.setState({
+                src : URL.createObjectURL(file),
+                file: file,
+            });
+
+        }else{
+            
+            maxSize+="MB";
+            chest.openNotification("فایل انتخابی حجم بالای "+maxSize+" مگابایت دارد", "error");
+        }
+    }
+
+    onShowFile=()=>{
+        
+        window.open(this.state.src);
     }
     
     render(){
@@ -39,11 +86,17 @@ export default class UploadMedia extends Component {
 
                 <div className={styles.wrapper+" blc2 bgw "}>
 
-                    <div className={styles.upload_btn+" bgtc1 amp_btn"}>
+                    <div className={styles.upload_btn+" bgtc1 amp_btn"}
+                    onClick={this.onSelect}>
                         
                         <UploadSVG className={styles.upload_svg}/>
 
                     </div>
+
+                    <input style={{display:"none"}}
+                    ref={r=>this.file_input=r}
+                    type={"file"}
+                    accept={this.props.type==="video"?".mp4":".jpg,.png"}/>
                     
                     {
                         this.state.src && this.props.type==="image"?
@@ -59,7 +112,8 @@ export default class UploadMedia extends Component {
                     }
                     {
                         this.state.src?
-                        <a className={styles.show_media}>{"مشاهده"}</a>
+                        <a className={styles.show_media}
+                        onClick={this.onShowFile}>{"مشاهده"}</a>
                         :null
                     }
 

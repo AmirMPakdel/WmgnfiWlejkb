@@ -39,13 +39,13 @@ export default class EditableElementCard extends Component {
         let modal = null;
         let d = this.props.data;
 
-        if(d.type==1){
+        if(d.el_type==1){
             modal = <EditIntroElementModal data={d}/>
-        }else if(d.type==2){
+        }else if(d.el_type==2){
             modal = <EditFooterElementModal data={d}/>
-        }else if(d.type==3){
+        }else if(d.el_type==3){
             modal = <AddEditInfoBoxElementModal data={d}/>
-        }else if(d.type==4){
+        }else if(d.el_type==4){
             modal = <AddEditCourseListElementModal data={d}/>
         }
 

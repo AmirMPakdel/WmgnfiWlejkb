@@ -42,8 +42,10 @@ export default class EditableVideo extends Component {
     onInputChange=(e)=>{
 
         let file = e.target.files[0];
-        // this.video.src = URL.createObjectURL(file);
-        // this.video.load();
+
+        if(!file){
+            return;
+        }
 
         if(file.size < (480*1024*1024)){
 
