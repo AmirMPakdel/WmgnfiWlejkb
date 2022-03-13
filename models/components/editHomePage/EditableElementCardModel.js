@@ -9,14 +9,27 @@ export default class EditableElementCardModel{
     */
     Delete(params, cb){
     
-        if(env.MOCKING_SERVER || 1){
+        if(env.MOCKING_SERVER){
             setTimeout(()=>{
                 cb(null, {result_code:env.SC.SUCCESS});
             }, 2000, cb);
             return;
         }
+
+        let el_type = params.element.el_type;
+
+        let ep = "";
+        if(el_type === 3){
+            ep = env.EP.EDIT_PARAM_COURSE_LIST_DELETE;
+            params.list_id = params.element.id;
+        }else if(el_type === 4){
+            ep = env.EP.EDIT_PARAM_MAIN_INFO_BOX_DELETE;
+            params.content_id = params.element.id;
+        }
+
+        delete params.element;
     
-        myServer.Post(myServer.urls.SOME_URL, params, {}, (err, data)=>{
+        myServer.Post(myServer.urls.DASH_EDIT_HOMEPAGE+ep, params, {}, (err, data)=>{
     
             if(!err){
             

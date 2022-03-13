@@ -1,28 +1,35 @@
+import CategorySelectController from "@/controllers/components/modals/global/CategorySelectController";
 import React, { Component } from "react";
-import { Tree } from 'antd';
+import styles from "./CategorySelectModal.module.css";
 import CrossSvg from "@/views/svgs/Cross";
-import styles from "./CategoryCrudModal.module.css";
-import MainButton from "../../global/MainButton";
-import CategoryCrudController from "@/controllers/components/modals/global/CategoryCrudController";
-import Loading from "../../global/Loading";
+import MainButton from "@/views/components/global/MainButton";
+import Loading from "@/views/components/global/Loading";
 import chest from "@/utils/chest";
+import { Tree } from "node_modules/antd/lib/index";
 
 /**
-* Props of CategoryCrudModal Component
+* Props of CategorySelectModal Component
 * @typedef Props
 * @property {string} className
 * @property {React.CSSProperties} style
+* @property {boolean} multiSelect
+* @property {string} className
+* @property {string} className
+* @property {string} className
+* @property {string} className
+* @property {string} className
 * 
 * @extends {Component<Props>}
 */
-export default class CategoryCrudModal extends Component {
+export default class CategorySelectModal extends Component {
     
     constructor(props){
         super(props);
-        this.controller = new CategoryCrudController(this);
+        this.controller = new CategorySelectController(this);
         this.state = {
             loading:true,
             list:[],
+            checkedKeys: this.props.defaultCheckedKeys || [],
         }
     }
     
@@ -40,39 +47,33 @@ export default class CategoryCrudModal extends Component {
 
     onConfirm = ()=>{
 
-    }
-
-    onSelect = (selectedKeys, info) => {
-        console.log('selected', selectedKeys, info);
+        this.props.onConfirm(this.state.checkedKeys);
     }
     
     onCheck = (checkedKeys, info) => {
+
         console.log('onCheck', checkedKeys, info);
-    }
 
-    addChild=(node, level)=>{
-        this.controller.addChild(node, level);
-    }
+        let cheKeys = [];
+        let oldCheckedKeys = this.state.checkedKeys;
 
-    editChild=(node, level)=>{
-        //alert(node.id)
-    }
+        if(!this.props.multiSelect){
 
-    deleteChild=(node, level, parent_node)=>{
-        this.controller.deleteChild(node, level, parent_node);
-    }
+            cheKeys = singleSelectCheckedKeys(checkedKeys, oldCheckedKeys);
+        }
 
-    submitChild=(node, level, parent_node)=>{
-        this.controller.submitChild(node, level, parent_node);
-    }
+        this.setState({checkedKeys: cheKeys}, ()=>{
 
-    cancelChild=(node, level)=>{
-        this.controller.cancelChild(node, level);
+            if(this.props.onSelect){
+                
+                this.props.onSelect(cheKeys, info);
+            }
+        });
     }
     
     render(){
         return(
-            <div className={styles.con+" bglc1 btc2 xl_card_shd"}>
+            <div className={styles.con+" bgw btc2 xl_card_shd"}>
 
                 <CrossSvg className={styles.close_btn + " bglc1 amp_btn md_card_shd"}
                 stroke={env.THEME.dc1}
@@ -81,21 +82,21 @@ export default class CategoryCrudModal extends Component {
                 <div className={styles.wrapper}>
 
                 
-                    <div className={styles.title+" tilt "}>{"ویرایش دسته بندی ها"}</div>
+                    <div className={styles.title+" tilt "}>{"انتخاب دسته بندی ها"}</div>
 
                     <div className={styles.form_body}>
                         
-                        <MainButton className={styles.addLevel1}
+                        {/* <MainButton className={styles.addLevel1}
                         title={"ایجاد دسته سطح یک"}
                         loading={this.state.btn_loading}
-                        onClick={()=>this.addChild()}/>
+                        onClick={()=>this.addChild()}/> */}
 
                         <Tree
-                        checkable={false}
+                        checkable={true}
                         showLine={true}
-                        // defaultExpandedKeys={['0-0-0', '0-0-1']}
-                        // defaultSelectedKeys={['0-0-0', '0-0-1']}
-                        // defaultCheckedKeys={['0-0-0', '0-0-1']}
+                        showIcon={false}
+                        showLeafIcon={false}
+                        checkedKeys={this.state.checkedKeys}
                         onSelect={this.onSelect}
                         onCheck={this.onCheck}
                         treeData={
@@ -260,7 +261,7 @@ export default class CategoryCrudModal extends Component {
                     <div className={styles.sec1}>
                         
                         <MainButton className={styles.confirm_btn}
-                        title={"ثبت"}
+                        title={"تایید"}
                         loading={this.state.btn_loading}
                         onClick={this.onConfirm}/>
 
@@ -278,7 +279,22 @@ export default class CategoryCrudModal extends Component {
     }
 }
 
-const addChild = (data, addChild, submitAction, cancelAction)=>{
+const singleSelectCheckedKeys = (keys, oldKeys)=>{
 
-    return 
+    let keyArr = [];
+
+    if(!keys.length){
+        return [];
+    }
+
+    console.log("oldKeys",oldKeys);
+    console.log("keys",keys);
+
+    //TODO: fix some issues
+
+    keyArr = keys.filter(x => !oldKeys.includes(x));
+
+    console.log("keyArr", keyArr);
+
+    return keyArr;
 }

@@ -64,7 +64,7 @@ export default class EditableElementCard extends Component {
         let d = this.props.data;
 
         let control_sec = styles.control_sec;
-        if(d.type==1 || d.type==2){
+        if(d.el_type==1 || d.el_type==2){
             control_sec = styles.control_sec2;
         }
 
@@ -75,7 +75,7 @@ export default class EditableElementCard extends Component {
 
                 {
                     d.visible?
-                    <img className={styles.visiblity+((d.type==1 || d.type==2)?"":" amp_btn")} 
+                    <img className={styles.visiblity+((d.el_type==1 || d.el_type==2)?"":" amp_btn")} 
                     src={"/statics/svg2/visible_icon.svg"} onClick={this.onToggleVisibility}/>
                     :
                     <img className={styles.visiblity+" amp_btn"} 
@@ -88,7 +88,7 @@ export default class EditableElementCard extends Component {
 
                     <div className={styles.name_sec+" tilt bgtc1"}>
                         {
-                            type2Name(d.type)
+                            type2Name(d.el_type)
                         }
                     </div>
 
@@ -107,7 +107,7 @@ export default class EditableElementCard extends Component {
                     onClick={this.onEdit}/>
 
                     {
-                        (d.type==1 || d.type==2)?
+                        (d.el_type==1 || d.el_type==2)?
                         null:
                         <img className={styles.delete_icon+" amp_btn"} 
                         src={"/statics/svg2/delete.svg"}

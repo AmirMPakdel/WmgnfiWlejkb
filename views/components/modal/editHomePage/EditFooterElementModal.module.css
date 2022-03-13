@@ -1,0 +1,100 @@
+
+.con{
+    width: 42rem;
+    max-height: 90vh;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    border-width: 1px;
+    border-style: solid;
+    padding: 0.8rem 0.8rem;
+    direction: rtl;
+}
+
+.close_btn{
+    width: 2.2rem;
+    height: 2.2rem;
+    padding: 0.6rem;
+    border-radius: 0.5rem;
+    position: absolute;
+    right: -1.1rem;
+    top: -1.1rem;
+}
+
+.wrapper{
+    width: 100%;
+    height: auto;
+    overflow-y: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form_body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0 0.8rem;
+}
+
+.title{
+    width: 100%;
+    height: 2rem;
+    font-weight: 700;
+    margin-top: 1rem;
+    margin-bottom: 1.4rem;
+    text-align: center;
+}
+
+.info{
+    width: 80%;
+    text-align: center;
+}
+
+.title2{
+    font-weight: 700;
+    margin-top: 1rem;
+    width: 100%;
+    direction: rtl;
+    text-align: right;
+}
+
+.input1{
+    width: 100%;
+    margin-top: 1rem !important;
+    margin-bottom: 0 !important;
+}
+
+
+.confirm_btn{
+    width: 16rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+@media(max-width:1024px){
+
+    .con{
+        width: 46rem;
+    }
+}
+
+@media(max-width:767px){
+
+    .con{
+        width: 96vw;
+        height: 80vh;
+        padding: 0.8rem 0rem;
+    }
+
+    .title{
+        margin-top: 0.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .confirm_btn{
+        width: 12rem;
+        height: 2.6rem;
+    }
+}

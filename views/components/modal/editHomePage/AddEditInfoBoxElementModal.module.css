@@ -121,6 +121,10 @@
     margin-bottom: 0 !important;
 }
 
+.link_url_input_input{
+    direction: ltr !important;
+}
+
 .type_select_sec{
     width: 100%;
     display: flex;

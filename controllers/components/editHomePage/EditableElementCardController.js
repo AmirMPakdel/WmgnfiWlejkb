@@ -33,7 +33,7 @@ export default class EditableElementCardController{
         
         this.AskDeleteElementModal.setState({loading:true});
 
-        let params = { element_id: data.id };
+        let params = { element: data};
 
         this.model.Delete(params, (err, data)=>{
 

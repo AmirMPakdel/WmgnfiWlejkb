@@ -27,12 +27,20 @@ export default class HomePageModel{
 
             let constElements  = [
                 {
-                    id:"start", title:"نمایی کلی و مختصر", type:1, visible:1,
+                    id:"intro", title:"نمایی کلی و مختصر", el_type:1, visible:1,
                 },
                 {
-                    id:"footer", title:"اطلاعات سایت و لینک ها", type:2, visible:1,
+                    id:"footer", title:"اطلاعات سایت و لینک ها", el_type:2, visible:1,
                 },
             ]
+
+            d.contents.forEach(content => {
+                content.el_type = 4;
+            });
+
+            d.course_lists.forEach(course => {
+                course.el_type = 3;
+            });
 
             let elements = constElements.concat(d.contents);
             elements.concat(d.course_lists);
@@ -74,7 +82,7 @@ export default class HomePageModel{
 }
 
 const newHierarchy = [
-    "start", "footer"
+    "intro", "footer"
 ]
 
 const getFakeElements = ()=>{

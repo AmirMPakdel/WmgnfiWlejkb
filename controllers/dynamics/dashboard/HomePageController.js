@@ -23,6 +23,10 @@ export default class HomePageController{
             if(data.result_code === env.SC.SUCCESS){
 
                 let d = data.data;
+
+                //TODO:handle
+                d.hierarchy = ["intro", 1, 2, "footer"];
+
                 v.setState({
                     loading:false,
                     elements: this.sortElementsBasedOnHierarchy(d.elements, d.hierarchy),

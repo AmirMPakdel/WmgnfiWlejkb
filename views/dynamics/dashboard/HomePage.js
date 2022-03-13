@@ -58,6 +58,7 @@ export default class HomePage extends Component {
     }
     
     render(){
+        console.log(this.state.elements);
         return(
             <EducatorDashboardLayout>
 

@@ -6,6 +6,7 @@ import chest from "@/utils/chest";
 import { Checkbox, Popover, Radio } from "node_modules/antd/lib/index";
 import MainButton from "@/views/components/global/MainButton";
 import Dropdown from "@/views/components/global/Dropdown";
+import CategorySelectModal from "../global/CategorySelectModal";
 
 /**
 * Props of AddEditCourseListElementModal Component
@@ -21,7 +22,9 @@ export default class AddEditCourseListElementModal extends Component {
         super(props);
         this.controller = new AddEditCourseListElementController(this);
         this.state = {
+            ordering_item:null,
             active_grouping:false,
+            checkedGroupKey:[]
         }
     }
     
@@ -33,13 +36,46 @@ export default class AddEditCourseListElementModal extends Component {
         chest.ModalLayout.closeAndDelete(1);
     }
 
+    onOrderSelect=(item)=>{
+        this.setState({ordering_item:item})
+    }
+
     onGroupingCheck=()=>{
 
         this.setState({active_grouping: !this.state.active_grouping});
     }
 
+    onSelectGroups=()=>{
+
+        console.log("this.state.checkedGroupKey",this.state.checkedGroupKey);
+        
+        let modal = <CategorySelectModal multiSelect={false}
+        defaultCheckedKeys={this.state.checkedGroupKey}
+        onCancel={this.onGroupSelectCancel}
+        onConfirm={this.onGroupConfirm}/>
+
+        chest.ModalLayout.setAndShowModal(2, modal);
+    }
+
+    onGroupSelectCancel=()=>{
+
+        chest.ModalLayout.closeAndDelete(2);
+    }
+
+    onGroupConfirm=(checkedKeys)=>{
+
+        this.setState({checkedGroupKey: [checkedKeys[0]]}, ()=>{
+            chest.ModalLayout.closeAndDelete(2);
+        });
+    }
+
     onConfirm=()=>{
 
+        if(!this.state.ordering_item){
+            return;
+        }
+        
+        this.controller.onConfirm();
     }
     
     render(){
@@ -62,7 +98,8 @@ export default class AddEditCourseListElementModal extends Component {
 
                         <Dropdown className={styles.order_dd}
                         placeholder={"ترتیب نمایش"}
-                        options={OrdersOptions}/>
+                        options={OrdersOptions}
+                        onSelect={this.onOrderSelect}/>
 
                         <div className={styles.active_group_select_row}>
 
@@ -73,6 +110,14 @@ export default class AddEditCourseListElementModal extends Component {
 
                         </div>
 
+                        {
+                            this.state.active_grouping?
+                            <MainButton className={styles.select_gorup_btn}
+                            title={"انتخاب از دسته بندی ها"}
+                            onClick={this.onSelectGroups}/>
+                            :null
+                        }
+
                     </div>
 
                     <div className={styles.sec1}>
@@ -80,6 +125,7 @@ export default class AddEditCourseListElementModal extends Component {
                         <MainButton className={styles.confirm_btn}
                         title={this.props.mode=="edit"?"ویرایش":"ایجاد"}
                         loading={this.state.btn_loading}
+                        disabled={!this.state.ordering_item}
                         onClick={this.onConfirm}/>
 
                     </div>

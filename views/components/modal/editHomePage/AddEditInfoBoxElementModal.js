@@ -5,7 +5,6 @@ import TextInput from "../../global/TextInput";
 import CrossSvg from "@/views/svgs/Cross";
 import styles from "./AddEditInfoBoxElementModal.module.css";
 import { InputFilter } from "@/utils/validation";
-import chest from "@/utils/chest";
 import { Popover, Radio } from "node_modules/antd/lib/index";
 import UploadMedia from "../../editHomePage/UploadMedia";
 import AddEditInfoBoxElementController from "@/controllers/components/modals/editHomePage/AddEditInfoBoxElementController";
@@ -27,6 +26,9 @@ export default class AddEditInfoBoxElementModal extends Component {
         this.controller = new AddEditInfoBoxElementController(this);
         this.state = {
 
+            loading:false,
+            confirm_loading:false,
+
             title:"",
             text:"",
 
@@ -34,6 +36,9 @@ export default class AddEditInfoBoxElementModal extends Component {
             text_error:false,
 
             has_link:false,
+
+            link_title: "",
+            link_url: "",
 
             media_type:"image",
         }
@@ -45,7 +50,7 @@ export default class AddEditInfoBoxElementModal extends Component {
 
     onCancel=()=>{
 
-        chest.ModalLayout.closeAndDelete(1);
+        this.controller.onCancel();
     }
 
     onInput=(key , value)=>{
@@ -70,7 +75,7 @@ export default class AddEditInfoBoxElementModal extends Component {
     }
 
     onConfirm=()=>{
-
+        this.controller.onConfirm();
     }
     
     render(){
@@ -144,6 +149,7 @@ export default class AddEditInfoBoxElementModal extends Component {
 
                                 <TextInput className={styles.link_url_input}
                                 placeholder={"URL لینک"}
+                                inputClassName={styles.link_url_input_input}
                                 onChange={t=>this.onInput("link_url", t)}
                                 value={this.state.link_url}
                                 error={this.state.link_url_error}/>
@@ -195,7 +201,7 @@ export default class AddEditInfoBoxElementModal extends Component {
                         
                         <MainButton className={styles.confirm_btn}
                         title={this.props.mode=="edit"?"ویرایش":"ایجاد"}
-                        loading={this.state.btn_loading}
+                        loading={this.state.confirm_loading}
                         onClick={this.onConfirm}/>
 
                     </div>

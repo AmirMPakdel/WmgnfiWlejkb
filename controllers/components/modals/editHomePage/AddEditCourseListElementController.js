@@ -9,6 +9,8 @@ export default class AddEditCourseListElementController{
         this.model = new AddEditCourseListElementModel();
     }
     
-    
+    onConfirm(){
+        
+    }
     
 }
