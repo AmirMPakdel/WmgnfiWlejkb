@@ -70,6 +70,14 @@ export default class UploadMedia extends Component {
         
         window.open(this.state.src);
     }
+
+    getFile=()=>{
+        return this.state.file;
+    }
+
+    getFileUrl=()=>{
+        return this.state.src;
+    }
     
     render(){
         let formats = "jpg, png";

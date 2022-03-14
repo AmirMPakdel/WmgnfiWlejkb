@@ -25,10 +25,15 @@ export default class HomePage extends Component {
             sortMode: false,
             elements: [],
             hierarchy: [],
+            footer:{},
         }
     }
     
     componentDidMount(){
+        this.controller.getElements();
+    }
+
+    reload=()=>{
         this.controller.getElements();
     }
 

@@ -32,6 +32,8 @@ export default class EditFooterElementModal extends Component {
             mobile1:"",
             mobile2:"",
         }
+
+        extractFooterData(props.parent.state);
     }
     
     componentDidMount(){
@@ -134,6 +136,10 @@ export default class EditFooterElementModal extends Component {
             </div>
         )
     }
+}
+
+const extractFooterData=(data)=>{
+    console.log(data);
 }
 
 const text1 = "ورودی های زیر اختیاری هستند. آن اطلاعاتی که قصد دارید برای بازدید کننده سایت در فوتر نمایش داده شود را پر کنید."

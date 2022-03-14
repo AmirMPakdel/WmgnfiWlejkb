@@ -43,14 +43,12 @@ export default class HomePageModel{
             });
 
             let elements = constElements.concat(d.contents);
-            elements.concat(d.course_lists);
+            elements = elements.concat(d.course_lists);
 
             let data2 = {
                 hierarchy: d.content_hierarchy || newHierarchy,
                 elements,
             }
-
-            
 
             delete d.content_hierarchy;
             delete d.contents;

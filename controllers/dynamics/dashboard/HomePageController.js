@@ -25,13 +25,14 @@ export default class HomePageController{
                 let d = data.data;
 
                 //TODO:handle
-                d.hierarchy = ["intro", 1, 2, "footer"];
+                d.hierarchy = createHierarchy(d);
 
                 v.setState({
                     loading:false,
                     elements: this.sortElementsBasedOnHierarchy(d.elements, d.hierarchy),
+                    footer: extractFooterData(d),
                     hierarchy: d.hierarchy,
-                })
+                });
             }
 
         });
@@ -43,9 +44,13 @@ export default class HomePageController{
 
         hierarchy.forEach(h => {
             
+            let arr = h.split("-");
+            let h_id = arr[0];
+            let h_type = arr[1];
+
             elements.forEach(e => {
 
-                if(e.id == h){
+                if(e.id == h_id && e.el_type == h_type){
                     newEle.push(e);
                 }
             });
@@ -68,6 +73,7 @@ export default class HomePageController{
 
         chest.ModalLayout.setAndShowModal( 1,
             <AddElementSelectModal 
+            parent={this.view}
             onCancel={this.onCancelAddNewElement}
             onContinue={this.onContinueAddNewElement}/>
         );
@@ -78,19 +84,52 @@ export default class HomePageController{
         chest.ModalLayout.closeAndDelete(1);
     }
 
-    onContinueAddNewElement(type){
+    onContinueAddNewElement=(type)=>{
 
         let modal = null;
 
         if(type === "3"){
-            modal = <AddEditInfoBoxElementModal
+
+            modal = 
+            <AddEditInfoBoxElementModal
+            parent={this.view}
             mode="add"/>
+
         }else if(type === "4"){
-            modal = <AddEditCourseListElementModal
+
+            modal = 
+            <AddEditCourseListElementModal
+            parent={this.view}
             mode="add"/>
         }
 
         chest.ModalLayout.setAndShowModal(1, modal);
     }
     
+}
+
+const createHierarchy=(data)=>{
+
+    let h = ["intro-1"];
+
+    let elements = Object.assign([], data.elements);
+
+    elements.forEach((el)=>{
+
+        if(el.el_type==1 || el.el_type==2){return}
+
+        h.push(el.id+"-"+el.el_type);
+    });
+
+    h.push("footer-2");
+
+    return h;
+}
+
+const extractFooterData=(data)=>{
+
+    return {
+        footer_links: data.footer_links,
+        footer_telephones: data.footer_telephones,
+    };
 }

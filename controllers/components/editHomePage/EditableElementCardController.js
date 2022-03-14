@@ -2,6 +2,10 @@ import EditableElementCardModel from "@/models/components/editHomePage/EditableE
 import chest from "@/utils/chest";
 import EditableElementCard from "@/views/components/editHomePage/EditableElementCard";
 import AskDeleteElementModal from "@/views/components/modal/editHomePage/AskDeleteElementModal";
+import AddEditCourseListElementModal from "@/views/components/modal/editHomePage/AddEditCourseListElementModal";
+import AddEditInfoBoxElementModal from "@/views/components/modal/editHomePage/AddEditInfoBoxElementModal";
+import EditFooterElementModal from "@/views/components/modal/editHomePage/EditFooterElementModal";
+import EditIntroElementModal from "@/views/components/modal/editHomePage/EditIntroElementModal";
 
 export default class EditableElementCardController{
     
@@ -9,6 +13,27 @@ export default class EditableElementCardController{
     constructor(view){
         this.view = view;
         this.model = new EditableElementCardModel();
+    }
+
+    onEdit(){
+
+        let v = this.view;
+        let modal = null;
+        let d = v.props.data;
+        let parent = v.props.parent;
+
+        if(d.el_type==1){
+            modal = <EditIntroElementModal data={d} parent={parent}/>
+        }else if(d.el_type==2){
+            modal = <EditFooterElementModal data={d} parent={parent}/>
+        }else if(d.el_type==3){
+            modal = <AddEditCourseListElementModal data={d} parent={parent} mode="edit"/>
+        }else if(d.el_type==4){
+            let footer_data = parent.state.footer;
+            modal = <AddEditInfoBoxElementModal data={footer_data} parent={parent} mode="edit"/>
+        }
+
+        chest.ModalLayout.setAndShowModal(1, modal);
     }
     
     onDelete(){
@@ -42,6 +67,8 @@ export default class EditableElementCardController{
                 chest.openNotification("آیتم موردنظر حذف شد.", "success");
                 
                 this.onCancelDelete();
+
+                v.props.parent.reload();
             }
 
             this.AskDeleteElementModal.setState({loading:false});

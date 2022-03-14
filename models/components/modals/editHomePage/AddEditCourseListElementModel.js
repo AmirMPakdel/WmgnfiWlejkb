@@ -6,7 +6,7 @@ export default class AddEditCourseListElementModel{
     * @param {object} params
     * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
     */
-    getData(params, cb){
+    save(params, cb){
     
         if(env.MOCKING_SERVER){
             setTimeout(()=>{
@@ -14,8 +14,15 @@ export default class AddEditCourseListElementModel{
             }, 2000, cb);
             return;
         }
+
+        let ep = env.EP.EDIT_PARAM_COURSE_LIST_ADD;
+        if(params.mode==="edit"){
+            ep = env.EP.EDIT_PARAM_COURSE_LIST_UPDATE;
+        }
+
+        delete params.mode;
     
-        myServer.Post(myServer.urls.SOME_URL, params, {}, (err, data)=>{
+        myServer.Post(myServer.urls.DASH_EDIT_HOMEPAGE+ep, params, {}, (err, data)=>{
     
             if(!err){
             

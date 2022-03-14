@@ -8,12 +8,14 @@ import { InputFilter } from "@/utils/validation";
 import { Popover, Radio } from "node_modules/antd/lib/index";
 import UploadMedia from "../../editHomePage/UploadMedia";
 import AddEditInfoBoxElementController from "@/controllers/components/modals/editHomePage/AddEditInfoBoxElementController";
+import HomePage from "@/views/dynamics/dashboard/HomePage";
 
 /**
 * Props of AddEditInfoBoxElementModal Component
 * @typedef Props
 * @property {string} className
 * @property {React.CSSProperties} style
+* @property {HomePage} parent 
 * @property {"add"|"edit"} mode
 * @property {Object} data 
 * 
@@ -75,6 +77,11 @@ export default class AddEditInfoBoxElementModal extends Component {
     }
 
     onConfirm=()=>{
+
+        if(this.state.confirm_loading){
+            return
+        }
+        
         this.controller.onConfirm();
     }
     
@@ -181,6 +188,7 @@ export default class AddEditInfoBoxElementModal extends Component {
                         {
                             this.state.media_type==="image"?
                             <UploadMedia
+                            ref={r=>this.UploadMedia=r}
                             className={styles.updload_media}
                             title={"بارگذاری تصویر"}
                             type="image"
@@ -189,6 +197,7 @@ export default class AddEditInfoBoxElementModal extends Component {
                         {
                             this.state.media_type==="video"?
                             <UploadMedia
+                            ref={r=>this.UploadMedia=r}
                             className={styles.updload_media}
                             title={"بارگذاری ویدیو"}
                             type="video"

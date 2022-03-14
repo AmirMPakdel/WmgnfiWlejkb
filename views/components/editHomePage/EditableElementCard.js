@@ -6,10 +6,6 @@ import Setting from "@/views/svgs/Setting";
 import VeggieBurger from "@/views/svgs/VeggieBurger";
 import React, { Component } from "react";
 import IconButton from "../global/IconButton";
-import AddEditCourseListElementModal from "../modal/editHomePage/AddEditCourseListElementModal";
-import AddEditInfoBoxElementModal from "../modal/editHomePage/AddEditInfoBoxElementModal";
-import EditFooterElementModal from "../modal/editHomePage/EditFooterElementModal";
-import EditIntroElementModal from "../modal/editHomePage/EditIntroElementModal";
 import styles from "./EditableElementCard.module.css";
 
 /**
@@ -36,27 +32,16 @@ export default class EditableElementCard extends Component {
 
     onEdit=()=>{
 
-        let modal = null;
-        let d = this.props.data;
-
-        if(d.el_type==1){
-            modal = <EditIntroElementModal data={d}/>
-        }else if(d.el_type==2){
-            modal = <EditFooterElementModal data={d}/>
-        }else if(d.el_type==3){
-            modal = <AddEditInfoBoxElementModal data={d}/>
-        }else if(d.el_type==4){
-            modal = <AddEditCourseListElementModal data={d}/>
-        }
-
-        chest.ModalLayout.setAndShowModal(1, modal);
+        this.controller.onEdit();
     }
 
     onDelete=()=>{
+
         this.controller.onDelete();
     }
 
     onToggleVisibility=()=>{
+
         this.controller.onToggleVisibility();
     }
     

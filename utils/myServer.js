@@ -118,7 +118,11 @@ function Get(url, config, cb){
 
         serverErrorHandler.errorCheck(res.data, config);
 
-        cb(null, res.data);
+        try{
+            cb(null, res.data);
+        }catch(e){
+            console.log(e);
+        }
 
     }).catch(e=>{
         
@@ -162,12 +166,17 @@ function Post(url, data, config={}, cb){
 
             serverErrorHandler.errorCheck(res.data, config);
 
-            cb(null, res.data);
+            try{
+                cb(null, res.data);
+            }catch(e){
+                console.log(e);
+            }
         }
 
     }).catch((e)=>{
 
         //TODO: handle this error 
+        console.log(e);
     });
 }
 

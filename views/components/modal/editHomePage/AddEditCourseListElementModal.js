@@ -3,16 +3,18 @@ import React, { Component } from "react";
 import styles from "./AddEditCourseListElementModal.module.css";
 import CrossSvg from "@/views/svgs/Cross";
 import chest from "@/utils/chest";
-import { Checkbox, Popover, Radio } from "node_modules/antd/lib/index";
+import { Checkbox } from "node_modules/antd/lib/index";
 import MainButton from "@/views/components/global/MainButton";
 import Dropdown from "@/views/components/global/Dropdown";
 import CategorySelectModal from "../global/CategorySelectModal";
+import HomePage from "@/views/dynamics/dashboard/HomePage";
 
 /**
 * Props of AddEditCourseListElementModal Component
 * @typedef Props
 * @property {string} className
 * @property {React.CSSProperties} style
+* @property {HomePage} parent 
 * 
 * @extends {Component<Props>}
 */
@@ -22,6 +24,7 @@ export default class AddEditCourseListElementModal extends Component {
         super(props);
         this.controller = new AddEditCourseListElementController(this);
         this.state = {
+            confirm_loading:false,
             ordering_item:null,
             active_grouping:false,
             checkedGroupKey:[]
@@ -33,11 +36,12 @@ export default class AddEditCourseListElementModal extends Component {
 
     onCancel=()=>{
 
-        chest.ModalLayout.closeAndDelete(1);
+        this.controller.onCancel();
     }
 
     onOrderSelect=(item)=>{
-        this.setState({ordering_item:item})
+
+        this.setState({ordering_item:item});
     }
 
     onGroupingCheck=()=>{
@@ -71,7 +75,7 @@ export default class AddEditCourseListElementModal extends Component {
 
     onConfirm=()=>{
 
-        if(!this.state.ordering_item){
+        if(!this.state.ordering_item || this.state.confirm_loading){
             return;
         }
         
@@ -124,7 +128,7 @@ export default class AddEditCourseListElementModal extends Component {
                         
                         <MainButton className={styles.confirm_btn}
                         title={this.props.mode=="edit"?"ویرایش":"ایجاد"}
-                        loading={this.state.btn_loading}
+                        loading={this.state.confirm_loading}
                         disabled={!this.state.ordering_item}
                         onClick={this.onConfirm}/>
 
