@@ -33,7 +33,8 @@ export default class EditFooterElementModal extends Component {
             mobile2:"",
         }
 
-        extractFooterData(props.parent.state);
+        this.state = extractFooterData(props.data);
+        this.state.confirm_loading = false;
     }
     
     componentDidMount(){
@@ -53,6 +54,7 @@ export default class EditFooterElementModal extends Component {
 
     onConfirm=()=>{
 
+        this.controller.onConfirm();
     }
     
     render(){
@@ -75,50 +77,59 @@ export default class EditFooterElementModal extends Component {
 
                         <TextInput className={styles.input1}
                         placeholder={"ایمیل"}
+                        inputStyle={{direction:"ltr"}}
                         onChange={t=>this.onInput("email", t)}
                         value={this.state.email}/>
 
                         <TextInput className={styles.input1}
                         placeholder={"واتس اپ"}
-                        onChange={t=>this.onInput("email", t)}
-                        value={this.state.email}/>
+                        inputStyle={{direction:"ltr"}}
+                        onChange={t=>this.onInput("whatsapp", t)}
+                        value={this.state.whatsapp}/>
 
                         <TextInput className={styles.input1}
                         placeholder={"تلگرام"}
-                        onChange={t=>this.onInput("email", t)}
-                        value={this.state.email}/>
+                        inputStyle={{direction:"ltr"}}
+                        onChange={t=>this.onInput("telegram", t)}
+                        value={this.state.telegram}/>
 
                         <TextInput className={styles.input1}
                         placeholder={"اینستاگرام"}
-                        onChange={t=>this.onInput("email", t)}
-                        value={this.state.email}/>
+                        inputStyle={{direction:"ltr"}}
+                        onChange={t=>this.onInput("instagram", t)}
+                        value={this.state.instagram}/>
 
                         <TextInput className={styles.input1}
+                        inputStyle={{direction:"ltr"}}
                         placeholder={"لینکدین"}
-                        onChange={t=>this.onInput("email", t)}
-                        value={this.state.email}/>
+                        onChange={t=>this.onInput("linkedin", t)}
+                        value={this.state.linkedin}/>
 
                         <div className={styles.title2+" tilt"}>{"شماره تماس"}</div>
 
                         <TextInput className={styles.input1}
                         placeholder={"تلفن ثابت 1"}
-                        onChange={t=>this.onInput("email", t)}
-                        value={this.state.email}/>
+                        inputStyle={{direction:"ltr"}}
+                        onChange={t=>this.onInput("telephone1", t)}
+                        value={this.state.telephone1}/>
 
                         <TextInput className={styles.input1}
                         placeholder={"تلفن ثابت 2"}
-                        onChange={t=>this.onInput("email", t)}
-                        value={this.state.email}/>
+                        inputStyle={{direction:"ltr"}}
+                        onChange={t=>this.onInput("telephone2", t)}
+                        value={this.state.telephone2}/>
 
                         <TextInput className={styles.input1}
                         placeholder={"شماره موبایل 1"}
-                        onChange={t=>this.onInput("email", t)}
-                        value={this.state.email}/>
+                        inputStyle={{direction:"ltr"}}
+                        onChange={t=>this.onInput("mobile1", t)}
+                        value={this.state.mobile1}/>
 
                         <TextInput className={styles.input1}
                         placeholder={"شماره موبایل 2"}
-                        onChange={t=>this.onInput("email", t)}
-                        value={this.state.email}/>
+                        inputStyle={{direction:"ltr"}}
+                        onChange={t=>this.onInput("mobile2", t)}
+                        value={this.state.mobile2}/>
                         
                     </div>
 
@@ -126,7 +137,7 @@ export default class EditFooterElementModal extends Component {
                         
                         <MainButton className={styles.confirm_btn}
                         title={"ثبت"}
-                        loading={this.state.btn_loading}
+                        loading={this.state.confirm_loading}
                         onClick={this.onConfirm}/>
 
                     </div>
@@ -140,6 +151,28 @@ export default class EditFooterElementModal extends Component {
 
 const extractFooterData=(data)=>{
     console.log(data);
+
+    let footer_links = data.footer_links;
+    let footer_telephones = data.footer_telephones;
+    if(!footer_links){
+        footer_links = {
+            email:"",
+            telegram:"",
+            instagram:"",
+            whatsapp:"",
+            linkedin:"",
+        }
+    }
+    if(!footer_telephones){
+        footer_telephones={
+            telephone1:"",
+            telephone2:"",
+            mobile1:"",
+            mobile2:"",
+        }
+    }
+
+    return {...footer_links, ...footer_telephones};
 }
 
 const text1 = "ورودی های زیر اختیاری هستند. آن اطلاعاتی که قصد دارید برای بازدید کننده سایت در فوتر نمایش داده شود را پر کنید."

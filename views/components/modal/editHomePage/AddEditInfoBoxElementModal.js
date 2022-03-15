@@ -28,7 +28,6 @@ export default class AddEditInfoBoxElementModal extends Component {
         this.controller = new AddEditInfoBoxElementController(this);
         this.state = {
 
-            loading:false,
             confirm_loading:false,
 
             title:"",
@@ -78,9 +77,7 @@ export default class AddEditInfoBoxElementModal extends Component {
 
     onConfirm=()=>{
 
-        if(this.state.confirm_loading){
-            return
-        }
+        if(this.state.confirm_loading){return;}
         
         this.controller.onConfirm();
     }

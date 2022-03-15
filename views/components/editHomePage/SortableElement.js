@@ -48,7 +48,7 @@ export default class SortableElement extends Component {
 
                     <div className={styles.name_sec+" tilt bgtc1"}>
                         {
-                            type2Name(d.type)
+                            type2Name(d.el_type)
                         }
                     </div>
 

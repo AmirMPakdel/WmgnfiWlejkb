@@ -23,7 +23,7 @@ export default class AddEditInfoBoxElementController{
         let v = this.view;
         let vs = v.state;
         
-        if(vs.loading){return};
+        if(vs.confirm_loading){return};
         
         let valid = this.inputCheck();
         if(valid){
@@ -86,11 +86,23 @@ export default class AddEditInfoBoxElementController{
 
         if(vs.media_type=="image"){
 
+            if(!v.UploadMedia.getFile()){
+                valid=false;
+                let message = "تصویری برای بارگذاری انتخاب نشده است.";
+                chest.openNotification(message, "error");
+            }
+            
         }else if(vs.media_type==="video"){
+
+            if(!v.UploadMedia.getFile()){
+                valid=false;
+                let message = "ویدیویی برای بارگذاری انتخاب نشده است.";
+                chest.openNotification(message, "error");
+            }
 
         }else if(vs.media_type==="none"){
 
-            if(!vs.title){
+            if(!vs.title.length){
                 valid=false;
                 vs.title_error = "عنوان در این حالت نمی تواند خالی باشد.";
             }else{

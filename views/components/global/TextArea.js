@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import styles from "./TextArea.module.css";
 
 export default class TextArea extends Component {
+
+    state={
+        error:false
+    }
     
     render(){
 
@@ -25,6 +29,11 @@ export default class TextArea extends Component {
                 value={this.props.value} 
                 maxLength={this.props.maxLength}
                 onChange={e=>this.props.onChange(e.target.value)}/>
+
+                {
+                    this.props.error || this.state.error?
+                    <div className={styles.error+" fec"}>{this.props.error || this.state.error}</div>:null
+                }
                 
             </div>
         )

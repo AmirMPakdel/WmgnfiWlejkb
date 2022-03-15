@@ -19,15 +19,31 @@ export default class SortElementList extends Component {
         super(props);
         //this.controller = new SortElementListController(this);
         this.state = {
-            list:[1,2,3,4,5,6,7,8,9]
         }
     }
     
     componentDidMount(){
     }
 
-    onColumnDrop=()=>{
+    getCardPayload=(columnId, index)=>{
+        let p = this.props.parent;
+        let ps = p.state;
+        let nw = ps.new_values;
+        return nw.content_hierarchy.children.filter(p => p.id === columnId)[0].children[
+          index
+        ];
+    }
 
+    onColumnDrop=(dropResult)=>{
+        let p = this.props.parent;
+        let ps = p.state;
+        let nw = ps.new_values;
+
+        const new_ch = Object.assign({}, nw.content_hierarchy);
+        new_ch.children = applyDrag(new_ch.children, dropResult);
+
+        ps.new_values.content_hierarchy = new_ch;
+        p.setState(ps);
     }
     
     render(){
@@ -46,6 +62,7 @@ export default class SortElementList extends Component {
                     //onDragEnd={this.onDragEnd}
                     //lockAxis={"y"}
                     dragHandleSelector={".dragHandleSelector"}
+                    getChildPayload={index =>this.getCardPayload(item.id, index)}
                     onDrop={this.onColumnDrop}
                     // dropPlaceholder={{
                     //     animationDuration: 150,
@@ -80,3 +97,21 @@ export default class SortElementList extends Component {
         )
     }
 }
+
+const applyDrag = (arr, dragResult) => {
+    const { removedIndex, addedIndex, payload } = dragResult;
+    if (removedIndex === null && addedIndex === null) return arr;
+  
+    const result = [...arr];
+    let itemToAdd = payload;
+  
+    if (removedIndex !== null) {
+      itemToAdd = result.splice(removedIndex, 1)[0];
+    }
+  
+    if (addedIndex !== null) {
+      result.splice(addedIndex, 0, itemToAdd);
+    }
+  
+    return result;
+};

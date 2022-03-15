@@ -6,7 +6,7 @@ export default class EditFooterElementModel{
     * @param {object} params
     * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
     */
-    getData(params, cb){
+    save(params, cb){
     
         if(env.MOCKING_SERVER){
             setTimeout(()=>{
@@ -15,7 +15,7 @@ export default class EditFooterElementModel{
             return;
         }
     
-        myServer.Post(myServer.urls.SOME_URL, params, {}, (err, data)=>{
+        myServer.Post(myServer.urls.DASH_EDIT_HOMEPAGE+env.EP.EDIT_PARAM_FOOTER_LINKS, params, {}, (err, data)=>{
     
             if(!err){
             

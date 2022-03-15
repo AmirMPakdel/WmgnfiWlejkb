@@ -35,6 +35,8 @@ export default class EditIntroElementModal extends Component {
 
             type,
 
+            confirm_loading:false,
+
             title:"",
             text:"",
 
@@ -43,7 +45,8 @@ export default class EditIntroElementModal extends Component {
 
             has_link:false,
 
-            media_type:"image",
+            link_title: "",
+            link_url: "",
         }
     }
     
@@ -82,6 +85,7 @@ export default class EditIntroElementModal extends Component {
 
     onConfirm=()=>{
 
+        this.controller.onConfirm();
     }
     
     render(){
@@ -183,6 +187,7 @@ export default class EditIntroElementModal extends Component {
                     }
                     
                         <UploadMedia
+                        ref={r=>this.UploadMedia=r}
                         className={styles.updload_media}
                         title={"بارگذاری تصویر"}
                         type="image"/>

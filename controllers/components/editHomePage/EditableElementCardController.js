@@ -25,12 +25,13 @@ export default class EditableElementCardController{
         if(d.el_type==1){
             modal = <EditIntroElementModal data={d} parent={parent}/>
         }else if(d.el_type==2){
-            modal = <EditFooterElementModal data={d} parent={parent}/>
+            let footer_data = parent.state.footer;
+            modal = <EditFooterElementModal data={footer_data} parent={parent}/>
         }else if(d.el_type==3){
             modal = <AddEditCourseListElementModal data={d} parent={parent} mode="edit"/>
         }else if(d.el_type==4){
-            let footer_data = parent.state.footer;
-            modal = <AddEditInfoBoxElementModal data={footer_data} parent={parent} mode="edit"/>
+            
+            modal = <AddEditInfoBoxElementModal data={d} parent={parent} mode="edit"/>
         }
 
         chest.ModalLayout.setAndShowModal(1, modal);

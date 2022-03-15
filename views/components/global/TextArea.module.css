@@ -23,3 +23,12 @@
     color: #666666;
     user-select: none;
 }
+
+.error{
+    position: absolute;
+    bottom: -1.3rem;
+    font-size: 0.7rem;
+    right: 1rem;
+    font-weight: 500;
+    direction: rtl;
+}
