@@ -1,13 +1,9 @@
 import React, { Component } from "react";
 import styles from "./SwitchIntroElementModal.module.css";
 import MainButton from "../../global/MainButton";
-import TextArea from "../../global/TextArea";
-import TextInput from "../../global/TextInput";
 import CrossSvg from "@/views/svgs/Cross";
-import { InputFilter } from "@/utils/validation";
 import chest from "@/utils/chest";
-import { Popover, Radio } from "node_modules/antd/lib/index";
-import UploadMedia from "../../editHomePage/UploadMedia";
+import { Radio } from "node_modules/antd/lib/index";
 import EditIntroElementModal from "./EditIntroElementModal";
 
 /**
@@ -24,8 +20,8 @@ export default class SwitchIntroElementModal extends Component {
         super(props);
 
         this.state = {
-            type: this.props.type,
-            info_text: type2Info(this.props.type)
+            template: this.props.template,
+            info_text: template2Info(this.props.template)
         }
     }
     
@@ -38,17 +34,17 @@ export default class SwitchIntroElementModal extends Component {
         chest.ModalLayout.setAndShowModal(1, modal);
     }
 
-    onTypeSelect=(type)=>{
+    onTypeSelect=(template)=>{
 
-        this.setState({type, info_text: type2Info(type)});
+        this.setState({template, info_text: template2Info(template)});
     }
 
     onConfirm=()=>{
 
         let newData = Object.assign({}, this.props.data);
-        newData.type = this.state.type;
+        newData.template = this.state.template;
 
-        let modal = <EditIntroElementModal data={newData}/>;
+        let modal = <EditIntroElementModal data={newData} parent={this.props.parent}/>;
         chest.ModalLayout.setAndShowModal(1, modal);
     }
     
@@ -71,11 +67,11 @@ export default class SwitchIntroElementModal extends Component {
                         <div className={styles.type_select_sec}>
 
                             <RadioSelect title={"حالت پیش فرض"}
-                            checked={this.state.type===1}
+                            checked={this.state.template===1}
                             onSelect={()=>this.onTypeSelect(1)}/>
 
                             <RadioSelect title={"حالت بنر"}
-                            checked={this.state.type===2}
+                            checked={this.state.template===2}
                             onSelect={()=>this.onTypeSelect(2)}/>
 
                         </div>
@@ -112,9 +108,9 @@ function RadioSelect(props){
     )
 }
 
-function type2Info(type){
+function template2Info(template){
 
-    switch(type){
+    switch(template){
 
         case 1:
             return "این حالت شامل یک تیتر، متن توضیحات، تصویر و یک لینک اختیاری است.";

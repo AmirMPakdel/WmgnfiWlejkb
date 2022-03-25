@@ -1,0 +1,125 @@
+.con{
+    width: 12.4rem;
+    height: 18rem;
+    border-radius: 0.8rem;
+    background-color: white;
+    overflow: hidden;
+}
+
+.card_image{
+    height: 10rem;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 0 0 0.8rem 0.8rem;
+}
+
+.row1{
+    display: flex;
+    direction: rtl;
+    align-items: center;
+    width: 100%;
+    padding: 0.3rem;
+}
+
+.educator_icon{
+    height: 1.5rem;
+}
+
+.educator_name{
+    margin-right: 0.5rem;
+    padding-top: 0.2rem;
+}
+
+.title{
+    width: 100%;
+    padding: 0.3rem;
+    padding-top: 0.1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+    direction: rtl;
+    font-weight: 700;
+}
+
+.row2{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.3rem 0.5rem;
+    min-height: 4rem;
+}
+
+.rating_con{
+    display: flex;
+}
+
+.rating_icon{
+    height: 1rem;
+    margin-right: 0.2rem;
+}
+
+.price{
+    transform: scale(0.9);
+}
+
+@media(max-width:1024px){
+    
+}
+
+@media(max-width:767px){
+    
+    .con{
+        width: 10rem;
+        height: 15rem;
+        border-radius: 0.8rem;
+        background-color: white;
+    }
+
+    .card_image{
+        height: 8rem;
+        border-radius: 0 0 0.7rem 0.7rem;
+    }
+    
+    .row1{
+        padding: 0.2rem;
+        padding-top: 0.3rem;
+    }
+    
+    .educator_icon{
+        height: 1.2rem;
+    }
+    
+    .educator_name{
+        margin-right: 0.3rem;
+        padding-top: 0.15rem;
+        font-size: 0.7rem;
+    }
+    
+    .title{
+        padding: 0.2rem;
+        font-size: 0.75rem;
+    }
+    
+    .row2{
+        padding: 0.2rem 0.35rem;
+        min-height: 3.5rem;
+    }
+    
+    .rating_con{
+        display: flex;
+        font-size: 0.75rem;
+    }
+    
+    .rating_icon{
+        height: 0.86rem;
+        margin-right: 0.2rem;
+    }
+    
+    .price{
+        transform: scale(0.82);
+    }
+}

@@ -10,12 +10,14 @@ import chest from "@/utils/chest";
 import { Popover, Radio } from "node_modules/antd/lib/index";
 import UploadMedia from "../../editHomePage/UploadMedia";
 import SwitchIntroElementModal from "./SwitchIntroElementModal";
+import HomePage from "@/views/dynamics/dashboard/HomePage";
 
 /**
 * Props of EditIntroElementModal Component
 * @typedef Props
 * @property {string} className
 * @property {React.CSSProperties} style
+* @property {HomePage} parent
 * 
 * @extends {Component<Props>}
 */
@@ -24,41 +26,38 @@ export default class EditIntroElementModal extends Component {
     constructor(props){
         super(props);
         this.controller = new EditIntroElementController(this);
-        
-        let type = 1;
-
-        if(this.props.data.type){
-            type = this.props.data.type
-        }
 
         this.state = {
-
-            type,
-
+            template: null,
             confirm_loading:false,
-
             title:"",
             text:"",
-
             title_error:false,
             text_error:false,
-
             has_link:false,
-
             link_title: "",
             link_url: "",
+            cover: null,
         }
+
+        this.state = setDefaultIntro(props);
     }
     
     componentDidMount(){
     }
 
     onCancel=()=>{
+
         chest.ModalLayout.closeAndDelete(1);
     }
 
     onChangeType=()=>{
-        let modal = <SwitchIntroElementModal data={this.props.data} type={this.state.type}/>;
+
+        let modal = <SwitchIntroElementModal 
+        data={this.props.data} 
+        template={this.state.template}
+        parent={this.props.parent}/>;
+
         chest.ModalLayout.setAndShowModal(1, modal);
     }
 
@@ -101,7 +100,7 @@ export default class EditIntroElementModal extends Component {
                 <div className={styles.row1}>
 
                     {
-                        this.state.type===1?
+                        this.state.template===1?
                         <div className={styles.type_title+" tilt"}>{"حالت پیش فرض"}</div>
                         :
                         <div className={styles.type_title+" tilt"}>{"حالت بنر"}</div>
@@ -119,7 +118,7 @@ export default class EditIntroElementModal extends Component {
                     <div className={styles.form_body}>
 
                     {
-                        this.state.type===1?
+                        this.state.template===1?
                         <>
                         <TextInput className={styles.title_input}
                         placeholder={"تیتر شروع سایت"}
@@ -189,6 +188,7 @@ export default class EditIntroElementModal extends Component {
                         <UploadMedia
                         ref={r=>this.UploadMedia=r}
                         className={styles.updload_media}
+                        defaultUploadKey={this.state.cover}
                         title={"بارگذاری تصویر"}
                         type="image"/>
 
@@ -210,14 +210,20 @@ export default class EditIntroElementModal extends Component {
     }
 }
 
-function RadioSelect(props){
-    return(
-        <div className={styles.rads_con+" bdyt"} onClick={props.onSelect}>
+const setDefaultIntro = (props)=>{
 
-            <Radio checked={props.checked}/>
+    console.log(props.data);
 
-            <div className={styles.rads_title}>{props.title}</div>
-
-        </div>
-    )
+    let state = {};
+    let d = props.data;
+    state = {
+        template: d.template || 1,
+        title: d.title || "",
+        text: d.text || "",
+        has_link: d.has_link || false,
+        link_title: d.link_title || "",
+        link_url: d.link || "",
+        cover: d.cover || null,
+    }
+    return state;
 }

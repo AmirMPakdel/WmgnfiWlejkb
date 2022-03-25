@@ -11,10 +11,10 @@ export default class IndexHeader extends Component {
             chest.ModalLayout.visibleToggle(1, true);
         });
     }
-    
+
     render(){
         return(
-            <div className={styles.header_con+" bglc1i"}>
+            <div className={styles.header_con+" bglc1i sm_card_shd"}>
 
                 <MainButton title={"ورود / ثبت نام"}
                 onClick={this.onStudentAuthModal}/>

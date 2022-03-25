@@ -3,7 +3,6 @@ import myServer from "@/utils/myServer";
 export default class HomePageModel{
     
     /**
-    * 
     * @param {object} params
     * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
     */
@@ -14,7 +13,7 @@ export default class HomePageModel{
                 cb(null, {
                     result_code:env.SC.SUCCESS,
                     data:getFakeElements(),
-                    });
+                });
             }, 1000, cb);
             return;
         }
@@ -25,7 +24,7 @@ export default class HomePageModel{
 
             let d = data;
 
-            let constElements  = [
+            let constElements = [
                 {
                     id:"intro", title:"نمایی کلی و مختصر", el_type:1, visible:1,
                 },
@@ -45,14 +44,38 @@ export default class HomePageModel{
             let elements = constElements.concat(d.contents);
             elements = elements.concat(d.course_lists);
 
+            if(!d.content_hierarchy){
+                d.content_hierarchy = "\"intro-1,footer-2\"";
+            }
+            d.content_hierarchy = d.content_hierarchy.split('\"')[1];
+            d.content_hierarchy = d.content_hierarchy.split(",");
+
             let data2 = {
-                hierarchy: d.content_hierarchy || newHierarchy,
+                hierarchy: d.content_hierarchy,
                 elements,
+            }
+
+            //create intro object
+            d.intro = {
+                cover: d.page_cover,
+                has_link: d.page_cover_has_link,
+                link: d.page_cover_link,
+                link_title: d.page_cover_link_title,
+                template: d.page_cover_template,
+                text: d.page_cover_text,
+                title: d.page_cover_title,
             }
 
             delete d.content_hierarchy;
             delete d.contents;
             delete d.course_lists;
+            delete d.page_cover;
+            delete d.page_cover_has_link;
+            delete d.page_cover_link;
+            delete d.page_cover_link_title;
+            delete d.page_cover_template;
+            delete d.page_cover_text;
+            delete d.page_cover_title;
 
             Object.assign(data2, d);
 
@@ -77,11 +100,33 @@ export default class HomePageModel{
             }
         });
     }
-}
 
-const newHierarchy = [
-    "intro", "footer"
-]
+     /**
+    * @param {object} params
+    * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
+    */
+    saveElementsHierarchy(params, cb){
+
+        if(env.MOCKING_SERVER){
+            setTimeout(()=>{
+                cb(null, {result_code:env.SC.SUCCESS});
+            }, 1000, cb);
+            return;
+        }
+
+        let str_hierarchy = params.hierarchy.join(",");
+        params.hierarchy = str_hierarchy;
+
+        myServer.Post(myServer.urls.DASH_EDIT_HOMEPAGE+env.EP.EDIT_PARAM_CONTENT_HIERARCHY, params, {}, (err, data)=>{
+
+            if(!err){
+                cb(null, data);
+            }else{
+                myServer.ErrorHandler.type1(err);
+            }
+        });
+    }
+}
 
 const getFakeElements = ()=>{
     return {

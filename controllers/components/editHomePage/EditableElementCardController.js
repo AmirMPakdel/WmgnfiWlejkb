@@ -23,7 +23,8 @@ export default class EditableElementCardController{
         let parent = v.props.parent;
 
         if(d.el_type==1){
-            modal = <EditIntroElementModal data={d} parent={parent}/>
+            let intro_data = parent.state.intro;
+            modal = <EditIntroElementModal data={intro_data} parent={parent}/>
         }else if(d.el_type==2){
             let footer_data = parent.state.footer;
             modal = <EditFooterElementModal data={footer_data} parent={parent}/>
@@ -80,65 +81,26 @@ export default class EditableElementCardController{
 
         let v = this.view;
 
-        let type = this.view.props.data.type;
+        let el_type = this.view.props.data.el_type;
         
-        if(type == "1" || type == "2"){
+        if(el_type == 1 || el_type == 2){
 
             chest.openNotification("شروع سایت و فوتر قابل پنهان سازی نمی باشند.", "alert");
             return;
         }
 
         let visible = v.props.data.visible;
-
-        if(visible){
-            this.hideElement();
-        }else{
-            this.showElement();
-        }
-    }
-
-    showElement(){
-
-        let v = this.view;
         
-        this.changeVisiblity(true);
+        this.changeVisiblity(!visible);
 
         let params = {
-            element_id: v.props.data.id
+            element_id: v.props.data.id,
+            el_type,
         }
 
         let title = v.props.data.title;
 
-        this.model.show(params, (err, data)=>{
-
-            if(data.result_code === env.SC.SUCCESS){
-
-                chest.openNotification(
-                    "آیتم "+title+" "
-                    +"برای عموم قابل نمایش شد.", "success");
-                
-            }else{
-
-                this.changeVisiblity(false);
-
-                chest.openNotification("خطا در تغییر وضعیت نمایش آیتم", "error");
-            }
-        });
-    }
-
-    hideElement(){
-
-        let v = this.view;
-        
-        this.changeVisiblity(false);
-
-        let params = {
-            element_id: v.props.data.id
-        }
-
-        let title = v.props.data.title;
-
-        this.model.show(params, (err, data)=>{
+        this.model.toggleVisibility(params, (err, data)=>{
 
             if(data.result_code === env.SC.SUCCESS){
 
@@ -148,7 +110,7 @@ export default class EditableElementCardController{
                 
             }else{
 
-                this.changeVisiblity(true);
+                this.changeVisiblity(!visible);
 
                 chest.openNotification("خطا در تغییر وضعیت نمایش آیتم", "error");
             }

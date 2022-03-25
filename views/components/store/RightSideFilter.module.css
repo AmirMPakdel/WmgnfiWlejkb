@@ -1,0 +1,7 @@
+.con{
+    width: 100%;
+    min-height: 30rem;
+    background-color: white;
+    border-radius: 0.9rem;
+    direction: rtl;
+}

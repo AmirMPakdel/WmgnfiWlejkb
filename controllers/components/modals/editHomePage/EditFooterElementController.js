@@ -1,4 +1,5 @@
 import EditFooterElementModel from "@/models/components/modals/editHomePage/EditFooterElementModel";
+import chest from "@/utils/chest";
 import EditFooterElementModal from "@/views/components/modal/editHomePage/EditFooterElementModal";
 
 export default class EditFooterElementController{
@@ -8,7 +9,11 @@ export default class EditFooterElementController{
         this.view = view;
         this.model = new EditFooterElementModel();
     }
-    
+
+    onCancel(){
+
+        chest.ModalLayout.closeAndDelete(1);
+    }
     
     onConfirm(){
         
@@ -18,14 +23,14 @@ export default class EditFooterElementController{
         v.setState({confirm_loading:true});
 
         let params = {
-            footer_links:{
+            links:{
                 email:vs.email,
                 telegram:vs.telegram,
                 instagram:vs.instagram,
                 whatsapp:vs.whatsapp,
                 linkedin:vs.linkedin,
             },
-            footer_telephones:{
+            telephones:{
                 telephone1:vs.telephone1,
                 telephone2:vs.telephone2,
                 mobile1:vs.mobile1,
@@ -37,7 +42,8 @@ export default class EditFooterElementController{
 
             if(data.result_code === env.SC.SUCCESS){
 
-                this.cancel();
+                this.onCancel();
+                v.props.parent.reload();
             }
 
             v.setState({confirm_loading:false});

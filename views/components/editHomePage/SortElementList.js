@@ -3,6 +3,7 @@ import HomePage from "@/views/dynamics/dashboard/HomePage";
 import styles from "./SortElementList.module.css";
 import SortableElement from "./SortableElement";
 import { Container, Draggable } from "react-smooth-dnd";
+import { sortElementsBasedOnHierarchy } from "@/controllers/dynamics/dashboard/HomePageController";
 
 /**
 * Props of SortElementList Component
@@ -25,24 +26,24 @@ export default class SortElementList extends Component {
     componentDidMount(){
     }
 
-    getCardPayload=(columnId, index)=>{
+    getCardPayload=(index)=>{
         let p = this.props.parent;
         let ps = p.state;
-        let nw = ps.new_values;
-        return nw.content_hierarchy.children.filter(p => p.id === columnId)[0].children[
-          index
-        ];
+        return ps.new_hierarchy[index];
     }
 
     onColumnDrop=(dropResult)=>{
+        
         let p = this.props.parent;
         let ps = p.state;
-        let nw = ps.new_values;
-
-        const new_ch = Object.assign({}, nw.content_hierarchy);
-        new_ch.children = applyDrag(new_ch.children, dropResult);
-
-        ps.new_values.content_hierarchy = new_ch;
+        const new_h = Object.assign([], ps.new_hierarchy);
+        let intro_key = new_h.shift();
+        let footer_key = new_h.pop();
+        new_h = applyDrag(new_h, dropResult);
+        new_h.unshift(intro_key);
+        new_h.push(footer_key);
+        ps.new_hierarchy = new_h;
+        ps.new_elements = sortElementsBasedOnHierarchy(ps.new_elements, new_h);
         p.setState(ps);
     }
     
@@ -62,7 +63,7 @@ export default class SortElementList extends Component {
                     //onDragEnd={this.onDragEnd}
                     //lockAxis={"y"}
                     dragHandleSelector={".dragHandleSelector"}
-                    getChildPayload={index =>this.getCardPayload(item.id, index)}
+                    getChildPayload={this.getCardPayload}
                     onDrop={this.onColumnDrop}
                     // dropPlaceholder={{
                     //     animationDuration: 150,
@@ -71,7 +72,7 @@ export default class SortElementList extends Component {
                     // }}
                     >
                     
-                    {this.props.parent.state.elements.map((item, item_index, ) => {
+                    {this.props.parent.state.new_elements.map((item, item_index) => {
                         
                         if(item_index==0 || item_index == total_items-1){
                             return null;

@@ -24,8 +24,10 @@ export default class HomePage extends Component {
             loading: true,
             sortMode: false,
             elements: [],
+            new_elements: [],
             hierarchy: [],
-            footer:{},
+            new_hierarchy: [],
+            footer: {},
         }
     }
     
@@ -63,7 +65,6 @@ export default class HomePage extends Component {
     }
     
     render(){
-        console.log(this.state.elements);
         return(
             <EducatorDashboardLayout>
 

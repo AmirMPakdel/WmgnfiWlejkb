@@ -8,6 +8,7 @@ import styles from "./VideoCard.module.css";
  * @property {string} className
  * @property {string} thumbnail
  * @property {string} playBtnClassName
+ * @property {string} uploadKey
  * 
  * @extends {Component<Props>}
  */

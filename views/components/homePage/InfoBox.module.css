@@ -1,0 +1,234 @@
+.nmd_con{
+    min-height: 20rem;
+    width: 86vw;
+    border-radius: 1rem;
+    overflow: hidden;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 3rem 5%;
+}
+
+.nmd_title{
+    font-weight: 700;
+    width: 100%;
+    text-align: right;
+    direction: rtl;
+}
+
+.nmd_text{
+    direction: rtl;
+    text-align: justify;
+    line-height: 1.9rem;
+    margin-top: 2rem;
+    padding: 0 1rem;
+    width: 100%;
+}
+
+.mnd_link_wrapper{
+    width: 100%;
+    display: flex;
+}
+
+.nmd_link{
+    padding: 0.6rem 1.8rem;
+    border-radius: 0.8rem;
+    font-weight: 700;
+    min-width: 12rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+/*with media*/
+
+.wm_con{
+    width: 100%;
+}
+
+.wm_card_left{
+    min-height: 20rem;
+    width: 93%;
+    margin-right: 7%;
+    border-radius: 0 1rem 1rem 0;
+    overflow: hidden;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 3rem 5%;
+    padding-top: 3.6rem;
+    padding-left: 7vw;
+}
+
+.wm_card_right{
+    min-height: 20rem;
+    width: 93%;
+    margin-left: 7%;
+    border-radius: 1rem 0 0 1rem;
+    overflow: hidden;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 3rem 5%;
+    padding-top: 3.6rem;
+    padding-right: 7vw;
+}
+
+.wm_wrapper_left{
+    width: 100%;
+    min-height: 20rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.wm_wrapper_right{
+    width: 100%;
+    min-height: 20rem;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+.wm_title_sec{
+    position: absolute;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -2rem;
+    font-weight: 700;
+}
+
+.wm_left_dashes{
+    margin-right: 1.2rem;
+    transform-origin: right;
+    transform: scale(1.8);
+}
+
+.wm_right_dashes{
+    margin-left: 1.2rem;
+    transform-origin: left;
+    transform: scale(1.8);
+}
+
+.wm_media_con{
+    width: calc(40% - 3rem);
+    height: auto;
+    display: flex;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+.wm_media_pic{
+    width: 100%;
+    height: auto;
+    border-radius: 0.8rem;
+}
+
+.wm_sec1{
+    width: calc(60% - 2rem);
+    min-height: 16rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.wm_text{
+    text-align: justify;
+    direction: rtl;
+    padding: 1.5rem 0;
+    line-height: 1.9rem;
+}
+
+.wm_link{
+    padding: 0.6rem 1.8rem;
+    border-radius: 0.8rem;
+    font-weight: 700;
+    min-width: 12rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media(max-width:1024px){
+    
+    .wm_wrapper_left{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .wm_wrapper_right{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .wm_media_con{
+        width: 100%;
+        flex-direction: column;
+        padding: 0;
+        margin-top: 1rem;
+    }
+    
+    .wm_media_pic{
+        width: auto;
+        height: 16rem;
+    }
+
+    .wm_sec1{
+        width: 100%;
+        max-width: 36rem;
+    }
+
+    .wm_text{
+        padding-top: 1.5rem;
+    }
+}
+
+@media(max-width:767px){
+
+    .nmd_con{
+        width: 92vw;
+    }
+
+    .nmd_text{
+        line-height: 1.5rem;
+    }
+
+    .wm_card_left{
+        min-height: 20rem;
+        width: 97%;
+        margin-right: 3%;
+        background-color: white;
+        border-radius: 0 1rem 1rem 0;
+        overflow: hidden;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        padding: 3rem 5%;
+        padding-top: 3.6rem;
+        padding-left: 3vw;
+    }
+    
+    .wm_card_right{
+        min-height: 20rem;
+        width: 97%;
+        margin-left: 3%;
+        background-color: white;
+        border-radius: 1rem 0 0 1rem;
+        overflow: hidden;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        padding: 3rem 5%;
+        padding-top: 3.6rem;
+        padding-right: 3vw;
+    }
+    
+    .wm_media_pic{
+        width: 90%;
+        height: auto;
+    }
+
+    .wm_text{
+        padding-right: 1rem;
+        padding-left: 1rem;
+        line-height: 1.5rem;
+    }
+}

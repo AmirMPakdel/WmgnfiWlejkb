@@ -4,13 +4,13 @@ import styles from "./EditFooterElementModal.module.css";
 import MainButton from "../../global/MainButton";
 import TextInput from "../../global/TextInput";
 import CrossSvg from "@/views/svgs/Cross";
-import { InputFilter } from "@/utils/validation";
-import chest from "@/utils/chest";
+import HomePage from "@/views/dynamics/dashboard/HomePage";
 /**
 * Props of EditFooterElementModal Component
 * @typedef Props
 * @property {string} className
 * @property {React.CSSProperties} style
+* @property {HomePage} parent
 * 
 * @extends {Component<Props>}
 */
@@ -43,7 +43,7 @@ export default class EditFooterElementModal extends Component {
 
     onCancel=()=>{
 
-        chest.ModalLayout.closeAndDelete(1);
+        this.controller.onCancel();
     }
 
     onInput=(key , value)=>{
@@ -150,10 +150,9 @@ export default class EditFooterElementModal extends Component {
 }
 
 const extractFooterData=(data)=>{
-    console.log(data);
 
-    let footer_links = data.footer_links;
-    let footer_telephones = data.footer_telephones;
+    let footer_links = JSON.parse(data.footer_links);
+    let footer_telephones = JSON.parse(data.footer_telephones);
     if(!footer_links){
         footer_links = {
             email:"",

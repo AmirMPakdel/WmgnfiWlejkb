@@ -47,16 +47,23 @@ export default class EditableElementCardModel{
     * @param {object} params
     * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
     */
-    show(params, cb){
+    toggleVisibility(params, cb){
     
-        if(env.MOCKING_SERVER || 1){
+        if(env.MOCKING_SERVER){
             setTimeout(()=>{
                 cb(null, {result_code:env.SC.SUCCESS});
             }, 1000, cb);
             return;
         }
     
-        myServer.Post(myServer.urls.SOME_URL, params, {}, (err, data)=>{
+        let ep;
+        if(params.el_type == 3){
+            ep = "ep_content_main_course_list_toggle_visibility";
+        }else if(params.el_type == 4){
+            ep = "ep_content_main_box_info_toggle_visibility";
+        }
+
+        myServer.Post(myServer.urls.COURSE_EDIT+ep, params, {}, (err, data)=>{
     
             if(!err){
             
@@ -68,32 +75,4 @@ export default class EditableElementCardModel{
             }
         });
     }
-    
-    /**
-    * 
-    * @param {object} params
-    * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
-    */
-    hide(params, cb){
-    
-        if(env.MOCKING_SERVER || 1){
-            setTimeout(()=>{
-                cb(null, {result_code:env.SC.SUCCESS});
-            }, 1000, cb);
-            return;
-        }
-    
-        myServer.Post(myServer.urls.SOME_URL, params, {}, (err, data)=>{
-    
-            if(!err){
-            
-                cb(null, data);
-            
-            }else{
-            
-                myServer.ErrorHandler.type1(err);
-            }
-        });
-    }
-    
 }

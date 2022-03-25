@@ -125,3 +125,13 @@
 .ant-dropdown-menu-item:hover, .ant-dropdown-menu-submenu-title:hover{
     background-color: #F5DF4D !important;
 }
+
+/*Carousel*/
+.slick-dots>li>button{
+    background-color: gray !important;
+    transform: scaleY(1.2) !important;
+}
+
+.slick-dots>.slick-active>button{
+    background-color: #F5DF4D !important;
+}

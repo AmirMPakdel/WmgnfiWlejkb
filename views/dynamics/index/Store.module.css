@@ -1,0 +1,69 @@
+.con{
+    width: 100%;
+    min-height: calc(100vh - 5rem);
+    display: flex;
+    flex-direction: row-reverse;
+    direction: ltr;
+    padding: 0 3rem;
+    background-color: rgb(253, 236, 236);
+}
+
+.filter_bar_con{
+    padding-top: 2rem;
+    width: 18.75rem;
+    min-width: 18.75rem;
+    min-height: 30rem;
+    background-color: rgb(214, 245, 179);
+}
+
+.main_sec_wrapper{
+    width: calc(100% - 18.75rem);
+    padding-right: 2rem;
+    padding-bottom: 5rem;
+    background-color: rgb(152, 195, 231);
+}
+
+.breadcrum_con{
+    width: 100%;
+    height: 3rem;
+    background-color: rgb(202, 173, 255);
+}
+
+.sort_bar_con{
+    width: 100%;
+    height: 3.5rem;
+    background-color: rgb(236, 173, 255);
+}
+
+.mobile_filter_sort_bar{
+    display: none;
+}
+
+.stor_card_wrapper{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    background-color: rgb(255, 118, 118);
+}
+
+.card{
+    margin: 0.5rem;
+}
+
+@media(max-width:1227px){
+    
+    .filter_bar_con{
+        display: none;
+    }
+    
+    .main_sec_wrapper{
+        width: 100%;
+        
+    }
+}
+
+@media(max-width:767px){
+    
+}

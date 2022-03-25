@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styles from "./UploadMedia.module.css";
 import UploadSVG from "@/views/svgs/Upload";
+import myServer from "@/utils/myServer";
 
 /**
 * Props of UploadMedia Component
@@ -14,11 +15,15 @@ export default class UploadMedia extends Component {
     
     constructor(props){
         super(props);
-        //this.controller = new UploadMediaController(this);
         this.state = {
-            //src: "/statics/fake_img/15.jpg",
             src: null,
             file: null,
+        }
+        if(props.defaultUploadKey || props.type == "image"){
+            this.state.src = myServer.MediaFiles.publicImage(props.defaultUploadKey);
+        }
+        if(props.defaultUploadKey || props.type == "video"){
+            this.state.src = myServer.MediaFiles.publicVideo(props.defaultUploadKey);
         }
     }
     
