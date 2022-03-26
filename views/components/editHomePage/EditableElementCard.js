@@ -48,10 +48,12 @@ export default class EditableElementCard extends Component {
     render(){
         let d = this.props.data;
 
-        let control_sec = styles.control_sec;
-        if(d.el_type==1 || d.el_type==2){
-            control_sec = styles.control_sec2;
-        }
+        //TODO: add later
+        // let control_sec = styles.control_sec;
+        // if(d.el_type==1 || d.el_type==2){
+        //     control_sec = styles.control_sec2;
+        // }
+        let control_sec = styles.control_sec2;
 
         return(
             <div className={styles.con+" bgw md_card_shd"}>
@@ -87,10 +89,13 @@ export default class EditableElementCard extends Component {
 
                 <div className={control_sec+" bgtc1"}>
 
-                    <img className={styles.edit_icon+" amp_btn"} 
-                    src={"/statics/svg2/edit.svg"}
-                    onClick={this.onEdit}/>
-
+                    {
+                        (d.el_type==1 || d.el_type==2)?
+                        <img className={styles.edit_icon+" amp_btn"} 
+                        src={"/statics/svg2/edit.svg"}
+                        onClick={this.onEdit}/>
+                        :null
+                    }
                     {
                         (d.el_type==1 || d.el_type==2)?
                         null:

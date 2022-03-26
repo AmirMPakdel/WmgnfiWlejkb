@@ -1,0 +1,18 @@
+.con{
+    display: flex;
+    padding: 0.4rem 1rem;
+    background-color: white;
+    direction: rtl;
+    border-radius: 0.8rem;
+    align-items: center;
+}
+
+.text{
+    font-weight: 700;
+    margin-left: 1rem;
+}
+
+.btn_con{
+    padding: 0.4rem 1.4rem;
+    border-radius: 0.8rem;
+}

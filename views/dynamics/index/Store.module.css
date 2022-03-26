@@ -20,6 +20,10 @@
     width: calc(100% - 18.75rem);
     padding-right: 2rem;
     padding-bottom: 5rem;
+    display: flex;
+    flex-direction: column;
+    direction: ltr;
+    align-items: flex-end;
     background-color: rgb(152, 195, 231);
 }
 
@@ -30,9 +34,16 @@
 }
 
 .sort_bar_con{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
     width: 100%;
     height: 3.5rem;
     background-color: rgb(236, 173, 255);
+}
+
+.sort_bar{
+    max-width: 82rem;
 }
 
 .mobile_filter_sort_bar{
@@ -45,11 +56,12 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row-reverse;
+    max-width: 82rem;
     background-color: rgb(255, 118, 118);
 }
 
 .card{
-    margin: 0.5rem;
+    margin: 1.5%;
 }
 
 @media(max-width:1227px){

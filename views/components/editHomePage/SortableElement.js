@@ -28,7 +28,7 @@ export default class SortableElement extends Component {
         let sort_icon = "/statics/svg2/vegiburger.svg";
 
         let control_sec = styles.control_sec;
-        if(d.type==1 || d.type==2){
+        if(d.el_type==1 || d.el_type==2){
             con_style = styles.con+" bglc2";
             sort_icon = "/statics/svg2/lock.svg";
             control_sec = styles.control_sec2;

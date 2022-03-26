@@ -3,6 +3,9 @@ import styles from "./Store.module.css";
 import IndexLayout from "@/views/layouts/IndexLayout";
 import CourseCard from "@/views/components/global/CourseCard";
 import RightSideFilter from "@/views/components/store/RightSideFilter";
+import { Breadcrumb, ConfigProvider } from "node_modules/antd/lib/index";
+import StoreBreadcrumb from "@/views/components/store/StoreBreadcrumb";
+import SortBar from "@/views/components/store/SortBar";
 
 /**
 * Props of Store Component
@@ -41,9 +44,13 @@ export default class Store extends Component {
 
                         <div className={styles.breadcrum_con}>
 
+                            <StoreBreadcrumb/>
+
                         </div>
 
                         <div className={styles.sort_bar_con}>
+
+                            <SortBar className={styles.sort_bar}/>
 
                         </div>
 

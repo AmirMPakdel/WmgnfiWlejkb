@@ -1,6 +1,7 @@
 import { Tree, ConfigProvider } from "node_modules/antd/lib/index";
 import React, { Component } from "react";
 import styles from "./RightSideFilter.module.css";
+import { DownOutlined, LeftOutlined } from '@ant-design/icons';
 
 /**
 * Props of RightSideFilter Component
@@ -27,13 +28,12 @@ export default class RightSideFilter extends Component {
         return(
             <div className={styles.con+" md_card_shd "+this.props.className}>
 
-                <ConfigProvider direction="ltr">
+                <ConfigProvider direction="rtl">
 
                     <Tree
-                    showLine={true}
+                    showLine={{showLeafIcon: false}}
                     showIcon={false}
-                    showLeafIcon={false}
-                    switcherIcon={<div>^</div>}
+                    checkable={false}
                     treeData={fakeData}/>
 
                 </ConfigProvider>
@@ -51,20 +51,14 @@ const fakeData = [
         {
             title: 'parent 1-0',
             key: '0-0-0',
-            disabled: true,
             children: [
             {
                 title: 'leaf',
                 key: '0-0-0-0',
-                disableCheckbox: true,
-                icon:<div/>,
-                switcherIcon:<div/>,
             },
             {
                 title: 'leaf',
                 key: '0-0-0-1',
-                icon:<div/>,
-                switcherIcon:<div/>,
             },
             ],
         },

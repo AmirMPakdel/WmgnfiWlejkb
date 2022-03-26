@@ -38,6 +38,7 @@ export default class EditIntroElementModal extends Component {
             link_title: "",
             link_url: "",
             cover: null,
+            defaultCover:"",
         }
 
         this.state = setDefaultIntro(props);
@@ -124,8 +125,7 @@ export default class EditIntroElementModal extends Component {
                         placeholder={"تیتر شروع سایت"}
                         onChange={t=>this.onInput("title", t)}
                         value={this.state.title}
-                        error={this.state.title_error}
-                        inputFilter={InputFilter.persianNameInputFilter}/>
+                        error={this.state.title_error}/>
 
                         <TextArea className={styles.text_input}
                         title={"متن توضیحات"}
@@ -188,6 +188,7 @@ export default class EditIntroElementModal extends Component {
                         <UploadMedia
                         ref={r=>this.UploadMedia=r}
                         className={styles.updload_media}
+                        defaultSrc={this.state.defaultCover}
                         defaultUploadKey={this.state.cover}
                         title={"بارگذاری تصویر"}
                         type="image"/>
@@ -198,7 +199,7 @@ export default class EditIntroElementModal extends Component {
                         
                         <MainButton className={styles.confirm_btn}
                         title={"ثبت"}
-                        loading={this.state.btn_loading}
+                        loading={this.state.confirm_loading}
                         onClick={this.onConfirm}/>
 
                     </div>
@@ -212,18 +213,18 @@ export default class EditIntroElementModal extends Component {
 
 const setDefaultIntro = (props)=>{
 
-    console.log(props.data);
-
     let state = {};
     let d = props.data;
     state = {
-        template: d.template || 1,
-        title: d.title || "",
-        text: d.text || "",
-        has_link: d.has_link || false,
-        link_title: d.link_title || "",
-        link_url: d.link || "",
-        cover: d.cover || null,
+        template: d.template,
+        title: d.title,
+        text: d.text,
+        has_link: d.has_link,
+        link_title: d.link_title,
+        link_url: d.link,
+        cover: d.cover,
+        defaultCover: "/statics/default_img/default_site_intro_cover.jpg",
     }
+
     return state;
 }

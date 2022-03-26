@@ -30,21 +30,34 @@ export default class EditIntroElementController{
 
             v.setState({confirm_loading:true});
 
-            let params = {template: vs.type};
+            let params = {template: vs.template};
 
-            if(vs.type===1){
+            if(vs.template===1){
                 params.title = vs.title;
                 params.text = vs.text;
                 params.has_link = vs.has_link;
             }
 
-            if(vs.has_link && vs.type===1){
+            if(vs.has_link && vs.template===1){
                 params.link = vs.link_url;
                 params.link_title = vs.link_title;
             }
 
-            //TODO:: handle this
-            params.file_state = "ufs_new";
+            if(!v.props.data.template){
+
+                params.file_state = "ufs_new";
+
+            }else if(v.UploadMedia.getFile()){
+
+                params.old_upload_key = v.props.data.cover;
+                params.file_state = "ufs_replace";
+
+            }else{
+
+                params.file_state = "ufs_no_change";
+                this.save(params);
+                return;
+            }
 
             this.getUploadKey(params, (upload_key)=>{
 
@@ -64,9 +77,9 @@ export default class EditIntroElementController{
         let vs = v.state;
         let valid = true;
 
-        if(!v.UploadMedia.getFile()){
+        if(!v.props.data.template && !v.UploadMedia.getFile()){
             valid=false;
-            let message = "تصویری برای بارگذاری انتخاب نشده است.";
+            let message = "تصویری برای بارگذاری انتخاب نمایید.";
             chest.openNotification(message, "error");
         }
 
@@ -116,6 +129,8 @@ export default class EditIntroElementController{
 
                     this.onCancel();
 
+                    chest.openNotification("بخش شروع سایت با موفقیت ویرایش شد.", "success");
+
                     v.props.parent.reload();
                 });
             }
@@ -133,6 +148,7 @@ export default class EditIntroElementController{
             file_size:file.size,
             file_type: fileType2Ext(file.type),
             token: getCookie(env.TOKEN_KEY),
+            old_upload_key: params.old_upload_key,
             upload_type,
         }
 

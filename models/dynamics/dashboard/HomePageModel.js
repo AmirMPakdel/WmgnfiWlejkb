@@ -66,6 +66,9 @@ export default class HomePageModel{
                 title: d.page_cover_title,
             }
 
+            //set default values if its first time
+            d.intro = handleFirstTimeIntroData(d.intro);
+
             delete d.content_hierarchy;
             delete d.contents;
             delete d.course_lists;
@@ -153,3 +156,25 @@ const getFakeElements = ()=>{
         ]
     }
 }
+
+const handleFirstTimeIntroData = (intro_data)=>{
+
+    if(intro_data.template){
+        return intro_data;
+    }
+
+    intro_data = {
+        cover: null,
+        has_link: false,
+        link: null,
+        link_title: null,
+        template: 1,
+        text: default_intro_text,
+        title: default_intro_title,
+    }
+    
+    return intro_data;
+}
+
+const default_intro_text = "این سایت با تولید محتوای آموزشی باکیفیت و بروز  ...";
+const default_intro_title = "به سایت آموزشی من خوش آمدید";

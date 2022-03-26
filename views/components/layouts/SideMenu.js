@@ -108,10 +108,10 @@ export default class SideMenu extends Component {
                 <SideMenuBtn title="دوره های من" icon={WorkSvg}
                 onClick={this.onSelect} active_page={this.state.active_page} name="myCourses"/>
 
-                <SideMenuBtn title="مقالات" icon={DocumentSvg}
-                onClick={this.onSelect} active_page={this.state.active_page} name="myArticles"/>
+                {/* <SideMenuBtn title="مقالات" icon={DocumentSvg}
+                onClick={this.onSelect} active_page={this.state.active_page} name="myArticles"/> */}
 
-                <SideMenuBtn title="صفحه اصلی" icon={PlusSqrSvg}
+                <SideMenuBtn title="صفحه اصلی" icon={DocumentSvg}
                 onClick={this.onSelect} active_page={this.state.active_page} name="homePage"/>
 
                 <SideMenuBtn title="ایجاد دوره" icon={PlusSqrSvg}
