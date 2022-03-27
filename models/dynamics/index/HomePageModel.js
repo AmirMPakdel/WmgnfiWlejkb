@@ -6,7 +6,7 @@ export default class HomePageModel{
     * @param {object} params
     * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
     */
-    getData(params, cb){
+    getElements(params, cb){
     
         if(env.MOCKING_SERVER){
             setTimeout(()=>{

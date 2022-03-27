@@ -1,4 +1,5 @@
-import HomePageController from "@/controllers/dynamics/dashboard/HomePageController";
+import HomePageController from "@/controllers/dynamics/index/HomePageController";
+import Loading from "@/views/components/global/Loading";
 import CourseList from "@/views/components/homePage/CourseList";
 import InfoBox from "@/views/components/homePage/InfoBox";
 import Intro from "@/views/components/homePage/Intro";
@@ -20,32 +21,38 @@ export default class HomePage extends Component {
         super(props);
         this.controller = new HomePageController(this);
         this.state = {
-        
+            loading:true,
         }
     }
     
     componentDidMount(){
+
+        this.controller.loadElements();
     }
     
     render(){
         return(
             <IndexLayout>
 
-                <div className={styles.con+" bgw"}>
+                {
+                    this.state.loading?
+                    <Loading className={styles.loading}/>:
+                    <div className={styles.con+" bgw"}>
 
-                    <Intro/>
+                        <Intro/>
 
-                    <CourseList data={{}}/>
+                        <CourseList data={{}}/>
 
-                    <InfoBox data={{template:1}}/>
+                        <InfoBox data={{template:1}}/>
 
-                    <InfoBox index={0} data={{template:2}}/>
+                        <InfoBox index={0} data={{template:2}}/>
 
-                    <CourseList data={{}}/>
+                        <CourseList data={{}}/>
 
-                    <InfoBox index={1} data={{template:2, has_link:1}}/>
+                        <InfoBox index={1} data={{template:2, has_link:1}}/>
 
-                </div>
+                    </div>
+                }
                 
             </IndexLayout>
         )

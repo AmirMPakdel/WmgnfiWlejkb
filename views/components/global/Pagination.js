@@ -38,7 +38,7 @@ export default class Pagination extends Component {
             <>
             {
                 this.props.total && (this.props.total > this.props.pageSize)?
-                <div className={styles.con+" bglc1 sm_card_shd"}>
+                <div className={styles.con+" bgw sm_card_shd "+this.props.className}>
 
                     <ConfigProvider direction="ltr">
 
@@ -59,7 +59,7 @@ export default class Pagination extends Component {
                         can_go_next?
                         <div className={styles.next+" ftc2 amp_btn"} 
                         onClick={()=>this.props.onPageChange(this.props.currentPage+1)}>
-                            {"صفحه بعد"}
+                            {"بعدی"}
                             <RightOutlined style={{marginLeft:"0.5rem"}}/>
                         </div>:null
                     }
@@ -68,7 +68,7 @@ export default class Pagination extends Component {
                         <div className={styles.back+" ftc2 amp_btn"} 
                         onClick={()=>this.props.onPageChange(this.props.currentPage-1)}>
                             <LeftOutlined style={{marginRight:"0.5rem"}}/>
-                            {"صفحه قبل"}
+                            {"قبلی"}
                         </div>:null
                     }
                 

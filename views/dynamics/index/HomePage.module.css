@@ -5,3 +5,8 @@
     align-items: center;
     padding-bottom: 1rem;
 }
+
+.loading{
+    width: 100%;
+    min-height: calc(100vh - 5rem);
+}

@@ -6,6 +6,10 @@ import RightSideFilter from "@/views/components/store/RightSideFilter";
 import { Breadcrumb, ConfigProvider } from "node_modules/antd/lib/index";
 import StoreBreadcrumb from "@/views/components/store/StoreBreadcrumb";
 import SortBar from "@/views/components/store/SortBar";
+import MainButton from "@/views/components/global/MainButton";
+import Pagination from "@/views/components/global/Pagination";
+
+const STORE_PAGE_SIZE = 20;
 
 /**
 * Props of Store Component
@@ -21,11 +25,22 @@ export default class Store extends Component {
         super(props);
         //this.controller = new StoreController(this);
         this.state = {
-        
+            currentPage:1,
+            total:450,
         }
     }
     
     componentDidMount(){
+    }
+
+    openSortModal=()=>{
+        
+        this.SortBar.openModal();
+    }
+
+    openFilterModal=()=>{
+
+        this.RightSideFilter.openModal();
     }
     
     render(){
@@ -36,7 +51,8 @@ export default class Store extends Component {
 
                     <div className={styles.filter_bar_con}>
 
-                        <RightSideFilter/>
+                        <RightSideFilter
+                        ref={r=>this.RightSideFilter=r}/>
 
                     </div>
 
@@ -50,15 +66,26 @@ export default class Store extends Component {
 
                         <div className={styles.sort_bar_con}>
 
-                            <SortBar className={styles.sort_bar}/>
+                            <SortBar className={styles.sort_bar}
+                            ref={r=>this.SortBar=r}/>
 
                         </div>
 
                         <div className={styles.mobile_filter_sort_bar}>
 
+                            <MainButton className={styles.mob_filter_btn}
+                            borderMode
+                            onClick={this.openFilterModal}
+                            title={"فیلتر"}/>
+
+                            <MainButton className={styles.mob_sort_btn}
+                            borderMode
+                            onClick={this.openSortModal}
+                            title={"مرتب سازی"}/>
+
                         </div>
 
-                        <div className={styles.stor_card_wrapper}>
+                        <div className={styles.store_card_wrapper}>
 
                             <CourseCard className={styles.card}/>
                             <CourseCard className={styles.card}/>
@@ -71,6 +98,15 @@ export default class Store extends Component {
                             <CourseCard className={styles.card}/>
                             <CourseCard className={styles.card}/>
 
+                            <div className={styles.pagination_wrapper}>
+
+                                <Pagination className={styles.pagination}
+                                currentPage={this.state.currentPage}
+                                total={this.state.total}
+                                pageSize={STORE_PAGE_SIZE}/>
+
+                            </div>
+                            
                         </div>
 
                     </div>
