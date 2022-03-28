@@ -76,8 +76,8 @@ export class ChestComponent extends Component{
     onResize=()=>{
         // rem
         if (window.innerWidth > 1600) {
-            // let rem = (window.innerWidth * 16) / 1600;
-            // document.getElementsByTagName("html")[0].style.fontSize = `${rem}px`;
+            let rem = (window.innerWidth * 16) / 1720;
+            document.getElementsByTagName("html")[0].style.fontSize = `${rem}px`;
         } else if (window.innerWidth < 360) {
             let rem = (window.innerWidth * 16) / 362;
             document.getElementsByTagName("html")[0].style.fontSize = `${rem}px`;

@@ -36,9 +36,9 @@ export default class IndexFooter extends Component {
                     {
                         numbers.map((v,i,a)=>(
                             <>
-                            <div className={styles.number} key={i}>{v}</div>
+                            <div className={styles.number} key={"num"+i}>{v}</div>
                             {
-                                i!=(a.length-1)?<div className={styles.numbers_sep}>|</div>:null
+                                i!=(a.length-1)?<div key={"sep"+i} className={styles.numbers_sep}>|</div>:null
                             }
                             </>
                         ))
@@ -50,7 +50,7 @@ export default class IndexFooter extends Component {
 
                     {
                         social_medias.map((v,i)=>(
-                            <a className={styles.social_link} href={v.url}
+                            <a key={"soc"+i} className={styles.social_link} href={v.url}
                             target="_blank" rel="noopener noreferrer">
                                 <img className={styles.social_img}
                                 src={v.icon}/>

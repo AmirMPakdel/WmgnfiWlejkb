@@ -112,7 +112,7 @@ export default class AddEditInfoBoxElementModal extends Component {
                         onChange={t=>this.onInput("text", t)}
                         value={this.state.text}
                         error={this.state.text_error}
-                        maxLength={250}/>
+                        maxLength={800}/>
 
                         <div className={styles.links_sec}>
 

@@ -22,12 +22,17 @@ export default class HomePage extends Component {
         this.controller = new HomePageController(this);
         this.state = {
             loading:true,
+            elements:[],
+            intro: {},
+            footer: {},
+            hierarchy: [],
         }
     }
     
     componentDidMount(){
 
         this.controller.loadElements();
+
     }
     
     render(){
@@ -36,20 +41,34 @@ export default class HomePage extends Component {
 
                 {
                     this.state.loading?
-                    <Loading className={styles.loading}/>:
+                    <Loading className={styles.loading}/>
+                    :
                     <div className={styles.con+" bgw"}>
 
-                        <Intro/>
+                        <Intro data={this.state.intro}/>
 
+                        {
+                            this.state.elements.map((e, i)=>{
+
+                                if(e.el_type == 3){
+                                    return <CourseList key={i} data={e}/>;
+                                }
+
+                                if(e.el_type == 4){
+                                    return <InfoBox key={i} index={i} data={e}/>;
+                                }
+
+                                return null;
+                            })
+                        }
+
+                        {/* 
                         <CourseList data={{}}/>
-
                         <InfoBox data={{template:1}}/>
-
                         <InfoBox index={0} data={{template:2}}/>
-
                         <CourseList data={{}}/>
-
-                        <InfoBox index={1} data={{template:2, has_link:1}}/>
+                        <InfoBox index={1} data={{template:2, has_link:1}}/> 
+                        */}
 
                     </div>
                 }

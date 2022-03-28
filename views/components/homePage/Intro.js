@@ -1,3 +1,4 @@
+import myServer from "@/utils/myServer";
 import React, { Component } from "react";
 import styles from "./Intro.module.css";
 
@@ -20,14 +21,22 @@ export default class Intro extends Component {
     }
     
     componentDidMount(){
+
+        console.log(this.props.data);
     }
     
     render(){
-        return(
 
-            // <SingleImage src={"/statics/fake_img/bg1.jpg"}/>
-            <InfoBox/>
-        )
+        let d = this.props.data;
+
+        if(d.template == 1){
+
+            return <InfoBox data={this.props.data}/>;
+
+        }else if(d.template == 2){
+
+            return <SingleImage src={d.cover}/>;
+        }
     }
 }
 
@@ -38,6 +47,11 @@ class InfoBox extends Component {
     }
 
     render(){
+        let d = this.props.data;
+        let cover = "/statics/default_img/default_site_intro_cover.jpg";
+        if(d.cover){
+            cover = myServer.MediaFiles.publicImage(d.cover)
+        }
         return(
             <div className={styles.container1+" bglc1"}>
 
@@ -45,27 +59,26 @@ class InfoBox extends Component {
 
                     <div className={styles.ib_title_holder}>
 
-                        <div className={styles.ib_title+" tilt bgtc1 fdc1 sm_card_shd"}>{"جامع‌ترین دوره آموزش فتوشاپ"}</div>
+                        <div className={styles.ib_title+" tilt bgtc1 fdc1 sm_card_shd"}>{d.title}</div>
 
                     </div>
 
                     <div className={styles.ib_sec1}>
 
                         <img className={styles.ib_image}
-                        src={"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Adobe_Illustrator_Icon_%28CS6%29.svg/1046px-Adobe_Illustrator_Icon_%28CS6%29.svg.png"}/>
+                        src={cover}/>
 
                         <div className={styles.ib_sec2}>
 
-                            <div className={styles.ib_text+" bdyt"}>{text1}</div>
+                            <div className={styles.ib_text+" bdyt"}>{d.text}</div>
 
                             {
-                                true?
-                                <a className={styles.ib_link+" bdyt bgtc1 fdc1"} href={"https://p30download.ir"}>{"مشاهده"}</a>
+                                d.has_link?
+                                <a className={styles.ib_link+" bdyt bgtc1 fdc1"} href={d.link}>{d.link_title}</a>
                                 :null
                             }
 
                         </div>
-
 
                     </div>
 
@@ -83,11 +96,12 @@ class SingleImage extends Component {
     }
 
     render(){
+        let cover = myServer.MediaFiles.publicImage(this.props.src)
         return(
             <div className={styles.container1}>
 
                 <div className={styles.si_intro_poster}
-                style={{backgroundImage:`url("${encodeURIComponent(this.props.src)}")`}}/>
+                style={{backgroundImage:`url("${cover}")`}}/>
 
             </div>
         )

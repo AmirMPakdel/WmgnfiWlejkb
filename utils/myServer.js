@@ -68,6 +68,9 @@ const urls = {
     OPEN_TRANSACTION_PORTAL: domain+prefixes.UTA+"/product/pay",
     GET_TRANSACTION: domain+prefixes.UTA+"/transaction/get",
 
+    //student homepage
+    STD_LOAD_HOMEPAGE: domain+prefixes.PSTA+"/main/load",
+
     //student auth
     STD_CHECK_PHONENUMBER: domain+prefixes.PSTA+"/checkphonenumber",
     STD_LOGIN: domain+prefixes.PSTA+"/login",

@@ -123,7 +123,7 @@ export default class HomePageController{
  * @param {Array} hierarchy 
  * @param {Array} elements 
  */
-const normalizeHierarchy=(hierarchy, elements)=>{
+export const normalizeHierarchy=(hierarchy, elements)=>{
 
     let h = hierarchy;
 
@@ -213,7 +213,7 @@ export const sortElementsBasedOnHierarchy=(elements, hierarchy)=>{
     return newEle;
 }
 
-const extractFooterData=(data)=>{
+export const extractFooterData=(data)=>{
 
     return {
         footer_links: data.footer_links,
