@@ -42,7 +42,7 @@
 }
 
 .ib_image{
-    width: calc(100% - 30rem);
+    width: calc(60% - 4rem);
     height: auto;
     border-radius: 1rem;
 }
@@ -50,7 +50,7 @@
 .ib_sec2{
     display: flex;
     flex-direction: column;
-    width: 26rem;
+    width: 40%;
     align-items: flex-start;
 }
 
@@ -151,9 +151,10 @@
     }
 
     .ib_title{
-        min-width: 100%;
+        width: 100%;
         padding: 0.6rem 1.8rem;
         font-size: 0.92rem;
+        max-width: 24rem;
     }
 
     .ib_sec1{
@@ -162,7 +163,8 @@
     }
 
     .ib_image{
-        width: 11.5rem;
+        width: 100%;
+        max-width: 24rem;
         height: auto;
     }
 

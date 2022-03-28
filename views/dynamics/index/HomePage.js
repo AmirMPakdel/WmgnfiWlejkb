@@ -36,6 +36,9 @@ export default class HomePage extends Component {
     }
     
     render(){
+
+        let index = 0;
+
         return(
             <IndexLayout>
 
@@ -55,7 +58,8 @@ export default class HomePage extends Component {
                                 }
 
                                 if(e.el_type == 4){
-                                    return <InfoBox key={i} index={i} data={e}/>;
+                                    index++;
+                                    return <InfoBox key={i} index={index} data={e}/>;
                                 }
 
                                 return null;

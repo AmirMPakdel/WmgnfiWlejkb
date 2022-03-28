@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import styles from "./InfoBox.module.css";
+import myServer from "@/utils/myServer";
+import VideoCard from "@/views/components/global/VideoCard";
 
 /**
 * Props of InfoBox Component
@@ -90,9 +92,10 @@ class WithMedia extends Component {
                 <div className={styles.wm_media_con}>
 
                 {
-                    true?
-                    <img className={styles.wm_media_pic} src={"/statics/fake_img/bg1.jpg"}/>:
-                    <VideoCard className={styles.wm_media_video}/>
+                    d.type=="ct_image"?
+                    <img className={styles.wm_media_pic} src={myServer.MediaFiles.publicImage(d.url)}/>:
+                    <VideoCard className={styles.wm_media_video}
+                    uploadKey={d.url}/>
                 }
 
                 </div>
