@@ -1,0 +1,126 @@
+.header_con{
+    height: 5.6rem;
+    width: 100%;
+    direction: rtl;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    padding: 0 7vw;
+    z-index: 100;
+}
+
+.plchldr_con{
+    height: 5.6rem;
+}
+
+.desktop_con{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.mobile_con{
+    display: none;
+}
+
+.dt_wrapper1{
+    display: flex;
+    align-items: center;
+}
+
+.dt_logo_con{
+    height: 4.4rem;
+    margin-left: 1rem;
+}
+
+.dt_logo_img{
+    height: 100%;
+    width: auto;
+}
+
+.dt_links_con{
+    display: flex;
+    align-items: center;
+}
+
+.dt_link{
+    margin: 0.5rem;
+    margin-left: 1rem;
+}
+
+.dt_login_btn{
+    padding: 0.5rem 0.8rem;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 0.8rem;
+    display: flex;
+    align-items: center;
+}
+
+.dt_login_user_icon{
+    width: 1.5rem;
+    margin-left: 1.2rem;
+}
+
+.dt_login_t{
+    margin-left: 0.3rem;
+}
+
+@media(max-width:1024px){
+    
+    .header_con{
+        height: 4.2rem;
+    }
+
+    .plchldr_con{
+        height: 4.2rem;
+    }
+
+    .desktop_con{
+        display: none;
+    }
+    
+    .mobile_con{
+        display: flex;
+        height: 4.2rem;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .mob_menu_btn{
+        width: 2rem;
+        padding: 0.3rem;
+        cursor: pointer;
+    }
+
+    .mob_logo_img{
+        height: 3.2rem;
+    }
+}
+
+@media(max-width:767px){
+    
+    .header_con{
+        height: 3rem;
+    }
+
+    .plchldr_con{
+        height: 3rem;
+    }
+
+    .mobile_con{
+        height: 3rem;
+    }
+
+    .mob_menu_btn{
+        width: 2rem;
+        padding: 0.4rem;
+        cursor: pointer;
+    }
+
+    .mob_logo_img{
+        height: 2.8rem;
+    }
+}

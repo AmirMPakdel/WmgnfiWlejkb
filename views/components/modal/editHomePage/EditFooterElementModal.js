@@ -38,7 +38,6 @@ export default class EditFooterElementModal extends Component {
     }
     
     componentDidMount(){
-
     }
 
     onCancel=()=>{

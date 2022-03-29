@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import AccessLayout from "@/views/layouts/AccessLayout";
-import IndexHeader from "@/views/layouts/IndexHeader";
+import IndexHeader from "@/views/components/layouts/IndexHeader";
 import styles from "./IndexLayout.module.css";
 import ModalLayout from "@/views/layouts/ModalLayout";
 import IndextFooter from "@/views/components/layouts/IndexFooter";

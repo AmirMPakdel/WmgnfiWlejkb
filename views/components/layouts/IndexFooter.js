@@ -1,3 +1,4 @@
+import Observer from "@/utils/observer";
 import React, { Component } from "react";
 import styles from "./IndexFooter.module.css";
 
@@ -14,17 +15,34 @@ export default class IndexFooter extends Component {
     constructor(props){
         super(props);
         this.state = {
-            
+            social_links: [],
+            contact_numbers: [],
         }
     }
     
     componentDidMount(){
+
+        Observer.add("onFooterChange", this.loadFooter);
+    }
+
+    componentWillUnmount(){
+
+        Observer.remove("onFooterChange", this.loadFooter);
+    }
+
+    loadFooter=(data)=>{
+
+        console.log(data);
+
+        let social_links = transforSocialMedias(data);
+        let contact_numbers = transformNumbers(data);
+        this.setState({social_links, contact_numbers});
     }
     
     render(){
         
-        let numbers = transformNumbers({});
-        let social_medias = transforSocialMedias({});
+        let numbers = this.state.contact_numbers;
+        let social_medias = this.state.social_links;
 
         return(
             <div className={styles.con+" bgw "}>
@@ -35,12 +53,12 @@ export default class IndexFooter extends Component {
 
                     {
                         numbers.map((v,i,a)=>(
-                            <>
-                            <div className={styles.number} key={"num"+i}>{v}</div>
-                            {
-                                i!=(a.length-1)?<div key={"sep"+i} className={styles.numbers_sep}>|</div>:null
-                            }
-                            </>
+                            <React.Fragment key={i}>
+                                <div className={styles.number}>{v}</div>
+                                {
+                                    i!=(a.length-1)?<div className={styles.numbers_sep}>|</div>:null
+                                }
+                            </React.Fragment>
                         ))
                     }
 
@@ -75,31 +93,61 @@ export default class IndexFooter extends Component {
 
 const transformNumbers=(data)=>{
 
-    return ["09118015081","09118015081","09118015081","09118015081"];
+    let numbers = [];
+
+    let d = data.numbers;
+
+    if(d.mobile1){
+        numbers.push(d.mobile1);
+    }
+    if(d.mobile2){
+        numbers.push(d.mobile2);
+    }
+    if(d.telephone1){
+        numbers.push(d.telephone1);
+    }
+    if(d.telephone2){
+        numbers.push(d.telephone2);
+    }
+
+    return numbers;
 }
 
 const transforSocialMedias=(data)=>{
 
-    return [
-        {
+    let d = data.links;
+
+    let links = [];
+
+    if(d.email){
+        links.push({
             icon:"/statics/svg2/footer_email.svg",
-            url: "https://p30download.ir",
-        },
-        {
-            icon:"/statics/svg2/footer_telegram.svg",
-            url: "https://p30download.ir",
-        },
-        {
+            url:"mailto:" + d.email,
+        });
+    }
+    if(d.instagram){
+        links.push({
             icon:"/statics/svg2/footer_instagram.svg",
-            url: "https://p30download.ir",
-        },
-        {
-            icon:"/statics/svg2/footer_twitter.svg",
-            url: "https://p30download.ir",
-        },
-        {
+            url:d.instagram,
+        });
+    }
+    if(d.linkedin){
+        links.push({
             icon:"/statics/svg2/footer_linkedin.svg",
-            url: "https://p30download.ir",
-        }
-    ]
+            url:d.linkedin,
+        });
+    }
+    if(d.telegram){
+        links.push({
+            icon:"/statics/svg2/footer_telegram.svg",
+            url:d.telegram,
+        });
+    }
+    if(d.whatsapp){
+        links.push({
+            icon:"/statics/svg2/footer_twitter.svg",
+            url: "https://wa.me/"+ d.whatsapp,
+        });
+    }
+    return links;
 }

@@ -63,7 +63,7 @@ export default class EducatorDashboardLayout extends Component {
 
                             <SideMenu/>
 
-                                <div className={styles.header_right_sec}>
+                            <div className={styles.header_right_sec}>
 
                                 {
                                     this.state.menu_is_open?

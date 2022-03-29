@@ -1,4 +1,5 @@
 import HomePageModel from "@/models/dynamics/index/HomePageModel";
+import Observer from "@/utils/observer";
 import HomePage from "@/views/dynamics/index/HomePage";
 import { extractFooterData, normalizeHierarchy, sortElementsBasedOnHierarchy } from "../dashboard/HomePageController";
 
@@ -23,17 +24,22 @@ export default class HomePageController{
                 d.hierarchy = normalizeHierarchy(d.hierarchy, d.elements);
                 let elements = sortElementsBasedOnHierarchy(d.elements, d.hierarchy);
 
+                let footer = extractFooterData(d);
+
                 v.setState({
                     loading:false,
                     elements,
                     intro: d.intro,
-                    footer: extractFooterData(d),
                     hierarchy: d.hierarchy,
-                });
+                }, ()=>{
 
-                console.log(d.hierarchy);
+                    let footer_data = {
+                        links: JSON.parse(footer.footer_links),
+                        numbers: JSON.parse(footer.footer_telephones),
+                    }
+                    Observer.execute("onFooterChange", footer_data);
+                });
             }
         });
     }
-    
 }
