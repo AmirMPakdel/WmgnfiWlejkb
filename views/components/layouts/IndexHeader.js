@@ -17,7 +17,8 @@ export default class IndexHeader extends Component {
         super(props);
         //this.controller = new IndexHeaderController(this);
         this.state = {
-            
+            logedin: 1,
+            username: "امیرمحمد پاکدل",
         }
     }
     
@@ -25,9 +26,25 @@ export default class IndexHeader extends Component {
     }
 
     onStudentAuthModal=()=>{
+
         chest.ModalLayout.setModal(1, <StudentAuthModal/>, ()=>{
             chest.ModalLayout.visibleToggle(1, true);
         });
+    }
+
+    onStudentDashboard=()=>{
+
+        window.location.href = env.PATHS.USER_OVERVIEW;
+    }
+
+    openSideMenu=()=>{
+
+        this.SideMenu.style.transform = "translateX(-16rem)";
+    }
+
+    closeSideMenu=()=>{
+
+        this.SideMenu.style.transform = "translateX(0)";
     }
     
     render(){
@@ -62,13 +79,18 @@ export default class IndexHeader extends Component {
                     <div className={styles.dt_login_sec}>
 
                         {
-                            true?
+                            !this.state.logedin?
                             <div className={styles.dt_login_btn+" amp_btn bdc2"}
                             onClick={this.onStudentAuthModal}>
                                 <img className={styles.dt_login_user_icon} src={"/statics/svg2/user.svg"}/>
-                                <div className={styles.dt_login_t}>{"ورود / ثبت نام"}</div>
+                                <div className={styles.dt_login_t+" fdc1"}>{"ورود / ثبت نام"}</div>
                             </div>
-                            :null
+                            :
+                            <div className={styles.dt_logedin_btn+" amp_btn bgtc1"}
+                            onClick={this.onStudentDashboard}>
+                                <img className={styles.dt_login_user_icon} src={"/statics/svg2/user.svg"}/>
+                                <div className={styles.dt_login_t+" fdc1"}>{this.state.username}</div>
+                            </div>
                         }
 
                     </div>
@@ -77,7 +99,7 @@ export default class IndexHeader extends Component {
 
                 <div className={styles.mobile_con}>
 
-                    <img className={styles.mob_menu_btn}
+                    <img className={styles.mob_menu_btn} onClick={this.openSideMenu}
                     src={"/statics/svg2/menu.svg"}/>
 
                     <img className={styles.mob_logo_img}
@@ -85,9 +107,37 @@ export default class IndexHeader extends Component {
 
                 </div>
 
-                <div className={styles.side_menu_con}>
+                <div ref={r=>this.SideMenu=r} className={styles.side_menu_con+" md_card_shd"}>
 
-                    
+                    <img className={styles.sm_close_btn} onClick={this.closeSideMenu}
+                    src={"/statics/svg2/close.svg"}/>
+
+                    <div className={styles.sm_divider+" bgtc1"}/>
+
+                    {
+                        !this.state.logedin?
+                        <div className={styles.sm_login_btn+" amp_btn bdc2"}
+                        onClick={this.onStudentAuthModal}>
+                            <img className={styles.dt_login_user_icon} src={"/statics/svg2/user.svg"}/>
+                            <div className={styles.dt_login_t}>{"ورود / ثبت نام"}</div>
+                        </div>
+                        :
+                        <div className={styles.sm_logedin_btn+" amp_btn bgtc1"}
+                            onClick={this.onStudentDashboard}>
+                                <img className={styles.dt_login_user_icon} src={"/statics/svg2/user.svg"}/>
+                                <div className={styles.dt_login_t+" fdc1"}>{this.state.username}</div>
+                        </div>
+                    }
+
+                    <div className={styles.sm_divider+" bgtc1"}/>
+
+                    <a className={styles.sm_link+" fdc1i bdyt"} href={"/store"}>{"فروشگاه"}</a>
+
+                    <a className={styles.sm_link+" fdc1i bdyt"} href={"/comments"}>{"نظرات و پیشنهادات"}</a>
+
+                    <a className={styles.sm_link+" fdc1i bdyt"} href={"/help"}>{"راهنما"}</a>
+
+                    <div className={styles.sm_divider+" bgtc1"}/>
 
                 </div>
                 

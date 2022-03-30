@@ -15,7 +15,7 @@ export default class WrapperT1 extends Component {
     render(){
         return(
             <div className={styles.con} style={this.props.containterStyle}>
-                <div className={styles.w1} style={this.props.style}>
+                <div className={styles.w1+" "+this.props.className} style={this.props.style}>
                 {
                     this.props.children
                 }
