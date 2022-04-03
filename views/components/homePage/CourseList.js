@@ -1,3 +1,4 @@
+import CourseListController from "@/controllers/components/homePage/CourseListController";
 import { Carousel } from "node_modules/antd/lib/index";
 import React, { Component } from "react";
 import CourseCard, { HallowCourseCard } from "../global/CourseCard";
@@ -15,13 +16,20 @@ export default class CourseList extends Component {
     
     constructor(props){
         super(props);
-        //this.controller = new CourseListController(this);
+        this.controller = new CourseListController(this);
         this.state = {
         
         }
     }
     
     componentDidMount(){
+
+        setTimeout(this.loadCourses, 500);
+    }
+
+    loadCourses=()=>{
+
+        this.controller.loadCourses();
     }
     
     render(){

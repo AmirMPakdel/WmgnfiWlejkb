@@ -59,9 +59,14 @@ export default class EditableElementCardModel{
         let ep;
         if(params.el_type == 3){
             ep = "ep_content_main_course_list_toggle_visibility";
+            params.list_id = params.id;
         }else if(params.el_type == 4){
             ep = "ep_content_main_box_info_toggle_visibility";
+            params.content_id = params.id;
         }
+
+        delete params.id;
+        delete params.el_type;
 
         myServer.Post(myServer.urls.COURSE_EDIT+ep, params, {}, (err, data)=>{
     

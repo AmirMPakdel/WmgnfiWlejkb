@@ -14,7 +14,7 @@ var env = {
 
     STUDENT_TOKEN_KEY: "__mgnstk",
 
-    DOMAIN: "http://tootifa.ir",
+    DOMAIN: "http://minfo.ir",
 
     CONVERTOR_DOMAIN: "http://tootifa.ir/conv",
 

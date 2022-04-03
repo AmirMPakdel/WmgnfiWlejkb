@@ -70,6 +70,7 @@ const urls = {
 
     //student homepage
     STD_LOAD_HOMEPAGE: domain+prefixes.PSTA+"/main/load",
+    STD_HOMEPAGE_COURSE_LIST: domain+prefixes.PSTA+"/main/course_list/load",
 
     //student auth
     STD_CHECK_PHONENUMBER: domain+prefixes.PSTA+"/checkphonenumber",

@@ -94,7 +94,7 @@ export default class EditableElementCardController{
         this.changeVisiblity(!visible);
 
         let params = {
-            element_id: v.props.data.id,
+            id: v.props.data.id,
             el_type,
         }
 
