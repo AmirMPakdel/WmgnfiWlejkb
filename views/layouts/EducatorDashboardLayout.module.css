@@ -5,7 +5,7 @@
     width: 100%;
     direction: rtl;
     overflow: hidden;
-    padding-top: 70px;
+    padding-top: 56px;
 }
 
 .header_bar{
@@ -14,7 +14,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 70px;
+    height: 56px;
     width: 100%;
     z-index: 10;
     box-shadow: 0 0.2rem 0.5rem 0.05rem rgb(0, 0, 0, 0.15);

@@ -12,7 +12,7 @@ export default class Overview extends Component {
         return(
             <EducatorDashboardLayout>
 
-                <WrapperT1>
+                <WrapperT1 className={styles.wrappert1}>
 
                     <div className={styles.con}>
                     
