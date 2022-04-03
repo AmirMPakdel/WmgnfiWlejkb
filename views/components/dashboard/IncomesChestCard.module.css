@@ -62,3 +62,22 @@
     text-align: center;
     margin-bottom: 1.6rem;
 }
+
+
+@media(max-width:1024px){
+    
+    .con{
+        width: 100%;
+        max-width: 36rem;
+        height: 18rem;
+        
+    }
+
+    .price_con{
+        margin-top: 2rem;
+    }
+}
+
+@media(max-width:767px){
+    
+}

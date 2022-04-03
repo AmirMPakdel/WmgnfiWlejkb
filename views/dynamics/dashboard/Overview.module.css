@@ -1,9 +1,9 @@
-
 .con{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding-bottom: 3rem;
 }
 
 .sec1{
@@ -27,4 +27,35 @@
     justify-content: space-around;
     padding-left: 1rem;
     padding-right: 1rem;
+}
+
+
+@media(max-width:1024px){
+
+    .sec1{
+        flex-wrap: wrap;
+        max-width: 38rem;
+        padding: 0;
+    }
+
+    .dash_card{
+        width: calc(50% - 2rem);
+    }
+
+    .sec2{
+        flex-direction: column;
+        align-items: center;
+    }
+    
+}
+
+@media(max-width:767px){
+    
+    .wrappert1{
+        width: 100%;
+    }
+
+    .dash_card{
+        width: calc(100% - 2rem);
+    }
 }

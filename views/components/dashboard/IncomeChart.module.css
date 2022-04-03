@@ -24,3 +24,18 @@
     border-radius: 1rem;
     box-shadow: 0 0.2rem 1rem 0.04rem rgb(0, 0, 0, 0.15);
 }
+
+
+@media(max-width:1024px){
+    
+    .con{
+        margin-top: 3rem;
+        margin-right: 0;
+        width: 100%;
+        max-width: 36rem;
+    }
+}
+
+@media(max-width:767px){
+    
+}
