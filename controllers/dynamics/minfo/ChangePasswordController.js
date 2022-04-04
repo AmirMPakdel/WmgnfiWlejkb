@@ -1,7 +1,7 @@
-import ChangePasswordModel from "@/models/dynamics/index/ChangePasswordModel";
+import ChangePasswordModel from "@/models/dynamics/minfo/ChangePasswordModel";
 import { secondsToTime } from "@/utils/time";
 import Validation from "@/utils/validation";
-import ChangePassword from "@/views/dynamics/index/ChangePassword";
+import ChangePassword from "@/views/dynamics/minfo/ChangePassword";
 
 export default class ChangePasswordController{
     
@@ -247,6 +247,6 @@ export default class ChangePasswordController{
     }
 
     goToHomePage(){
-        window.location.href="/";
+        window.location.href="/minfo/auth";
     }
 }
