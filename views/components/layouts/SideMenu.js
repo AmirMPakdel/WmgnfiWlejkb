@@ -124,7 +124,7 @@ export default class SideMenu extends Component {
                 onClick={this.onSelect} active_page={this.state.active_page} name="settings"/>
 
                 <SideMenuBtn title="گزارش‌های مالی" icon={ActivitySvg}
-                onClick={this.onSelect} active_page={this.state.active_page} name="finances"/>
+                onClick={this.onSelect} active_page={this.state.active_page} name="financialReports"/>
 
                 <SideMenuBtn title="افزایش اعتبار" icon={ArrowUpSqrSvg}
                 onClick={this.onSelect} active_page={this.state.active_page} name="buyCredit"/>

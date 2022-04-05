@@ -13,7 +13,7 @@
     width: calc(100% - 5rem);
     max-width: 96rem;
 
-    min-height: calc(100vh - 70px);
+    min-height: calc(100vh - 56px);
     border: 0.01rem rgba(0, 132, 0, 0.2) solid;
 }
 
@@ -24,7 +24,7 @@
         width: 86%;
         max-width: 60rem;
         
-        min-height: calc(100vh - 70px);
+        min-height: calc(100vh - 56px);
         /* background-color: red; */
     }
 }
