@@ -63,7 +63,7 @@ export default class FinancialReports extends Component {
                     this.state.loading?
                     <Loading style={{minHeight:"calc(80vh - 6rem)"}}/>:
                     <>
-                    <div className={styles.table_wrapper}>
+                    <div className={styles.table_wrapper+" sm_card_shd"}>
 
                         <div className={styles.table_scroller}>
                         <ConfigProvider direction={"rtl"}>
@@ -184,7 +184,7 @@ const table1_columns = [
     {
         title: 'عملیات',
         dataIndex: 'action',
-        render: (text, record, index)=>(<MainButton title={"نمایش"} onClick={()=>{window.location.href="/sellReceipt/"+record.id}}/>)
+        render: (text, record, index)=>(<MainButton title={"نمایش"} onClick={()=>{window.open("/dashboard/salesReceipt/"+record.id)}}/>)
     },
 ];
 
@@ -208,7 +208,7 @@ const table2_columns = [
     {
         title: 'عملیات',
         dataIndex: 'action',
-        render: (text, record, index)=>(<MainButton title={"نمایش"} onClick={()=>{window.location.href="/UserBuyCredit/"+record.id}}/>)
+        render: (text, record, index)=>(<MainButton title={"نمایش"} onClick={()=>{window.open("/transaction/userBuyCredit?transaction_id="+record.id)}}/>)
     },
 ];
 

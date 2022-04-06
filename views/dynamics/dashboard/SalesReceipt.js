@@ -1,27 +1,27 @@
-import BuyCourseController from "@/controllers/transaction/BuyCourseController";
+import SalesReceiptController from "@/controllers/dynamics/dashboard/SalesReceiptController";
+import React, { Component } from "react";
+import styles from "./SalesReceipt.module.css";
 import { priceFormat } from "@/utils/price";
 import { sqlTimeStamp2ShamsiDateTime } from "@/utils/time";
 import ListRow from "@/views/components/buyCredit/ListRow";
 import Loading from "@/views/components/global/Loading";
 import MainButton from "@/views/components/global/MainButton";
 import IndexLayout from "@/views/layouts/IndexLayout";
-import React, { Component } from "react";
-import styles from "./BuyCourse.module.css";
 const persianNToText = require('number-to-persian-text');
 
 /**
-* Props of BuyCourse Component
+* Props of SalesReceipt Component
 * @typedef Props
 * @property {string} className
 * @property {React.CSSProperties} style
 * 
 * @extends {Component<Props>}
 */
-export default class BuyCourse extends Component {
+export default class SalesReceipt extends Component {
     
     constructor(props){
         super(props);
-        this.controller = new BuyCourseController(this);
+        this.controller = new SalesReceiptController(this);
         this.state = {
             loading:true,
             details:{},

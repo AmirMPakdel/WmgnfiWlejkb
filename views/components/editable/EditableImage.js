@@ -94,7 +94,7 @@ export default class EditableImage extends Component {
                 <input ref={r=>this.input=r} 
                 onClick={this.onInputClick}
                 onChange={this.onInputChange}
-                type="file" accept=".jpg" //".jpg, .png" 
+                type="file" accept=".jpg, .png"
                 style={{display:"none"}}/>
 
             </div>

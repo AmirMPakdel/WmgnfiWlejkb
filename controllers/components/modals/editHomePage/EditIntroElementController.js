@@ -43,7 +43,7 @@ export default class EditIntroElementController{
                 params.link_title = vs.link_title;
             }
 
-            if(!v.props.data.template){
+            if(!v.props.data.template || !v.props.data.cover){
 
                 params.file_state = "ufs_new";
 

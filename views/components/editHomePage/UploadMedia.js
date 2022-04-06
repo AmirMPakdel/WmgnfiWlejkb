@@ -113,7 +113,7 @@ export default class UploadMedia extends Component {
                     <input style={{display:"none"}}
                     ref={r=>this.file_input=r}
                     type={"file"}
-                    accept={this.props.type==="video"?".mp4":".jpg,.png"}/>
+                    accept={this.props.type==="video"?".mp4":".jpg, .png"}/>
                     
                     {
                         this.state.src && this.props.type==="image"?
