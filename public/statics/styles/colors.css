@@ -53,6 +53,19 @@
 }
 
 /**
+    third dark color
+**/
+.bgdc3{
+    background-color: #a9a9a9;
+}
+.fdc3{
+    color: #a9a9a9;
+}
+.bdc3{
+    border-color: #a9a9a9;
+}
+
+/**
     white color
 **/
 
@@ -192,6 +205,18 @@
     border-color: #939597 !important;
 }
 
+/**
+    third dark color
+**/
+.bgdc3i{
+    background-color: #a9a9a9 !important;
+}
+.fdc3i{
+    color: #a9a9a9 !important;
+}
+.bdc3i{
+    border-color: #a9a9a9 !important;
+}
 
 /**
     white color

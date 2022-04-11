@@ -63,17 +63,21 @@ export default class MainButton extends Component {
         }
 
         if(this.props.disabled){
-            add_class += " bgdc2 "
+            add_class += " bgdc3 "
         }
 
         if(this.props.loading){
 
             add_class += " bdc2 bglc1 "+styles.border_mode;
-
         }
+
+        if(!this.props.loading && !this.props.disabled){
+            add_class += " amp_btn";
+        }
+
         return(
             
-            <div className={styles.mbtn_con+" bdyt "+add_class+" amp_btn"} 
+            <div className={styles.mbtn_con+" bdyt "+add_class} 
             onClick={this.onClick} 
             style={this.props.style}
             ref={r=>this.con=r}>

@@ -8,6 +8,7 @@
     direction: rtl;
     padding: 0 1rem;
     transition: 400ms ease;
+    user-select: none;
 }
 
 .left_arrow{

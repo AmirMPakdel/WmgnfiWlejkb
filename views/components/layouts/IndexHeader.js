@@ -17,7 +17,7 @@ export default class IndexHeader extends Component {
         super(props);
         //this.controller = new IndexHeaderController(this);
         this.state = {
-            logedin: 1,
+            logedin: 0,
             username: "امیرمحمد پاکدل",
         }
     }
@@ -34,7 +34,7 @@ export default class IndexHeader extends Component {
 
     onStudentDashboard=()=>{
 
-        window.location.href = env.PATHS.USER_OVERVIEW;
+        window.location.href = env.PATHS.STUDENT_COURSES;
     }
 
     openSideMenu=()=>{
