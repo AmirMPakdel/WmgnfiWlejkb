@@ -3,11 +3,12 @@ import styles from "./Store.module.css";
 import IndexLayout from "@/views/layouts/IndexLayout";
 import CourseCard from "@/views/components/global/CourseCard";
 import RightSideFilter from "@/views/components/store/RightSideFilter";
-import { Breadcrumb, ConfigProvider } from "node_modules/antd/lib/index";
 import StoreBreadcrumb from "@/views/components/store/StoreBreadcrumb";
 import SortBar from "@/views/components/store/SortBar";
 import MainButton from "@/views/components/global/MainButton";
 import Pagination from "@/views/components/global/Pagination";
+import StoreController from "@/controllers/dynamics/index/StoreController";
+import Loading from "@/views/components/global/Loading";
 
 const STORE_PAGE_SIZE = 20;
 
@@ -23,14 +24,17 @@ export default class Store extends Component {
     
     constructor(props){
         super(props);
-        //this.controller = new StoreController(this);
+        this.controller = new StoreController(this);
         this.state = {
+            loading: true,
             currentPage:1,
             total:450,
         }
     }
     
     componentDidMount(){
+
+        this.controller.loadCourses();
     }
 
     openSortModal=()=>{
@@ -46,7 +50,11 @@ export default class Store extends Component {
     render(){
         return(
             <IndexLayout>
-                
+            {
+                this.state.loading?
+
+                <Loading className={styles.loading}/>:
+
                 <div className={styles.con}>
 
                     <div className={styles.filter_bar_con}>
@@ -112,7 +120,7 @@ export default class Store extends Component {
                     </div>
 
                 </div>
-                
+            }
             </IndexLayout>
         )
     }
