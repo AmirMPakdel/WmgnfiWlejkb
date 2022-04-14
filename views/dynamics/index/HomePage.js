@@ -32,7 +32,6 @@ export default class HomePage extends Component {
     componentDidMount(){
 
         this.controller.loadElements();
-
     }
     
     render(){
@@ -40,7 +39,8 @@ export default class HomePage extends Component {
         let index = 0;
 
         return(
-            <IndexLayout>
+            <IndexLayout accessType="noAuth"
+            showWithoutAuth={false}>
 
                 {
                     this.state.loading?

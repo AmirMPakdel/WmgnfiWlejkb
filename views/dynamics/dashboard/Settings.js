@@ -40,7 +40,9 @@ export default class Settings extends Component {
     
     render(){
         return(
-            <EducatorDashboardLayout>
+            <EducatorDashboardLayout accessType="userL1"
+            showWithoutAuth={false}>
+                
                 <WrapperT1>
 
                     <div className={styles.con}>

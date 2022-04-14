@@ -66,7 +66,8 @@ export default class HomePage extends Component {
     
     render(){
         return(
-            <EducatorDashboardLayout>
+            <EducatorDashboardLayout accessType="userL1"
+            showWithoutAuth={false}>
 
                 <div className={styles.top_sec}>
                     {

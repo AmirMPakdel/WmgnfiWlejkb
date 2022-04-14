@@ -41,7 +41,8 @@ export default class MyCourses extends Component {
     
     render(){
         return(
-            <StudentPanelLayout>
+            <StudentPanelLayout accessType="student"
+            showWithoutAuth={false}>
 
                 <WrapperT1>
 

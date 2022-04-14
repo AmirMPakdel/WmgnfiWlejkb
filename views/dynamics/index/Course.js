@@ -42,7 +42,8 @@ export default class Course extends Component {
     render(){
         let c = this.state.course;
         return(
-            <IndexLayout>
+            <IndexLayout accessType="noAuth"
+            showWithoutAuth={false}>
 
             {
                 this.state.loading?

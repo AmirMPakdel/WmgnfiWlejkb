@@ -41,7 +41,8 @@ export default class ViewReciept extends Component {
         let time = dateTime[1];
 
         return(
-            <StudentPanelLayout>
+            <StudentPanelLayout accessType="student"
+            showWithoutAuth={false}>
 
                 <WrapperT1>
 
@@ -50,7 +51,6 @@ export default class ViewReciept extends Component {
                         this.state.loading?
                         <Loading style={{minHeight:"16rem"}}/>:
                         <>
-
                             <div className={styles.card+" md_card_shd bgw"}>
 
                             {/* <div className={styles.title+" tilt md_card_shd bglc1"}>{"فاکتور خرید اعتبار"}</div> */}

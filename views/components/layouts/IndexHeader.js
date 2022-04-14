@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styles from "./IndexHeader.module.css";
 import chest from "@/utils/chest";
 import StudentAuthModal from "@/views/components/modal/global/StudentAuthModal";
+import Storage from "@/utils/storage";
 
 /**
 * Props of IndexHeader Component
@@ -18,11 +19,20 @@ export default class IndexHeader extends Component {
         //this.controller = new IndexHeaderController(this);
         this.state = {
             logedin: 0,
-            username: "امیرمحمد پاکدل",
+            username: "",
         }
     }
     
     componentDidMount(){
+
+        this.checkUserInStorage();
+    }
+
+    checkUserInStorage=()=>{
+
+        let student = Storage.retrive("student");
+
+        console.log(student);
     }
 
     onStudentAuthModal=()=>{

@@ -10,7 +10,8 @@ export default class Overview extends Component {
     
     render(){
         return(
-            <EducatorDashboardLayout>
+            <EducatorDashboardLayout accessType="userL1"
+            showWithoutAuth={false}>
 
                 <WrapperT1 className={styles.wrappert1}>
 

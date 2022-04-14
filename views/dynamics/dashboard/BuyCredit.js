@@ -54,7 +54,8 @@ export default class BuyCredit extends Component {
     
     render(){
         return(
-            <EducatorDashboardLayout>
+            <EducatorDashboardLayout accessType="userL1"
+            showWithoutAuth={false}>
                 {
                     this.state.loading?
                     <div className={styles.loading_con}>
@@ -62,7 +63,6 @@ export default class BuyCredit extends Component {
                     </div>
                     :
                     <div className={styles.con}>
-                        
                         {
                             !this.state.show_invoice?
                             <>

@@ -106,7 +106,8 @@ export default class EditCourse extends Component {
     
     render(){
         return(
-            <EducatorDashboardLayout>
+            <EducatorDashboardLayout accessType="userL1"
+            showWithoutAuth={false}>
 
             {
                 this.state.loading?

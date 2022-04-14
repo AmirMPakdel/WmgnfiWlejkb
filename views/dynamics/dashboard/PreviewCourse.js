@@ -42,7 +42,8 @@ export default class PreviewCourse extends Component {
     render(){
         let c = this.state.course;
         return(
-            <IndexLayout>
+            <IndexLayout accessType="userL1"
+            showWithoutAuth={false}>
 
             {
                 this.state.loading?

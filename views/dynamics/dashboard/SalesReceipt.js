@@ -65,7 +65,8 @@ export default class SalesReceipt extends Component {
         let time = dateTime[1];
 
         return(
-            <IndexLayout>
+            <IndexLayout accessType="userL1"
+            showWithoutAuth={false}>
             
             <iframe id={"ifmcontentstoprint"} style={{height:"0px", width:"0px", position:"absolute"}}></iframe>
             

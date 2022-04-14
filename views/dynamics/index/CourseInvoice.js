@@ -64,7 +64,8 @@ export default class CourseInvoice extends Component {
         let {price, total_price, off_percent} = getPriceData(crs);
 
         return(
-            <IndexLayout>
+            <IndexLayout accessType="student"
+            showWithoutAuth={false}>
 
                 <div className={styles.con}>
 

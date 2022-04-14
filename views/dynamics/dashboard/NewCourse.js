@@ -37,7 +37,9 @@ export default class NewCourse extends Component {
 
     render(){
         return(
-            <EducatorDashboardLayout>
+            <EducatorDashboardLayout accessType="userL1"
+            showWithoutAuth={false}>
+                
                 <WrapperT1>
                 
                     <ZNewCourseSteps step={this.state.step}/>

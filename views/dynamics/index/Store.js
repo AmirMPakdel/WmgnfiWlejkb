@@ -49,7 +49,8 @@ export default class Store extends Component {
     
     render(){
         return(
-            <IndexLayout>
+            <IndexLayout accessType="noAuth"
+            showWithoutAuth={false}>
             {
                 this.state.loading?
 

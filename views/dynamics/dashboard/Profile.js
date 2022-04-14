@@ -66,7 +66,10 @@ export default class Profile extends Component {
         let s = this.state;
 
         return(
-            <EducatorDashboardLayout>
+            
+            <EducatorDashboardLayout accessType="userL1"
+            showWithoutAuth={false}>
+
             <WrapperT1 className={styles.con}>
 
                 <div className={styles.wrapper_card+" sm_card_shd"}>

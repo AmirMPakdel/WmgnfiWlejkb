@@ -43,7 +43,8 @@ export default class MyWishlist extends Component {
     
     render(){
         return(
-            <StudentPanelLayout>
+            <StudentPanelLayout accessType="student"
+            showWithoutAuth={false}>
 
                 <WrapperT1>
 

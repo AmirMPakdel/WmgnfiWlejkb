@@ -9,6 +9,8 @@ import styles from "./StudentPanelLayout.module.css";
 * @typedef Props
 * @property {string} className
 * @property {React.CSSProperties} style
+* @property {"noAuth"|"student"|"userL1"|"userL2"} accessType
+* @property {boolean} showWithoutAuth
 * 
 * @extends {Component<Props>}
 */
@@ -26,7 +28,9 @@ export default class StudentPanelLayout extends Component {
     
     render(){
         return(
-            <AccessLayout accessLevel={this.props.accessLevel}>
+            <AccessLayout accessType={this.props.accessType}
+            showWithoutAuth={this.props.showWithoutAuth}>
+
                 <ModalLayout>
                     
                     <div className={styles.layout}>

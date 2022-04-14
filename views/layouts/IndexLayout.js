@@ -7,7 +7,8 @@ import IndextFooter from "@/views/components/layouts/IndexFooter";
 
 /**
  * @typedef Props 
- * @property {AccessLevel} accessLevel
+ * @property {"noAuth"|"student"|"userL1"|"userL2"} accessType
+ * @property {boolean} showWithoutAuth
  * 
  * @extends {Component<Props>}
  */
@@ -15,7 +16,9 @@ export default class IndexLayout extends Component {
     
     render(){
         return(
-            <AccessLayout accessLevel={this.props.accessLevel}>
+            <AccessLayout 
+            accessType={this.props.accessType}
+            showWithoutAuth={this.props.showWithoutAuth}>
                 <ModalLayout>
                     <div className={styles.con+" bglc2i"}>
 
