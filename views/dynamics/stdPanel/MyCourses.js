@@ -8,6 +8,7 @@ import MainButton from "@/views/components/global/MainButton";
 import myServer from "@/utils/myServer";
 import Pagination from "@/views/components/global/Pagination";
 import WrapperT1 from "@/views/layouts/WrapperT1";
+import Observer from "@/utils/observer";
 
 /**
 * Props of MyCourses Component
@@ -32,7 +33,10 @@ export default class MyCourses extends Component {
     }
     
     componentDidMount(){
-        this.controller.loadCoursePage(1);
+        
+        Observer.add("onAuthenticate", ()=>{
+            this.controller.loadCoursePage(1);
+        })
     }
 
     onChangePage=(page)=>{

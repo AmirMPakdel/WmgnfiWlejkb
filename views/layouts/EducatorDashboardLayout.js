@@ -56,10 +56,11 @@ export default class EducatorDashboardLayout extends Component {
     render(){
         return(
 
-            <AccessLayout accessType={this.props.accessType}
-            showWithoutAuth={this.props.showWithoutAuth}>
+            <ModalLayout>
                 
-                <ModalLayout>
+                <AccessLayout accessType={this.props.accessType}
+                showWithoutAuth={this.props.showWithoutAuth}>
+                
                     <div className={styles.layout}>
                         
                         <div className={styles.header_bar+" bgwi"}>
@@ -98,8 +99,10 @@ export default class EducatorDashboardLayout extends Component {
                         </div>
 
                     </div>
-                </ModalLayout>
-            </AccessLayout>
+
+                </AccessLayout>
+                
+            </ModalLayout>
         )
     }
 }

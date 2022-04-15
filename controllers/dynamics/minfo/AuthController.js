@@ -1,6 +1,7 @@
 import AuthModel from "@/models/dynamics/minfo/AuthModel";
 import chest from "@/utils/chest";
 import { setCookie } from "@/utils/cookie";
+import { getParamByName } from "@/utils/helpers";
 import { secondsToTime } from "@/utils/time";
 import Validation, { IsValid } from "@/utils/validation";
 import Auth from "@/views/dynamics/minfo/Auth";
@@ -102,7 +103,14 @@ export default class AuthController{
 
                     setCookie(env.TENANT_KEY, data.data.username, 365);
 
-                    window.location.href = env.PATHS.USER_OVERVIEW;
+                    if(getParamByName("redirected")=="1" && document.referrer){
+
+                        window.location.href = document.referrer;
+
+                    }else{
+
+                        window.location.href = env.PATHS.USER_OVERVIEW;
+                    }
 
                 }else{
 

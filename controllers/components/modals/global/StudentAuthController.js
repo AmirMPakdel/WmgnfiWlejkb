@@ -106,6 +106,8 @@ export default class StudentAuthController{
                     this.getStudent((student)=>{
 
                         Observer.execute("onStudentChange", student);
+                        Observer.execute("onAuthenticate", student);
+                        
                         chest.ModalLayout.closeAndDelete(1);
                     });
 
@@ -322,6 +324,7 @@ export default class StudentAuthController{
                     this.getStudent((student)=>{
 
                         Observer.execute("onStudentChange", student);
+                        Observer.execute("onAuthenticate", student);
 
                         chest.ModalLayout.closeAndDelete(1);
                     });

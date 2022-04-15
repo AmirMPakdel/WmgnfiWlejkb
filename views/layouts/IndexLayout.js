@@ -16,10 +16,11 @@ export default class IndexLayout extends Component {
     
     render(){
         return(
-            <AccessLayout 
-            accessType={this.props.accessType}
-            showWithoutAuth={this.props.showWithoutAuth}>
-                <ModalLayout>
+            <ModalLayout>
+                <AccessLayout 
+                accessType={this.props.accessType}
+                showWithoutAuth={this.props.showWithoutAuth}>
+               
                     <div className={styles.con+" bglc2i"}>
 
                         <IndexHeader/>
@@ -29,8 +30,9 @@ export default class IndexLayout extends Component {
                         <IndextFooter/>
 
                     </div>
-                </ModalLayout>
-            </AccessLayout>
+                
+                </AccessLayout>
+            </ModalLayout>
         )
     }
 }

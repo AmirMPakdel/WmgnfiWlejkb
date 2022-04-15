@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import AccessLayout from "./AccessLayout";
-import IndexHeader from "./IndexHeader";
+import IndexHeader from "@/views/components/layouts/IndexHeader";
 import ModalLayout from "./ModalLayout";
 import styles from "./StudentPanelLayout.module.css";
 
@@ -19,7 +19,7 @@ export default class StudentPanelLayout extends Component {
     constructor(props){
         super(props);
         this.state = {
-        
+            username:"امیرمحمد پاکدل",
         }
     }
     
@@ -28,16 +28,20 @@ export default class StudentPanelLayout extends Component {
     
     render(){
         return(
-            <AccessLayout accessType={this.props.accessType}
-            showWithoutAuth={this.props.showWithoutAuth}>
+            <ModalLayout>
 
-                <ModalLayout>
-                    
+                <AccessLayout accessType={this.props.accessType}
+                showWithoutAuth={this.props.showWithoutAuth}>
+
                     <div className={styles.layout}>
 
-                        <IndexHeader/>
+                        {/* <IndexHeader/> */}
 
                         <div className={styles.upper_sec}>
+
+                            <div className={styles.username+" tilt flc1"}>
+                                {this.state.username}
+                            </div>
 
                             <div className={styles.tab_btn_wrapper}>
 
@@ -64,8 +68,9 @@ export default class StudentPanelLayout extends Component {
                         <div className={styles.mock_footer}>FOOTER</div>
 
                     </div>
-                </ModalLayout>
-            </AccessLayout>
+                
+                </AccessLayout>
+            </ModalLayout>
         )
     }
 }

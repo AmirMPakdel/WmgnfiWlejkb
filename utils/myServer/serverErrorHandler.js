@@ -12,7 +12,13 @@ const ErrorHandler = {
             return;
         }
 
-        if(data.result_code === env.SC.REPETITIVE_PHONE_NUMBER){
+        let should_skip = false;
+
+        RESULT_CODE_ERRORS_BLACKLIST.forEach(e=>{
+            if(data.result_code === e){should_skip = true}
+        });
+
+        if(should_skip){
             return;
         }
 
@@ -32,5 +38,10 @@ const ErrorHandler = {
         }
     }
 }
+
+const RESULT_CODE_ERRORS_BLACKLIST = [
+    env.SC.REPETITIVE_PHONE_NUMBER,
+    env.SC.INVALID_TOKEN,
+]
 
 export default ErrorHandler;

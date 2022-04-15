@@ -45,7 +45,9 @@ export default class AccessLayout extends Component {
                     <Loading style={{minHeight:"90vh"}}/>:
                     <>
                     {
-                        this.showWithoutAuth?
+                        (this.state.authenticated || this.props.showWithoutAuth || 
+                        this.props.accessType==="noAuth")?
+
                         this.props.children:
                         null
                     }

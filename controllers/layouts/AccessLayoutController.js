@@ -19,6 +19,13 @@ export default class AccessLayoutController{
         
         let showWithoutAuth = this.view.props.showWithoutAuth;
 
+        let utoken = getCookie(env.TOKEN_KEY);
+
+        if(!utoken && !showWithoutAuth){
+            window.location.href = env.PATHS.USER_AUTHENTICATION+"?redirected=1";
+            return;
+        }
+        
         this.model.getUser(null, (err, data)=>{
 
             if(data.result_code === env.SC.SUCCESS){
@@ -28,6 +35,7 @@ export default class AccessLayoutController{
                 chest.user = user;
 
                 Observer.execute("onUserChange", user);
+                Observer.execute("onAuthenticate", student);
 
                 this.view.setState({
                     loading: false,
@@ -52,6 +60,25 @@ export default class AccessLayoutController{
 
         let showWithoutAuth = this.view.props.showWithoutAuth;
 
+        let stoken = getCookie(env.STUDENT_TOKEN_KEY);
+
+        if(!stoken && !showWithoutAuth){
+
+            Observer.add("onStudentChange", (student)=>{
+                this.view.setState({
+                    loading: false,
+                    authenticated: true,
+                });
+            });
+
+            setTimeout(()=>{
+                console.log(chest.ModalLayout.setAndShowModal);
+                chest.ModalLayout.setAndShowModal(1, <StudentAuthModal closable={false}/>);
+            }, 600);
+            
+            return;
+        }
+
         this.model.getStudent(null, (err, data)=>{
 
             if(data.result_code === env.SC.SUCCESS){
@@ -61,6 +88,7 @@ export default class AccessLayoutController{
                 chest.student = student;
 
                 Observer.execute("onStudentChange", student);
+                Observer.execute("onAuthenticate", student);
 
                 this.view.setState({
                     loading: false,
@@ -82,5 +110,4 @@ export default class AccessLayoutController{
             }
         });
     }
-    
 }

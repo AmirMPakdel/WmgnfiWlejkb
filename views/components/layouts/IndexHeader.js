@@ -3,6 +3,7 @@ import styles from "./IndexHeader.module.css";
 import chest from "@/utils/chest";
 import StudentAuthModal from "@/views/components/modal/global/StudentAuthModal";
 import Storage from "@/utils/storage";
+import Observer from "@/utils/observer";
 
 /**
 * Props of IndexHeader Component
@@ -37,8 +38,18 @@ export default class IndexHeader extends Component {
 
     onStudentAuthModal=()=>{
 
+        Observer.add("onStudentChange", this.onStudentLogin);
+
         chest.ModalLayout.setModal(1, <StudentAuthModal/>, ()=>{
             chest.ModalLayout.visibleToggle(1, true);
+        });
+    }
+
+    onStudentLogin = (student)=>{
+
+        this.setState({
+            logedin: 1,
+            username: student.first_name+" "+student.last_name
         });
     }
 

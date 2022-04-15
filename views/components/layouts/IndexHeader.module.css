@@ -63,6 +63,7 @@
     border-radius: 0.8rem;
     display: flex;
     align-items: center;
+    min-width: 9.4rem;
 }
 
 .dt_login_user_icon{

@@ -112,10 +112,13 @@ export default class StudentAuthModal extends Component {
         return(
             <div className={styles.con+" bglc1 "}>
 
-                <CrossSvg className={styles.close_btn + " bglc1 amp_btn md_card_shd"}
-                stroke={env.THEME.dc1}
-                onClick={this.onCancel}/>
-
+                {
+                    this.props.closable===false?
+                    null:
+                    <CrossSvg className={styles.close_btn + " bglc1 amp_btn md_card_shd"}
+                    stroke={env.THEME.dc1}
+                    onClick={this.onCancel}/>
+                }
                 <div className={styles.wrapper}>
                 {
                     this.state.page === "Loading"?
