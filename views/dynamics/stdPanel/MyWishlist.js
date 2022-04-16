@@ -10,6 +10,7 @@ import Pagination from "@/views/components/global/Pagination";
 import WrapperT1 from "@/views/layouts/WrapperT1";
 import chest from "@/utils/chest";
 import RemoveWishlistModal from "@/views/components/modal/stdPanel/RemoveWishlistModal";
+import Observer from "@/utils/observer";
 
 /**
 * Props of MyWishlist Component
@@ -31,10 +32,13 @@ export default class MyWishlist extends Component {
             currentPage:0,
             total:0,
         }
+
+        Observer.add("onAuthenticate", ()=>{
+            this.controller.loadWishlistPage(1);
+        });
     }
     
     componentDidMount(){
-        this.controller.loadWishlistPage(1);
     }
 
     onChangePage=(page)=>{

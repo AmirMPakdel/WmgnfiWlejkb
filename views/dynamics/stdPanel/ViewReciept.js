@@ -1,4 +1,5 @@
 import ViewRecieptController from "@/controllers/dynamics/stdPanel/ViewRecieptController";
+import Observer from "@/utils/observer";
 import { priceFormat } from "@/utils/price";
 import { sqlTimeStamp2ShamsiDateTime } from "@/utils/time";
 import ListRow from "@/views/components/buyCredit/ListRow";
@@ -26,10 +27,13 @@ export default class ViewReciept extends Component {
             loading:true,
             details:{},
         }
+
+        Observer.add("onAuthenticate", ()=>{
+            this.controller.getReciept();
+        });
     }
     
     componentDidMount(){
-        this.controller.getReciept();
     }
     
     render(){

@@ -4,6 +4,7 @@ import chest from "@/utils/chest";
 import StudentAuthModal from "@/views/components/modal/global/StudentAuthModal";
 import Storage from "@/utils/storage";
 import Observer from "@/utils/observer";
+import AccessLayoutController, { getStudent } from "@/controllers/layouts/AccessLayoutController";
 
 /**
 * Props of IndexHeader Component
@@ -22,18 +23,32 @@ export default class IndexHeader extends Component {
             logedin: 0,
             username: "",
         }
+
+        Observer.add("onAuthenticate", this.changeInfo);
+        Observer.add("onStudentChange", this.changeInfo);
     }
     
     componentDidMount(){
 
-        this.checkUserInStorage();
+        getStudent(this.getStudent);
     }
 
-    checkUserInStorage=()=>{
+    getStudent=(err, data)=>{
 
-        let student = Storage.retrive("student");
+        
+        if(data.result_code === env.SC.SUCCESS){
 
-        console.log(student);
+            let student = data.data;
+            this.changeInfo(student);
+        }
+    }
+
+    changeInfo=(student)=>{
+
+        this.setState({
+            logedin:1,
+            username: student.first_name+" "+student.last_name,
+        });
     }
 
     onStudentAuthModal=()=>{

@@ -9,6 +9,7 @@ import WrapperT1 from "@/views/layouts/WrapperT1";
 import Pagination from "@/views/components/global/Pagination";
 import {sqlTimeStamp2ShamsiDateTime} from "@/utils/time";
 import {priceFormat} from "@/utils/price";
+import Observer from "@/utils/observer";
 
 /**
 * Props of MyReciepts Component
@@ -30,10 +31,13 @@ export default class MyReciepts extends Component {
             currentPage:0,
             total:0,
         }
+
+        Observer.add("onAuthenticate", ()=>{
+            this.controller.loadMyRecieptPage(1);
+        });
     }
     
     componentDidMount(){
-        this.controller.loadMyRecieptPage(1);
     }
 
     onChangePage=(page)=>{

@@ -173,7 +173,6 @@ export default class Profile extends Component {
                     </div>
 
                 </div>
-
                 
             </WrapperT1>
             </EducatorDashboardLayout>

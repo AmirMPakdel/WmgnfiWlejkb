@@ -1,3 +1,4 @@
+import { getCookie } from "@/utils/cookie";
 import myServer from "@/utils/myServer";
 import Storage from "@/utils/storage";
 
@@ -17,12 +18,13 @@ export default class UserModel{
         }
 
         let user = Storage.retrive("user");
+        let utoken = getCookie(env.STUDENT_TOKEN_KEY);
 
-        if(user && !user.should_update){
+        if(utoken && user && !user.should_update){
             cb(null, {result_code:env.SC.SUCCESS, data:user});
             return;
         }
-    
+
         myServer.Post(myServer.urls.DASH_USER_INFO, {}, {}, (err, data)=>{
     
             if(!err){
@@ -67,8 +69,9 @@ export default class UserModel{
         }
 
         let student = Storage.retrive("student");
+        let stoken = getCookie(env.STUDENT_TOKEN_KEY);
 
-        if(student && !student.should_update){
+        if(stoken && student && !student.should_update){
             cb(null, {result_code:env.SC.SUCCESS, data:student});
             return;
         }

@@ -111,3 +111,24 @@ export default class AccessLayoutController{
         });
     }
 }
+
+
+/**
+* @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
+*/
+export function getUser(cb){
+
+    let model = new UserModel();
+
+    model.getUser(null, cb);
+}
+
+/**
+* @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
+*/
+export function getStudent(cb){
+
+    let model = new UserModel();
+
+    model.getStudent(null, cb);
+}

@@ -30,13 +30,13 @@ export default class MyCourses extends Component {
             currentPage:0,
             total:0,
         }
+
+        Observer.add("onAuthenticate", ()=>{
+            this.controller.loadCoursePage(1);
+        });
     }
     
     componentDidMount(){
-        
-        Observer.add("onAuthenticate", ()=>{
-            this.controller.loadCoursePage(1);
-        })
     }
 
     onChangePage=(page)=>{
