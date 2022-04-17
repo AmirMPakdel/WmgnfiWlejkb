@@ -1,10 +1,23 @@
-.con{
+.wrapper{
     min-width: 16rem;
     border-radius: 1rem !important;
     height: 3.4rem !important;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.con{
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.title{
+    position: absolute;
+    top: -0.6rem;
+    right: 1rem;
+    padding: 0 0.4rem;
+    font-size: 0.75rem;
 }
 
 .option{

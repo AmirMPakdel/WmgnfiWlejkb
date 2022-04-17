@@ -1,4 +1,5 @@
 import chest from "@/utils/chest";
+import StudentAuthModal from "@/views/components/modal/global/StudentAuthModal";
 
 const ErrorHandler = {
 
@@ -7,6 +8,21 @@ const ErrorHandler = {
     },
 
     errorCheck:(data, config)=>{
+
+        if(data.result_code === env.SC.INVALID_TOKEN){
+
+            USER_AUTHENTICATION_REQUIRED_URLS.forEach(pn=>{
+                if(pn.test(window.location.pathname)){
+                    window.location.href = env.PATHS.USER_AUTHENTICATION;
+                }
+            });
+
+            STUD_AUTHENTICATION_REQUIRED_URLS.forEach(pn=>{
+                if(pn.test(window.location.pathname)){
+                    chest.ModalLayout.setAndShowModal(1, <StudentAuthModal closable={false}/>)
+                }
+            });
+        }
 
         if(config.hideError){
             return;
@@ -42,6 +58,14 @@ const ErrorHandler = {
 const RESULT_CODE_ERRORS_BLACKLIST = [
     env.SC.REPETITIVE_PHONE_NUMBER,
     env.SC.INVALID_TOKEN,
+];
+
+const USER_AUTHENTICATION_REQUIRED_URLS = [
+    /^\/dashboard/,
+]
+
+const STUD_AUTHENTICATION_REQUIRED_URLS = [
+    /^\/stdPanel/,
 ]
 
 export default ErrorHandler;

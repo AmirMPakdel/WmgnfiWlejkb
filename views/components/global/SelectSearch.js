@@ -2,7 +2,20 @@ import { Select } from "antd";
 import React, { Component } from "react";
 import styles from "./SelectSearch.module.css";
 
-
+/**
+* Props of SelectSearch Component
+* @typedef Props
+* @property {string} className
+* @property {React.CSSProperties} style
+* @property {Array<{id:number, title:string}>} options 
+* @property {boolean} disabled
+* @property {string} placeholder
+* @property {string} title
+* @property {string} value
+* @property {(id, obj)=>{}} onChange
+* 
+* @extends {Component<Props>}
+*/
 export default class SelectSearch extends Component {
     
     constructor(props){
@@ -31,28 +44,36 @@ export default class SelectSearch extends Component {
         }
 
         return(
-            <Select
-                showSearch
-                disabled={this.props.disabled}
-                className={styles.con+" "+add_class}
-                dropdownClassName={styles.dropdown}
-                placeholder={this.props.placeholder}
-                optionFilterProp="children"
-                onChange={this.onChange}
-                onFocus={this.onFocus}
-                onBlur={this.onBlur}
-                onSearch={this.onSearch}
-                value={this.props.value}
-                filterOption={this.filterOption}>
+            <div className={styles.wrapper+" "+add_class}>
+                
+                <Select
+                    showSearch
+                    disabled={this.props.disabled}
+                    className={styles.con}
+                    dropdownClassName={styles.dropdown}
+                    placeholder={this.props.placeholder}
+                    optionFilterProp="children"
+                    onChange={this.onChange}
+                    onFocus={this.onFocus}
+                    onBlur={this.onBlur}
+                    onSearch={this.onSearch}
+                    value={this.props.value}
+                    filterOption={this.filterOption}>
+
+                    {
+                        this.props.options && this.props.options.length? 
+                        this.props.options.map((v,i)=>(
+                            <Select.Option className={styles.option} key={i} value={v.id}>{v.title}</Select.Option>
+                        )):null
+                    }
+
+                </Select>
 
                 {
-                    this.props.options && this.props.options.length? 
-                    this.props.options.map((v,i)=>(
-                        <Select.Option className={styles.option} key={i} value={v.id}>{v.title}</Select.Option>
-                    )):null
+                    this.props.value?
+                    <div className={styles.title+" bgw"}>{this.props.title}</div>:null
                 }
-
-            </Select>
+            </div>
         )
     }
 }

@@ -27,6 +27,15 @@ export class IsValid {
         return true;
     }
 
+    static emailIsValid(str, option={}){
+
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(str)){
+            return true;
+        }
+
+        return false;
+    }
+
     static verificationCodeIsValid(str, options={}){
 
         if(!str || isNaN(Number(str))){
@@ -205,6 +214,17 @@ export default class Validation{
             return {valid:true, message:""}
         }else{
             return {valid:false, message:"رمزعبور وارد شده نامعتبر است."}
+        }
+    }
+
+    static email(str, option={}){
+
+        let res = IsValid.emailIsValid(str, option);
+
+        if(res){
+            return {valid:true, message:""}
+        }else{
+            return {valid:false, message:"ایمیل وارد شده نامعتبر است."}
         }
     }
 

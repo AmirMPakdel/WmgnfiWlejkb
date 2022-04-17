@@ -101,7 +101,6 @@ export default class StudentAuthController{
                     setCookie(env.STUDENT_TOKEN_KEY, data.data.token, 365);
 
                     //TODO: save user in localstorage
-                    //TODO: call observer execute
 
                     this.getStudent((student)=>{
 
@@ -167,7 +166,7 @@ export default class StudentAuthController{
 
             }else if(data.result_code === env.SC.USER_ALREADY_VERIFIED){
 
-                //TODO: what to do?
+                //TODO: what should be done here?
                 this.view.setState({loading:false});
 
             }else{
@@ -319,7 +318,6 @@ export default class StudentAuthController{
                     setCookie(env.STUDENT_TOKEN_KEY, data.data.token, 1);
                     
                     //TODO: save user in localstorage
-                    //TODO: call observer execute
 
                     this.getStudent((student)=>{
 
