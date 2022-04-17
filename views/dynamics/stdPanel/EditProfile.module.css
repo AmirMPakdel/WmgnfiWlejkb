@@ -44,7 +44,8 @@
 
 .input{
     width: calc(50% - 2vw) !important;
-    margin-top: 1.5rem !important;
+    margin-top: 2rem !important;
+    margin-bottom: 0 !important;
 }
 
 .input:nth-child(even){
@@ -53,7 +54,7 @@
 
 .unchangable1{
     display: flex;
-    margin-top: 1.5rem !important;
+    margin-top: 2rem !important;
     width: calc(50% - 2vw) !important;
     border-style: solid;
     border-width: 2px;
@@ -109,4 +110,18 @@
     .input:nth-child(even){
         margin-right: 0;
     }
+
+    .unchangable1{
+        width: 100% !important;
+        max-width: 22rem;
+    }
+    
+    .unchangable1:nth-child(even){
+        margin-right: 0;
+    }
+
+    .submit_btn{
+        margin-top: 1rem;
+    }
+    
 }

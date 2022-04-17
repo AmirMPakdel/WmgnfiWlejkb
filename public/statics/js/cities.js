@@ -6885,3 +6885,29 @@ function GET_CITIES_OF_PROVINCE(province_id){
 
   return GET_CITIES_OF_PROVINCE_LIST;
 }
+
+function FIND_PROVINCE_BY_ID(province_id){
+
+  var province_obj = null;
+
+  PROVINCES.forEach(p=>{
+    if(p.id === province_id){
+      province_obj = p;
+    }
+  });
+
+  return province_obj;
+}
+
+function FIND_CITY_BY_ID(city_id){
+
+  var city_obj = null;
+  
+  CITIES.forEach(c=>{
+    if(c.id === city_id){
+      city_obj = c;
+    }
+  });
+
+  return city_obj;
+}

@@ -57,6 +57,7 @@ var env = {
         HOMEPAGE: "/",
         COURSE: "/course/",
         COURSE_INVOICE: "/courseInvoice/",
+        STUDENT_CHANGE_PASSWORD: "/changePassword",
         //user dashboard
         USER_OVERVIEW: "/dashboard/overview",
         USER_MYCOURSES: "/dashboard/myCourses",

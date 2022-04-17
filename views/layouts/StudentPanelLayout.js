@@ -3,6 +3,7 @@ import AccessLayout from "./AccessLayout";
 import IndexHeader from "@/views/components/layouts/IndexHeader";
 import ModalLayout from "./ModalLayout";
 import styles from "./StudentPanelLayout.module.css";
+import Observer from "@/utils/observer";
 
 /**
 * Props of StudentPanelLayout Component
@@ -19,11 +20,21 @@ export default class StudentPanelLayout extends Component {
     constructor(props){
         super(props);
         this.state = {
-            username:"امیرمحمد پاکدل",
+            username:"",
         }
+
+        Observer.add("onAuthenticate", this.onStudentChange);
+        Observer.add("onStudentChange", this.onStudentChange);
     }
     
     componentDidMount(){
+    }
+
+    onStudentChange=(student)=>{
+
+        this.setState({
+            username: student.first_name+" "+student.last_name,
+        });
     }
     
     render(){

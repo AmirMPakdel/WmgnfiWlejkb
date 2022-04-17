@@ -1,5 +1,7 @@
 import EditProfileModel from "@/models/dynamics/stdPanel/EditProfileModel";
 import chest from "@/utils/chest";
+import Observer from "@/utils/observer";
+import Storage from "@/utils/storage";
 import Validation from "@/utils/validation";
 import EditProfile from "@/views/dynamics/stdPanel/EditProfile";
 
@@ -24,11 +26,19 @@ export default class EditProfileController{
 
                 let province_id = d.state?Number(d.state):null;
                 let province_obj = {};
+                let cities = [];
+
+                if(province_id){
+                    province_obj = FIND_PROVINCE_BY_ID(province_id);
+                    cities = GET_CITIES_OF_PROVINCE(province_id);
+                }
 
                 let city_id = d.city?Number(d.city):null;
                 let city_obj = {};
 
-                let cities = [];
+                if(city_id){
+                    city_obj = FIND_CITY_BY_ID(city_id);                    
+                }
 
                 v.setState({
                     loading:false,
@@ -40,6 +50,7 @@ export default class EditProfileController{
                     city_id,
                     city_obj,
                     cities,
+                    email: d.email,
                 })
             }
         })
@@ -47,10 +58,41 @@ export default class EditProfileController{
 
     updateStudentInfo(){
 
-        let res = this.checkInputs();
+        let can = this.checkInputs();
 
         if(!can){return};
 
+        let v = this.view;
+        let vs = v.state;
+
+        let params={
+            first_name: vs.first_name,
+            last_name: vs.last_name,
+            email: vs.email,
+            phone_number: vs.phone_number,
+            state: vs.province_id.toString(),
+            city: vs.city_id.toString(),
+        }
+
+        v.setState({btn_loading:true});
+
+        this.model.updateProfile(params, (err, data)=>{
+
+            if(data.result_code === env.SC.SUCCESS){
+
+                chest.openNotification("اطلاعات پروفایل با موفقیت بروزرسانی شد.", "success");
+
+                let student = Storage.get("student");
+                let newStudent = Object.assign(student, params);
+                newStudent.should_update = true;
+
+                Storage.store("student", newStudent);
+
+                Observer.execute("onStudentChange", newStudent);
+            }
+
+            v.setState({btn_loading:false});
+        });
         
     }
 

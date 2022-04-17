@@ -34,6 +34,7 @@ export default class EditProfile extends Component {
             city_obj: {},
             cities:[],
             email: "",
+            btn_loading:false,
         }
 
         Observer.add("onAuthenticate", this.loadStudentInfo);
@@ -79,6 +80,16 @@ export default class EditProfile extends Component {
         this.state[k] = v;
         this.setState(this.state);
     }
+
+    onChangePhonenumber=()=>{
+
+        //TOOD: add modal
+    }
+
+    onChangePassword=()=>{
+
+        window.location.href = env.PATHS.STUDENT_CHANGE_PASSWORD;
+    }
     
     render(){
         let s = this.state;
@@ -119,7 +130,8 @@ export default class EditProfile extends Component {
                                 <div>{this.state.phone_number}</div>
 
                                 <MainButton className={styles.unchangable_btn}
-                                title={"ویرایش"}/>
+                                title={"ویرایش"}
+                                onClick={this.onChangePhonenumber}/>
 
                             </div>
 
@@ -130,7 +142,8 @@ export default class EditProfile extends Component {
                                 <div>{"***********"}</div>
 
                                 <MainButton className={styles.unchangable_btn}
-                                title={"ویرایش"}/>
+                                title={"ویرایش"}
+                                onClick={this.onChangePassword}/>
 
                             </div>
 
@@ -156,6 +169,7 @@ export default class EditProfile extends Component {
 
                                 <MainButton className={styles.submit_btn}
                                 title={"بروزرسانی"}
+                                loading={this.state.btn_loading}
                                 onClick={this.updateStudentInfo}/>
 
                             </div>
