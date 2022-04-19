@@ -1,17 +1,21 @@
 import React, { Component } from "react";
-import styles from "./UploadMedia.module.css";
+import styles from "./ImageInput.module.css";
 import UploadSVG from "@/views/svgs/Upload";
 import myServer from "@/utils/myServer";
+import chest from "@/utils/chest";
 
 /**
-* Props of UploadMedia Component
+* Props of ImageInput Component
 * @typedef Props
 * @property {string} className
 * @property {React.CSSProperties} style
+* @property {string} title
+* @property {string} defaultUploadKey
+* @property {string} defaultSrc
 * 
 * @extends {Component<Props>}
 */
-export default class UploadMedia extends Component {
+export default class ImageInput extends Component {
     
     constructor(props){
         super(props);
@@ -19,12 +23,10 @@ export default class UploadMedia extends Component {
             src: null,
             file: null,
         }
-        if(props.defaultUploadKey && props.type == "image"){
+        if(props.defaultUploadKey){
             this.state.src = myServer.MediaFiles.publicImage(props.defaultUploadKey);
         }
-        if(props.defaultUploadKey && props.type == "video"){
-            this.state.src = myServer.MediaFiles.publicVideo(props.defaultUploadKey);
-        }
+
         if(!props.defaultUploadKey){
             this.state.src = props.defaultSrc;
         }
@@ -55,9 +57,9 @@ export default class UploadMedia extends Component {
             return;
         }
 
-        let maxSize = 5;
-        if(this.props.type==="video"){
-            maxSize = 50;
+        let maxSize = 1;
+        if(this.props.maxSize){
+            maxSize = this.props.maxSize;
         }
 
         if(file.size < (maxSize*1024*1024)){
@@ -75,27 +77,24 @@ export default class UploadMedia extends Component {
     }
 
     onShowFile=()=>{
-        
+
         window.open(this.state.src);
     }
 
     getFile=()=>{
+
         return this.state.file;
     }
 
     getFileUrl=()=>{
+
         return this.state.src;
     }
     
     render(){
         let formats = "jpg, png";
-        let maxSize = "5MB";
-        let aspectRatio = "16:9";
-
-        if(this.props.type==="video"){
-            formats = "mp4";
-            maxSize = "50MB";
-        }
+        let maxSize = this.props.maxSize?this.props.maxSize:(1+"MB");
+        let aspectRatio = this.props.aspectRatio?this.props.aspectRatio:"دلخواه";
 
         return(
             <div className={styles.con+" "+this.props.className}>
@@ -112,18 +111,12 @@ export default class UploadMedia extends Component {
                     <input style={{display:"none"}}
                     ref={r=>this.file_input=r}
                     type={"file"}
-                    accept={this.props.type==="video"?".mp4":".jpg, .png"}/>
+                    accept={".jpg, .png"}/>
                     
                     {
-                        this.state.src && this.props.type==="image"?
+                        this.state.src?
                         <div className={styles.image}
                         style={{backgroundImage:`url("${this.state.src}")`}}/>
-                        :null
-                    }
-                    {
-                        this.state.src && this.props.type==="video"?
-                        <video className={styles.video}
-                        src={this.state.src}/>
                         :null
                     }
                     {
@@ -133,8 +126,13 @@ export default class UploadMedia extends Component {
                         :null
                     }
 
-                    <div className={styles.title+" fdc2 bdyt"}>{this.props.title}</div>
-                
+                    {
+                        this.state.src?
+                        <div className={styles.top_title+" sm_card_shd bgw"}>{this.props.title}</div>
+                        :
+                        <div className={styles.title+" fdc2 bdyt"}>{this.props.title}</div>
+                    }
+                    
                 </div>
 
                 <div className={styles.caption+" eng_num fdc2"}>

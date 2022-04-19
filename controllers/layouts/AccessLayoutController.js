@@ -35,7 +35,7 @@ export default class AccessLayoutController{
                 chest.user = user;
 
                 Observer.execute("onUserChange", user);
-                Observer.execute("onAuthenticate", student);
+                Observer.execute("onAuthenticate", user);
 
                 this.view.setState({
                     loading: false,

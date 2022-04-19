@@ -18,7 +18,6 @@ export default class editProfile extends Component {
         </Head>
         <EditProfile/>
       </>
-      
     )
   }
 }

@@ -38,7 +38,7 @@ let chest = {
      * shows a notification on screen
      * @param {string} title 
      * @param {"success"|"alert"|"error"} icon 
-     * @param {{ducation:number}} options 
+     * @param {{duration:number}} options 
      */
     openNotification : (title, icon, options)=>{},
 }
