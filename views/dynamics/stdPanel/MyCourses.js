@@ -9,6 +9,8 @@ import myServer from "@/utils/myServer";
 import Pagination from "@/views/components/global/Pagination";
 import WrapperT1 from "@/views/layouts/WrapperT1";
 import Observer from "@/utils/observer";
+import chest from "@/utils/chest";
+import CourseLicenseModal from "@/views/components/modal/stdPanel/CourseLicenseModal";
 
 /**
 * Props of MyCourses Component
@@ -84,8 +86,14 @@ export default class MyCourses extends Component {
 
 class MyCourseCard extends Component{
 
-    onClick=()=>{
+    onShow=()=>{
+
         window.location.href = env.PATHS.COURSE+ this.props.data.id;
+    }
+
+    onLicense=()=>{
+        
+        chest.ModalLayout.setAndShowModal(1, <CourseLicenseModal data={this.props.data}/>);
     }
 
     render(){
@@ -97,10 +105,20 @@ class MyCourseCard extends Component{
                 style={{ backgroundImage:`url("${myServer.MediaFiles.publicImage(d.logo)}")`}}/>
 
                 <div className={styles.mcc_title+" bdyt"}>{d.title}</div>
+                
+                <div className={styles.mcc_sec1}>
 
-                <MainButton className={styles.mcc_show_btn}
-                title={"نمایش"}
-                onClick={this.onClick}/>
+                    <MainButton className={styles.mcc_show_btn}
+                    title={"نمایش"}
+                    onClick={this.onShow}/>
+
+                    <MainButton className={styles.mcc_license_btn}
+                    style={{whiteSpace:"nowrap"}}
+                    title={"کد‌ خرید"}
+                    borderMode={1}
+                    onClick={this.onLicense}/>
+
+                </div>
 
             </div>
         )

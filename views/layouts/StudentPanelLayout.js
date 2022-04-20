@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import AccessLayout from "./AccessLayout";
-import IndexHeader from "@/views/components/layouts/IndexHeader";
 import ModalLayout from "./ModalLayout";
 import styles from "./StudentPanelLayout.module.css";
 import Observer from "@/utils/observer";
+import LogoutSvg from "@/views/svgs/Logout";
+import ProfileSvg from "@/views/svgs/Profile";
+import { deleteCookie } from "@/utils/cookie";
 
 /**
 * Props of StudentPanelLayout Component
@@ -36,6 +38,12 @@ export default class StudentPanelLayout extends Component {
             username: student.first_name+" "+student.last_name,
         });
     }
+
+    onLogout=()=>{
+
+        deleteCookie(env.STUDENT_TOKEN_KEY);
+        window.location.href = env.PATHS.HOMEPAGE;
+    }
     
     render(){
         return(
@@ -51,6 +59,8 @@ export default class StudentPanelLayout extends Component {
                         <div className={styles.upper_sec}>
 
                             <div className={styles.username+" tilt flc1"}>
+                                <ProfileSvg className={styles.user_icon}
+                                stroke={"#FFF"}/>
                                 {this.state.username}
                             </div>
 
@@ -67,6 +77,15 @@ export default class StudentPanelLayout extends Component {
 
                                 <TabBtn title={"ویرایش پروفایل"}
                                 href={env.PATHS.STUDENT_EDIT_PROFILE}/>
+
+                            </div>
+
+                            <div className={styles.logout_con} onClick={this.onLogout}>
+
+                                <div className={styles.logout_text+" flc1 cpnt"}>{"خروج"}</div>
+
+                                <LogoutSvg className={styles.logout_img+" amp_btn"}
+                                stroke={"#FFF"}/>
 
                             </div>
 
