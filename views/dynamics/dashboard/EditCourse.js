@@ -13,6 +13,7 @@ import EditCourseHoldingStatus from "@/views/components/editCourse/EditCourseHol
 import EditCourseLongDesc from "@/views/components/editCourse/EditCourseLongDesc";
 import EditCourseShortDesc from "@/views/components/editCourse/EditCourseShortDesc";
 import EditCoursePrice from "@/views/components/editCourse/EditCoursePrice";
+import EditCourseDiscountPrice from "@/views/components/editCourse/EditCourseDiscountPrice";
 import EditCourseReleaseDate from "@/views/components/editCourse/EditCourseReleaseDate";
 import EditCourseSuggestedCourses from "@/views/components/editCourse/EditCourseSuggestedCourses";
 import EditCourseSuggestedPosts from "@/views/components/editCourse/EditCourseSuggestedPosts";
@@ -45,6 +46,7 @@ export default class EditCourse extends Component {
                 short_desc:"",
                 long_desc:"",
                 price:"",
+                discount_price:"",
                 subjects:[],
                 requirements:[],
 
@@ -68,9 +70,9 @@ export default class EditCourse extends Component {
                 short_desc:"",
                 long_desc:"",
                 price:"",
+                discount_price:"",
                 subjects:[],
                 requirements:[],
-                
                 headings:[],
                 contents:[],
                 content_hierarchy:"",
@@ -87,6 +89,7 @@ export default class EditCourse extends Component {
                 short_desc:"idle",
                 long_desc:"idle",
                 price:"idle",
+                discount_price:"idle",
                 subjects:"idle",
                 requirements:"idle",
                 
@@ -139,6 +142,8 @@ export default class EditCourse extends Component {
                     <EditCourseLongDesc parent={this}/>
 
                     <EditCoursePrice parent={this}/>
+
+                    <EditCourseDiscountPrice parent={this}/>
 
                     <EditCourseSubjects parent={this}/>
 

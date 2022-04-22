@@ -1,32 +1,31 @@
-import React, { Component } from "react";
-import styles from "./EditCoursePrice.module.css";
-import EditCoursePriceController from "@/controllers/components/editCourse/EditCoursePriceController";
-import EditableTitle from "@/views/components/editable/EditableTitle";
-import EditableText from "@/views/components/editable/EditableText";
+import EditCourseDiscountPriceController from "@/controllers/components/editCourse/EditCourseDiscountPriceController";
 import { InputFilter } from "@/utils/validation";
+import React, { Component } from "react";
+import EditableTitle from "../editable/EditableTitle";
+import EditableText from "@/views/components/editable/EditableText";
+import styles from "./EditCourseDiscountPrice.module.css";
 
 /**
-* Props of EditCoursePrice Component
+* Props of EditCourseDiscountPrice Component
 * @typedef Props
 * @property {string} className
 * @property {React.CSSProperties} style
 * 
 * @extends {Component<Props>}
 */
-export default class EditCoursePrice extends Component {
+export default class EditCourseDiscountPrice extends Component {
     
     constructor(props){
         super(props);
-        this.controller = new EditCoursePriceController(this);
+        this.controller = new EditCourseDiscountPriceController(this);
         this.state = {
             
         }
     }
     
     componentDidMount(){
-        
     }
-
+    
     onEdit=()=>{
         this.controller.onEdit()
     }
@@ -54,8 +53,8 @@ export default class EditCoursePrice extends Component {
             <div className={styles.con}>
 
                 <EditableTitle
-                title={"قیمت دوره"}
-                status={st.price}
+                title={"قیمت دوره با تخفیف"}
+                status={st.discount_price}
                 onEdit={this.onEdit}
                 onSubmit={this.onSubmit}
                 onCancel={this.onCancel}/>
@@ -65,8 +64,8 @@ export default class EditCoursePrice extends Component {
                 inpuClassName={styles.edit_text_input}
                 ref={r=>this.EditableText=r}
                 maxLength={12}
-                value={nw.price}
-                oldValue={od.price}
+                value={nw.discount_price}
+                oldValue={od.discount_price}
                 inputFilter={InputFilter.integer}
                 onChange={this.onChange}/>
 
