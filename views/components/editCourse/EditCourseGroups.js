@@ -25,7 +25,7 @@ export default class EditCourseGroups extends Component {
     }
     
     onEdit=()=>{
-        this.controller.onEdit()
+        this.controller.onEdit();
     }
 
     onSubmit=()=>{        
@@ -56,6 +56,10 @@ export default class EditCourseGroups extends Component {
                 onEdit={this.onEdit}
                 onSubmit={this.onSubmit}
                 onCancel={this.onCancel}/>
+
+                <div className={styles.group_sec}>
+                    {"برنامه نویسی" + " > " + "پی اچ پی"+" > "+ "لاراول"}
+                </div>
 
             </div>
         )

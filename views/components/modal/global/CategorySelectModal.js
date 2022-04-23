@@ -34,10 +34,12 @@ export default class CategorySelectModal extends Component {
     }
     
     componentDidMount(){
+
         this.controller.loadCategories();
     }
 
     onCancel=()=>{
+
         if(this.props.onCancel){
             this.props.onCancel();
         }else{
@@ -47,7 +49,7 @@ export default class CategorySelectModal extends Component {
 
     onConfirm = ()=>{
 
-        this.props.onConfirm(this.state.checkedKeys);
+        this.props.onConfirm(this.state.checkedKeys, this.state.checkedTitles);
     }
     
     onCheck = (checkedKeys, info) => {
@@ -70,6 +72,11 @@ export default class CategorySelectModal extends Component {
             }
         });
     }
+
+    getList = ()=>{
+
+        return this.state.list;
+    }
     
     render(){
         return(
@@ -82,7 +89,7 @@ export default class CategorySelectModal extends Component {
                 <div className={styles.wrapper}>
 
                 
-                    <div className={styles.title+" tilt "}>{"انتخاب دسته بندی ها"}</div>
+                    <div className={styles.title+" tilt "}>{"انتخاب دسته بندی"}</div>
 
                     <div className={styles.form_body}>
                         
@@ -278,6 +285,8 @@ export default class CategorySelectModal extends Component {
         )
     }
 }
+
+
 
 const singleSelectCheckedKeys = (keys, oldKeys)=>{
 

@@ -59,6 +59,14 @@ export default class EditCourseDiscountPrice extends Component {
                 onSubmit={this.onSubmit}
                 onCancel={this.onCancel}/>
 
+                <ul className={styles.info_sec}>
+
+                    <li>{"برای اعمال تخفیف روی دوره مبلغ موردنظرتان با احتساب تخفیف را در این اینجا وارد نمایید."}</li>
+                    
+                    <li>{"برای حذف تخفیف ، مقدار صفر وارد نمایید."}</li>
+
+                </ul>
+
                 <EditableText
                 className={styles.edit_text}
                 inpuClassName={styles.edit_text_input}

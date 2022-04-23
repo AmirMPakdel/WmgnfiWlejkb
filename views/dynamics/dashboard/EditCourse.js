@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import EditCourseController from "@/controllers/dynamics/dashboard/EditCourseController";
-import EditCourseBackgrund from "@/views/components/editCourse/EditCourseBackground";
+import EditCourseBackground from "@/views/components/editCourse/EditCourseBackground";
 import EditCourseEducators from "@/views/components/editCourse/EditCourseEducators";
 import EditCourseIntroVideo from "@/views/components/editCourse/EditCourseIntroVideo";
 import EditCourseLogo from "@/views/components/editCourse/EditCourseLogo";
@@ -125,9 +125,11 @@ export default class EditCourse extends Component {
                     
                     <EditCourseTitle parent={this}/>
 
+                    <EditCourseGroups parent={this}/>
+
                     <EditCourseLogo parent={this}/>
 
-                    <EditCourseBackgrund parent={this}/>
+                    <EditCourseBackground parent={this}/>
 
                     <EditCourseIntroVideo parent={this}/>
 
@@ -148,8 +150,6 @@ export default class EditCourse extends Component {
                     <EditCourseSubjects parent={this}/>
 
                     <EditCourseRequirements parent={this}/>
-
-                    {/* <EditCourseGroups parent={this}/> */}
 
                     {/* <EditCourseTags parent={this}/> */}
 
