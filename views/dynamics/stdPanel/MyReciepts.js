@@ -62,7 +62,7 @@ export default class MyReciepts extends Component {
                                 <MyRecieptItem key={i}
                                 data={v}/>
                             )):
-                            <EmptyList style={{minHeight:"16rem"}}/>
+                            <EmptyList style={{minHeight:"70vh"}}/>
                         }
 
                         <div className={styles.pagination_con}>

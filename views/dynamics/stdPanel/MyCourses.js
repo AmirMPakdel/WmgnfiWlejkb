@@ -63,7 +63,7 @@ export default class MyCourses extends Component {
                                 <MyCourseCard key={i}
                                 data={v}/>
                             )):
-                            <EmptyList style={{minHeight:"16rem"}}/>
+                            <EmptyList style={{minHeight:"70vh"}}/>
                         }
 
                         <div className={styles.pagination_con}>

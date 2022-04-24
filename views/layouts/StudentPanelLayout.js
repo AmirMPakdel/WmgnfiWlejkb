@@ -95,7 +95,7 @@ export default class StudentPanelLayout extends Component {
                             {this.props.children}
                         </div>
 
-                        <div className={styles.mock_footer}>FOOTER</div>
+                        {/* <div className={styles.mock_footer}>FOOTER</div> */}
 
                     </div>
                 

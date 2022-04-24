@@ -1,4 +1,5 @@
 import myServer from "@/utils/myServer";
+import Storage from "@/utils/storage";
 
 export default class CategorySelectModel{
     
@@ -15,10 +16,22 @@ export default class CategorySelectModel{
             return;
         }
     
+        let categories = Storage.get("categories");
+        if(categories && !categories.shouldUpdate){
+
+            cb(null, {
+                result_code: env.SC.SUCCESS,
+                data: categories,
+            });
+
+            return;
+        }
+    
         myServer.Get(myServer.urls.GET_COURSE_CATEGORIES, {}, (err, data)=>{
     
             if(!err){
             
+                Storage.store("categories", data.data);
                 cb(null, data);
             
             }else{

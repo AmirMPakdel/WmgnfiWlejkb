@@ -11,7 +11,7 @@ export default class EditCourseDurationController{
         this.model = new EditCourseDurationModel();
     }
     
-    onEdit(){
+    onEdit(){ 
         this.view.EditableText.onEdit();
         let status = this.view.props.parent.state.status;
         status.duration = "edit";

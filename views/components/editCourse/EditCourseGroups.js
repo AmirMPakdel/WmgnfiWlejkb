@@ -2,12 +2,15 @@ import React, { Component } from "react";
 import styles from "./EditCourseGroups.module.css";
 import EditCourseGroupsController from "@/controllers/components/editCourse/EditCourseGroupsController";
 import EditableTitle from "@/views/components/editable/EditableTitle";
+import EditCourse from "@/views/dynamics/dashboard/EditCourse";
+import Loading from "../global/Loading";
 
 /**
 * Props of EditCourseGroups Component
 * @typedef Props
 * @property {string} className
 * @property {React.CSSProperties} style
+* @property {EditCourse} parent
 * 
 * @extends {Component<Props>}
 */
@@ -17,11 +20,15 @@ export default class EditCourseGroups extends Component {
         super(props);
         this.controller = new EditCourseGroupsController(this);
         this.state = {
-        
+            loading: true,
+            selected: null,
+            old_titles: null,
+            new_titles: null,
         }
     }
     
     componentDidMount(){
+        this.controller.loadTitles();
     }
     
     onEdit=()=>{
@@ -50,16 +57,36 @@ export default class EditCourseGroups extends Component {
         return(
             <div className={styles.con}>
 
-                <EditableTitle
-                title={"دسته بندی این دوره"}
-                status={st.duration}
-                onEdit={this.onEdit}
-                onSubmit={this.onSubmit}
-                onCancel={this.onCancel}/>
-
-                <div className={styles.group_sec}>
-                    {"برنامه نویسی" + " > " + "پی اچ پی"+" > "+ "لاراول"}
-                </div>
+                {
+                    this.state.loading?
+                    <Loading style={{minHeight:"8rem", width:"16rem"}}/>:
+                    <>
+                    <EditableTitle
+                    title={"دسته بندی این دوره"}
+                    status={st.groups}
+                    onEdit={this.onEdit}
+                    onSubmit={this.onSubmit}
+                    onCancel={this.onCancel}/>
+                    
+                    {
+                        this.state.new_titles?
+                        <div className={styles.group_sec}>
+                            {
+                                this.state.new_titles.map((v,i,a)=>(
+                                    <>
+                                        <span key={i+"-1"}>{v}</span>
+                                        {
+                                            i!=(a.length-1)?
+                                            <span key={i+"-2"}>{" > "}</span>:null
+                                        }
+                                    </>
+                                ))
+                            }
+                        </div>
+                        :null
+                    }
+                    </>
+                }
 
             </div>
         )

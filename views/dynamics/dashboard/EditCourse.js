@@ -37,6 +37,9 @@ export default class EditCourse extends Component {
 
             old_values:{
                 title:"",
+                g1:null,
+                g2:null,
+                g3:null,
                 logo:"",
                 cover:"",
                 intro_video:"",
@@ -61,6 +64,9 @@ export default class EditCourse extends Component {
                 validation_status_message:[],
 
                 title:"",
+                g1:null,
+                g2:null,
+                g3:null,
                 logo:"",
                 cover:"",
                 intro_video:"",
@@ -80,6 +86,7 @@ export default class EditCourse extends Component {
 
             status:{
                 title:"idle",
+                groups:"idle",
                 logo:"idle",
                 cover:"idle",
                 intro_video:"idle",
@@ -92,7 +99,6 @@ export default class EditCourse extends Component {
                 discount_price:"idle",
                 subjects:"idle",
                 requirements:"idle",
-                
                 headings:"idle",
                 contents:"idle",
                 content_hierarchy:"idle",

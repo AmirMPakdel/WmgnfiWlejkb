@@ -14,3 +14,13 @@
     border-radius: 1rem;
     font-weight: 700;
 }
+
+.group_sec > span {
+    margin: 0.2rem;
+}
+
+.group_sec > span:nth-child(even){
+    font-weight: 400;
+    font-size: 1.2rem;
+    opacity: 0.5;
+}

@@ -18,7 +18,7 @@ export default class MyCourses extends Component {
         this.state = {
             loading:true,
             list:[],
-            pageSize:1,
+            pageSize:10,
             currentPage:1,
             total:0,
         }

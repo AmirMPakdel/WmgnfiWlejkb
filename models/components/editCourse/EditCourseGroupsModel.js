@@ -7,7 +7,7 @@ export default class EditCourseGroupsModel{
     * @param {object} params
     * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
     */
-    getData(params, cb){
+    save(params, cb){
     
         if(env.MOCKING_SERVER){
             setTimeout(()=>{
@@ -16,7 +16,7 @@ export default class EditCourseGroupsModel{
             return;
         }
     
-        myServer.Post(myServer.urls.SOME_URL, params, {}, (err, data)=>{
+        myServer.Post(myServer.urls.COURSE_EDIT+env.EP.EDIT_PARAM_GROUPS, params, {}, (err, data)=>{
     
             if(!err){
             

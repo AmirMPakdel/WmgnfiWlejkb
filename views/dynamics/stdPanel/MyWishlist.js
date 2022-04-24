@@ -64,7 +64,7 @@ export default class MyWishlist extends Component {
                                 data={v}
                                 onDelete={()=>this.onChangePage(1)}/>
                             )):
-                            <EmptyList style={{minHeight:"16rem"}}/>
+                            <EmptyList style={{minHeight:"70vh"}}/>
                         }
 
                         <div className={styles.pagination_con}>
