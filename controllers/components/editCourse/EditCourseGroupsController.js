@@ -2,6 +2,7 @@ import EditCourseGroupsModel from "@/models/components/editCourse/EditCourseGrou
 import CategorySelectModel from "@/models/components/modals/global/CategorySelectModel";
 import chest from "@/utils/chest";
 import { getUrlPart } from "@/utils/helpers";
+import Storage from "@/utils/storage";
 import EditCourseGroups from "@/views/components/editCourse/EditCourseGroups";
 import CategorySelectModal from "@/views/components/modal/global/CategorySelectModal";
 
@@ -67,7 +68,9 @@ export default class EditCourseGroupsController{
             return;
         }
 
-        let titles = extractSelectedGroupsTitle(selected_keys, this.view.state.group_list);
+        let categories = Storage.get("categories");
+
+        let titles = extractSelectedGroupsTitle(selected_keys, categories);
 
         let status = this.view.props.parent.state.status;
         status.groups = "edit";

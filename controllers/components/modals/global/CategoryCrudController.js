@@ -1,5 +1,6 @@
 import CategoryCrudModel from "@/models/components/modals/global/CategoryCrudModel";
 import chest from "@/utils/chest";
+import Storage from "@/utils/storage";
 import { onlyPersianChar, persianWithNum } from "@/utils/validation";
 import AskDeleteCategoryModal from "@/views/components/modal/global/AskDeleteCategoryModal";
 import CategoryCrudModal from "@/views/components/modal/global/CategoryCrudModal";
@@ -89,8 +90,10 @@ export default class CategoryCrudModalController{
 
             if(data.result_code===env.SC.SUCCESS){
 
-                let id = (data.data.g1 | data.data.g2 | data.data.g3);
-                let newNode={id, title, level}
+                Storage.store("update_categories", true);
+
+                let id = (data.data.g1_id | data.data.g2 | data.data.g3);
+                let newNode = {id, title, level}
 
                 let v = this.view;
                 let list = _.cloneDeep(v.state.list);
@@ -178,6 +181,8 @@ export default class CategoryCrudModalController{
 
             if(data.result_code===env.SC.SUCCESS){
 
+                Storage.store("update_categories", true);
+
                 let level = node.level;
                 let v = this.view;
                 let list = _.cloneDeep(v.state.list);
@@ -216,10 +221,18 @@ export default class CategoryCrudModalController{
         
                 });
 
+            }else if(data.result_code === env.SC.RELATED_ENTITIES){
+
+                chest.openNotification("این دسته بندی در دوره های دیگر استفاده شده و قابل حذف نمی باشد.", "error", {duration:8});
+                chest.openNotification("برای حذف این دسته بندی ابتدا دسته بندی دوره هایی که این دسته بندی را دارند تغییر دهید.", "alert", {duration:12});
+
+                this.view.setState({loading:false});
+
             }else{
 
                 this.view.setState({loading:false});
             }
+            
         });
     }
 

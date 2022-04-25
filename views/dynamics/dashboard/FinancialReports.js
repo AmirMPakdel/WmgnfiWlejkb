@@ -1,4 +1,5 @@
 import FinancialReportsController from "@/controllers/dynamics/dashboard/FinancialReportsController";
+import { getParamByName } from "@/utils/helpers";
 import Loading from "@/views/components/global/Loading";
 import MainButton from "@/views/components/global/MainButton";
 import Pagination from "@/views/components/global/Pagination";
@@ -31,13 +32,13 @@ export default class FinancialReports extends Component {
             total:60,
             currentPage:1,
 
-            table:"1",
+            table: getParamByName("report_type", "1"),
         }
     }
     
     componentDidMount(){
 
-        this.controller.loadSellReportTable();
+        this.onTabSelect(this.state.table);
     }
 
     onTabSelect=(tab)=>{
@@ -120,7 +121,7 @@ class TabSelectBar extends Component{
     constructor(props){
         super(props);
         this.state = {
-            selected: "1"
+            selected: getParamByName("report_type", "1"),
         }
     }
 

@@ -12,6 +12,8 @@ import chest from "@/utils/chest";
 * @typedef Props
 * @property {string} className
 * @property {React.CSSProperties} style
+* @property {function} onConfirm
+* @property {function} onCancel
 * 
 * @extends {Component<Props>}
 */
@@ -27,10 +29,12 @@ export default class CategoryCrudModal extends Component {
     }
     
     componentDidMount(){
+
         this.controller.loadCategories();
     }
 
     onCancel=()=>{
+
         if(this.props.onCancel){
             this.props.onCancel();
         }else{
@@ -40,6 +44,11 @@ export default class CategoryCrudModal extends Component {
 
     onConfirm = ()=>{
 
+        if(this.props.onConfirm){
+            this.props.onConfirm();
+        }else{
+            chest.ModalLayout.closeAndDelete(1);
+        }
     }
 
     onSelect = (selectedKeys, info) => {

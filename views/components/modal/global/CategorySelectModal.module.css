@@ -54,6 +54,7 @@
     width: 100%;
     direction: ltr;
     overflow-y: auto;
+    padding-top: 1rem;
     min-height: calc(50vh - 8rem);
     max-height: calc(80vh - 8rem);
     padding-left: 5%;
@@ -98,6 +99,12 @@
     width: 8rem;
 }
 
+.crud_btn{
+    position: absolute;
+    left: 0rem;
+    top: 0.7rem;
+}
+
 @media(max-width:1024px){
 
     .con{
@@ -108,18 +115,30 @@
 @media(max-width:767px){
 
     .con{
-        width: 96vw;
-        height: 80vh;
+        width: calc(100vw - 3rem);
+        max-height: 80vh;
         padding: 0.8rem 0rem;
     }
 
     .title{
         margin-top: 0.8rem;
         margin-bottom: 1rem;
+        font-size: 0.86rem;
     }
 
     .confirm_btn{
         width: 12rem;
         height: 2.6rem;
+    }
+
+    .form_body{
+        padding-top: 2.5rem;
+    }
+
+    .crud_btn{
+        position: absolute;
+        left: 1rem;
+        top: 2.8rem;
+        height: 2.2rem;
     }
 }

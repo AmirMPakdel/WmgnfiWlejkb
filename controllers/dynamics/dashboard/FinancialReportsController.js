@@ -28,7 +28,7 @@ export default class FinancialReportsController{
                     data: d.list,
                     total:d.total,
                     currentPage: page,
-                    table:"1",
+                    table: "1",
                 });
             }
         });

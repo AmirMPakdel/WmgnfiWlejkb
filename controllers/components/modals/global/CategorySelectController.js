@@ -1,4 +1,6 @@
 import CategorySelectModel from "@/models/components/modals/global/CategorySelectModel";
+import chest from "@/utils/chest";
+import CategoryCrudModal from "@/views/components/modal/global/CategoryCrudModal";
 import CategorySelectModal from "@/views/components/modal/global/CategorySelectModal";
 
 export default class CategorySelectController{
@@ -25,6 +27,27 @@ export default class CategorySelectController{
 
             }
         })
+    }
+
+    onCrud(){
+
+        let modal = <CategoryCrudModal onCancel={this.onCrudClosed} onConfirm={this.onCrudClosed}/>;
+
+        chest.ModalLayout.visibleToggle(1, false, ()=>{
+
+            chest.ModalLayout.setAndShowModal(2, modal);
+        });
+    }
+
+    onCrudClosed=()=>{
+
+        chest.ModalLayout.closeAndDelete(2, ()=>{
+
+            chest.ModalLayout.visibleToggle(1, true, ()=>{
+
+                this.loadCategories();
+            });
+        });
     }
     
 }

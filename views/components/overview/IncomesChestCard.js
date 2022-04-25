@@ -3,6 +3,11 @@ import MainButton from "@/views/components/global/MainButton";
 import styles from "./IncomesChestCard.module.css";
 
 export default class IncomesChestCard extends Component {
+
+    onSellReport=()=>{
+        
+        window.location.href = env.PATHS.USER_FINANCIAL_REPORT+"?report_type=1";
+    }
     
     render(){
         return(
@@ -23,7 +28,8 @@ export default class IncomesChestCard extends Component {
                     {"این مبلغ درآمد ماهانه شما می باشد و اول هر ماه به حساب شما واریز میگردد"}
                 </div>
 
-                <MainButton title={"گزارش فروش"}/>
+                <MainButton title={"گزارش فروش"}
+                onClick={this.onSellReport}/>
                 
             </div>
         )

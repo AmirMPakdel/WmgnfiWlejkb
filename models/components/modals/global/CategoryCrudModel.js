@@ -18,9 +18,11 @@ export default class CategoryCrudModel{
             }, 2000, cb);
             return;
         }
-
+        
         let categories = Storage.get("categories");
-        if(categories && !categories.shouldUpdate){
+        let update_categories = Storage.get("update_categories");
+        
+        if(categories && !update_categories){
 
             cb(null, {
                 result_code:env.SC.SUCCESS,
@@ -34,6 +36,7 @@ export default class CategoryCrudModel{
     
             if(!err){
             
+                Storage.store("update_categories", false);
                 Storage.store("categories", data.data);
                 cb(null, data);
             

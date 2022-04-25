@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import DashboardCard from "@/views/components/dashboard/DashboardCard";
-import IncomeChart from "@/views/components/dashboard/IncomeChart";
-import IncomesChestCard from "@/views/components/dashboard/IncomesChestCard";
+import DashboardCard from "@/views/components/overview/DashboardCard";
+import IncomeChart from "@/views/components/overview/IncomeChart";
+import IncomesChestCard from "@/views/components/overview/IncomesChestCard";
 import EducatorDashboardLayout from "@/views/layouts/EducatorDashboardLayout";
 import styles from "./Overview.module.css";
 import WrapperT1 from "@/views/layouts/WrapperT1";

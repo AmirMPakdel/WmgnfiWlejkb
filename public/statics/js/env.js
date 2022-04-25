@@ -65,6 +65,7 @@ var env = {
         USER_BUY_CREDIT: "/dashboard/buyCredit",
         USER_EDIT_COURSE: "/dashboard/editCourse/",
         USER_PREVIEW_COURSE: "/dashboard/previewCourse/",
+        USER_FINANCIAL_REPORT: "/dashboard/financialReports",
     },
 
     PREFIXES:{
