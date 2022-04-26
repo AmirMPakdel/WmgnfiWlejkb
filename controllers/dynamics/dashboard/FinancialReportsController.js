@@ -26,7 +26,7 @@ export default class FinancialReportsController{
                 this.view.setState({
                     loading: false,
                     data: d.list,
-                    total:d.total,
+                    total: d.total,
                     currentPage: page,
                     table: "1",
                 });

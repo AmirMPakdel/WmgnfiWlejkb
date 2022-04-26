@@ -5,6 +5,9 @@ import { DownOutlined, LeftOutlined } from '@ant-design/icons';
 import CrossSvg from "@/views/svgs/Cross";
 import MainButton from "../global/MainButton";
 import chest from "@/utils/chest";
+import Storage from "@/utils/storage";
+import { getParamByName } from "@/utils/helpers";
+import { flattenDeep } from "lodash";
 
 /**
 * Props of RightSideFilter Component
@@ -19,12 +22,30 @@ export default class RightSideFilter extends Component {
     constructor(props){
         super(props);
         //this.controller = new RightSideFilterController(this);
+
+        let selected_groups = getParamByName("group");
+        let selectedKeys = [];
+        //let expandedKeys = [];
+        if(selected_groups){
+            selectedKeys = [selected_groups];
+
+            //expandedKeys = ["1"];
+        }
+
         this.state = {
-        
+            selectedKeys,
+            expandedKeys: [],
+            list:[],
         }
     }
     
     componentDidMount(){
+        
+        let categories = Storage.get("categories");
+
+        this.keys = this.getAllKeys(categories);
+
+        this.setState({list:categories, expandedKeys: this.keys});
     }
 
     openModal=()=>{
@@ -32,7 +53,7 @@ export default class RightSideFilter extends Component {
         let modal = 
         <FilterModal onCancel={this.onModalCancel}
         onSubmit={this.onModalSubmit}
-        data={{}}/>;
+        parent={this}/>;
 
         chest.ModalLayout.setAndShowModal(1, modal);
     }
@@ -46,6 +67,56 @@ export default class RightSideFilter extends Component {
 
         chest.ModalLayout.closeAndDelete(1);
     }
+
+    onSelectL1=(l1)=>{
+        let groups = l1.id;
+        this.setState({selectedKeys:[groups.toString()]});
+        this.props.onGroupSelect(groups);
+    }
+
+    onSelectL2=(l1, l2)=>{
+        let groups = l1.id+"-"+l2.id;
+        this.setState({selectedKeys:[groups]});
+        this.props.onGroupSelect(groups);
+    }
+
+    onSelectL3=(l1, l2, l3)=>{
+        let groups = l1.id+"-"+l2.id+"-"+l3.id;
+        this.setState({selectedKeys:[groups]});
+        this.props.onGroupSelect(groups);
+    }
+
+    getAllKeys=(data)=>{
+        
+        let allKeys = [];
+        data.forEach((l1)=>{
+            allKeys.push(l1.id.toString());
+            l1.groups.forEach((l2)=>{
+                allKeys.push(l1.id+"-"+l2.id);
+                l2.groups.forEach((l3)=>{
+                    allKeys.push(l1.id+"-"+l2.id+"-"+l3.id);
+                });
+            });
+        });
+        return allKeys;
+    };
+
+    onExpand=(expandedKeys)=>{
+        this.setState({expandedKeys});
+    };
+
+    expandAll=()=>{
+        this.setState({expandedKeys: this.keys});
+    };
+
+    collapseAll=()=>{
+        this.setState({expandedKeys:[]});
+    };
+
+    allGroups=()=>{
+        this.setState({selectedKeys:[]});
+        this.props.onGroupSelect(null);
+    }
     
     render(){
         return(
@@ -53,14 +124,62 @@ export default class RightSideFilter extends Component {
 
                 <div className={styles.title+" fdc1 tilt"}>{"دسته بندی ها"}</div>
 
+                <div className={this.state.selectedKeys.length?styles.all_cat:styles.all_cat_selected} onClick={this.allGroups}>{"همه‌ دسته ها"}</div>
+
                 <ConfigProvider direction="rtl">
 
                     <Tree
-                    showLine={{showLeafIcon: false}}
-                    showIcon={false}
                     checkable={false}
-                    defaultExpandAll={true}
-                    treeData={fakeData}/>
+                    onExpand={this.onExpand} 
+                    expandedKeys={this.state.expandedKeys}
+                    //showLine={true}
+                    //showIcon={false}
+                    //showLeafIcon={false}
+                    //onSelect={this.onSelect}
+                    selectedKeys={this.state.selectedKeys}
+                    treeData={
+                        this.state.list.map((l1, i1)=>{
+                            return {
+                                title: 
+                                (<div className={styles.parent_node+" "+styles.l1} onClick={()=>this.onSelectL1(l1)}>
+                                    
+                                    {l1.title}
+                    
+                                </div>),
+                                key:`${l1.id}`,
+                                children:
+                                l1.groups && l1.groups.length? l1.groups.map((l2,i2)=>{
+                                    return {
+                                        title: 
+                                        (<div className={styles.parent_node+" "+styles.l2} onClick={()=>this.onSelectL2(l1, l2)}>
+                
+                                            {l2.title}
+                                            
+                                        </div>),
+                
+                                        key:`${l1.id}-${l2.id}`,
+
+                                        children:
+                                        l2.groups && l2.groups.length? l2.groups.map((l3,i3)=>{
+            
+                                            return {
+                                                title: 
+                                                (<div className={styles.parent_node+" "+styles.l3} onClick={()=>this.onSelectL3(l1, l2, l3)}>
+            
+                                                    {l3.title}
+            
+                                                </div>),
+            
+                                                key:`${l1.id}-${l2.id}-${l3.id}`,
+                                            }
+                                        }):
+                                        undefined
+                                    }
+                                }):
+                                undefined
+                            }
+                        })
+                    }/>
 
                 </ConfigProvider>
                 
@@ -74,8 +193,33 @@ class FilterModal extends Component{
     constructor(props){
         super(props);
         this.state={
-            selected:props.selected,
+            expandedKeys: this.props.parent.state.expandedKeys,
+            selectedKeys: this.props.parent.state.selectedKeys,
         }
+    }
+
+    onSelectL1=(l1)=>{
+
+        this.props.parent.onSelectL1(l1);
+        let groups = l1.id;
+        this.setState({selectedKeys:[groups.toString()]});
+        this.props.onCancel();
+    }
+    
+    onSelectL2=(l1, l2)=>{
+
+        this.props.parent.onSelectL2(l1, l2);
+        let groups = l1.id+"-"+l2.id;
+        this.setState({selectedKeys:[groups]});
+        this.props.onCancel();
+    }
+
+    onSelectL3=(l1, l2, l3)=>{
+        
+        this.props.parent.onSelectL3(l1, l2, l3);
+        let groups = l1.id+"-"+l2.id+"-"+l3.id;
+        this.setState({selectedKeys:[groups]});
+        this.props.onCancel();
     }
 
     onCancel=()=>{
@@ -86,9 +230,9 @@ class FilterModal extends Component{
         this.props.onSubmit(this.state.selected);
     }
 
-    onSelect=(key)=>{
-        this.setState({selected:key});
-    }
+    onExpand=(expandedKeys)=>{
+        this.setState({expandedKeys});
+    };
 
     render(){
         return(
@@ -104,12 +248,54 @@ class FilterModal extends Component{
 
                     <ConfigProvider direction="rtl">
 
-                        <Tree
-                        showLine={{showLeafIcon: false}}
-                        showIcon={false}
-                        checkable={false}
-                        defaultExpandAll={true}
-                        treeData={fakeData}/>
+                    <Tree
+                    checkable={false}
+                    onExpand={this.onExpand} 
+                    expandedKeys={this.state.expandedKeys}
+                    selectedKeys={this.state.selectedKeys}
+                    treeData={
+                        this.props.parent.state.list.map((l1, i1)=>{
+                            return {
+                                title: 
+                                (<div className={styles.parent_node+" "+styles.l1} onClick={()=>this.onSelectL1(l1)}>
+                                    
+                                    {l1.title}
+                    
+                                </div>),
+                                key:`${l1.id}`,
+                                children:
+                                l1.groups && l1.groups.length? l1.groups.map((l2,i2)=>{
+                                    return {
+                                        title: 
+                                        (<div className={styles.parent_node+" "+styles.l2} onClick={()=>this.onSelectL2(l1, l2)}>
+                
+                                            {l2.title}
+                                            
+                                        </div>),
+                
+                                        key:`${l1.id}-${l2.id}`,
+
+                                        children:
+                                        l2.groups && l2.groups.length? l2.groups.map((l3,i3)=>{
+            
+                                            return {
+                                                title: 
+                                                (<div className={styles.parent_node+" "+styles.l3} onClick={()=>this.onSelectL3(l1, l2, l3)}>
+            
+                                                    {l3.title}
+            
+                                                </div>),
+            
+                                                key:`${l1.id}-${l2.id}-${l3.id}`,
+                                            }
+                                        }):
+                                        undefined
+                                    }
+                                }):
+                                undefined
+                            }
+                        })
+                    }/>
 
                     </ConfigProvider>
 
@@ -119,31 +305,3 @@ class FilterModal extends Component{
         )
     }
 }
-
-const fakeData = [
-    {
-    title: 'parent 1',
-    key: '0-0',
-    children: [
-        {
-            title: 'parent 1-0',
-            key: '0-0-0',
-            children: [
-            {
-                title: 'leaf',
-                key: '0-0-0-0',
-            },
-            {
-                title: 'leaf',
-                key: '0-0-0-1',
-            },
-            ],
-        },
-        {
-            title: 'parent 1-1',
-            key: '0-0-1',
-            children: [{ title: <span style={{ color: '#1890ff' }}>sss</span>, key: '0-0-1-0' }],
-        },
-    ],
-    },
-];

@@ -1,4 +1,7 @@
 .con{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     width: 100%;
     min-height: 26rem;
     background-color: white;
@@ -53,4 +56,40 @@
 
 .fmodal_submit{
     width: 12rem !important;
+}
+
+.all_cat{
+    margin-right: 12px;
+    padding: 0 2px;
+    font-size: 0.92rem;
+    margin-bottom: 0.5rem;
+    color: rgb(192, 111, 35);
+    user-select: none;
+    cursor: pointer;
+}
+
+.all_cat_selected{
+    margin-right: 12px;
+    padding: 0 2px;
+    font-size: 0.92rem;
+    margin-bottom: 0.5rem;
+    color: rgb(192, 111, 35);
+    user-select: none;
+    cursor: pointer;
+    background-color: #bae7ff;
+}
+
+.l1{
+    opacity: 1;
+    color: rgb(62, 139, 255);
+}
+
+.l2{
+    opacity: 0.96;
+    color:rgb(162, 112, 255);
+}
+
+.l3{
+    opacity: 0.88;
+    font-weight: 500;
 }

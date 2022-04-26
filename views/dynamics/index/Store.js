@@ -9,6 +9,7 @@ import MainButton from "@/views/components/global/MainButton";
 import Pagination from "@/views/components/global/Pagination";
 import StoreController from "@/controllers/dynamics/index/StoreController";
 import Loading from "@/views/components/global/Loading";
+import EmptyList from "@/views/components/global/EmptyList";
 
 const STORE_PAGE_SIZE = 20;
 
@@ -26,15 +27,34 @@ export default class Store extends Component {
         super(props);
         this.controller = new StoreController(this);
         this.state = {
+            
             loading: true,
+            course_loading: false,
+            list:[],
+            
             currentPage:1,
-            total:450,
+            total:0,
         }
     }
     
     componentDidMount(){
 
-        this.controller.loadCourses();
+        this.controller.loadData();
+    }
+
+    onPageChange=(page)=>{
+
+        this.controller.loadCourses(page);
+    }
+
+    onGroupSelect=(groups)=>{
+        
+        this.controller.onGroupSelect(groups);
+    }
+
+    onSortSelect=(sort_mode)=>{
+
+        this.controller.onSortSelect(sort_mode);
     }
 
     openSortModal=()=>{
@@ -61,6 +81,7 @@ export default class Store extends Component {
                     <div className={styles.filter_bar_con}>
 
                         <RightSideFilter
+                        onGroupSelect={this.onGroupSelect}
                         ref={r=>this.RightSideFilter=r}/>
 
                     </div>
@@ -76,6 +97,7 @@ export default class Store extends Component {
                         <div className={styles.sort_bar_con}>
 
                             <SortBar className={styles.sort_bar}
+                            onSortSelect={this.onSortSelect}
                             ref={r=>this.SortBar=r}/>
 
                         </div>
@@ -94,29 +116,38 @@ export default class Store extends Component {
 
                         </div>
 
-                        <div className={styles.store_card_wrapper}>
+                        {
+                            this.state.course_loading?
+                            <Loading className={styles.course_loading}/>
+                            :
+                            <>
+                            {
+                                this.state.list.length?
+                                <div className={styles.store_card_wrapper}>
 
-                            <CourseCard className={styles.card}/>
-                            <CourseCard className={styles.card}/>
-                            <CourseCard className={styles.card}/>
-                            <CourseCard className={styles.card}/>
-                            <CourseCard className={styles.card}/>
-                            <CourseCard className={styles.card}/>
-                            <CourseCard className={styles.card}/>
-                            <CourseCard className={styles.card}/>
-                            <CourseCard className={styles.card}/>
-                            <CourseCard className={styles.card}/>
+                                    {
+                                        this.state.list.map((v,i)=>(
+                                            <CourseCard className={styles.card} 
+                                            key={i} data={v}/>
+                                        ))
+                                    }
 
-                            <div className={styles.pagination_wrapper}>
+                                    <div className={styles.pagination_wrapper}>
 
-                                <Pagination className={styles.pagination}
-                                currentPage={this.state.currentPage}
-                                total={this.state.total}
-                                pageSize={STORE_PAGE_SIZE}/>
+                                        <Pagination className={styles.pagination}
+                                        onPageChange={this.onPageChange}
+                                        currentPage={this.state.currentPage}
+                                        total={this.state.total}
+                                        pageSize={STORE_PAGE_SIZE}/>
 
-                            </div>
-                            
-                        </div>
+                                    </div>
+
+                                </div>
+                                :
+                                <EmptyList className={styles.empty_list}/>
+                            }
+                            </>
+                        }
 
                     </div>
 

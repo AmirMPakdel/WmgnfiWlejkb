@@ -25,12 +25,12 @@ export default class CourseCard extends Component {
     
     render(){
 
-        let d = {
-            image:"/statics/fake_img/15.jpg",
-            educator:"حمید اکبرآبادی کله",
-            title:"سیر تا پیاز ریاضی و فیزیک کنکور"
-        }
-        let link = "/";
+        let d = this.props.data;
+        d.image = "/statics/fake_img/15.jpg";
+        d.educator = "حمید اکبرآبادی کله";
+        let link_title = d.title.split(" ").join("-");
+        let link = "/course/" + d.id + "/" + link_title;
+
         return(
             <a href={link} className={styles.con+" sm_card_shd "+this.props.className}>
                 
@@ -50,7 +50,7 @@ export default class CourseCard extends Component {
                 <div className={styles.row2}>
 
                     <Price className={styles.price+" fdc1"} 
-                    price={2400000}
+                    price={d.price}
                     offPercent={30}
                     orginalPrice={2700000}
                     />
@@ -59,7 +59,7 @@ export default class CourseCard extends Component {
 
                         <img className={styles.rating_icon} 
                         src={"/statics/svg/rating_fullstar_black.svg"}/>
-                        {"3.2"}
+                        {d.score}
 
                     </div>
 

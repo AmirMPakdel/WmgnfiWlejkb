@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import styles from "./SortBar.module.css";
 import CrossSvg from "@/views/svgs/Cross";
 import MainButton from "../global/MainButton";
+import { getParamByName } from "@/utils/helpers";
 
 /**
 * Props of SortBar Component
@@ -16,9 +17,13 @@ export default class SortBar extends Component {
     
     constructor(props){
         super(props);
-        //this.controller = new SortBarController(this);
+        let sort = getParamByName("sort");
+        let sort_mode = "sm_newest";
+        if(sort){
+            sort_mode = sort;
+        } 
         this.state = {
-            selected: "1"
+            selected: sort_mode,
         }
     }
     
@@ -26,7 +31,9 @@ export default class SortBar extends Component {
     }
 
     onSelect=(key)=>{
-        this.setState({selected:key})
+        
+        this.setState({selected:key});
+        this.props.onSortSelect(key);
     }
 
     openModal=()=>{
@@ -34,8 +41,7 @@ export default class SortBar extends Component {
         let modal = 
         <SortModal onCancel={this.onModalCancel}
         onSubmit={this.onModalSubmit}
-        selected={this.state.selected}/>
-
+        selected={this.state.selected}/>;
         chest.ModalLayout.setAndShowModal(1, modal);
     }
 
@@ -57,20 +63,20 @@ export default class SortBar extends Component {
                 <div className={styles.text}>{"مرتب سازی بر اساس "}</div>
                 
                 <Button name={"جدیدترین"}
-                selected={this.state.selected==="1"}
-                onSelect={()=>this.onSelect("1")}/>
+                selected={this.state.selected==="sm_newest"}
+                onSelect={()=>this.onSelect("sm_newest")}/>
 
                 <Button name={"پرفروش ترین"}
-                selected={this.state.selected==="2"}
-                onSelect={()=>this.onSelect("2")}/>
+                selected={this.state.selected==="sm_most_sells"}
+                onSelect={()=>this.onSelect("sm_most_sells")}/>
 
-                <Button name={"بیشترین امتیاز"}
-                selected={this.state.selected==="3"}
-                onSelect={()=>this.onSelect("3")}/>
+                <Button name={"ارزان ترین"}
+                selected={this.state.selected==="sm_lowest_price"}
+                onSelect={()=>this.onSelect("sm_lowest_price")}/>
 
-                <Button name={"پربازدید ترین"}
-                selected={this.state.selected==="4"}
-                onSelect={()=>this.onSelect("4")}/>
+                <Button name={"گران ترین"}
+                selected={this.state.selected==="sm_highest_price"}
+                onSelect={()=>this.onSelect("sm_highest_price")}/>
 
             </div>
         )
@@ -96,8 +102,13 @@ class SortModal extends Component{
 
     constructor(props){
         super(props);
-        this.state={
-            selected:props.selected,
+        let sort = getParamByName("sort");
+        let sort_mode = "sm_newest";
+        if(sort){
+            sort_mode = sort;
+        } 
+        this.state = {
+            selected: sort_mode,
         }
     }
 
@@ -127,23 +138,23 @@ class SortModal extends Component{
 
                     <Button name={"جدیدترین"}
                     className={styles.smodal_btn+" bdc2"}
-                    selected={this.state.selected==="1"}
-                    onSelect={()=>this.onSelect("1")}/>
+                    selected={this.state.selected==="sm_newest"}
+                    onSelect={()=>this.onSelect("sm_newest")}/>
 
                     <Button name={"پرفروش ترین"}
                     className={styles.smodal_btn+" bdc2"}
-                    selected={this.state.selected==="2"}
-                    onSelect={()=>this.onSelect("2")}/>
+                    selected={this.state.selected==="sm_most_sells"}
+                    onSelect={()=>this.onSelect("sm_most_sells")}/>
 
-                    <Button name={"بیشترین امتیاز"}
+                    <Button name={"ارزان ترین"}
                     className={styles.smodal_btn+" bdc2"}
-                    selected={this.state.selected==="3"}
-                    onSelect={()=>this.onSelect("3")}/>
+                    selected={this.state.selected==="sm_lowest_price"}
+                    onSelect={()=>this.onSelect("sm_lowest_price")}/>
 
-                    <Button name={"پربازدید ترین"}
+                    <Button name={"گران ترین"}
                     className={styles.smodal_btn+" bdc2"}
-                    selected={this.state.selected==="4"}
-                    onSelect={()=>this.onSelect("4")}/>
+                    selected={this.state.selected==="sm_highest_price"}
+                    onSelect={()=>this.onSelect("sm_highest_price")}/>
 
                 </div>
 
