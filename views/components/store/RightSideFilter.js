@@ -7,7 +7,7 @@ import MainButton from "../global/MainButton";
 import chest from "@/utils/chest";
 import Storage from "@/utils/storage";
 import { getParamByName } from "@/utils/helpers";
-import { flattenDeep } from "lodash";
+import { Input } from 'antd';
 
 /**
 * Props of RightSideFilter Component
@@ -25,11 +25,8 @@ export default class RightSideFilter extends Component {
 
         let selected_groups = getParamByName("group");
         let selectedKeys = [];
-        //let expandedKeys = [];
         if(selected_groups){
             selectedKeys = [selected_groups];
-
-            //expandedKeys = ["1"];
         }
 
         this.state = {
@@ -66,6 +63,11 @@ export default class RightSideFilter extends Component {
     onModalSubmit=(data)=>{
 
         chest.ModalLayout.closeAndDelete(1);
+    }
+
+    onSearch=(phrase)=>{
+        
+        this.props.onSearch(phrase);
     }
 
     onSelectL1=(l1)=>{
@@ -122,6 +124,17 @@ export default class RightSideFilter extends Component {
         return(
             <div className={styles.con+" md_card_shd "+this.props.className}>
 
+                {/* <div className={styles.title+" fdc1 tilt"}>{"جستجو"}</div> */}
+
+                <ConfigProvider direction="rtl">
+
+                    <Input.Search placeholder="جستجو" 
+                    allowClear size="large"
+                    onSearch={this.onSearch} 
+                    style={{width: "96%",marginBottom:"1rem"}}/>
+                    
+                </ConfigProvider>
+
                 <div className={styles.title+" fdc1 tilt"}>{"دسته بندی ها"}</div>
 
                 <div className={this.state.selectedKeys.length?styles.all_cat:styles.all_cat_selected} onClick={this.allGroups}>{"همه‌ دسته ها"}</div>
@@ -142,9 +155,7 @@ export default class RightSideFilter extends Component {
                             return {
                                 title: 
                                 (<div className={styles.parent_node+" "+styles.l1} onClick={()=>this.onSelectL1(l1)}>
-                                    
                                     {l1.title}
-                    
                                 </div>),
                                 key:`${l1.id}`,
                                 children:
@@ -152,24 +163,16 @@ export default class RightSideFilter extends Component {
                                     return {
                                         title: 
                                         (<div className={styles.parent_node+" "+styles.l2} onClick={()=>this.onSelectL2(l1, l2)}>
-                
                                             {l2.title}
-                                            
                                         </div>),
-                
                                         key:`${l1.id}-${l2.id}`,
-
                                         children:
                                         l2.groups && l2.groups.length? l2.groups.map((l3,i3)=>{
-            
                                             return {
                                                 title: 
                                                 (<div className={styles.parent_node+" "+styles.l3} onClick={()=>this.onSelectL3(l1, l2, l3)}>
-            
                                                     {l3.title}
-            
                                                 </div>),
-            
                                                 key:`${l1.id}-${l2.id}-${l3.id}`,
                                             }
                                         }):
@@ -192,10 +195,28 @@ class FilterModal extends Component{
 
     constructor(props){
         super(props);
+        let search_phrase = "";
+        let search_p = getParamByName("search");
+        if(search_p){search_phrase=search_p}
         this.state={
+            search_phrase,
             expandedKeys: this.props.parent.state.expandedKeys,
             selectedKeys: this.props.parent.state.selectedKeys,
         }
+    }
+
+    onSearchInput=(e)=>{
+
+        this.setState({search_phrase:e.target.value});
+    }
+
+    onSearch=(phrase)=>{
+        
+        //prevent closing the modal on clear button press if no search pharse is in url
+        if(phrase==="" && !getParamByName("search")){return}
+
+        this.props.parent.onSearch(phrase);
+        this.props.onCancel();
     }
 
     onSelectL1=(l1)=>{
@@ -243,6 +264,17 @@ class FilterModal extends Component{
                 onClick={this.onCancel}/>
 
                 <div className={styles.fmodal_wrapper}>
+
+                    <ConfigProvider direction="rtl">
+
+                        <Input.Search placeholder="جستجو" 
+                        value={this.state.search_phrase}
+                        onChange={this.onSearchInput}
+                        allowClear size="large"
+                        onSearch={this.onSearch} 
+                        style={{width: "96%",marginBottom:"1rem"}}/>
+
+                    </ConfigProvider>
 
                     <div className={styles.fmodal_title+" fdc1 tilt"}>{"دسته بندی ها"}</div>
 

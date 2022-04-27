@@ -18,7 +18,7 @@ export default class CourseList extends Component {
         super(props);
         this.controller = new CourseListController(this);
         this.state = {
-        
+            list:[],
         }
     }
     
@@ -45,88 +45,66 @@ export default class CourseList extends Component {
                 <div className={styles.wrapper}>
 
                 <Carousel>
-                    
-                    <div className={styles.card_wrapper}>
+                {
+                    this.state.list.map((cw, cwi)=>{
 
-                        <div className={styles.card_wrapper_desktop}>
+                        if(cwi%4 === 0){
+                            return(<div className={styles.card_wrapper}>
 
-                            <CourseCard className={styles.first_card}/>
-                            <CourseCard className={styles.first_card}/>
-                            <CourseCard className={styles.first_card}/>
-                            <CourseCard className={styles.fourth_card}/>
+                                <div className={styles.card_wrapper_desktop}>
 
-                        </div>
+                                    {
+                                        this.state.list.map((c, i)=>{
+                                            if(i>=cwi && i<cwi+4){
+                                                if(i%4 === 3){
+                                                    return <CourseCard className={styles.fourth_card} data={c}/>;
+                                                }else{
+                                                    return <CourseCard className={styles.first_card} data={c}/>;
+                                                }
+                                            }
+                                        })
+                                    }
 
-                        <div className={styles.card_wrapper_tablet}>
+                                </div>
 
-                            <CourseCard className={styles.first_card}/>
-                            <CourseCard className={styles.first_card}/>
-                            
-                        </div>
+                                <div className={styles.card_wrapper_tablet}>
 
-                        <div className={styles.card_wrapper_tablet}>
+                                    {
+                                        this.state.list.map((c, i)=>{
+                                            if(i>=cwi && i<cwi+4){
+                                                if(i%4 === 0 || i%4 === 1){
+                                                    return <CourseCard className={styles.first_card} data={c}/>;
+                                                }else{
+                                                    return null;
+                                                }
+                                            }
+                                        })
+                                    }
 
-                            <CourseCard className={styles.first_card}/>
-                            <CourseCard className={styles.fourth_card}/>
-                            
-                        </div>
+                                </div>
+                                
+                                <div className={styles.card_wrapper_tablet}>
 
-                    </div>
+                                    {
+                                        this.state.list.map((c, i)=>{
+                                            if(i>=cwi && i<cwi+4){
+                                                if(i%4 === 2){
+                                                    return <CourseCard className={styles.first_card} data={c}/>;
+                                                }else if(i%4 === 3){
+                                                    return <CourseCard className={styles.fourth_card} data={c}/>;
+                                                }
+                                            }
+                                        })
+                                    }
+                                    
+                                </div>
 
-                    <div className={styles.card_wrapper}>
-
-                    <div className={styles.card_wrapper_desktop}>
-
-                        <CourseCard className={styles.first_card}/>
-                        <CourseCard className={styles.first_card}/>
-                        <CourseCard className={styles.first_card}/>
-                        <CourseCard className={styles.fourth_card}/>
-
-                        </div>
-
-                        <div className={styles.card_wrapper_tablet}>
-
-                        <CourseCard className={styles.first_card}/>
-                        <CourseCard className={styles.first_card}/>
-
-                        </div>
-
-                        <div className={styles.card_wrapper_tablet}>
-
-                        <CourseCard className={styles.first_card}/>
-                        <CourseCard className={styles.fourth_card}/>
-
-                        </div>
-
-                    </div>
-
-                    <div className={styles.card_wrapper}>
-
-                    <div className={styles.card_wrapper_desktop}>
-
-                        <CourseCard className={styles.first_card}/>
-                        <CourseCard className={styles.first_card}/>
-                        <CourseCard className={styles.first_card}/>
-                        <HallowCourseCard className={styles.fourth_card}/>
-
-                        </div>
-
-                        <div className={styles.card_wrapper_tablet}>
-
-                        <CourseCard className={styles.first_card}/>
-                        <CourseCard className={styles.first_card}/>
-
-                        </div>
-
-                        <div className={styles.card_wrapper_tablet}>
-
-                        <CourseCard className={styles.first_card}/>
-                        <HallowCourseCard className={styles.fourth_card}/>
-
-                        </div>
-
-                    </div>
-
+                            </div>)
+                        }else{
+                            return null;
+                        }
+                    })
+                }
                 </Carousel>
 
                 </div>

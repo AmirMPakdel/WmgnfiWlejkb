@@ -1,7 +1,8 @@
 import StoreModel from "@/models/dynamics/index/StoreModel";
 import CategorySelectModel from "@/models/components/modals/global/CategorySelectModel";
 import { getParamByName } from "@/utils/helpers";
-import Store from "@/views/dynamics/index/Store";
+import Store, { STORE_PAGE_SIZE } from "@/views/dynamics/index/Store";
+import Observer from "@/utils/observer";
 
 export default class StoreController{
     
@@ -31,7 +32,8 @@ export default class StoreController{
                         v.setState({
                             loading: false,
                             list: d.list,
-                            total: d.total,
+                            currentPage: params.page_count,
+                            total: d.total_size,
                         });
                     }
                 });
@@ -39,7 +41,7 @@ export default class StoreController{
         });
     }
     
-    loadCourses=(page=1)=>{
+    loadCourses=()=>{
 
         scrollTo({top:0, behavior:"smooth"});
 
@@ -58,8 +60,8 @@ export default class StoreController{
                         loading: false,
                         course_loading: false,
                         list: d.list,
-                        total: d.total,
-                        currentPage: page,
+                        total: d.total_size,
+                        currentPage: params.page_count,
                     });
                 }
             });
@@ -67,22 +69,33 @@ export default class StoreController{
         }, 1000);
     }
 
+    onPageChange(page){
+
+        let state = {page};
+        pushState(state);
+        Observer.execute("onUrlStateChange", {type:"page"});
+    }
+
+    onSearch(phrase){
+
+        if(phrase === "" || !phrase){ phrase=null }
+        let state = {search: phrase, page:1};
+        pushState(state);
+        Observer.execute("onUrlStateChange", {type:"search"});
+    }
+
     onGroupSelect(group){
 
-        let state = {group};
-
+        let state = {group, page:1};
         pushState(state);
-
-        this.loadCourses();
+        Observer.execute("onUrlStateChange", {type:"group"});
     }
 
     onSortSelect(sort_mode){
 
         let state = {sort: sort_mode};
-
         pushState(state);
-
-        this.loadCourses();
+        Observer.execute("onUrlStateChange", {type:"sort"});
     }
 }
 
@@ -125,7 +138,7 @@ export function storeUrl2ApiParams(){
         search_phrase = search_p;
     }
 
-    let chunk_count = 20;
+    let chunk_count = STORE_PAGE_SIZE;
 
     let page_count = 1;
     let page_p = getParamByName("page");

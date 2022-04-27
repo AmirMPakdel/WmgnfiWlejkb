@@ -28,7 +28,9 @@ export default class CourseListController{
 
             if(data.result_code === env.SC.SUCCESS){
 
-                
+                v.setState({
+                    list: data.data
+                })
             }
         });
     }

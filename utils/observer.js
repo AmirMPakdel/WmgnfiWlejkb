@@ -2,7 +2,7 @@ export default class Observer{
 
     /**
      * @typedef {("onResize"|"onAuthenticate"|"onUserChange"|
-     * "onSideMenuToggle"|"onStudentChange"|
+     * "onSideMenuToggle"|"onStudentChange"|"onUrlStateChange"|
      * "onFooterChange")} EventName
      */
     static observers = {
@@ -13,6 +13,7 @@ export default class Observer{
         onSideMenuToggle:[],
         onStudentChange:[],
         onFooterChange:[],
+        onUrlStateChange:[],
     }
 
     /**

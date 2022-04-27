@@ -10,8 +10,10 @@ import Pagination from "@/views/components/global/Pagination";
 import StoreController from "@/controllers/dynamics/index/StoreController";
 import Loading from "@/views/components/global/Loading";
 import EmptyList from "@/views/components/global/EmptyList";
+import Observer from "@/utils/observer";
+import { getParamByName } from "@/utils/helpers";
 
-const STORE_PAGE_SIZE = 20;
+export const STORE_PAGE_SIZE = 10;
 
 /**
 * Props of Store Component
@@ -39,12 +41,24 @@ export default class Store extends Component {
     
     componentDidMount(){
 
+        Observer.add("onUrlStateChange", this.controller.loadCourses);
+
         this.controller.loadData();
+    }
+
+    componentWillUnmount(){
+
+        Observer.remove("onUrlStateChange", this.controller.loadCourses);
     }
 
     onPageChange=(page)=>{
 
-        this.controller.loadCourses(page);
+        this.controller.onPageChange(page);
+    }
+
+    onSearch=(phrase)=>{
+
+        this.controller.onSearch(phrase);
     }
 
     onGroupSelect=(groups)=>{
@@ -68,6 +82,7 @@ export default class Store extends Component {
     }
     
     render(){
+        console.log(this.state);
         return(
             <IndexLayout accessType="noAuth"
             showWithoutAuth={false}>
@@ -81,6 +96,7 @@ export default class Store extends Component {
                     <div className={styles.filter_bar_con}>
 
                         <RightSideFilter
+                        onSearch={this.onSearch}
                         onGroupSelect={this.onGroupSelect}
                         ref={r=>this.RightSideFilter=r}/>
 
