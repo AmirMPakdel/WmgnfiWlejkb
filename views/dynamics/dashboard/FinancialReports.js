@@ -1,5 +1,6 @@
 import FinancialReportsController from "@/controllers/dynamics/dashboard/FinancialReportsController";
 import { getParamByName } from "@/utils/helpers";
+import { priceFormat } from "@/utils/price";
 import Loading from "@/views/components/global/Loading";
 import MainButton from "@/views/components/global/MainButton";
 import Pagination from "@/views/components/global/Pagination";
@@ -177,11 +178,12 @@ const table1_columns = [
     },
     {
         title: 'تاریخ',
-        dataIndex: 'date',
+        dataIndex: 'created_at',
     },
     {
         title: 'قیمت (تومان)',
-        dataIndex: 'amount',
+        dataIndex: 'price',
+        render: (text)=>(priceFormat(text)),
     },
     {
         title: 'عملیات',
@@ -201,11 +203,12 @@ const table2_columns = [
     },
     {
         title: 'تاریخ',
-        dataIndex: 'date',
+        dataIndex: 'created_at',
     },
     {
         title: 'مبلغ (تومان)',
-        dataIndex: 'amount',
+        dataIndex: 'price',
+        render: (text)=>(priceFormat(text)),
     },
     {
         title: 'عملیات',
@@ -225,10 +228,11 @@ const table3_columns = [
     },
     {
         title: 'تاریخ',
-        dataIndex: 'date',
+        dataIndex: 'created_at',
     },
     {
         title: 'قیمت (تومان)',
-        dataIndex: 'amount',
+        dataIndex: 'price',
+        render: (text)=>(priceFormat(text)),
     }
 ];

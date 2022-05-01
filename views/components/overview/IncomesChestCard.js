@@ -18,7 +18,7 @@ export default class IncomesChestCard extends Component {
                 <div className={styles.price_con}>
                     
                     <div className={styles.price}>
-                        {"360,000,000"}
+                        {this.props.income}
                         <div className={styles.toman}>{"تومان"}</div>
                     </div>
 

@@ -6,6 +6,10 @@
     padding-bottom: 3rem;
 }
 
+.loading{
+    min-height: calc(80vh - 6rem);
+}
+
 .sec1{
     display: flex;
     justify-content: space-around;

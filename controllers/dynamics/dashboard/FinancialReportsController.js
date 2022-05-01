@@ -13,11 +13,11 @@ export default class FinancialReportsController{
     
     loadSellReportTable(page=1){
 
-        let params = {};
+        let params = {filter:"rf_sells"};
 
         this.view.setState({loading:true});
 
-        this.model.getSellReport(params, (err, data)=>{
+        this.model.getFinancialReport(params, (err, data)=>{
 
             if(data.result_code === env.SC.SUCCESS){
 
@@ -36,11 +36,11 @@ export default class FinancialReportsController{
 
     loadCreditBoughtTable(page=1){
 
-        let params = {};
+        let params = {filter:"rf_increase_m_balacne"};
 
         this.view.setState({loading:true});
 
-        this.model.getCreditBought(params, (err, data)=>{
+        this.model.getFinancialReport(params, (err, data)=>{
 
             if(data.result_code === env.SC.SUCCESS){
 
@@ -59,11 +59,11 @@ export default class FinancialReportsController{
 
     loadCreditUsedTable(page=1){
 
-        let params = {};
+        let params = {filter:"rf_decrease_m_balacne"};
 
         this.view.setState({loading:true});
 
-        this.model.getCreditUsed(params, (err, data)=>{
+        this.model.getFinancialReport(params, (err, data)=>{
 
             if(data.result_code === env.SC.SUCCESS){
 

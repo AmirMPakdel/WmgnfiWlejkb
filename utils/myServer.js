@@ -54,6 +54,10 @@ const urls = {
     //user course category
     CATEGORY_FETCH: domain+prefixes.PTA+"/categories/fetch",
 
+    //user overview
+    DASH_OVERVIEW_BASE: domain+prefixes.UTA+"/dashboard/info/load",
+    DASH_OVERVIEW_CHART: domain+prefixes.UTA+"/dashboard/chart/load",
+
     //user course
     COURSE_CREATE: domain+prefixes.UTA+"/courses/create",
     COURSE_FETCH: domain+prefixes.UTA+"/course/load",
@@ -64,6 +68,7 @@ const urls = {
     MY_COURSES_FETCH: domain+prefixes.UTA+"/courses/fetch/",
 
     //user transaction
+    FINANCIAL_LIST: domain+prefixes.UTA+"/dashboard/records/load",
     CREATE_TRANSACTION: domain+prefixes.UTA+"/transaction/generate",
     OPEN_TRANSACTION_PORTAL: domain+prefixes.UTA+"/product/pay",
     GET_TRANSACTION: domain+prefixes.UTA+"/transaction/get",
