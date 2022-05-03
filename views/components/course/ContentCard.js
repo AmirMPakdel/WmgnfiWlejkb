@@ -35,8 +35,8 @@ export default class ContentCard extends Component {
         let heading = this.props.data;
         let contents = extractContents(heading, c);
 
-        let src="/svg/closed_ccard_icn.svg";
-        if(this.state.open){src="/svg/opened_ccard_icn.svg"}
+        let src="/statics/svg/closed_ccard_icn.svg";
+        if(this.state.open){src="/statics/svg/opened_ccard_icn.svg"}
 
         return(
             <div className={styles.ccard_con}>
@@ -59,7 +59,7 @@ export default class ContentCard extends Component {
                     {
                         contents.map((v,i)=>(
                             <IconLine key={i} className={styles.icon_line+" cpnti"}
-                            icon="/svg/crs_play_icn.svg" 
+                            icon="/statics/svg/crs_play_icn.svg" 
                             text={v.title}/>
                         ))
                     }

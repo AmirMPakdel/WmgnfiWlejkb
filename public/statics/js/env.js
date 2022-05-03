@@ -74,6 +74,7 @@ var env = {
         PTA : "/api/tenant/public",
         PSTA : "/api/tenant/student/public",
         STA : "/api/tenant/student",
+        STIA : "/api/tenant/inner/student",
         AA : "/api/app",
     },
 

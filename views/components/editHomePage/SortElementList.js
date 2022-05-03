@@ -36,7 +36,7 @@ export default class SortElementList extends Component {
         
         let p = this.props.parent;
         let ps = p.state;
-        const new_h = Object.assign([], ps.new_hierarchy);
+        let new_h = Object.assign([], ps.new_hierarchy);
         let intro_key = new_h.shift();
         let footer_key = new_h.pop();
         new_h = applyDrag(new_h, dropResult);

@@ -80,7 +80,7 @@ export default class EditCourseSubjects extends Component {
 
         if (dropResult.removedIndex !== null || dropResult.addedIndex !== null) {
 
-            const new_arr = Object.assign([], nw.subjects);
+            let new_arr = Object.assign([], nw.subjects);
             new_arr = applyDrag(new_arr, dropResult);
     
             ps.new_values.subjects = new_arr;

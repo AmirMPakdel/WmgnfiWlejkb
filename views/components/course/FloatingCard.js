@@ -27,7 +27,7 @@ export default class FloatingCard extends Component {
         let ps = this.props.parent.state;
         let c = ps.course;
         return(
-            <Affix offsetTop={40} style={{ position: 'absolute', top: 30, left: 15 }}>
+            <Affix offsetTop={108} style={{ position: 'absolute', top: 30, left: 15 }}>
 
                 <div className={styles.fltcrd_con+" bglc1i "}>
 

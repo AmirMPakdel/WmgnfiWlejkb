@@ -97,7 +97,7 @@ const urls = {
     STD_RECIEPTS: domain+prefixes.STA+"/transaction/get/list/",
 
     //student course
-    STD_VIEW_COURSE: domain+prefixes.STA+"/course/load",
+    STD_VIEW_COURSE: domain+prefixes.STIA+"/course/load",
     STD_ADD_WISHLIST: domain+prefixes.STA+"/course/favorite/add",
     STD_REMOVE_WISHLIST: domain+prefixes.STA+"/course/favorite/remove",
     STD_GET_COURSE_SCORE: domain+prefixes.STA+"/course/score/get",
@@ -161,7 +161,8 @@ function Post(url, data, config={}, cb){
     if(!config.noToken){
         if(!data){data = {}};
 
-        if( url.search(env.PREFIXES.PSTA) == -1 && url.search(env.PREFIXES.STA) == -1){
+        if( url.search(env.PREFIXES.PSTA) == -1 && url.search(env.PREFIXES.STA) == -1 && 
+        url.search(env.PREFIXES.STIA) == -1){
             data["token"] = getCookie(env.TOKEN_KEY);
         }else{
             data["token"] = getCookie(env.STUDENT_TOKEN_KEY);

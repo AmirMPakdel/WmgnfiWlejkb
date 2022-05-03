@@ -14,7 +14,7 @@ export default class IncomeChart extends Component {
             
             {
                 !this.props.data?
-                <Loading style={{height:"100%", width:"100%"}}/>
+                <Loading scale={0.7} style={{height:"100%", width:"100%"}}/>
                 :
                 <>
                     <div className={styles.header}>{"نمودار فروش"}</div>

@@ -28,8 +28,8 @@
 }
 
 .crs_points{
-    padding-right: 0;
-    margin-top: 0.5rem;
+    padding-right: 0 !important;
+    margin-top: 0.5rem !important;
 }
 
 .crs_points_icn{
@@ -43,12 +43,10 @@
 .req_sec{
     margin-top: 1rem;
     width: calc(86% - 14rem);
-    color: #7a7a7a;
     padding: 1rem;
     padding-right: 4rem;
     padding-left: 2.5rem;
     border-radius: 1rem 0 0 1rem;
-    background-color: #F9F9F9;
     box-shadow: 0 0.5rem 1rem 0.1rem rgb(0, 0, 0, 0.15);
 }
 

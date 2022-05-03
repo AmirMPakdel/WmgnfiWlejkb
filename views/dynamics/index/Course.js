@@ -50,7 +50,6 @@ export default class Course extends Component {
                 <Loading style={{minHeight:"75vh"}}/>
                 :
                 <>
-
                 <WrapperT1 style={{minHeight:"auto"}}>
 
                 <div className={styles.sec1}>
@@ -65,10 +64,10 @@ export default class Course extends Component {
 
                 <div className={styles.sec2}>
 
-                <SectionTitle title="چه چیزی در این دوره یاد خواهید گرفت؟"/>
-
                 {
                     c.subjects?
+                    <>
+                    <SectionTitle title="چه چیزی در این دوره یاد خواهید گرفت؟"/>
                     <div className={styles.sec3+" bglc1i"}>
                         {
                             c.subjects.map((v,i)=>(
@@ -80,46 +79,60 @@ export default class Course extends Component {
                             ))
                         }
                     </div>
+                    </>
                     :null
                 }
 
                 <div className={styles.space1}/>
 
-                <SectionTitle title="محتوای دوره"/>
                 {
                     c.headings?
-                    c.headings.map((v,i)=>(
-                        <ContentCard key={i}
-                        open={i===0}
-                        data={v}
-                        parent={this}/>
-                    )):
+                    <>
+                    <SectionTitle title="محتوای دوره"/>
+                    {
+                        c.headings.map((v,i)=>(
+                            <ContentCard key={i}
+                            open={i===0}
+                            data={v}
+                            parent={this}/>
+                        ))
+                    }
+                    </>:
                     null
                 }
-                <div className={styles.space1}/>
 
-                <SectionTitle title="پیش نیاز های دوره"/>
+                <div className={styles.space1}/>
 
                 {
                     c.requirements?
-                    <div className={styles.req_sec}>
+                    <>
+                    <SectionTitle title="پیش نیاز های دوره"/>
+                    <div className={styles.req_sec+" bglc1i"}>
                         {
                             
                             c.requirements.map((v,i)=>(
-                            <IconLine key={i} icon_className={styles.square_icon} 
+                            <IconLine key={i} className={styles.crs_points} 
+                            icon_className={styles.crs_points_icn}
+                            text_className={styles.crs_points_txt} 
                             icon={"/statics/img/square_b.svg"} 
                             text={v}/>
                             ))
                         }
                     </div>
+                    </>
                     :null
                 }
 
                 <div className={styles.space1}/>
 
-                <SectionTitle title="توضیحات دوره"/>
-
-                <CourseInfo parent={this}/>
+                {
+                    c.long_desc?
+                    <>
+                    <SectionTitle title="توضیحات دوره"/>
+                    <CourseInfo parent={this}/>
+                    </>
+                    :null
+                }
 
                 {/* <div className={styles.space1}/>
 
@@ -134,7 +147,6 @@ export default class Course extends Component {
                 <SectionTitle title="مقالات پیشنهادی"/>
 
                 <RecommandedArticles/> */}
-
 
                 </div>
 

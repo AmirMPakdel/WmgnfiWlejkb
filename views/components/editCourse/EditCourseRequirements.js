@@ -77,7 +77,7 @@ export default class EditCourseRequirements extends Component {
 
         if (dropResult.removedIndex !== null || dropResult.addedIndex !== null) {
 
-            const new_arr = Object.assign([], nw.requirements);
+            let new_arr = Object.assign([], nw.requirements);
             new_arr = applyDrag(new_arr, dropResult);
     
             ps.new_values.requirements = new_arr;
