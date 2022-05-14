@@ -31,6 +31,7 @@
 .price_con{
     border-radius: 1rem;
     display: flex;
+    min-width: 60%;
     padding: 0.5rem 1rem;
     justify-content: center;
     align-items: center;

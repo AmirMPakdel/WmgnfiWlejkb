@@ -8,7 +8,7 @@ export default class FinancialReportsModel{
     */
     getFinancialReport(params, cb){
     
-        if(env.MOCKING_SERVER || 1){
+        if(env.MOCKING_SERVER){
             setTimeout(()=>{
                 cb(null, {result_code:env.SC.SUCCESS, data:FakeReportData(params.filter, 20)});
             }, 2000, cb);

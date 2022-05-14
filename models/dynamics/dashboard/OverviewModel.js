@@ -8,7 +8,7 @@ export default class OverviewModel{
     */
     getBaseOverviewData(params, cb){
     
-        if(env.MOCKING_SERVER || 1){
+        if(env.MOCKING_SERVER){
             setTimeout(()=>{
                 cb(null, {result_code:env.SC.SUCCESS, data:fakeBaseData});
             }, 2000, cb);

@@ -69,6 +69,7 @@ const urls = {
 
     //user transaction
     FINANCIAL_LIST: domain+prefixes.UTA+"/dashboard/records/load",
+    DASH_SOLD_TRANSACTION_DETAIL: domain+prefixes.UTA+"/dashboard/student_transaction/load",
     CREATE_TRANSACTION: domain+prefixes.UTA+"/transaction/generate",
     OPEN_TRANSACTION_PORTAL: domain+prefixes.UTA+"/product/pay",
     GET_TRANSACTION: domain+prefixes.UTA+"/transaction/get",

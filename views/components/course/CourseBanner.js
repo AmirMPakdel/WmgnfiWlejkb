@@ -9,6 +9,7 @@ import Price from "@/views/components/global/Price";
 import VideoCard from "@/views/components/global/VideoCard";
 import IconLine from "@/views/components/course/IconLine";
 import Rating from "@/views/components/course/Rating";
+import { sqlTimeStamp2ShamsiDate } from "@/utils/time";
 
 /**
 * Props of CourseBanner Component
@@ -42,7 +43,7 @@ export default class CourseBanner extends Component {
 
                 <div className={styles.row1+"  flc1i cpnt"}>
 
-                    <div className={styles.row1_div}>{"آخرین بروزرسانی : 1400/02/05"}</div>
+                    <div className={styles.row1_div}>{"آخرین بروزرسانی : "+ sqlTimeStamp2ShamsiDate(c.updated_at)}</div>
                     <div className={styles.row1_div}>|</div>
                     <div className={styles.row1_div}>{"شرکت کننده در دوره"+ " : " +priceFormat(c.sells)}</div>
                     <div className={styles.row1_div}>|</div>
