@@ -37,9 +37,8 @@ export default class FloatingCard extends Component {
 
                     <div className={styles.fltcrd_sec1}>
 
-                        <Price
-                        offPercent={c.discount}
-                        orginalPrice={c.price}
+                        <Price 
+                        withDiscount={c.discount_price}
                         price={c.price}/>
 
                     </div>

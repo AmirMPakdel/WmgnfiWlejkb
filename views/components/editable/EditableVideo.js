@@ -84,7 +84,8 @@ export default class EditableVideo extends Component {
                     <video className={styles.video} 
                     ref={r=>this.video=r}
                     src={this.state.url}
-                    controls={true} preload={false}/>
+                    controls={true} 
+                    preload={"metadata"}/>
                     :
                     <img className={styles.video} src={this.props.defaultPoster}/>   
                 }

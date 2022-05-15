@@ -101,7 +101,10 @@ export function fileType2Ext(file_type){
             return "jpg";
         case "video/mp4":
             return "mp4";
+        case "audio/mpeg":
+            return "mp3";
         default:
+            console.log(file_type);
             let ex = file_type.split("/")[1];
             if(!ex){ex = file_type}
             return ex;
