@@ -25,12 +25,17 @@ export default class CategoryCrudModal extends Component {
         this.state = {
             loading:true,
             list:[],
+            expandedKeys:[],
         }
     }
     
     componentDidMount(){
 
         this.controller.loadCategories();
+    }
+
+    onExpand=(expandedKeys, {expanded: bool, node})=>{
+        this.controller.onExpand(expandedKeys, {expanded: bool, node});
     }
 
     onCancel=()=>{
@@ -59,12 +64,12 @@ export default class CategoryCrudModal extends Component {
         console.log('onCheck', checkedKeys, info);
     }
 
-    addChild=(node, level)=>{
-        this.controller.addChild(node, level);
+    addChild=(node, level, parent_node)=>{
+        this.controller.addChild(node, level, parent_node);
     }
 
-    editChild=(node, level)=>{
-        //alert(node.id)
+    editChild=(node, level, parent_node)=>{
+        this.controller.editChild(node, level, parent_node);
     }
 
     deleteChild=(node, level, parent_node)=>{
@@ -72,11 +77,19 @@ export default class CategoryCrudModal extends Component {
     }
 
     submitChild=(node, level, parent_node)=>{
-        this.controller.submitChild(node, level, parent_node);
+        if(node.mode=="add"){
+            this.controller.submitAddChild(node, level, parent_node);
+        }else if(node.mode=="edit"){
+            this.controller.submitEditChild(node, level, parent_node);
+        }
     }
 
-    cancelChild=(node, level)=>{
-        this.controller.cancelChild(node, level);
+    cancelChild=(node, level, parent_node)=>{
+        if(node.mode=="add"){
+            this.controller.cancelAddChild(node, level, parent_node);
+        }else if(node.mode=="edit"){
+            this.controller.cancelEditChild(node, level, parent_node);
+        }
     }
     
     render(){
@@ -105,6 +118,8 @@ export default class CategoryCrudModal extends Component {
                         // defaultExpandedKeys={['0-0-0', '0-0-1']}
                         // defaultSelectedKeys={['0-0-0', '0-0-1']}
                         // defaultCheckedKeys={['0-0-0', '0-0-1']}
+                        expandedKeys={this.state.expandedKeys}
+                        onExpand={this.onExpand}
                         onSelect={this.onSelect}
                         onCheck={this.onCheck}
                         treeData={
@@ -175,7 +190,7 @@ export default class CategoryCrudModal extends Component {
                                                             onClick={()=>this.submitChild(l2, 2, l1)}>{"ثبت"}</a>
                 
                                                             <a className={styles.parent_node_add+" amp_btn fec"}
-                                                            onClick={()=>this.cancelChild(l2, 2)}>{"انصراف"}</a>
+                                                            onClick={()=>this.cancelChild(l2, 2, l1)}>{"انصراف"}</a>
                                                             
                                                         </div>
                 
@@ -194,13 +209,13 @@ export default class CategoryCrudModal extends Component {
                                                     <div className={styles.parent_node_operation}>
                         
                                                         <a className={styles.parent_node_add+" amp_btn fsc"}
-                                                        onClick={()=>this.addChild(l2, 2)}>{"اضافه"}</a>
+                                                        onClick={()=>this.addChild(l2, 2, l1)}>{"اضافه"}</a>
                         
                                                         <a className={styles.parent_node_add+" amp_btn ftc2"}
-                                                        onClick={()=>this.editChild(l2, 2)}>{"ویرایش"}</a>
+                                                        onClick={()=>this.editChild(l2, 2, l1)}>{"ویرایش"}</a>
                         
                                                         <a className={styles.parent_node_add+" amp_btn fec"}
-                                                        onClick={()=>this.deleteChild(l2, 2)}>{"حذف"}</a>
+                                                        onClick={()=>this.deleteChild(l2, 2, l1)}>{"حذف"}</a>
                                                         
                                                     </div>
                                                     
@@ -225,7 +240,7 @@ export default class CategoryCrudModal extends Component {
                                                                         onClick={()=>this.submitChild(l3, 3, l2)}>{"ثبت"}</a>
 
                                                                         <a className={styles.parent_node_add+" amp_btn fec"}
-                                                                        onClick={()=>this.cancelChild(l3, 3)}>{"انصراف"}</a>
+                                                                        onClick={()=>this.cancelChild(l3, 3, l2)}>{"انصراف"}</a>
                                                                         
                                                                     </div>
                             
@@ -244,7 +259,7 @@ export default class CategoryCrudModal extends Component {
                                                                 <div className={styles.parent_node_operation}>
                         
                                                                     <a className={styles.parent_node_add+" amp_btn ftc2"}
-                                                                    onClick={()=>this.editChild(l3, 3)}>{"ویرایش"}</a>
+                                                                    onClick={()=>this.editChild(l3, 3, l2)}>{"ویرایش"}</a>
                         
                                                                     <a className={styles.parent_node_add+" amp_btn fec"}
                                                                     onClick={()=>this.deleteChild(l3, 3, l2)}>{"حذف"}</a>
@@ -266,14 +281,14 @@ export default class CategoryCrudModal extends Component {
 
                     </div>
 
-                    <div className={styles.sec1}>
+                    {/* <div className={styles.sec1}>
                         
                         <MainButton className={styles.confirm_btn}
-                        title={"ثبت"}
+                        title={"بستن"}
                         loading={this.state.btn_loading}
                         onClick={this.onConfirm}/>
 
-                    </div>
+                    </div> */}
 
                     {
                         this.state.loading?
@@ -285,9 +300,4 @@ export default class CategoryCrudModal extends Component {
             </div>
         )
     }
-}
-
-const addChild = (data, addChild, submitAction, cancelAction)=>{
-
-    return 
 }
