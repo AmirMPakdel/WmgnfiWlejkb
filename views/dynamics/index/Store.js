@@ -43,12 +43,19 @@ export default class Store extends Component {
 
         Observer.add("onUrlStateChange", this.controller.loadCourses);
 
+        window.onpopstate = this.onPopUrlState;
+
         this.controller.loadData();
     }
 
     componentWillUnmount(){
 
         Observer.remove("onUrlStateChange", this.controller.loadCourses);
+    }
+
+    onPopUrlState=()=>{
+
+        Observer.execute("onUrlStateChange");
     }
 
     onPageChange=(page)=>{

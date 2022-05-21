@@ -62,6 +62,8 @@ export default class StoreController{
                         list: d.list,
                         total: d.total_size,
                         currentPage: params.page_count,
+                    }, ()=>{
+                        scrollTo({top:0, behavior:"smooth"});
                     });
                 }
             });

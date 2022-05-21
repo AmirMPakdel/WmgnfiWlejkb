@@ -8,6 +8,7 @@ import chest from "@/utils/chest";
 import Storage from "@/utils/storage";
 import { getParamByName } from "@/utils/helpers";
 import { Input } from 'antd';
+import Observer from "@/utils/observer";
 
 /**
 * Props of RightSideFilter Component
@@ -37,12 +38,25 @@ export default class RightSideFilter extends Component {
     }
     
     componentDidMount(){
+
+        Observer.add("onUrlStateChange", this.onUrlStateChange);
         
         let categories = Storage.get("categories");
 
         this.keys = this.getAllKeys(categories);
 
         this.setState({list:categories, expandedKeys: this.keys});
+    }
+
+    onUrlStateChange=()=>{
+
+        let selected_groups = getParamByName("group");
+        let selectedKeys = [];
+        if(selected_groups){
+            selectedKeys = [selected_groups];
+        }
+
+        this.setState({selectedKeys:selectedKeys});
     }
 
     openModal=()=>{
@@ -72,19 +86,19 @@ export default class RightSideFilter extends Component {
 
     onSelectL1=(l1)=>{
         let groups = l1.id;
-        this.setState({selectedKeys:[groups.toString()]});
+        //this.setState({selectedKeys:[groups.toString()]});
         this.props.onGroupSelect(groups);
     }
 
     onSelectL2=(l1, l2)=>{
         let groups = l1.id+"-"+l2.id;
-        this.setState({selectedKeys:[groups]});
+        //this.setState({selectedKeys:[groups]});
         this.props.onGroupSelect(groups);
     }
 
     onSelectL3=(l1, l2, l3)=>{
         let groups = l1.id+"-"+l2.id+"-"+l3.id;
-        this.setState({selectedKeys:[groups]});
+        //this.setState({selectedKeys:[groups]});
         this.props.onGroupSelect(groups);
     }
 

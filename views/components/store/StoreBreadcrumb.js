@@ -99,8 +99,8 @@ function extractSelectedGroups (group, groupList){
         }
     });
 
+    let l2 = null;
     if(level > 1 && l1){
-        let l2 = null;
         let groupL2 = l1.groups;
         groupL2.forEach((g2)=>{
             if(g2.id == ids[1]){
