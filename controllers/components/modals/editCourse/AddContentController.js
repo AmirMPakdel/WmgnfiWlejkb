@@ -1,7 +1,7 @@
 import AddContentModel from "@/models/components/modals/editCourse/AddContentModel";
 import chest from "@/utils/chest";
 import { getCookie } from "@/utils/cookie";
-import { fileType2Ext, getUrlPart } from "@/utils/helpers";
+import { fileType2Ext, getTenant, getUrlPart } from "@/utils/helpers";
 import AddContentModal from "@/views/components/modal/editCourse/AddContentModal";
 
 export default class AddContentController{
@@ -53,7 +53,7 @@ export default class AddContentController{
                     file_type: params1.file_type,
                     upload_type: params1.upload_type,
                     course_id: getUrlPart(3),
-                    tenant: getCookie(env.TENANT_KEY),
+                    tenant: getTenant(),
                     upload_key: data.data.upload_key,
                 }
 

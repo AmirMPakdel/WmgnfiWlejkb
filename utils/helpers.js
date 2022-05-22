@@ -1,3 +1,5 @@
+import { getCookie } from "./cookie";
+
 const helpers = {
     existsInArray,
     toggleMultiSelect,
@@ -6,6 +8,23 @@ const helpers = {
 }
 
 export default helpers;
+
+export function getTenant(){
+    let tenant_name = null;
+    // for testing and dev environment
+    if(location.hostname === "localhost"){
+
+        tenant_name = getCookie(env.TENANT_KEY);
+
+    }else{ // for deployment environment
+
+        let splited_hn = location.hostname.split(".");
+        if(splited_hn.length == 3){
+            tenant_name = splited_hn[0];
+        }
+    }
+    return tenant_name;
+}
 
 /** 
  * for multiselect fields

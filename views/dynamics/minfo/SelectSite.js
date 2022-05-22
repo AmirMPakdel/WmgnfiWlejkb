@@ -49,8 +49,24 @@ export default class SelectSite extends Component {
             if(!err){
                 
                 if(data.result_code === env.SC.REPETITIVE_USERNAME){
-                    setCookie(env.TENANT_KEY, this.state.subdomain, 365);
+                    
                     window.location.href = env.PATHS.HOMEPAGE;
+
+                    // for testing and dev environment
+                    if(location.hostname === "localhost"){
+
+                        setCookie(env.TENANT_KEY, this.state.subdomain, 365);
+                        window.location.href = env.PATHS.HOMEPAGE;
+
+                    }else{ // for deployment environment
+
+                        let minfo_domain = env.DOMAIN;
+                        let minfo_d_arr = minfo_domain.split("://");
+                        minfo_d_arr[1] = this.state.subdomain+"."+minfo_d_arr[1];
+                        let website_domain = minfo_d_arr.join("://");
+                        window.location.href = website_domain;
+                    }
+
                 }else{
                     this.invalidSubdomain();
                 }

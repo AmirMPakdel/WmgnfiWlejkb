@@ -1,7 +1,7 @@
 import AddEditInfoBoxElementModel from "@/models/components/modals/editHomePage/AddEditInfoBoxElementModel";
 import chest from "@/utils/chest";
 import { getCookie } from "@/utils/cookie";
-import { fileType2Ext } from "@/utils/helpers";
+import { fileType2Ext, getTenant } from "@/utils/helpers";
 import myServer from "@/utils/myServer";
 import AddEditInfoBoxElementModal from "@/views/components/modal/editHomePage/AddEditInfoBoxElementModal";
 
@@ -209,7 +209,7 @@ export default class AddEditInfoBoxElementController{
                     token: params1.token,
                     file_type: params1.file_type,
                     upload_type: params1.upload_type,
-                    tenant: getCookie(env.TENANT_KEY),
+                    tenant: getTenant(),
                     upload_key: data.data.upload_key,
                 }
 

@@ -1,5 +1,6 @@
 import { getCookie } from "@/utils/cookie";
 import myServer from "@/utils/myServer";
+import { getTenant } from "../helpers";
 
 const type_map = {
     "mp4":"a",
@@ -29,7 +30,7 @@ const MediaFiles = {
 
             if(ext){
 
-                return `${myServer.urls.MEDIA_PREFIX}/public_files/${getCookie(env.TENANT_KEY)}/${uploadKey}.${ext}`;
+                return `${myServer.urls.MEDIA_PREFIX}/public_files/${getTenant()}/${uploadKey}.${ext}`;
             }
         }
 
@@ -51,7 +52,7 @@ const MediaFiles = {
 
             if(ext){
 
-                return `${myServer.urls.MEDIA_PREFIX}/public_files/${getCookie(env.TENANT_KEY)}/${uploadKey}.${ext}`;
+                return `${myServer.urls.MEDIA_PREFIX}/public_files/${getTenant()}/${uploadKey}.${ext}`;
             }
         }
 

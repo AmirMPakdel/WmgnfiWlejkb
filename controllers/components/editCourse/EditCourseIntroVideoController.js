@@ -1,7 +1,7 @@
 import EditCourseIntroVideoModel from "@/models/components/editCourse/EditCourseIntroVideoModel";
 import chest from "@/utils/chest";
 import { getCookie } from "@/utils/cookie";
-import { fileType2Ext, getUrlPart } from "@/utils/helpers";
+import { fileType2Ext, getTenant, getUrlPart } from "@/utils/helpers";
 import EditCourseIntroVideo from "@/views/components/editCourse/EditCourseIntroVideo";
 
 export default class EditCourseIntroVideoController{
@@ -59,7 +59,7 @@ export default class EditCourseIntroVideoController{
                     file_type: params1.file_type,
                     upload_type: params1.upload_type,
                     course_id: getUrlPart(3),
-                    tenant: getCookie(env.TENANT_KEY),
+                    tenant: getTenant(),
                     upload_key: data.data.upload_key,
                 }
 

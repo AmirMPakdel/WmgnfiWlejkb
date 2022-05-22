@@ -1,5 +1,6 @@
 import BuyCreditInvoiceModel from "@/models/components/buyCredit/BuyCreditInvoiceModel";
 import { getCookie } from "@/utils/cookie";
+import { getTenant } from "@/utils/helpers";
 import myServer from "@/utils/myServer";
 import Storage from "@/utils/storage";
 import BuyCreditInvoice from "@/views/components/buyCredit/BuyCreditInvoice";
@@ -46,7 +47,7 @@ export default class BuyCreditInvoiceController{
                 let d = data.data;
                 window.location.href = myServer.urls.OPEN_TRANSACTION_PORTAL+
                 `?transaction_id=${d.id}&`+
-                `tenant=${getCookie(env.TENANT_KEY)}&`+
+                `tenant=${getTenant()}&`+
                 `token=${getCookie(env.TOKEN_KEY)}`
             }
         });

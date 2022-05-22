@@ -1,6 +1,6 @@
 import axios from "axios";
 import { getCookie } from "@/utils/cookie";
-import { Object2FormData } from "@/utils/helpers";
+import { getTenant, Object2FormData } from "@/utils/helpers";
 import serverErrorHandler from "@/utils/myServer/serverErrorHandler";
 import serverMediaFiles from "@/utils/myServer/serverMediaFiles";
 import ServerUrls from "./myServer/serverUrls";
@@ -42,18 +42,7 @@ function transformConfig(method, url, data, config) {
 
             let tenant_name = null;
 
-            // for testing and dev environment
-            if(location.hostname === "localhost"){
-
-                tenant_name = getCookie(env.TENANT_KEY);
-
-            }else{ // for deployment environment
-
-                let splited_hn = location.hostname.split(".");
-                if(splited_hn.length == 3){
-                    tenant_name = splited_hn[0];
-                }
-            }
+            tenant_name = getTenant();
 
             if(tenant_name){
 
