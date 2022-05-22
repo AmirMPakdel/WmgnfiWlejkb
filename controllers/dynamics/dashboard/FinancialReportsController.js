@@ -13,7 +13,11 @@ export default class FinancialReportsController{
     
     loadSellReportTable(page=1){
 
-        let params = {filter:"rf_sells"};
+        let params = {
+            page_count: page,
+            chunk_count: FINANCIAL_REPORTS_PAGE_SIZE,
+            filter:"rf_sells"
+        };
 
         this.view.setState({loading:true});
 
@@ -26,7 +30,7 @@ export default class FinancialReportsController{
                 this.view.setState({
                     loading: false,
                     data: d.list,
-                    total: d.total,
+                    total: d.total_size,
                     currentPage: page,
                     table: "1",
                 });
@@ -36,7 +40,11 @@ export default class FinancialReportsController{
 
     loadCreditBoughtTable(page=1){
 
-        let params = {filter:"rf_increase_m_balacne"};
+        let params = {
+            page_count: page,
+            chunk_count: FINANCIAL_REPORTS_PAGE_SIZE,
+            filter:"rf_increase_m_balacne"
+        };
 
         this.view.setState({loading:true});
 
@@ -49,7 +57,7 @@ export default class FinancialReportsController{
                 this.view.setState({
                     loading: false,
                     data: d.list,
-                    total:d.total,
+                    total:d.total_size,
                     currentPage: page,
                     table:"2",
                 });
@@ -59,7 +67,11 @@ export default class FinancialReportsController{
 
     loadCreditUsedTable(page=1){
 
-        let params = {filter:"rf_decrease_m_balacne"};
+        let params = {
+            page_count: page,
+            chunk_count: FINANCIAL_REPORTS_PAGE_SIZE,
+            filter:"rf_decrease_m_balacne"
+        };
 
         this.view.setState({loading:true});
 
@@ -72,7 +84,7 @@ export default class FinancialReportsController{
                 this.view.setState({
                     loading: false,
                     data: d.list,
-                    total:d.total,
+                    total:d.total_size,
                     currentPage: page,
                     table:"3",
                 });

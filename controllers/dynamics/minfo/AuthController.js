@@ -2,6 +2,7 @@ import AuthModel from "@/models/dynamics/minfo/AuthModel";
 import chest from "@/utils/chest";
 import { setCookie } from "@/utils/cookie";
 import { getParamByName } from "@/utils/helpers";
+import Storage from "@/utils/storage";
 import { secondsToTime } from "@/utils/time";
 import Validation, { IsValid } from "@/utils/validation";
 import Auth from "@/views/dynamics/minfo/Auth";
@@ -98,6 +99,9 @@ export default class AuthController{
                 if(data.result_code === env.SC.SUCCESS){
 
                     this.view.setState({loading:false});
+
+                    //remove last user data if exists
+                    Storage.remove("user");
 
                     setCookie(env.TOKEN_KEY, data.data.token, 365);
 
@@ -350,9 +354,12 @@ export default class AuthController{
 
                 if(data.result_code===env.SC.SUCCESS){
 
-                    setCookie(env.TOKEN_KEY, data.data.token, 1);
+                    //remove last user data if exists
+                    Storage.remove("user");
 
-                    setCookie(env.TENANT_KEY, data.data.username, 1);
+                    setCookie(env.TOKEN_KEY, data.data.token, 365);
+
+                    setCookie(env.TENANT_KEY, data.data.username, 365);
 
                     this.view.setState({page:"RegisterSuccessPage"});
 

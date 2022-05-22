@@ -6,21 +6,21 @@ import MainButton from "@/views/components/global/MainButton";
 import TextInput from "@/views/components/global/TextInput";
 import WrapperT1 from "@/views/layouts/WrapperT1";
 import React, { Component } from "react";
-import styles from "./SiteSelect.module.css";
+import styles from "./SelectSite.module.css";
 
 /**
-* Props of SiteSelect Component
+* Props of SelectSite Component
 * @typedef Props
 * @property {string} className
 * @property {React.CSSProperties} style
 * 
 * @extends {Component<Props>}
 */
-export default class SiteSelect extends Component {
+export default class SelectSite extends Component {
     
     constructor(props){
         super(props);
-        //this.controller = new SiteSelectController(this);
+        //this.controller = new SelectSiteController(this);
         this.state = {
             loading:false,
             subdomain:"",

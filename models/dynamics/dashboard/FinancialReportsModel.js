@@ -14,12 +14,17 @@ export default class FinancialReportsModel{
             }, 2000, cb);
             //return;
         }
+
+        let chunk_count = params.chunk_count;
+        let page_count = params.page_count;
+        delete params.chunk_count;
+        delete params.page_count;
     
-        myServer.Post(myServer.urls.FINANCIAL_LIST, params, {}, (err, data)=>{
+        myServer.Post(myServer.urls.FINANCIAL_LIST+chunk_count+"/"+page_count, params, {}, (err, data)=>{
     
             if(!err){
             
-                //cb(null, data);
+                cb(null, data);
             
             }else{
             

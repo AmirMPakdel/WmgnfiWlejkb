@@ -47,6 +47,7 @@ var env = {
         CHANGE_PASSWORD_PAGE: "/minfo/changePassword",
         MINFO_TERMS: "/minfo/terms",
         MINFO_PRIVACY: "/minfo/privacy",
+        MINFO_SELECT_SITE: "/minfo/selectSite",
         //studen panel
         STUDENT_COURSES: "/stdPanel/myCourses",
         STUDENT_WISHLIST: "/stdPanel/myWishlist",

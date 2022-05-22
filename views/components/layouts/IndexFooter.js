@@ -49,7 +49,9 @@ export default class IndexFooter extends Component {
 
                 <div className={styles.contact_numbers}>
 
-                    {"شماره تماس "}
+                    {
+                        numbers.length? "شماره تماس ":null
+                    }
 
                     {
                         numbers.map((v,i,a)=>(
@@ -97,6 +99,8 @@ const transformNumbers=(data)=>{
 
     let d = data.numbers;
 
+    if(!d){return numbers};
+
     if(d.mobile1){
         numbers.push(d.mobile1);
     }
@@ -118,6 +122,8 @@ const transforSocialMedias=(data)=>{
     let d = data.links;
 
     let links = [];
+
+    if(!d){return links};
 
     if(d.email){
         links.push({

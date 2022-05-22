@@ -14,7 +14,7 @@
     max-width: 96rem;
 
     min-height: calc(100vh - 56px);
-    border: 0.01rem rgba(0, 132, 0, 0.2) solid;
+    /* border: 0.01rem rgba(0, 132, 0, 0.2) solid; */
 }
 
 @media(max-width:1024px){
