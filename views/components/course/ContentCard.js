@@ -58,12 +58,23 @@ export default class ContentCard extends Component {
                     <div style={{height:"0.5rem"}}/>
                     {
                         contents.map((v,i)=>(
-                            <IconLine key={i} className={styles.icon_line+" cpnti"}
-                            icon="/statics/svg/crs_play_icn.svg" 
-                            text={v.title}/>
+                            <ContentRow key={i} data={v}/>
                         ))
                     }
                 </Collapse>
+            </div>
+        )
+    }
+}
+
+class ContentRow extends Component{
+    
+    render(){
+        return(
+            <div className={styles.crow_con}>
+                <IconLine key={i} className={styles.crow_icon_line+" cpnti"}
+                icon="/statics/svg/crs_play_icn.svg" 
+                text={v.title}/>
             </div>
         )
     }

@@ -25,11 +25,21 @@
     font-size: 700;
 }
 
-.icon_line{
+
+
+.crow_con{
+    display: flex;
+    width: 100%;
+    background-color: indianred;
+}
+
+.crow_icon_line{
     margin-top: 0.3rem;
     cursor: pointer;
     font-weight: 500;
 }
+
+
 
 @media(max-width:1024px){
 
