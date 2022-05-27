@@ -1,3 +1,4 @@
+import IndexFooterController from "@/controllers/components/layouts/IndexFooterController";
 import Observer from "@/utils/observer";
 import React, { Component } from "react";
 import styles from "./IndexFooter.module.css";
@@ -14,7 +15,9 @@ export default class IndexFooter extends Component {
     
     constructor(props){
         super(props);
+        this.controller = new IndexFooterController(this);
         this.state = {
+            loading: true,
             social_links: [],
             contact_numbers: [],
         }
@@ -23,6 +26,11 @@ export default class IndexFooter extends Component {
     componentDidMount(){
 
         Observer.add("onFooterChange", this.loadFooter);
+
+        // get the footer data from server
+        if(this.props.fetchData){
+            this.fetchData();
+        }
     }
 
     componentWillUnmount(){
@@ -30,13 +38,16 @@ export default class IndexFooter extends Component {
         Observer.remove("onFooterChange", this.loadFooter);
     }
 
-    loadFooter=(data)=>{
+    fetchData=()=>{
 
-        console.log(data);
+        this.controller.fetchData();
+    }
+
+    loadFooter=(data)=>{
 
         let social_links = transforSocialMedias(data);
         let contact_numbers = transformNumbers(data);
-        this.setState({social_links, contact_numbers});
+        this.setState({loading:false, social_links, contact_numbers});
     }
     
     render(){

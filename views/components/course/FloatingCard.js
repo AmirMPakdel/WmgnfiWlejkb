@@ -48,7 +48,7 @@ export default class FloatingCard extends Component {
                     <MainButton className={styles.fltcrd_btn2} title={"خرید سریع"} borderMode/> */}
                     
                     {
-                        c.registered?
+                        c.access_type == "3" || c.access_type == "4"?
                         <div className={styles.fltcrd_btn3+" bgsc fdc1 bdyt"}>{"خریداری شده"}</div>
                         :
                         <MainButton className={styles.fltcrd_btn2} title={"خرید"}

@@ -136,7 +136,7 @@ export default class CourseBanner extends Component {
                     whiteBorder={true}/> */}
 
                     {
-                        c.registered?
+                        c.access_type == "3" || c.access_type == "4"?
                         <div className={styles.tablet_buy_btn+" bgsc fdc1 bdyt"}>{"خریداری شده"}</div>
                         :
                         <MainButton className={styles.tablet_buy_btn} 

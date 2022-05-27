@@ -59,6 +59,24 @@ const MediaFiles = {
         return null;
     },
 
+    freeCourseMedia:(uploadKey, tenant)=>{
+
+        if(!tenant){
+            tenant = getTenant();
+        }
+
+        let type_char = uploadKey.split("-")[1][0];
+        let ext = null;
+
+        Object.keys(type_map).forEach(type => {
+            if(type_map[type] == type_char){
+                ext = type;
+            }
+        });
+
+        return `${myServer.urls.MEDIA_PREFIX}/course_media/${tenant}/${uploadKey}.${ext}`;
+    }
+
 }
 
 export default MediaFiles;

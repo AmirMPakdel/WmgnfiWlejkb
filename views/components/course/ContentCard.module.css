@@ -25,20 +25,49 @@
     font-size: 700;
 }
 
-
-
 .crow_con{
     display: flex;
     width: 100%;
-    background-color: indianred;
+    align-items: center;
+    margin-bottom: 0.3rem;
 }
 
 .crow_icon_line{
     margin-top: 0.3rem;
-    cursor: pointer;
     font-weight: 500;
 }
 
+.crow_dl{
+    font-size: 0.8rem !important;
+    height: 1.2rem;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    font-weight: 400;
+}
+
+.crow_play{
+    font-size: 0.8rem !important;
+    height: 1.2rem;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    /* margin-left: 0.5rem; */
+    font-weight: 400;
+}
+
+.crow_locked{
+    font-size: 0.8rem !important;
+    height: 1.2rem;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    opacity: 0.7;
+    font-weight: 400;
+}
+
+.crow_free_t{
+    margin-right: 0.2rem;
+    font-size: 0.76rem;
+    opacity: 0.4;
+}
 
 
 @media(max-width:1024px){
