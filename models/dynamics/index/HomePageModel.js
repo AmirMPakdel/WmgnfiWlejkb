@@ -1,4 +1,5 @@
 import myServer from "@/utils/myServer";
+import Storage from "@/utils/storage";
 import { handleFirstTimeIntroData } from "../dashboard/HomePageModel";
 
 export default class HomePageModel{
@@ -23,6 +24,15 @@ export default class HomePageModel{
                 try{
 
                     let d = data;
+
+                    let footer_data = {
+                        footer_app_links: d.footer_app_links,
+                        footer_links: d.footer_links,
+                        footer_telephones: d.footer_telephones,
+                    }
+
+                    //saving or updating mainpage footer data
+                    Storage.store("footer", footer_data);
         
                     let constElements = [
                         {
@@ -40,7 +50,7 @@ export default class HomePageModel{
                     d.course_lists.forEach(course => {
                         course.el_type = 3;
                     });
-        
+
                     let elements = constElements.concat(d.contents);
                     elements = elements.concat(d.course_lists);
         

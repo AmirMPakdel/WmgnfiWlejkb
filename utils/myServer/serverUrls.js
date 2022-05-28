@@ -71,7 +71,7 @@ const ServerUrls = {
     //student homepage
     STD_LOAD_HOMEPAGE: domain+prefixes.PSTA+"/main/load",
     STD_HOMEPAGE_COURSE_LIST: domain+prefixes.PSTA+"/main/course_list/load",
-    //TODO:: add footer data PSTA
+    STD_LOAD_FOOTER: domain+prefixes.PSTA+"/footer/load",
 
     //store
     STORE_COURSES: domain+prefixes.PSTA+"/store/fetch/",

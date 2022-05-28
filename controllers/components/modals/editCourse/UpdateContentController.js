@@ -51,6 +51,8 @@ export default class UpdateContentController{
             is_free: content.is_free,
         }
 
+        console.log(content.type);
+
         this.model.update(params, content.type, (err, data)=>{
 
             if(data.result_code === env.SC.SUCCESS){

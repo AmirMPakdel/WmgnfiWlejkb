@@ -8,6 +8,7 @@ import styles from "./IndexFooter.module.css";
 * @typedef Props
 * @property {string} className
 * @property {React.CSSProperties} style
+* @property {boolean} autoLoad
 * 
 * @extends {Component<Props>}
 */
@@ -28,7 +29,7 @@ export default class IndexFooter extends Component {
         Observer.add("onFooterChange", this.loadFooter);
 
         // get the footer data from server
-        if(this.props.fetchData){
+        if(this.props.autoLoad){
             this.fetchData();
         }
     }

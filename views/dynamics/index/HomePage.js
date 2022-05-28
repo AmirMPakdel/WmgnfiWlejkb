@@ -40,7 +40,8 @@ export default class HomePage extends Component {
 
         return(
             <IndexLayout accessType="noAuth"
-            showWithoutAuth={false}>
+            showWithoutAuth={false}
+            footerAutoLoad={false}>
 
                 {
                     this.state.loading?

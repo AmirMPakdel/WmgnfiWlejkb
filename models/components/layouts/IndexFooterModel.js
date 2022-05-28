@@ -15,7 +15,7 @@ export default class IndexFooterModel{
             return;
         }
     
-        myServer.Post(myServer.urls.SOME_URL, params, {}, (err, data)=>{
+        myServer.Post(myServer.urls.STD_LOAD_FOOTER, params, {}, (err, data)=>{
     
             if(!err){
             

@@ -49,7 +49,7 @@ export default class CourseList extends Component {
                     this.state.list.map((cw, cwi)=>{
 
                         if(cwi%4 === 0){
-                            return(<div className={styles.card_wrapper}>
+                            return(<div key={cwi} className={styles.card_wrapper}>
 
                                 <div className={styles.card_wrapper_desktop}>
 
@@ -57,9 +57,9 @@ export default class CourseList extends Component {
                                         this.state.list.map((c, i)=>{
                                             if(i>=cwi && i<cwi+4){
                                                 if(i%4 === 3){
-                                                    return <CourseCard className={styles.fourth_card} data={c}/>;
+                                                    return <CourseCard key={i} className={styles.fourth_card} data={c}/>;
                                                 }else{
-                                                    return <CourseCard className={styles.first_card} data={c}/>;
+                                                    return <CourseCard key={i} className={styles.first_card} data={c}/>;
                                                 }
                                             }
                                         })
@@ -73,7 +73,7 @@ export default class CourseList extends Component {
                                         this.state.list.map((c, i)=>{
                                             if(i>=cwi && i<cwi+4){
                                                 if(i%4 === 0 || i%4 === 1){
-                                                    return <CourseCard className={styles.first_card} data={c}/>;
+                                                    return <CourseCard key={i} className={styles.first_card} data={c}/>;
                                                 }else{
                                                     return null;
                                                 }
@@ -89,9 +89,9 @@ export default class CourseList extends Component {
                                         this.state.list.map((c, i)=>{
                                             if(i>=cwi && i<cwi+4){
                                                 if(i%4 === 2){
-                                                    return <CourseCard className={styles.first_card} data={c}/>;
+                                                    return <CourseCard key={i} className={styles.first_card} data={c}/>;
                                                 }else if(i%4 === 3){
-                                                    return <CourseCard className={styles.fourth_card} data={c}/>;
+                                                    return <CourseCard key={i} className={styles.fourth_card} data={c}/>;
                                                 }
                                             }
                                         })

@@ -69,6 +69,7 @@ export default class EditCourseContents extends Component {
     }
 
     onUpdateContent=(heading_obj, content_obj)=>{
+        console.log(content_obj);
         this.controller.onUpdateContent(heading_obj, content_obj);
     }
 

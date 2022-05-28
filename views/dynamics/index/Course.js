@@ -43,7 +43,8 @@ export default class Course extends Component {
         let c = this.state.course;
         return(
             <IndexLayout accessType="noAuth"
-            showWithoutAuth={false}>
+            showWithoutAuth={false}
+            footerAutoLoad={true}>
 
             {
                 this.state.loading?

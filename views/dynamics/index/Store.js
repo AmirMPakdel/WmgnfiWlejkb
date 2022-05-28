@@ -92,7 +92,8 @@ export default class Store extends Component {
         console.log(this.state);
         return(
             <IndexLayout accessType="noAuth"
-            showWithoutAuth={false}>
+            showWithoutAuth={false}
+            footerAutoLoad={true}>
             {
                 this.state.loading?
 

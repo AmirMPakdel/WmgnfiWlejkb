@@ -6,6 +6,7 @@ export default class IncomesChestCard extends Component {
 
     onSellReport=()=>{
         
+        
         window.location.href = env.PATHS.USER_FINANCIAL_REPORT+"?report_type=1";
     }
     

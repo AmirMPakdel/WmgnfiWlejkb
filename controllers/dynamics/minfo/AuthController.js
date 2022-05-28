@@ -1,7 +1,7 @@
 import AuthModel from "@/models/dynamics/minfo/AuthModel";
 import chest from "@/utils/chest";
 import { setCookie } from "@/utils/cookie";
-import { getParamByName } from "@/utils/helpers";
+import { createUserWebHref, getParamByName } from "@/utils/helpers";
 import Storage from "@/utils/storage";
 import { secondsToTime } from "@/utils/time";
 import Validation, { IsValid } from "@/utils/validation";
@@ -109,11 +109,11 @@ export default class AuthController{
 
                     if(getParamByName("redirected")=="1" && document.referrer){
 
-                        window.location.href = document.referrer;
+                        window.location.href = createUserWebHref(document.referrer);
 
                     }else{
 
-                        window.location.href = env.PATHS.USER_OVERVIEW;
+                        window.location.href = createUserWebHref(env.PATHS.USER_OVERVIEW);
                     }
 
                 }else{
@@ -127,7 +127,6 @@ export default class AuthController{
                 this.lock = false;
             });
         }
-
     }
 
     passwordPageInputCheck(){
@@ -440,5 +439,10 @@ export default class AuthController{
         this.view.setState(newState);
 
         return can;
+    }
+
+    onRegisterSuccessConfirm(){
+
+        window.location.href = createUserWebHref(env.PATHS.USER_OVERVIEW);
     }
 }

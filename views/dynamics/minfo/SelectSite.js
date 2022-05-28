@@ -1,10 +1,10 @@
 import chest from "@/utils/chest";
 import { setCookie } from "@/utils/cookie";
+import { createUserWebHref, isDevEnv } from "@/utils/helpers";
 import myServer from "@/utils/myServer";
 import { InputFilter } from "@/utils/validation";
 import MainButton from "@/views/components/global/MainButton";
 import TextInput from "@/views/components/global/TextInput";
-import WrapperT1 from "@/views/layouts/WrapperT1";
 import React, { Component } from "react";
 import styles from "./SelectSite.module.css";
 
@@ -50,22 +50,13 @@ export default class SelectSite extends Component {
                 
                 if(data.result_code === env.SC.REPETITIVE_USERNAME){
                     
-                    window.location.href = env.PATHS.HOMEPAGE;
-
-                    // for testing and dev environment
-                    if(location.hostname === "localhost"){
+                    if(isDevEnv()){
 
                         setCookie(env.TENANT_KEY, this.state.subdomain, 365);
-                        window.location.href = env.PATHS.HOMEPAGE;
-
-                    }else{ // for deployment environment
-
-                        let minfo_domain = env.DOMAIN;
-                        let minfo_d_arr = minfo_domain.split("://");
-                        minfo_d_arr[1] = this.state.subdomain+"."+minfo_d_arr[1];
-                        let website_domain = minfo_d_arr.join("://");
-                        window.location.href = website_domain;
                     }
+
+                    window.location.href = createUserWebHref(env.PATHS.HOMEPAGE);
+
 
                 }else{
                     this.invalidSubdomain();

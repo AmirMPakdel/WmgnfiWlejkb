@@ -1,6 +1,7 @@
 import UserModel from "@/models/global/UserModel";
 import chest from "@/utils/chest";
-import { getCookie } from "@/utils/cookie";
+import { deleteCookie, getCookie } from "@/utils/cookie";
+import { createMinfoHref } from "@/utils/helpers";
 import Observer from "@/utils/observer";
 import StudentAuthModal from "@/views/components/modal/global/StudentAuthModal";
 import AccessLayout from "@/views/layouts/AccessLayout";
@@ -22,7 +23,7 @@ export default class AccessLayoutController{
         let utoken = getCookie(env.TOKEN_KEY);
 
         if(!utoken && !showWithoutAuth){
-            window.location.href = env.PATHS.USER_AUTHENTICATION+"?redirected=1";
+            window.location.href = createMinfoHref(env.PATHS.USER_AUTHENTICATION+"?redirected=1");
             return;
         }
         
@@ -44,6 +45,8 @@ export default class AccessLayoutController{
 
             }else if(showWithoutAuth){
 
+                deleteCookie(env.TOKEN_KEY);
+
                 this.view.setState({
                     loading: false,
                     authenticated: false,
@@ -51,7 +54,9 @@ export default class AccessLayoutController{
 
             }else{
 
-                window.location.href = env.PATHS.USER_AUTHENTICATION+"?redirected=1";
+                deleteCookie(env.TOKEN_KEY);
+
+                window.location.href = createMinfoHref(env.PATHS.USER_AUTHENTICATION+"?redirected=1");
             }
         });
     }
@@ -97,12 +102,16 @@ export default class AccessLayoutController{
 
             }else if(showWithoutAuth){
 
+                deleteCookie(env.STUDENT_TOKEN_KEY);
+
                 this.view.setState({
                     loading: false,
                     authenticated: false,
                 });
 
             }else{
+
+                deleteCookie(env.STUDENT_TOKEN_KEY);
 
                 chest.ModalLayout.setModal(1, <StudentAuthModal/>, ()=>{
                     chest.ModalLayout.visibleToggle(1, true);

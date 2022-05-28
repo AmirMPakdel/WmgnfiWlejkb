@@ -65,7 +65,8 @@ export default class CourseInvoice extends Component {
 
         return(
             <IndexLayout accessType="student"
-            showWithoutAuth={false}>
+            showWithoutAuth={false}
+            footerAutoLoad={true}>
 
                 <div className={styles.con}>
 
