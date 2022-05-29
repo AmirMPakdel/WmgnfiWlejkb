@@ -4,7 +4,7 @@ import {Collapse} from "react-collapse";
 import IconLine from "./IconLine";
 import Course from "@/views/dynamics/index/Course";
 import MainButton from "../global/MainButton";
-import { getTenant } from "@/utils/helpers";
+import { getTenant, getUrlPart } from "@/utils/helpers";
 import myServer from "@/utils/myServer";
 
 /**
@@ -89,7 +89,7 @@ class ContentRow extends Component{
             title = <span>{d.title} <span className={styles.crow_free_t}>{"رایگان"}</span></span>
         }
         let play_tab_href = createPlayUrl(d);
-        let download_href = createDownloadUrl(d);
+        let download_href = createDownloadUrl(d, getUrlPart(2));
         return(
             <div className={styles.crow_con}>
 
@@ -157,13 +157,13 @@ function createPlayUrl(data){
     return null;
 }
 
-function createDownloadUrl(data){
+function createDownloadUrl(data, course_id){
 
-    if(!data.url){
+    if(!data){
         return null;
     }
 
-    return myServer.MediaFiles.freeCourseMedia(data.url);
+    return myServer.MediaFiles.courseMedia(course_id, data.id, data.url);
 }
 
 function createDownloadName(url){

@@ -16,9 +16,9 @@ var env = {
 
     DOMAIN: "http://minfo.ir",
 
-    CONVERTOR_DOMAIN: "http://tootifa.ir/conv",
+    CONVERTOR_DOMAIN: "http://minfo.ir/conv",
 
-    MEDIA_PREFIX: "http://dltest.tootifa.ir",
+    MEDIA_PREFIX: "http://dl1.minfo.ir",
 
     VERIFICATION_CODE_LENGTH : 4,
 

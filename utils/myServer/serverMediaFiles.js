@@ -75,6 +75,15 @@ const MediaFiles = {
         });
 
         return `${myServer.urls.MEDIA_PREFIX}/course_media/${tenant}/${uploadKey}.${ext}`;
+    },
+
+    courseMedia:(course_id, content_id, upload_key)=>{
+
+        let username = getTenant();
+        let token = getCookie(env.STUDENT_TOKEN_KEY);
+        return env.MEDIA_PREFIX+"/download_student_course_item_2.php?"+
+            "username="+username+"&token="+token+"&content_id="+content_id+
+            "&course_id="+course_id+"&upload_key="+upload_key;
     }
 
 }
