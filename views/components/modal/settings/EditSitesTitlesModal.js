@@ -23,7 +23,7 @@ export default class EditSitesTitlesModal extends Component {
         this.state = {
             loading:true,
             title:"",
-            slogan:"",
+            motto:"",
         }
     }
     
@@ -31,12 +31,17 @@ export default class EditSitesTitlesModal extends Component {
         this.controller.loadSiteTitle();
     }
 
+    onInput=(k, v)=>{
+        this.state[k]=v;
+        this.setState(this.state);
+    }
+
     onCancel=()=>{
         chest.ModalLayout.closeAndDelete(1);
     }
 
     onConfirm=()=>{
-        this.controller.onConfirm();
+        this.controller.saveSiteInfo();
     }
     
     render(){
@@ -58,16 +63,14 @@ export default class EditSitesTitlesModal extends Component {
                         <div className={styles.form_body}>
 
                             <TextInput className={styles.title_input}
-                            //title={"عنوان سایت"}
                             placeholder={"عنوان سایت"}
                             value={this.state.title}
-                            onChange={this.onTitleInput}/>
+                            onChange={(v)=>this.onInput("title",v)}/>
 
-                            <TextInput className={styles.slogan_input}
-                            //title={"شعار سایت"}
+                            <TextInput className={styles.motto_input}
                             placeholder={"شعار سایت"}
-                            value={this.state.slogan}
-                            onChange={this.onSloganInput}/>
+                            value={this.state.motto}
+                            onChange={(v)=>this.onInput("motto",v)}/>
 
                         </div>
 

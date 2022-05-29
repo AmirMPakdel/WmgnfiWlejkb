@@ -51,14 +51,14 @@ export default class ProfileController{
                     city_id,
                     city_obj,
                     national_code: d.national_code,
-                    national_card: d.national_card,
+                    national_card: d.national_cart_image,
                     //account owner -> ao
-                    ao_first_name: d.ao_first_name,
-                    ao_last_name: d.ao_last_name,
-                    bank_name: d.bank_name,
+                    ao_first_name: d.account_owner_first_name,
+                    ao_last_name: d.account_owner_last_name,
+                    bank_name: d.bank,
                     account_number: d.account_number,
-                    shaba: d.shaba,
-                    a_card_number: d.a_card_number,
+                    shaba: d.shaba_number,
+                    a_card_number: d.credit_cart_number,
                 });
             }
         });
@@ -144,8 +144,11 @@ export default class ProfileController{
             chest.openNotification(Validation.email(vs.email).message, "error");
             can = false;
         }
+        if(!v.NationalCardInput.getFile() && !vs.national_card){
+            chest.openNotification("تصویر کارت ملی خود را آپلود نمایید.", "error");
+            can = false;
+        }
         return can;
-
     }
 
     updateBankAccountInfo(){
@@ -162,12 +165,12 @@ export default class ProfileController{
         v.setState({bankInfoBtn_loading:true});
 
         let params = {
-            ao_first_name: vs.ao_first_name,
-            ao_last_name: vs.ao_last_name,
-            bank_name: vs.bank_name,
+            account_owner_first_name: vs.ao_first_name,
+            account_owner_last_name: vs.ao_last_name,
+            bank: vs.bank_name,
             account_number: vs.account_number,
-            shaba: vs.shaba,
-            a_card_number: vs.a_card_number,
+            shaba_number: vs.shaba,
+            credit_cart_number: vs.a_card_number,
         }
 
         this.model.updateUserBankAccountInfo(params, (err, data)=>{
@@ -229,6 +232,27 @@ export default class ProfileController{
 
     getNationalCardUploadKey(cb){
 
-        cb("123456");
+        let vs = this.view.state;
+
+        let params = {
+            file_size: vs.file.size,
+            file_type: fileType2Ext(vs.file.type),
+            upload_type: env.UT.NATIONA_____,
+        }
+
+        if(this.view.props.uploadKey){
+            params.old_upload_key = this.view.props.uploadKey;
+        }
+
+        this.model.getNationalCardUploadKey(params, (err, data)=>{
+
+            if(data.result_code === env.SC.SUCCESS){
+                
+                // this.view.setState({upload_key:data.data.upload_key}, ()=>{
+
+                //     this.checkUploadKey(cb);
+                // });
+            }
+        })
     }
 }

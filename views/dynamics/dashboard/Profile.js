@@ -29,6 +29,8 @@ export default class Profile extends Component {
             baseInfoBtn_loading:false,
             bankInfoBtn_loading:false,
 
+            national_card_new:null,
+
             first_name:"",
             last_name: "",
             phone_number: "",
@@ -259,15 +261,14 @@ export default class Profile extends Component {
                             error={s.first_name_error}
                             value={this.state.account_number}
                             onChange={(t)=>this.onInput("account_number",t)}
-                            inputFilter={InputFilter.persianNameInputFilter}/>
+                            inputFilter={InputFilter.integer}/>
 
                             <TextInput className={styles.input}
                             placeholder={"شماره شبا"}
                             inputStyle={{fontFamily:"IranSansEng"}}
                             error={s.first_name_error}
                             value={this.state.shaba}
-                            onChange={(t)=>this.onInput("shaba",t)}
-                            inputFilter={InputFilter.persianNameInputFilter}/>
+                            onChange={(t)=>this.onInput("shaba",t)}/>
 
                             <TextInput className={styles.input}
                             placeholder={"شماره کارت"}
@@ -275,7 +276,7 @@ export default class Profile extends Component {
                             error={s.first_name_error}
                             value={this.state.a_card_number}
                             onChange={(t)=>this.onInput("a_card_number",t)}
-                            inputFilter={InputFilter.persianNameInputFilter}/>
+                            inputFilter={InputFilter.integer}/>
 
                             <div className={styles.submit_wrapper}>
 

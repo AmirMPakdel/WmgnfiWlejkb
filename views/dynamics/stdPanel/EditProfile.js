@@ -41,7 +41,7 @@ export default class EditProfile extends Component {
     }
     
     componentDidMount(){
-
+        
     }
 
     loadStudentInfo=()=>{

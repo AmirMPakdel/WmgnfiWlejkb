@@ -149,13 +149,6 @@ class InserPhonenumber extends Component{
 
 class InsertValidationCode extends Component{
 
-    componentDidMount(){
-        let p = this.props.parent;
-        let ps = p.state;
-        if(ps.can_send_sms_again){
-            p.onSendSmsCode();
-        }
-    }
 
     render(){
         let p = this.props.parent;

@@ -76,8 +76,7 @@ export default class StudentAuthModal extends Component {
     }
 
     onForgotLink=()=>{
-        Storage.store(env.STORAGE_KEYS.PHONE_NUMBER, this.state.mobile);
-        window.location.href = env.PATHS.CHANGE_PASSWORD_PAGE;
+        window.location.href = env.PATHS.STUDENT_CHANGE_PASSWORD;
     }
 
     onVerificationCodeInput=(v)=>{

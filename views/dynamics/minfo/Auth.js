@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import AuthController from "@/controllers/dynamics/minfo/AuthController";
-import Storage from "@/utils/storage";
 import { InputFilter } from "@/utils/validation";
 import Loading from "@/views/components/global/Loading";
 import MainButton from "@/views/components/global/MainButton";
@@ -78,7 +77,6 @@ export default class Auth extends Component {
     }
 
     onForgotLink=()=>{
-        Storage.store(env.STORAGE_KEYS.PHONE_NUMBER, this.state.mobile);
         window.location.href = env.PATHS.CHANGE_PASSWORD_PAGE;
     }
 

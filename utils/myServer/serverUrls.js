@@ -18,13 +18,22 @@ const ServerUrls = {
     MINFO_REGISTER_CHECK_TENANT: domain+prefixes.MA+"/user/tenant/check",
     MINFO_REGISTER_COMPLELTE_REGISTRATION: domain+prefixes.MA+"/user/register",
 
+    //user password reset
+    MINFO_RESET_PASSWORD_REQUEST: domain+prefixes.MA+"/user/passwordreset/request",
+    MINFO_RESET_CHECK_VALIDATION: domain+prefixes.MA+"/user/passwordreset/checktoken",
+    MINFO_RESET_PASSWORD_RESET: domain+prefixes.MA+"/user/passwordreset/reset",
+
     //user upload
     UPLOAD_GET_UPLOAD_KEY: domain+prefixes.UTA+"/upload/uploadkey",
     UPLOAD_COVERTOR_CHECK: env.CONVERTOR_DOMAIN+"/upload_check",
     UPLOAD_FILE_TO_CONVERTOR: env.CONVERTOR_DOMAIN+"/upload_progress",
 
-    //user educators
+    //user profile
     DASH_USER_INFO: domain+prefixes.UTA+"/profile/load",
+    DASH_EDIT_USER_INFO: domain+prefixes.UTA+"/profile/update",
+    DASH_EDIT_USER_BANK_INFO: domain+prefixes.UTA+"/profile/update/bank_info",
+
+    //user educators
     DASH_CREATE_EDUCATOR: domain+prefixes.UTA+"/educators/create",
     DASH_FETCH_EDUCATORS: domain+prefixes.UTA+"/educators/fetch",
     DASH_UPDATE_EDUCATOR: domain+prefixes.UTA+"/educators/update",
@@ -82,6 +91,11 @@ const ServerUrls = {
     STD_SEND_VERIFICATION_CODE: domain+prefixes.PSTA+"/verificationcode/send",
     STD_CHECK_VERIFICATION_CODE: domain+prefixes.PSTA+"/verificationcode/check",
     STD_REGISTRATION: domain+prefixes.PSTA+"/register",
+
+    //student password reset
+    STD_RESET_PASSWORD_REQUEST: domain+prefixes.PSTA+"/passwordreset/request",
+    STD_RESET_CHECK_VALIDATION: domain+prefixes.PSTA+"/passwordreset/checktoken",
+    STD_RESET_PASSWORD_RESET: domain+prefixes.PSTA+"/passwordreset/reset",
 
     //student profile
     STD_PROFILE: domain+prefixes.STA+"/profile/load",
