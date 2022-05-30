@@ -24,13 +24,12 @@ export default class CourseLicenseController{
 
             if(data.result_code === env.SC.SUCCESS){
 
+                let d = data.data;
                 v.setState({
                     loading: false,
-                    info:{
-                        license: "lj023jt8503kg86ls04jhtit85n403jg8i5nf94ntopbjheo04mk59",
-                        device1 : 1,
-                        device1_title: "PC-APackdel84751"
-                    }
+                    license: d.key,
+                    device_one: d.device_one,
+                    device_two: d.device_two,
                 });
             }
         });
@@ -38,7 +37,7 @@ export default class CourseLicenseController{
 
     copyCode(){
 
-        let text = this.view.state.info.license;
+        let text = this.view.state.license;
 
         if (!navigator.clipboard) {
 

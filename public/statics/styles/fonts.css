@@ -23,6 +23,10 @@
 	src: url("/statics/fonts/IRANSansWeb\(FaNum\)_Bold.woff") format("woff");
 }
 
+.engNum{
+    font-family: IranSansEng !important;
+}
+
 .cpnt{
     font-size: 0.8rem;
 }

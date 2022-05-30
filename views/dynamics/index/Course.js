@@ -13,6 +13,7 @@ import Loading from "@/views/components/global/Loading";
 import IndexLayout from "@/views/layouts/IndexLayout";
 import WrapperT1 from "@/views/layouts/WrapperT1";
 import styles from "./Course.module.css";
+import Observer from "@/utils/observer";
 
 export default class Course extends Component {
 
@@ -29,6 +30,13 @@ export default class Course extends Component {
     componentDidMount(){
         
         this.controller.getCourse();
+
+        Observer.add("onAuthenticate", this.controller.getCourse);
+    }
+
+    componentWillUnmount(){
+
+        Observer.remove("onAuthenticate", this.controller.getCourse);
     }
 
     addToWishlist=()=>{

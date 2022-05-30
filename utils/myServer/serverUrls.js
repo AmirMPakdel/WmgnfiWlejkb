@@ -103,6 +103,7 @@ const ServerUrls = {
 
     //student panel
     STD_COURSES_LIST: domain+prefixes.STA+"/courses/fetch/",
+    STD_COURSE_LICENSE_INFO: domain+prefixes.STA+"/course/lk",
     STD_WISHLIST: domain+prefixes.STA+"/courses/favorite/",
     STD_RECIEPTS: domain+prefixes.STA+"/transaction/get/list/",
 

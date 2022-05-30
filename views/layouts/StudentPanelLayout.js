@@ -6,6 +6,7 @@ import Observer from "@/utils/observer";
 import LogoutSvg from "@/views/svgs/Logout";
 import ProfileSvg from "@/views/svgs/Profile";
 import { deleteCookie } from "@/utils/cookie";
+import { HomeOutlined } from "@ant-design/icons"
 
 /**
 * Props of StudentPanelLayout Component
@@ -80,14 +81,30 @@ export default class StudentPanelLayout extends Component {
 
                             </div>
 
-                            <div className={styles.logout_con} onClick={this.onLogout}>
+                            <div className={styles.left_side}>
 
-                                <div className={styles.logout_text+" flc1 cpnt"}>{"خروج"}</div>
+                                
 
-                                <LogoutSvg className={styles.logout_img+" amp_btn"}
-                                stroke={"#FFF"}/>
+                                <div className={styles.link_con} onClick={this.onLogout}>
+
+                                    <div className={styles.logout_text+" flc1 cpnt"}>{"خروج"}</div>
+
+                                    <LogoutSvg className={styles.logout_img+" amp_btn"}
+                                    stroke={"#FFF"}/>
+
+                                </div>
+
+                                <a className={styles.link_con} href={env.PATHS.HOMEPAGE}>
+
+                                    <div className={styles.logout_text+" flc1 cpnt"}>{"خانه"}</div>
+
+                                    <HomeOutlined className={styles.home_icon}/>
+
+                                </a>
 
                             </div>
+
+                            
 
                         </div>
                         

@@ -43,14 +43,14 @@ export default class ProfileModel{
     */
     updateUserBaseInfo(params, cb){
     
-        if(env.MOCKING_SERVER || 1){
+        if(env.MOCKING_SERVER){
             setTimeout(()=>{
                 cb(null, {result_code:env.SC.SUCCESS});
             }, 2000, cb);
             return;
         }
     
-        myServer.Post(myServer.urls.SOME_URL, params, {}, (err, data)=>{
+        myServer.Post(myServer.urls.DASH_EDIT_USER_INFO, params, {}, (err, data)=>{
     
             if(!err){
             
@@ -78,6 +78,60 @@ export default class ProfileModel{
         }
     
         myServer.Post(myServer.urls.UPLOAD_GET_UPLOAD_KEY, params, {}, (err, data)=>{
+    
+            if(!err){
+            
+                cb(null, data);
+            
+            }else{
+            
+                myServer.ErrorHandler.type1(err);
+            }
+        });
+    }
+
+    /**
+    * 
+    * @param {object} params
+    * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
+    */
+    checkNationalCardUploadKey(params, cb){
+    
+        if(env.MOCKING_SERVER){
+            setTimeout(()=>{
+                cb(null, {result_code:env.SC.SUCCESS});
+            }, 2000, cb);
+            return;
+        }
+    
+        myServer.Post(myServer.urls.UPLOAD_COVERTOR_CHECK, params, {}, (err, data)=>{
+    
+            if(!err){
+            
+                cb(null, data);
+            
+            }else{
+            
+                myServer.ErrorHandler.type1(err);
+            }
+        });
+    }
+
+    /**
+    * 
+    * @param {object} params
+    * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
+    */
+    uploadNationalCardImage(params, cb){
+
+        if(env.MOCKING_SERVER){
+            setTimeout(()=>{
+                cb(null, {result_code:env.SC.SUCCESS});
+            }, 2000, cb);
+            return;
+        }
+    
+        myServer.Post(myServer.urls.UPLOAD_FILE_TO_CONVERTOR, params, {formData:true}, (err, data)=>{
     
             if(!err){
             

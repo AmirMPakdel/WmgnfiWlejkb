@@ -29,8 +29,6 @@ export default class Profile extends Component {
             baseInfoBtn_loading:false,
             bankInfoBtn_loading:false,
 
-            national_card_new:null,
-
             first_name:"",
             last_name: "",
             phone_number: "",
@@ -213,6 +211,7 @@ export default class Profile extends Component {
                             <ImageInput className={styles.input}
                             ref={r=>this.NationalCardInput=r}
                             title={"ارسال تصویر کارت ملی"}
+                            defaultUploadKey={s.national_card}
                             aspectRatio={"16:9"}/>
 
                             <div className={styles.submit_wrapper}>

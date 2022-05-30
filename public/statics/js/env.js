@@ -43,6 +43,7 @@ var env = {
 
     PATHS:{
         //minfo
+        MINFO_HOMEPAGE: "/",
         USER_AUTHENTICATION: "/minfo/auth",
         CHANGE_PASSWORD_PAGE: "/minfo/changePassword",
         MINFO_TERMS: "/minfo/terms",

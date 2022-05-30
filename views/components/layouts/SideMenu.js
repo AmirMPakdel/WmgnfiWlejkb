@@ -100,7 +100,7 @@ export default class SideMenu extends Component {
         return (
             <div ref={r=>this.SideMenu=r} className={styles.sidemenu_con}>
 
-                <div className={styles.sidemenu_title+" ftc2i"}>{"Minfo"}</div>
+                <a className={styles.sidemenu_title+" ftc2i"} href={env.PATHS.MINFO_HOMEPAGE}>{"Minfo"}</a>
 
                 <SideMenuBtn title="داشبورد" icon={CategorySvg}
                 onClick={this.onSelect} active_page={this.state.active_page} name="overview"/>

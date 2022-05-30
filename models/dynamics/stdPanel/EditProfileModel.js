@@ -16,11 +16,16 @@ export default class EditProfileModel{
             return;
         }
 
-        let student = Storage.get("student");
+        myServer.Post(myServer.urls.STD_PROFILE, params, {}, (err, data)=>{
     
-        cb(null, {
-            result_code:env.SC.SUCCESS,
-            data: student,
+            if(!err){
+            
+                cb(null, data);
+            
+            }else{
+            
+                myServer.ErrorHandler.type1(err);
+            }
         });
     }
 

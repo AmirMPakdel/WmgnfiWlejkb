@@ -5,16 +5,13 @@ import styles from "./NewCourseStep2.module.css";
 
 export default class NewCourseStep2 extends Component {
     
-    state={
-        selected:1
-    }
 
     onSecure = ()=>{
-        this.setState({selected:1})
+        this.props.parent.setState({is_encrypted:1})
     }
 
     onInsecure = ()=>{
-        this.setState({selected:0})
+        this.props.parent.setState({is_encrypted:0})
     }
 
     onPrevious=()=>{
@@ -46,7 +43,7 @@ export default class NewCourseStep2 extends Component {
                     {t}
                 </div>
 
-                <Checkbox className={styles.select} checked={this.state.selected===1}/>
+                <Checkbox className={styles.select} checked={this.props.parent.state.is_encrypted===1}/>
                 
             </div>
 
@@ -58,7 +55,7 @@ export default class NewCourseStep2 extends Component {
                     {t}
                 </div>
                 
-                <Checkbox className={styles.select} checked={this.state.selected===0}/>
+                <Checkbox className={styles.select} checked={this.props.parent.state.is_encrypted===0}/>
                 
             </div>
             

@@ -8,14 +8,14 @@ export default class CourseLicenseModel{
     */
     getLicenseData(params, cb){
     
-        if(env.MOCKING_SERVER || 1){
+        if(env.MOCKING_SERVER){
             setTimeout(()=>{
                 cb(null, {result_code:env.SC.SUCCESS});
             }, 800, cb);
             return;
         }
     
-        myServer.Post(myServer.urls.SOME_URL, params, {}, (err, data)=>{
+        myServer.Post(myServer.urls.STD_COURSE_LICENSE_INFO, params, {}, (err, data)=>{
     
             if(!err){
             
