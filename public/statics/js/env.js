@@ -1,6 +1,6 @@
 var env = {
 
-    ENVIRONMENT_MODE: "dev",
+    ENVIRONMENT_MODE: "auto", // dev | prd | auto
 
     MOCKING_SERVER: false,
 

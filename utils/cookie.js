@@ -1,5 +1,5 @@
 
-export function setCookie(cname, cvalue, exdays=0){
+export function setCookie(cname, cvalue, exdays=0, config){
 
     if(exdays){
 
@@ -8,13 +8,25 @@ export function setCookie(cname, cvalue, exdays=0){
         d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
         
         let expires = "expires=" + d.toUTCString();
+
+        let c = cname + "=" + cvalue + ";" + expires + ";path=/";
+
+        if(config.subdomain){
+            c += ";domain="+config.subdomain+".minfo.ir";
+        }
         
-        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        document.cookie = c;
 
     }else{
 
+        let c = cname + "=" + cvalue + ";path=/";
+
+        if(config.subdomain){
+            c += ";domain="+config.subdomain+".minfo.ir";
+        }
+
         //creating session cookie
-        document.cookie = cname + "=" + cvalue + ";path=/";
+        document.cookie = c;
     }
 }
     

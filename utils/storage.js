@@ -1,4 +1,4 @@
-import { getTenant } from "./helpers";
+import { getTenant, isDevEnv } from "./helpers";
 
 /**
  * Storage is a localStorage handler that
@@ -28,7 +28,7 @@ export default class Storage{
 
             if(!obj.toString){
                 
-                if(env.ENVIRONMENT_MODE === "dev"){
+                if(isDevEnv()){
                     alert("storing object can not be cast to string");
                 }
 
@@ -39,7 +39,7 @@ export default class Storage{
 
         }else{
 
-            if(env.ENVIRONMENT_MODE === "dev"){
+            if(isDevEnv()){
                 alert("storing object type of "+typeof(obj)+" rejected");
             }
 

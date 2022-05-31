@@ -55,7 +55,7 @@ export default class SelectSite extends Component {
                         setCookie(env.TENANT_KEY, this.state.subdomain, 365);
                     }
 
-                    window.location.href = createUserWebHref(env.PATHS.HOMEPAGE);
+                    window.location.href = createUserWebHref(env.PATHS.HOMEPAGE, this.state.subdomain);
 
 
                 }else{

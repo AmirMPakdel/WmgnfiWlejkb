@@ -18,6 +18,12 @@ export default helpers;
 */
 export function isDevEnv() {
     
+    if(env.ENVIRONMENT_MODE == "dev"){
+        return true;
+    }else if(env.ENVIRONMENT_MODE == "prd"){
+        return false;
+    }
+    // for auto
     if(location.hostname === "localhost"){
         return true;
     }
@@ -38,7 +44,7 @@ export function getTenant(){
     return tenant_name;
 }
 
-export function createUserWebHref(href) {
+export function createUserWebHref(href, tenant) {
     
     // for testing and dev environment
     if(isDevEnv()){
@@ -47,9 +53,10 @@ export function createUserWebHref(href) {
 
     }else{ // for deployment environment
 
+        if(!tenant){tenant = getTenant()}
         let minfo_domain = env.DOMAIN;
         let minfo_d_arr = minfo_domain.split("://");
-        minfo_d_arr[1] = this.state.subdomain+"."+minfo_d_arr[1];
+        minfo_d_arr[1] = tenant+"."+minfo_d_arr[1];
         let website_domain = minfo_d_arr.join("://");
         if(href == "/"){return website_domain;}
         return website_domain + href;

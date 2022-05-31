@@ -1,7 +1,7 @@
 import AuthModel from "@/models/dynamics/minfo/AuthModel";
 import chest from "@/utils/chest";
 import { setCookie } from "@/utils/cookie";
-import { createUserWebHref, getParamByName } from "@/utils/helpers";
+import { createUserWebHref, getParamByName, isDevEnv } from "@/utils/helpers";
 import Storage from "@/utils/storage";
 import { secondsToTime } from "@/utils/time";
 import Validation, { IsValid } from "@/utils/validation";
@@ -100,20 +100,26 @@ export default class AuthController{
 
                     this.view.setState({loading:false});
 
-                    //remove last user data if exists
-                    Storage.remove("user");
+                    if(isDevEnv()){
 
-                    setCookie(env.TOKEN_KEY, data.data.token, 365);
+                        //remove last user data if exists
+                        Storage.remove("user");
+                        setCookie(env.TOKEN_KEY, data.data.token, 365);
+                        setCookie(env.TENANT_KEY, data.data.username, 365);
+                    
+                    }else{
 
-                    setCookie(env.TENANT_KEY, data.data.username, 365);
+                        setCookie(env.TOKEN_KEY, data.data.token, 365, {subdomain: data.data.username});
+                        setCookie(env.TENANT_KEY, data.data.username, 365, {subdomain: data.data.username});
+                    }
 
                     if(getParamByName("redirected")=="1" && document.referrer){
 
-                        window.location.href = createUserWebHref(document.referrer);
+                        window.location.href = createUserWebHref(document.referrer, data.data.username);
 
                     }else{
 
-                        window.location.href = createUserWebHref(env.PATHS.USER_OVERVIEW);
+                        window.location.href = createUserWebHref(env.PATHS.USER_OVERVIEW, data.data.username);
                     }
 
                 }else{
@@ -353,12 +359,18 @@ export default class AuthController{
 
                 if(data.result_code===env.SC.SUCCESS){
 
-                    //remove last user data if exists
-                    Storage.remove("user");
+                    if(isDevEnv()){
+                        
+                        //remove last user data if exists
+                        Storage.remove("user");
+                        setCookie(env.TOKEN_KEY, data.data.token, 365);
+                        setCookie(env.TENANT_KEY, data.data.username, 365);
+                    
+                    }else{
 
-                    setCookie(env.TOKEN_KEY, data.data.token, 365);
-
-                    setCookie(env.TENANT_KEY, data.data.username, 365);
+                        setCookie(env.TOKEN_KEY, data.data.token, 365, {subdomain: data.data.username});
+                        setCookie(env.TENANT_KEY, data.data.username, 365, {subdomain: data.data.username});
+                    }
 
                     this.view.setState({page:"RegisterSuccessPage"});
 
@@ -443,6 +455,6 @@ export default class AuthController{
 
     onRegisterSuccessConfirm(){
 
-        window.location.href = createUserWebHref(env.PATHS.USER_OVERVIEW);
+        window.location.href = createUserWebHref(env.PATHS.USER_OVERVIEW, this.view.state.subdomain);
     }
 }
