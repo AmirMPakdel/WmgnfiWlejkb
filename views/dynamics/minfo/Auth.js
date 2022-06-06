@@ -411,7 +411,8 @@ class RegisterPage extends Component{
                 onClick={p.onRegisterConfirm}/>
 
                 {/*for the browsers auto username password fill*/}
-                <input style={{height:0}} autoComplete="username" type={"text"} value={ps.mobile}/>
+                <input style={{height:0}} onChange={()=>{}} autoComplete="username" 
+                type={"text"} value={ps.mobile}/>
 
             </div>
         )

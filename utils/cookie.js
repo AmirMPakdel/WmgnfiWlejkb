@@ -1,5 +1,5 @@
 
-export function setCookie(cname, cvalue, exdays=0, config){
+export function setCookie(cname, cvalue, exdays=0, config={}){
 
     if(exdays){
 

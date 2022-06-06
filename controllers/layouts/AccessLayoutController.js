@@ -23,7 +23,7 @@ export default class AccessLayoutController{
         let utoken = getCookie(env.TOKEN_KEY);
 
         if(!utoken && !showWithoutAuth){
-            window.location.href = createMinfoHref(env.PATHS.USER_AUTHENTICATION+"?redirected=1");
+            window.location.href = createMinfoHref(env.PATHS.USER_AUTHENTICATION);
             return;
         }
         
@@ -56,7 +56,7 @@ export default class AccessLayoutController{
 
                 deleteCookie(env.TOKEN_KEY);
 
-                window.location.href = createMinfoHref(env.PATHS.USER_AUTHENTICATION+"?redirected=1");
+                window.location.href = createMinfoHref(env.PATHS.USER_AUTHENTICATION);
             }
         });
     }

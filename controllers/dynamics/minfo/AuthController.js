@@ -104,22 +104,20 @@ export default class AuthController{
 
                         //remove last user data if exists
                         Storage.remove("user");
-                        setCookie(env.TOKEN_KEY, data.data.token, 365);
                         setCookie(env.TENANT_KEY, data.data.username, 365);
-                    
-                    }else{
-
-                        setCookie(env.TOKEN_KEY, data.data.token, 365, {subdomain: data.data.username});
-                        setCookie(env.TENANT_KEY, data.data.username, 365, {subdomain: data.data.username});
                     }
+
+                    let url = createUserWebHref(env.PATHS.USER_DASHBOARD, data.data.username);
+                    url += "?token="+data.data.token;
 
                     if(getParamByName("redirected")=="1" && document.referrer){
 
-                        window.location.href = createUserWebHref(document.referrer, data.data.username);
+
+                        window.location.href = url+="&redirect="+document.referrer;
 
                     }else{
 
-                        window.location.href = createUserWebHref(env.PATHS.USER_OVERVIEW, data.data.username);
+                        window.location.href = url;
                     }
 
                 }else{
@@ -316,7 +314,6 @@ export default class AuthController{
 
             this.model.getCheckUsername(params, (err, data)=>{
 
-                console.log(data);
                 if(data.result_code===env.SC.SUCCESS){
 
                     this.view.setState({subdomain_status:"success", subdomain_message:"این نام قابل رزرو است"});
@@ -331,7 +328,7 @@ export default class AuthController{
         }, 1000);
     }
 
-    registerConfirm(){
+    registerConfirm=()=>{
 
         if(this.lock)return;
 
@@ -359,17 +356,12 @@ export default class AuthController{
 
                 if(data.result_code===env.SC.SUCCESS){
 
-                    if(isDevEnv()){
-                        
+                    this.view.state.token = data.data.token;
+
+                    if(isDevEnv()){    
                         //remove last user data if exists
                         Storage.remove("user");
-                        setCookie(env.TOKEN_KEY, data.data.token, 365);
                         setCookie(env.TENANT_KEY, data.data.username, 365);
-                    
-                    }else{
-
-                        setCookie(env.TOKEN_KEY, data.data.token, 365, {subdomain: data.data.username});
-                        setCookie(env.TENANT_KEY, data.data.username, 365, {subdomain: data.data.username});
                     }
 
                     this.view.setState({page:"RegisterSuccessPage"});
@@ -453,8 +445,12 @@ export default class AuthController{
         return can;
     }
 
-    onRegisterSuccessConfirm(){
+    onRegisterSuccessConfirm=()=>{
 
-        window.location.href = createUserWebHref(env.PATHS.USER_OVERVIEW, this.view.state.subdomain);
+        let url = createUserWebHref(env.PATHS.USER_DASHBOARD, this.view.state.subdomain);
+
+        url+="?token="+this.view.state.token;
+
+        window.location.href = url;
     }
 }
