@@ -73,13 +73,13 @@ export default class EditCourseGroups extends Component {
                         <div className={styles.group_sec}>
                             {
                                 this.state.new_titles.map((v,i,a)=>(
-                                    <>
-                                        <span key={i+"-1"}>{v}</span>
+                                    <React.Fragment key={i}>
+                                        <span>{v}</span>
                                         {
                                             i!=(a.length-1)?
-                                            <span key={i+"-2"}>{" > "}</span>:null
+                                            <span>{" > "}</span>:null
                                         }
-                                    </>
+                                    </React.Fragment>
                                 ))
                             }
                         </div>

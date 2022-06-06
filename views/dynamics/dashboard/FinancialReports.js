@@ -1,6 +1,7 @@
 import FinancialReportsController from "@/controllers/dynamics/dashboard/FinancialReportsController";
 import { getParamByName } from "@/utils/helpers";
 import { priceFormat } from "@/utils/price";
+import { sqlTimeStamp2ShamsiDate } from "@/utils/time";
 import Loading from "@/views/components/global/Loading";
 import MainButton from "@/views/components/global/MainButton";
 import Pagination from "@/views/components/global/Pagination";
@@ -179,6 +180,7 @@ const table1_columns = [
     {
         title: 'تاریخ',
         dataIndex: 'created_at',
+        render: (text)=>(sqlTimeStamp2ShamsiDate(text)),
     },
     {
         title: 'قیمت (تومان)',
@@ -204,6 +206,7 @@ const table2_columns = [
     {
         title: 'تاریخ',
         dataIndex: 'created_at',
+        render: (text)=>(sqlTimeStamp2ShamsiDate(text)),
     },
     {
         title: 'مبلغ (تومان)',
@@ -229,6 +232,7 @@ const table3_columns = [
     {
         title: 'تاریخ',
         dataIndex: 'created_at',
+        render: (text)=>(sqlTimeStamp2ShamsiDate(text)),
     },
     {
         title: 'قیمت (تومان)',

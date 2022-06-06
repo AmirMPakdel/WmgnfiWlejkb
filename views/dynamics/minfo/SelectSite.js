@@ -1,26 +1,26 @@
 import chest from "@/utils/chest";
 import { setCookie } from "@/utils/cookie";
+import { createUserWebHref, isDevEnv } from "@/utils/helpers";
 import myServer from "@/utils/myServer";
 import { InputFilter } from "@/utils/validation";
 import MainButton from "@/views/components/global/MainButton";
 import TextInput from "@/views/components/global/TextInput";
-import WrapperT1 from "@/views/layouts/WrapperT1";
 import React, { Component } from "react";
-import styles from "./SiteSelect.module.css";
+import styles from "./SelectSite.module.css";
 
 /**
-* Props of SiteSelect Component
+* Props of SelectSite Component
 * @typedef Props
 * @property {string} className
 * @property {React.CSSProperties} style
 * 
 * @extends {Component<Props>}
 */
-export default class SiteSelect extends Component {
+export default class SelectSite extends Component {
     
     constructor(props){
         super(props);
-        //this.controller = new SiteSelectController(this);
+        //this.controller = new SelectSiteController(this);
         this.state = {
             loading:false,
             subdomain:"",
@@ -49,8 +49,15 @@ export default class SiteSelect extends Component {
             if(!err){
                 
                 if(data.result_code === env.SC.REPETITIVE_USERNAME){
-                    setCookie(env.TENANT_KEY, this.state.subdomain, 365);
-                    window.location.href = env.PATHS.HOMEPAGE;
+                    
+                    if(isDevEnv()){
+
+                        setCookie(env.TENANT_KEY, this.state.subdomain, 365);
+                    }
+
+                    window.location.href = createUserWebHref(env.PATHS.HOMEPAGE, this.state.subdomain);
+
+
                 }else{
                     this.invalidSubdomain();
                 }

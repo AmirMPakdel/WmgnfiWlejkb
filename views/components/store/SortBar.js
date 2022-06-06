@@ -4,6 +4,7 @@ import styles from "./SortBar.module.css";
 import CrossSvg from "@/views/svgs/Cross";
 import MainButton from "../global/MainButton";
 import { getParamByName } from "@/utils/helpers";
+import Observer from "@/utils/observer";
 
 /**
 * Props of SortBar Component
@@ -28,11 +29,22 @@ export default class SortBar extends Component {
     }
     
     componentDidMount(){
+
+        Observer.add("onUrlStateChange", this.onUrlStateChange);
+    }
+
+    onUrlStateChange=()=>{
+
+        let sort = getParamByName("sort");
+        let sort_mode = "sm_newest";
+        if(sort){
+            sort_mode = sort;
+        }
+        this.setState({selected:sort_mode});
     }
 
     onSelect=(key)=>{
         
-        this.setState({selected:key});
         this.props.onSortSelect(key);
     }
 

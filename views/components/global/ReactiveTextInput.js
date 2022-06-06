@@ -81,7 +81,7 @@ export default class ReactiveTextInput extends Component {
 
 
         return(
-            <div className={styles.tput_con +" "+add_class} style={this.props.style}>
+            <div className={styles.tput_con+" "+add_class} style={this.props.style}>
                 
                 {
                     this.props.title?

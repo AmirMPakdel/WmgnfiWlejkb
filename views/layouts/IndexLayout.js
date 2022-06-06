@@ -9,6 +9,7 @@ import IndextFooter from "@/views/components/layouts/IndexFooter";
  * @typedef Props 
  * @property {"noAuth"|"student"|"userL1"|"userL2"} accessType
  * @property {boolean} showWithoutAuth
+ * @property {boolean} footerAutoLoad
  * 
  * @extends {Component<Props>}
  */
@@ -27,7 +28,7 @@ export default class IndexLayout extends Component {
 
                         {this.props.children}
 
-                        <IndextFooter/>
+                        <IndextFooter autoLoad={this.props.footerAutoLoad}/>
 
                     </div>
                 

@@ -1,7 +1,7 @@
 import EditIntroElementModel from "@/models/components/modals/editHomePage/EditIntroElementModel";
 import chest from "@/utils/chest";
 import { getCookie } from "@/utils/cookie";
-import { fileType2Ext } from "@/utils/helpers";
+import { fileType2Ext, getTenant } from "@/utils/helpers";
 import EditIntroElementModal from "@/views/components/modal/editHomePage/EditIntroElementModal";
 
 export default class EditIntroElementController{
@@ -160,7 +160,7 @@ export default class EditIntroElementController{
                     token: params_1.token,
                     file_type: params_1.file_type,
                     upload_type: params_1.upload_type,
-                    tenant: getCookie(env.TENANT_KEY),
+                    tenant: getTenant(),
                     upload_key: data.data.upload_key,
                 }
 

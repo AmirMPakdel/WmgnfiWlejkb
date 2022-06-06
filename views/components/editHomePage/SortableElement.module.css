@@ -6,6 +6,7 @@
     margin-top: 1rem;
     overflow: hidden;
     border: 1px solid rgb(190, 190, 190);
+    user-select: none;
 }
 
 .sort_sec{
@@ -19,6 +20,8 @@
 .sort_icon{
     width: 1.4rem;
     height: 1.4rem;
+    pointer-events: none;
+    -webkit-user-drag: none;
 }
 
 .wrapper1{

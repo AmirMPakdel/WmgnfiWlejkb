@@ -1,3 +1,4 @@
+import IndexFooterController from "@/controllers/components/layouts/IndexFooterController";
 import Observer from "@/utils/observer";
 import React, { Component } from "react";
 import styles from "./IndexFooter.module.css";
@@ -7,6 +8,7 @@ import styles from "./IndexFooter.module.css";
 * @typedef Props
 * @property {string} className
 * @property {React.CSSProperties} style
+* @property {boolean} autoLoad
 * 
 * @extends {Component<Props>}
 */
@@ -14,7 +16,9 @@ export default class IndexFooter extends Component {
     
     constructor(props){
         super(props);
+        this.controller = new IndexFooterController(this);
         this.state = {
+            loading: true,
             social_links: [],
             contact_numbers: [],
         }
@@ -23,6 +27,11 @@ export default class IndexFooter extends Component {
     componentDidMount(){
 
         Observer.add("onFooterChange", this.loadFooter);
+
+        // get the footer data from server
+        if(this.props.autoLoad){
+            this.fetchData();
+        }
     }
 
     componentWillUnmount(){
@@ -30,13 +39,16 @@ export default class IndexFooter extends Component {
         Observer.remove("onFooterChange", this.loadFooter);
     }
 
-    loadFooter=(data)=>{
+    fetchData=()=>{
 
-        console.log(data);
+        this.controller.fetchData();
+    }
+
+    loadFooter=(data)=>{
 
         let social_links = transforSocialMedias(data);
         let contact_numbers = transformNumbers(data);
-        this.setState({social_links, contact_numbers});
+        this.setState({loading:false, social_links, contact_numbers});
     }
     
     render(){
@@ -49,7 +61,9 @@ export default class IndexFooter extends Component {
 
                 <div className={styles.contact_numbers}>
 
-                    {"شماره تماس "}
+                    {
+                        numbers.length? "شماره تماس ":null
+                    }
 
                     {
                         numbers.map((v,i,a)=>(
@@ -97,6 +111,8 @@ const transformNumbers=(data)=>{
 
     let d = data.numbers;
 
+    if(!d){return numbers};
+
     if(d.mobile1){
         numbers.push(d.mobile1);
     }
@@ -118,6 +134,8 @@ const transforSocialMedias=(data)=>{
     let d = data.links;
 
     let links = [];
+
+    if(!d){return links};
 
     if(d.email){
         links.push({

@@ -1,6 +1,6 @@
 var env = {
 
-    ENVIRONMENT_MODE: "dev",
+    ENVIRONMENT_MODE: "auto", // dev | prd | auto
 
     MOCKING_SERVER: false,
 
@@ -18,7 +18,7 @@ var env = {
 
     CONVERTOR_DOMAIN: "http://minfo.ir/conv",
 
-    MEDIA_PREFIX: "http://dltest.tootifa.ir",
+    MEDIA_PREFIX: "http://dl1.minfo.ir",
 
     VERIFICATION_CODE_LENGTH : 4,
 
@@ -43,10 +43,12 @@ var env = {
 
     PATHS:{
         //minfo
+        MINFO_HOMEPAGE: "/",
         USER_AUTHENTICATION: "/minfo/auth",
         CHANGE_PASSWORD_PAGE: "/minfo/changePassword",
         MINFO_TERMS: "/minfo/terms",
         MINFO_PRIVACY: "/minfo/privacy",
+        MINFO_SELECT_SITE: "/minfo/selectSite",
         //studen panel
         STUDENT_COURSES: "/stdPanel/myCourses",
         STUDENT_WISHLIST: "/stdPanel/myWishlist",
@@ -59,6 +61,7 @@ var env = {
         COURSE_INVOICE: "/courseInvoice/",
         STUDENT_CHANGE_PASSWORD: "/changePassword",
         //user dashboard
+        USER_DASHBOARD: "/dashboard",
         USER_OVERVIEW: "/dashboard/overview",
         USER_MYCOURSES: "/dashboard/myCourses",
         USER_NEW_COURSE: "/dashboard/newCourse",

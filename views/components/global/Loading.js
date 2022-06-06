@@ -24,10 +24,10 @@ export default class Loading extends Component {
              style={s}>
                 
                 <div className={styles.loading_centerize_wrapper}>
-                    <div className={styles.lds_facebook}>
-                        <div className={"bgtc1 bdc2"}></div>
-                        <div className={"bgtc1 bdc2"}></div>
-                        <div className={"bgtc1 bdc2"}></div>
+                    <div className={styles.lds_shape}>
+                        <div className={"bgtc1"}></div>
+                        <div className={"bgtc1"}></div>
+                        <div className={"bgtc1"}></div>
                     </div>
                 </div>
                 

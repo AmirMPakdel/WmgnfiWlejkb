@@ -1,6 +1,6 @@
 import CourseInvoiceModel from "@/models/dynamics/index/CourseInvoiceModel";
 import { getCookie } from "@/utils/cookie";
-import { getUrlPart } from "@/utils/helpers";
+import { getTenant, getUrlPart } from "@/utils/helpers";
 import myServer from "@/utils/myServer";
 import CourseInvoice from "@/views/dynamics/index/CourseInvoice";
 
@@ -69,7 +69,7 @@ export default class CourseInvoiceController{
 
                 window.location.href = myServer.urls.STD_OPEN_TRANSACTION_PORTAL+
                 `?transaction_id=${d.id}&`+
-                `tenant=${getCookie(env.TENANT_KEY)}&`+
+                `tenant=${getTenant()}&`+
                 `token=${getCookie(env.STUDENT_TOKEN_KEY)}`
             }
 

@@ -1,5 +1,9 @@
 import ProfileModel from "@/models/dynamics/dashboard/ProfileModel";
+import UserModel from "@/models/global/UserModel";
 import chest from "@/utils/chest";
+import { fileType2Ext, getTenant } from "@/utils/helpers";
+import Observer from "@/utils/observer";
+import Storage from "@/utils/storage";
 import Validation from "@/utils/validation";
 import Profile from "@/views/dynamics/dashboard/Profile";
 
@@ -40,6 +44,8 @@ export default class ProfileController{
                     city_obj = FIND_CITY_BY_ID(city_id);                    
                 }
 
+                
+
                 v.setState({
                     loading: false,
                     first_name: d.first_name,
@@ -50,15 +56,16 @@ export default class ProfileController{
                     province_obj,
                     city_id,
                     city_obj,
+                    cities,
                     national_code: d.national_code,
-                    national_card: d.national_card,
+                    national_card: d.national_cart_image,
                     //account owner -> ao
-                    ao_first_name: d.ao_first_name,
-                    ao_last_name: d.ao_last_name,
-                    bank_name: d.bank_name,
+                    ao_first_name: d.account_owner_first_name,
+                    ao_last_name: d.account_owner_last_name,
+                    bank_name: d.bank,
                     account_number: d.account_number,
-                    shaba: d.shaba,
-                    a_card_number: d.a_card_number,
+                    shaba: d.shaba_number,
+                    a_card_number: d.credit_cart_number,
                 });
             }
         });
@@ -87,15 +94,16 @@ export default class ProfileController{
             state: vs.province_id,
             city: vs.city_id,
             email: vs.email,
+            national_code: "2581095598",//vs.national_code,
         };
 
         let nc_file = v.NationalCardInput.getFile();
 
         if(nc_file){
 
-            this.getNationalCardUploadKey((uploadKey)=>{
+            this.getNationalCardUploadKey(v.NationalCardInput.getFile(), vs.national_card, (uploadKey)=>{
 
-                params.national_card = uploadKey;
+                params.upload_key = uploadKey;
 
                 if(vs.national_card){
 
@@ -144,8 +152,11 @@ export default class ProfileController{
             chest.openNotification(Validation.email(vs.email).message, "error");
             can = false;
         }
+        if(!v.NationalCardInput.getFile() && !vs.national_card){
+            chest.openNotification("تصویر کارت ملی خود را آپلود نمایید.", "error");
+            can = false;
+        }
         return can;
-
     }
 
     updateBankAccountInfo(){
@@ -162,12 +173,12 @@ export default class ProfileController{
         v.setState({bankInfoBtn_loading:true});
 
         let params = {
-            ao_first_name: vs.ao_first_name,
-            ao_last_name: vs.ao_last_name,
-            bank_name: vs.bank_name,
+            account_owner_first_name: vs.ao_first_name,
+            account_owner_last_name: vs.ao_last_name,
+            bank: vs.bank_name,
             account_number: vs.account_number,
-            shaba: vs.shaba,
-            a_card_number: vs.a_card_number,
+            shaba_number: vs.shaba,
+            credit_cart_number: vs.a_card_number,
         }
 
         this.model.updateUserBankAccountInfo(params, (err, data)=>{
@@ -220,15 +231,86 @@ export default class ProfileController{
 
             if(data.result_code === env.SC.SUCCESS){
 
+                Storage.remove("user");
                 chest.openNotification("اطلاعات حساب کاربری شما با موفقیت بروزرسانی شد.", "success");
+                this.userModel = new UserModel();
+                this.userModel.getUser(null, (err, data)=>{
+                    if(data.result_code === env.SC.SUCCESS){
+                        let user = data.data;
+                        chest.user = user;
+                        Observer.execute("onUserChange", user);
+                        Observer.execute("onAuthenticate", user);
+                    }
+                });
             }
 
             this.view.setState({baseInfoBtn_loading:false});
         });
     }
 
-    getNationalCardUploadKey(cb){
+    getNationalCardUploadKey(file, old_upload_key, cb){
 
-        cb("123456");
+        if(!file){return}
+
+        let params = {
+            file_size: file.size,
+            file_type: fileType2Ext(file.type),
+            upload_type: "ut_national_cart_image", //TODO:: use env.UT
+        }
+
+        if(old_upload_key){
+            params.old_upload_key = old_upload_key;
+        }
+
+        this.model.getNationalCardUploadKey(params, (err, data)=>{
+
+            if(data.result_code === env.SC.SUCCESS){
+                
+                this.checkNationalCardUploadKey(file, data.data.upload_key, cb);
+            }
+        });
+    }
+
+    checkNationalCardUploadKey(file, upload_key, cb){
+
+        if(!upload_key){return}
+
+        let params = {
+            file_size: file.size,
+            file_type: fileType2Ext(file.type),
+            upload_type:"ut_national_cart_image", //TODO:: use env.UT
+            upload_key: upload_key,
+        }
+
+        params.tenant = getTenant();
+
+        this.model.checkNationalCardUploadKey(params, (err, data)=>{
+
+            if(data.result_code === env.CSC.SUCCESS){
+
+                this.uploadImage(file, upload_key, data.data.upload_id, cb);
+            }
+        });
+    }
+
+    uploadImage(file, upload_key, upload_id, cb){
+
+        if(!upload_id){return}
+
+        let params = {
+            mfile: file,
+            upload_id: upload_id,
+            upload_key: upload_key,
+        }
+
+        params.tenant = getTenant();
+
+        this.model.uploadNationalCardImage(params, (err, data)=>{
+
+            if(data.result_code === env.CSC.SUCCESS){
+                
+                cb(upload_key);
+            }
+        })
     }
 }

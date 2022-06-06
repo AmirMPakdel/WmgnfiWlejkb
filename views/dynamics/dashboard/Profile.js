@@ -211,6 +211,7 @@ export default class Profile extends Component {
                             <ImageInput className={styles.input}
                             ref={r=>this.NationalCardInput=r}
                             title={"ارسال تصویر کارت ملی"}
+                            defaultUploadKey={s.national_card}
                             aspectRatio={"16:9"}/>
 
                             <div className={styles.submit_wrapper}>
@@ -259,15 +260,14 @@ export default class Profile extends Component {
                             error={s.first_name_error}
                             value={this.state.account_number}
                             onChange={(t)=>this.onInput("account_number",t)}
-                            inputFilter={InputFilter.persianNameInputFilter}/>
+                            inputFilter={InputFilter.integer}/>
 
                             <TextInput className={styles.input}
                             placeholder={"شماره شبا"}
                             inputStyle={{fontFamily:"IranSansEng"}}
                             error={s.first_name_error}
                             value={this.state.shaba}
-                            onChange={(t)=>this.onInput("shaba",t)}
-                            inputFilter={InputFilter.persianNameInputFilter}/>
+                            onChange={(t)=>this.onInput("shaba",t)}/>
 
                             <TextInput className={styles.input}
                             placeholder={"شماره کارت"}
@@ -275,7 +275,7 @@ export default class Profile extends Component {
                             error={s.first_name_error}
                             value={this.state.a_card_number}
                             onChange={(t)=>this.onInput("a_card_number",t)}
-                            inputFilter={InputFilter.persianNameInputFilter}/>
+                            inputFilter={InputFilter.integer}/>
 
                             <div className={styles.submit_wrapper}>
 

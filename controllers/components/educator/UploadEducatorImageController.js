@@ -1,7 +1,7 @@
 import UploadEducatorModel from "@/models/components/educator/UploadEducatorModel";
 import chest from "@/utils/chest";
 import { getCookie } from "@/utils/cookie";
-import { fileType2Ext } from "@/utils/helpers";
+import { fileType2Ext, getTenant } from "@/utils/helpers";
 import UploadEducatorImage from "@/views/components/educator/UploadEducatorImage";
 
 export default class UploadEducatorImageController{
@@ -87,7 +87,7 @@ export default class UploadEducatorImageController{
             upload_key: vs.upload_key,
         }
 
-        params.tenant = getCookie(env.TENANT_KEY);
+        params.tenant = getTenant();
 
         this.model.getUploadCheck(params, (err, data)=>{
 
@@ -115,7 +115,7 @@ export default class UploadEducatorImageController{
             upload_key: vs.upload_key,
         }
 
-        params.tenant = getCookie(env.TENANT_KEY);
+        params.tenant = getTenant();
 
         this.model.getUploadFile(params, (err, data)=>{
 

@@ -1,4 +1,5 @@
 import ChangePasswordModel from "@/models/dynamics/minfo/ChangePasswordModel";
+import chest from "@/utils/chest";
 import { secondsToTime } from "@/utils/time";
 import Validation from "@/utils/validation";
 import ChangePassword from "@/views/dynamics/minfo/ChangePassword";
@@ -17,7 +18,30 @@ export default class ChangePasswordController{
 
         if(res){
 
-            this.view.setState({step:2});
+            let params = {
+                phone_number: this.view.state.mobile
+            }
+
+            this.view.setState({loading:true});
+
+            this.model.resetRequest(params, (err, data)=>{
+
+                if(data.result_code === env.SC.SUCCESS){
+
+                    this.view.state.step = 2;
+                    this.startCountdown();
+
+                }else if(data.result_code === env.SC.USER_NOT_FOUND){
+
+                    chest.openNotification("شماره موبایل اشتباه است.", "error");
+
+                }else if(data.result_code === env.SC.PASSWORD_RESET_REQUEST_LIMIT_ERROR){
+
+                    chest.openNotification("برای تلاش مجدد لطفا اندکی صبر فرمایید.", "error");
+                }
+
+                this.view.setState({loading:false});
+            });
         }
     }
 
@@ -60,25 +84,20 @@ export default class ChangePasswordController{
             phone_number : this.view.state.mobile
         }
 
-        this.model.sendVerificationCode(params, (err, data)=>{
-
-            if(typeof cb === "function")cb();
-
-            this.view.state.show_timer_bar=true;
+        this.model.resetRequest(params, (err, data)=>{
 
             if(data.result_code === env.SC.SUCCESS){
-
+                
+                this.view.state.show_timer_bar=true;
                 this.startCountdown();
 
-            }else if(data.result_code === env.SC.USER_ALREADY_VERIFIED){
+            }else if(data.result_code === env.SC.USER_NOT_FOUND){
 
-                //TODO: what to do?
-                this.view.setState({loading:false});
+                chest.openNotification("شماره موبایل اشتباه است.", "error");
 
-            }else{
+            }else if(data.result_code === env.SC.PASSWORD_RESET_REQUEST_LIMIT_ERROR){
 
-                //TODO: handle other stuff?
-                this.view.setState({loading:false});
+                chest.openNotification("برای تلاش مجدد لطفا اندکی صبر فرمایید.", "error");
             }
 
             this.lock = false;
@@ -131,32 +150,27 @@ export default class ChangePasswordController{
             this.view.setState({loading:true});
 
             let params = {
-                code: this.view.state.verification_code,
-                phone_number : this.view.state.mobile,
+                token: this.view.state.verification_code,
             }
 
-            this.model.verifyCode(params, (err, data)=>{
+            this.model.checkValidationCode(params, (err, data)=>{
 
                 if(data.result_code === env.SC.SUCCESS){
                     
                     this.clearSmsCountdown();
 
-                    this.view.setState({
-                        loading:false,
-                        step:3,
-                    });
+                    this.view.state.step = 3;
 
-                }else if(data.result_code === env.SC.INVALID_VERIFICATION_CODE){
+                }else if(data.result_code === env.SC.INVALID_TOKEN){
 
-                    this.view.setState({
-                        loading:false,
-                        verification_code_error: "کد تایید وارد شده اشتباه است."
-                    });
+                    this.view.state.verification_code_error = "کد تایید وارد شده اشتباه است.";
 
-                }else{
+                }else if(data.result_code === env.SC.PASSWORD_RESET_REQUEST_LIMIT_ERROR){
 
-                    this.view.setState({loading:false});
+                    chest.openNotification("برای تلاش مجدد لطفا اندکی صبر فرمایید.", "error");
                 }
+
+                this.view.setState({loading:false});
 
                 this.lock = false;
             });
@@ -198,18 +212,23 @@ export default class ChangePasswordController{
             this.view.setState({loading:true});
 
             let params = {
+                token: this.view.state.verification_code,
                 password:vs.password,
             }
             
-            this.model.saveNewPassword(params, (err, data)=>{
+            this.model.resetPassword(params, (err, data)=>{
 
                 if(data.result_code===env.SC.SUCCESS){
 
                     this.view.setState({step:4});
 
-                }else{
+                }else if(data.result_code===env.SC.INVALID_TOKEN){
                     
-                    //show error
+                    chest.openNotification("کد تایید وارد شده اشتباه است.", "error");
+                    
+                }else if(data.result_code===env.SC.USER_NOT_FOUND){
+
+                    chest.openNotification("برای تلاش مجدد لطفا اندکی صبر فرمایید.", "error");
                 }
 
                 this.view.setState({loading:false});
@@ -247,6 +266,6 @@ export default class ChangePasswordController{
     }
 
     goToHomePage(){
-        window.location.href="/minfo/auth";
+        window.location.href= env.PATHS.USER_AUTHENTICATION;
     }
 }

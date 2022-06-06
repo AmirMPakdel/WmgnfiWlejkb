@@ -1,6 +1,7 @@
 import EditSitesIconModel from "@/models/components/modals/settings/EditSitesIconModel";
 import chest from "@/utils/chest";
 import { getCookie } from "@/utils/cookie";
+import { getTenant } from "@/utils/helpers";
 import EditSitesIconModal from "@/views/components/modal/settings/EditSitesIconModal";
 
 export default class EditSitesIconController{
@@ -82,7 +83,7 @@ export default class EditSitesIconController{
             mfile: vs.file,
         }
 
-        params.tenant = getCookie(env.TENANT_KEY);
+        params.tenant = getTenant();
 
         this.model.uploadIcon(params, (err, data)=>{
 

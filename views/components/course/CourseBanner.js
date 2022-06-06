@@ -26,9 +26,18 @@ export default class CourseBanner extends Component {
         window.location.href = env.PATHS.COURSE_INVOICE+getUrlPart(2);
     }
 
-    // onRate=(rate)=>{
-    //     this.props.parent.onRate(rate);
-    // }
+    onShare=()=>{
+
+        const shareData = {
+            title: this.props.parent.state.course.title,
+            text: document.title,
+            url: window.location.href,
+        }
+
+        if(navigator.canShare(shareData)){
+            navigator.share(shareData);
+        }
+    }
     
     render(){
         let ps = this.props.parent.state;
@@ -54,7 +63,6 @@ export default class CourseBanner extends Component {
                         onChange={this.onRate}/>
                         {"( "+c.score+" )"}
                     </div>
-                    
 
                 </div>
 
@@ -69,6 +77,7 @@ export default class CourseBanner extends Component {
                 <div className={styles.row3}>
 
                     <IconButton className={styles.tablet_icon_btn} borderMode
+                    onClick={this.onShare}
                     icon={"/statics/img/send_l-w.svg"} title={"به اشتراک گذاری"}/>
 
                     {
@@ -84,7 +93,6 @@ export default class CourseBanner extends Component {
                         icon={"/statics/img/heart_l-w.svg"}
                         title={<div className={styles.tablet_icon_btn_t}>{"افزودن به علاقمندی ها"}</div>}
                         onClick={this.props.parent.addToWishlist}/>
-                        
                     }
                     
                 </div>
@@ -114,9 +122,8 @@ export default class CourseBanner extends Component {
                     
                     <div className={styles.price_wrapper+" flc1"}>
 
-                        <Price
-                        offPercent={c.discount}
-                        orginalPrice={c.price}
+                        <Price 
+                        withDiscount={c.discount_price}
                         price={c.price}/>
 
                     </div>
@@ -129,7 +136,7 @@ export default class CourseBanner extends Component {
                     whiteBorder={true}/> */}
 
                     {
-                        c.registered?
+                        c.access_type == "3" || c.access_type == "4"?
                         <div className={styles.tablet_buy_btn+" bgsc fdc1 bdyt"}>{"خریداری شده"}</div>
                         :
                         <MainButton className={styles.tablet_buy_btn} 

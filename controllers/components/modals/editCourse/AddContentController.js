@@ -1,7 +1,7 @@
 import AddContentModel from "@/models/components/modals/editCourse/AddContentModel";
 import chest from "@/utils/chest";
 import { getCookie } from "@/utils/cookie";
-import { fileType2Ext, getUrlPart } from "@/utils/helpers";
+import { fileType2Ext, getTenant, getUrlPart } from "@/utils/helpers";
 import AddContentModal from "@/views/components/modal/editCourse/AddContentModal";
 
 export default class AddContentController{
@@ -53,7 +53,7 @@ export default class AddContentController{
                     file_type: params1.file_type,
                     upload_type: params1.upload_type,
                     course_id: getUrlPart(3),
-                    tenant: getCookie(env.TENANT_KEY),
+                    tenant: getTenant(),
                     upload_key: data.data.upload_key,
                 }
 
@@ -62,7 +62,7 @@ export default class AddContentController{
         });
     }
 
-    checkUploadKey(file, params1, params2){
+    checkUploadKey=(file, params1, params2)=>{
 
         this.model.checkUploadKey(params2, (err, data)=>{
 
@@ -91,7 +91,7 @@ export default class AddContentController{
         });
     }
 
-    uploadFile(params3, params2){
+    uploadFile=(params3, params2)=>{
 
         this.model.uploadFile(params3, this.onUploadProgress, (err, data)=>{
 
@@ -117,7 +117,7 @@ export default class AddContentController{
         });
     }
 
-    save(params4, params3, params2){
+    save=(params4, params3, params2)=>{
 
         this.model.save(params4, (err, data)=>{
 
@@ -145,13 +145,17 @@ export default class AddContentController{
 
                     if(v1.id === this.view.props.heading.id){
 
-                        v1.children.push({id:data.data.content_id, title:this.view.state.title})
+                        v1.children.push({
+                            id:data.data.content_id, 
+                            title:this.view.state.title, 
+                            type:contentType2CT(this.view.props.type)
+                        });
                     }
                 });
 
                 EditCourse.state.old_values.contents = EditCourse.state.new_values.contents.map(e=>e);
 
-                console.log(EditCourse.state.old_values.contents);
+                //console.log(EditCourse.state.old_values.contents);
 
                 EditCourse.state.old_values.content_hierarchy.children = EditCourse.state.new_values.content_hierarchy.children.map(e=>e);
 
@@ -159,6 +163,8 @@ export default class AddContentController{
                 EditCourse.state.status.content_hierarchy = "idle";
 
                 EditCourse.setState(EditCourse.state, ()=>{
+
+                    console.log(EditCourse.state);
 
                     //save new content_hierarchy which includes new heading
                     let params = {

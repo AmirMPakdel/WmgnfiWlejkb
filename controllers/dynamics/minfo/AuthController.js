@@ -1,7 +1,8 @@
 import AuthModel from "@/models/dynamics/minfo/AuthModel";
 import chest from "@/utils/chest";
 import { setCookie } from "@/utils/cookie";
-import { getParamByName } from "@/utils/helpers";
+import { createUserWebHref, getParamByName, isDevEnv } from "@/utils/helpers";
+import Storage from "@/utils/storage";
 import { secondsToTime } from "@/utils/time";
 import Validation, { IsValid } from "@/utils/validation";
 import Auth from "@/views/dynamics/minfo/Auth";
@@ -99,17 +100,24 @@ export default class AuthController{
 
                     this.view.setState({loading:false});
 
-                    setCookie(env.TOKEN_KEY, data.data.token, 365);
+                    if(isDevEnv()){
 
-                    setCookie(env.TENANT_KEY, data.data.username, 365);
+                        //remove last user data if exists
+                        Storage.remove("user");
+                        setCookie(env.TENANT_KEY, data.data.username, 365);
+                    }
+
+                    let url = createUserWebHref(env.PATHS.USER_DASHBOARD, data.data.username);
+                    url += "?token="+data.data.token;
 
                     if(getParamByName("redirected")=="1" && document.referrer){
 
-                        window.location.href = document.referrer;
+
+                        window.location.href = url+="&redirect="+document.referrer;
 
                     }else{
 
-                        window.location.href = env.PATHS.USER_OVERVIEW;
+                        window.location.href = url;
                     }
 
                 }else{
@@ -123,7 +131,6 @@ export default class AuthController{
                 this.lock = false;
             });
         }
-
     }
 
     passwordPageInputCheck(){
@@ -307,7 +314,6 @@ export default class AuthController{
 
             this.model.getCheckUsername(params, (err, data)=>{
 
-                console.log(data);
                 if(data.result_code===env.SC.SUCCESS){
 
                     this.view.setState({subdomain_status:"success", subdomain_message:"این نام قابل رزرو است"});
@@ -322,7 +328,7 @@ export default class AuthController{
         }, 1000);
     }
 
-    registerConfirm(){
+    registerConfirm=()=>{
 
         if(this.lock)return;
 
@@ -350,9 +356,13 @@ export default class AuthController{
 
                 if(data.result_code===env.SC.SUCCESS){
 
-                    setCookie(env.TOKEN_KEY, data.data.token, 1);
+                    this.view.state.token = data.data.token;
 
-                    setCookie(env.TENANT_KEY, data.data.username, 1);
+                    if(isDevEnv()){    
+                        //remove last user data if exists
+                        Storage.remove("user");
+                        setCookie(env.TENANT_KEY, data.data.username, 365);
+                    }
 
                     this.view.setState({page:"RegisterSuccessPage"});
 
@@ -433,5 +443,14 @@ export default class AuthController{
         this.view.setState(newState);
 
         return can;
+    }
+
+    onRegisterSuccessConfirm=()=>{
+
+        let url = createUserWebHref(env.PATHS.USER_DASHBOARD, this.view.state.subdomain);
+
+        url+="?token="+this.view.state.token;
+
+        window.location.href = url;
     }
 }

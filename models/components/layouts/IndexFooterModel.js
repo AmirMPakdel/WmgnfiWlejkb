@@ -1,21 +1,21 @@
 import myServer from "@/utils/myServer";
 
-export default class CourseLicenseModel{
+export default class IndexFooterModel{
     
     /**
     * @param {object} params
     * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
     */
-    getLicenseData(params, cb){
+    getData(params, cb){
     
         if(env.MOCKING_SERVER){
             setTimeout(()=>{
                 cb(null, {result_code:env.SC.SUCCESS});
-            }, 800, cb);
+            }, 2000, cb);
             return;
         }
     
-        myServer.Post(myServer.urls.STD_COURSE_LICENSE_INFO, params, {}, (err, data)=>{
+        myServer.Post(myServer.urls.STD_LOAD_FOOTER, params, {}, (err, data)=>{
     
             if(!err){
             

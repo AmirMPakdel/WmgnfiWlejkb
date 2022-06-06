@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import styles from "./IndexHeader.module.css";
 import chest from "@/utils/chest";
 import StudentAuthModal from "@/views/components/modal/global/StudentAuthModal";
-import Storage from "@/utils/storage";
 import Observer from "@/utils/observer";
-import AccessLayoutController, { getStudent } from "@/controllers/layouts/AccessLayoutController";
+import { getStudent } from "@/controllers/layouts/AccessLayoutController";
+import { deleteCookie, getCookie } from "@/utils/cookie";
 
 /**
 * Props of IndexHeader Component
@@ -30,7 +30,9 @@ export default class IndexHeader extends Component {
     
     componentDidMount(){
 
-        getStudent(this.getStudent);
+        if(getCookie(env.STUDENT_TOKEN_KEY)){
+            getStudent(this.getStudent);
+        }
     }
 
     getStudent=(err, data)=>{
@@ -40,6 +42,10 @@ export default class IndexHeader extends Component {
 
             let student = data.data;
             this.changeInfo(student);
+        
+        }else{
+
+            deleteCookie(env.STUDENT_TOKEN_KEY);
         }
     }
 

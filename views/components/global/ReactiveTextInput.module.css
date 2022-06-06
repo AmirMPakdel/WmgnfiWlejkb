@@ -3,6 +3,9 @@
     align-items: center;
     margin-bottom: 1.5rem;
     height: 3.5rem;
+    border-width: 2px;
+    border-radius: 1rem;
+    border-style: solid;
     background-color: white;
 }
 

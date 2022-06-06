@@ -68,7 +68,7 @@ export default class EditableElementCardModel{
         delete params.id;
         delete params.el_type;
 
-        myServer.Post(myServer.urls.COURSE_EDIT+ep, params, {}, (err, data)=>{
+        myServer.Post(myServer.urls.DASH_EDIT_HOMEPAGE+ep, params, {}, (err, data)=>{
     
             if(!err){
             

@@ -20,7 +20,6 @@ export default class CourseLicenseModal extends Component {
         this.controller = new CourseLicenseController(this);
         this.state = {
             loading:true,
-            info:{}
         }
     }
     
@@ -41,6 +40,7 @@ export default class CourseLicenseModal extends Component {
     
     render(){
         let d = this.props.data;
+        let s = this.state;
         return(
             <div className={styles.con+" bgw btc2 xl_card_shd"}>
 
@@ -61,7 +61,7 @@ export default class CourseLicenseModal extends Component {
                             <div className={styles.license_con+" btc2i"}>
 
                                 <input className={styles.license}
-                                value={this.state.info.license}
+                                value={this.state.license}
                                 disabled={1}/>
 
                                 <MainButton className={styles.copy_btn}
@@ -73,9 +73,28 @@ export default class CourseLicenseModal extends Component {
                             <div className={styles.active_title+" tilt "}>{"وضعیت فعال بودن کد خرید"}</div>
 
                             {
-                                true?
+                                !s.device_one && !s.device_two?
                                 <div className={styles.active_info+" fdc1"}>{"این دوره در هیچ دستگاهی فعال نیست."}</div>
-                                :null
+                                :
+                                <>
+                                    {
+                                        s.device_one?
+                                        <>
+                                        <div className={styles.active_info+" engNum fdc1"}>&#8226; {"دستگاه اول"}</div>
+                                        <div className={styles.active_info+" engNum fdc1"}>{"سیستم عامل :   "+s.device_one.platform}</div>
+                                        <div className={styles.active_info+" engNum fdc1"}>{"شناسه دستگاه :   "+s.device_one.uid}</div>
+                                        <div style={{marginBottom:"1rem"}}/>
+                                        </>:null
+                                    }
+                                    {
+                                        s.device_two?
+                                        <>
+                                        <div className={styles.active_info+" engNum fdc1"}>&#8226; {"دستگاه دوم"}</div>
+                                        <div className={styles.active_info+" engNum fdc1"}>{"سیستم عامل :   "+s.device_two.platform}</div>
+                                        <div className={styles.active_info+" engNum fdc1"}>{"شناسه دستگاه :   "+s.device_two.uid}</div>
+                                        </>:null
+                                    }
+                                </>
                             }
 
                         </div>

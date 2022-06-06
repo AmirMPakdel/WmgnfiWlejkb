@@ -6,16 +6,16 @@ export default class ChangePasswordModel{
     * @param {object} params
     * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
     */
-    sendVerificationCode(params, cb){
+    resetRequest(params, cb){
     
-        if(env.MOCKING_SERVER || 1){
+        if(env.MOCKING_SERVER){
             setTimeout(()=>{
                 cb(null, {result_code:env.SC.SUCCESS});
             }, 2000, cb);
             return;
         }
-    
-        myServer.Post(myServer.urls.SOME_URL, params, {}, (err, data)=>{
+
+        myServer.Post(myServer.urls.MINFO_RESET_PASSWORD_REQUEST, params, {hideError:true}, (err, data)=>{
     
             if(!err){
             
@@ -32,16 +32,16 @@ export default class ChangePasswordModel{
     * @param {object} params
     * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
     */
-    verifyCode(params, cb){
+    checkValidationCode(params, cb){
     
-        if(env.MOCKING_SERVER || 1){
+        if(env.MOCKING_SERVER){
             setTimeout(()=>{
                 cb(null, {result_code:env.SC.SUCCESS});
             }, 2000, cb);
             return;
         }
     
-        myServer.Post(myServer.urls.SOME_URL, params, {}, (err, data)=>{
+        myServer.Post(myServer.urls.MINFO_RESET_CHECK_VALIDATION, params, {hideError:true, noToken:true}, (err, data)=>{
     
             if(!err){
             
@@ -58,16 +58,16 @@ export default class ChangePasswordModel{
     * @param {object} params
     * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
     */
-    saveNewPassword(params, cb){
+    resetPassword(params, cb){
     
-        if(env.MOCKING_SERVER || 1){
+        if(env.MOCKING_SERVER){
             setTimeout(()=>{
                 cb(null, {result_code:env.SC.SUCCESS});
             }, 2000, cb);
             return;
         }
     
-        myServer.Post(myServer.urls.SOME_URL, params, {}, (err, data)=>{
+        myServer.Post(myServer.urls.MINFO_RESET_PASSWORD_RESET, params, {hideError:true, noToken:true}, (err, data)=>{
     
             if(!err){
             

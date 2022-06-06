@@ -6,6 +6,7 @@ import { secondsToTime } from "@/utils/time";
 import Validation, { IsValid } from "@/utils/validation";
 import Observer from "@/utils/observer";
 import StudentModel from "@/models/global/StudentModel";
+import Storage from "@/utils/storage";
 
 export default class StudentAuthController{
     
@@ -98,7 +99,10 @@ export default class StudentAuthController{
 
                     this.view.setState({loading:false});
 
-                    setCookie(env.STUDENT_TOKEN_KEY, data.data.token, 365);
+                    //remove last student data if exists
+                    Storage.remove("student");
+
+                    setCookie(env.STUDENT_TOKEN_KEY, data.data.token, 0);
 
                     //TODO: save user in localstorage
 
@@ -315,7 +319,10 @@ export default class StudentAuthController{
 
                 if(data.result_code === env.SC.SUCCESS){
 
-                    setCookie(env.STUDENT_TOKEN_KEY, data.data.token, 1);
+                    //remove last student data if exists
+                    Storage.remove("student");
+
+                    setCookie(env.STUDENT_TOKEN_KEY, data.data.token, 365);
                     
                     //TODO: save user in localstorage
 

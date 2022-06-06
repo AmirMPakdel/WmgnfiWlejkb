@@ -1,3 +1,4 @@
+import myServer from "@/utils/myServer";
 import React, { Component } from "react";
 import styles from "./CourseCard.module.css";
 import Price from "./Price";
@@ -26,8 +27,6 @@ export default class CourseCard extends Component {
     render(){
 
         let d = this.props.data;
-        d.image = "/statics/fake_img/15.jpg";
-        d.educator = "حمید اکبرآبادی کله";
         let link_title = d.title.split(" ").join("-");
         let link = "/course/" + d.id + "/" + link_title;
 
@@ -35,13 +34,13 @@ export default class CourseCard extends Component {
             <a href={link} className={styles.con+" sm_card_shd "+this.props.className}>
                 
                 <div className={styles.card_image+" sm_card_shd"}
-                style={{backgroundImage:`url("${d.image}")`}}/>
+                style={{backgroundImage:`url("${myServer.MediaFiles.publicImage(d.logo)}")`}}/>
 
                 <div className={styles.row1}>
 
                     <img className={styles.educator_icon} src={"/statics/svg2/educator_gray.svg"}/>
 
-                    <div className={styles.educator_name+" fdc1"}>{d.educator}</div>
+                    <div className={styles.educator_name+" fdc1"}>{d.educators_name[0]}</div>
 
                 </div>
 
@@ -51,8 +50,7 @@ export default class CourseCard extends Component {
 
                     <Price className={styles.price+" fdc1"} 
                     price={d.price}
-                    offPercent={30}
-                    orginalPrice={2700000}
+                    withDiscount={d.discount_price}
                     />
 
                     <div className={styles.rating_con+" fdc1"}>

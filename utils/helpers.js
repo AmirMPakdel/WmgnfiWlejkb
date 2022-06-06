@@ -1,4 +1,10 @@
+import { getCookie } from "./cookie";
+
 const helpers = {
+    getTenant,
+    isDevEnv,
+    createUserWebHref,
+    createMinfoHref,
     existsInArray,
     toggleMultiSelect,
     getUrlPart,
@@ -7,9 +13,74 @@ const helpers = {
 
 export default helpers;
 
+/**
+ * @returns {Boolean}
+*/
+export function isDevEnv() {
+    
+    if(env.ENVIRONMENT_MODE == "dev"){
+        return true;
+    }else if(env.ENVIRONMENT_MODE == "prd"){
+        return false;
+    }
+    // for auto
+    if(location.hostname === "localhost"){
+        return true;
+    }
+    return false;
+}
+
+export function getTenant(){
+    let tenant_name = null;
+    // for testing and dev environment
+    if(isDevEnv()){
+        tenant_name = getCookie(env.TENANT_KEY);
+    }else{ // for deployment environment
+        let splited_hn = location.hostname.split(".");
+        if(splited_hn.length == 3){
+            tenant_name = splited_hn[0];
+        }
+    }
+    return tenant_name;
+}
+
+export function createUserWebHref(href, tenant) {
+    
+    // for testing and dev environment
+    if(isDevEnv()){
+
+        return href;
+
+    }else{ // for deployment environment
+
+        if(!tenant){tenant = getTenant()}
+        let minfo_domain = env.DOMAIN;
+        let minfo_d_arr = minfo_domain.split("://");
+        minfo_d_arr[1] = tenant+"."+minfo_d_arr[1];
+        let website_domain = minfo_d_arr.join("://");
+        if(href == "/"){return website_domain;}
+        return website_domain + href;
+    }
+}
+
+export function createMinfoHref(href) {
+    
+    // for testing and dev environment
+    if(isDevEnv()){
+
+        return href;
+
+    }else{ // for deployment environment
+
+        if(href == "/"){return env.DOMAIN}
+
+        return env.DOMAIN + href;
+    }
+}
+
 /** 
  * for multiselect fields
- * @param {string} value 
+ * @param {string} value
  * @param {Array} array
  * @returns {Boolean}
  */
@@ -101,7 +172,10 @@ export function fileType2Ext(file_type){
             return "jpg";
         case "video/mp4":
             return "mp4";
+        case "audio/mpeg":
+            return "mp3";
         default:
+            console.log(file_type);
             let ex = file_type.split("/")[1];
             if(!ex){ex = file_type}
             return ex;
