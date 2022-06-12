@@ -14,3 +14,26 @@
 .complete_info_ta{
     height: 20rem;
 }
+
+.preview_btn{
+    position: fixed;
+    left: 0.8rem;
+    top: 4.4rem;
+    z-index: 5;
+}
+
+
+@media(max-width:1024px){
+    
+}
+
+@media(max-width:767px){
+ 
+    .preview_btn{
+        height: 2.4rem !important;
+        top: 3.8rem;
+        left: 0.4rem;
+        width: 7rem;
+        white-space: nowrap;
+    }   
+}

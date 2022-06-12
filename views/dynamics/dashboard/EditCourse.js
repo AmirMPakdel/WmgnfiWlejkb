@@ -23,6 +23,8 @@ import EditCourseGroups from "@/views/components/editCourse/EditCourseGroups";
 import EditCourseTags from "@/views/components/editCourse/EditCourseTags";
 import EditCourseContents from "@/views/components/editCourse/EditCourseContents";
 import PublishRequest from "@/views/components/editCourse/PublishRequest";
+import MainButton from "@/views/components/global/MainButton";
+import { getUrlPart } from "@/utils/helpers";
 
 export default class EditCourse extends Component {
 
@@ -112,6 +114,17 @@ export default class EditCourse extends Component {
 
         this.controller.loadCourse();
     }
+
+    onPreview=()=>{
+
+        if(this.preview_win && this.preview_win.location && this.preview_win.location.reload){
+            this.preview_win.location.reload();
+            this.preview_win.focus();
+        }else{
+            let c_id = getUrlPart(3);
+            this.preview_win = window.open(env.PATHS.USER_PREVIEW_COURSE + c_id);
+        }
+    }
     
     render(){
         return(
@@ -124,6 +137,10 @@ export default class EditCourse extends Component {
                 <>
 
                     <div style={{marginTop:"1rem"}}/>
+
+                    <MainButton className={styles.preview_btn+" sm_card_shd"}
+                    title={"پیش نمایش"}
+                    onClick={this.onPreview}/>
 
                     <PublishRequest parent={this}/>
 

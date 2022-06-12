@@ -4,6 +4,7 @@ import EditCoursePriceController from "@/controllers/components/editCourse/EditC
 import EditableTitle from "@/views/components/editable/EditableTitle";
 import EditableText from "@/views/components/editable/EditableText";
 import { InputFilter } from "@/utils/validation";
+import ntpt from "number-to-persian-text";
 
 /**
 * Props of EditCoursePrice Component
@@ -69,6 +70,18 @@ export default class EditCoursePrice extends Component {
                 oldValue={od.price}
                 inputFilter={InputFilter.integer}
                 onChange={this.onChange}/>
+
+                <ul className={styles.info_sec}>
+                    {
+                        od.price === 0?
+                        <li>{"دوره بصورت رایگان در سایت قرار گرفته است."}</li>:null
+                    }
+                    {
+                        od.price != 0?
+                        <li>{ntpt(450)}</li>:null
+                    }
+                    
+                </ul>
 
             </div>
         )

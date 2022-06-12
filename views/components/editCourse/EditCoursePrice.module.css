@@ -9,6 +9,12 @@
     margin-right: 2rem;
 }
 
+.info_sec{
+    padding: 2rem 3rem;
+    padding-bottom: 0.5rem;
+    width: 100%;
+}
+
 @media(max-width:1024px){
     
 }
