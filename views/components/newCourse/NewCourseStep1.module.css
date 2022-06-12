@@ -48,11 +48,9 @@
 
 .txinput1{
     width: 80%;
-    height: 3rem;
-    padding-right: 1rem;
-    border-radius: 1rem;
-    margin-top: 1rem;
-    border: solid #D1D1D1 0.15rem;
+    margin: 0 !important;
+    padding-right: 1rem !important;
+    margin-top: 0.5rem !important;
 }
 
 .info_sec2{
@@ -121,7 +119,7 @@
 }
 
 .category_con{
-    margin-top: 1rem;
+    margin-top: 0.5rem !important;
     width: 80% !important;
 }
 

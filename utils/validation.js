@@ -1,4 +1,5 @@
 import { perisanToEng } from "@/utils/persian";
+import { priceFormattoInteger } from "./price";
 
 export class IsValid {
 
@@ -100,6 +101,23 @@ export class InputFilter {
             obj.value = new_val;
         }else{
             obj.error = "عدد صحیح وارد نمایید";
+        }
+
+        return obj;
+    }
+
+    static price(old_val, new_val){
+
+        let obj = {
+            value:old_val,
+            error:false,
+        }
+        let p = priceFormattoInteger(new_val);
+        let num = Number(p);
+        if(p != "" && !isNaN(num) && num===Math.floor(num)){
+            obj.value = new_val;
+        }else{
+            obj.error = "قیمت وارد نمایید";
         }
 
         return obj;

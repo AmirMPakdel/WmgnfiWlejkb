@@ -1,5 +1,6 @@
 const price = {
     priceFormat,
+    priceFormattoInteger,
     priceWithCurrency,
     rangePrice,
 }
@@ -40,6 +41,12 @@ export function priceFormat(string){
     }
 
     return new_str2;
+}
+
+export function priceFormattoInteger(str) {
+    
+    if(typeof str != 'string') return "";
+    return str.split(",").join("");
 }
 
 export function priceWithCurrency(str){

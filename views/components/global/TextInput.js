@@ -1,3 +1,4 @@
+import { priceFormat, priceFormattoInteger } from "@/utils/price";
 import React, { Component } from "react";
 import styles from "./TextInput.module.css";
 
@@ -38,10 +39,22 @@ export default class TextInput extends Component {
 
         if(!this.props.onChange) return;
 
+        let val = e.target.value;
+
+        if(val == ""){
+            this.props.onChange(val);
+            return;
+        }
+
+        if(this.props.type == "price"){
+            val = priceFormattoInteger(val);
+            val = priceFormat(val);
+        }
+
         if(this.props.inputFilter){
 
             let {value , error} = 
-            this.props.inputFilter(this.props.value, e.target.value);
+            this.props.inputFilter(this.props.value, val);
 
             this.props.onChange(value);
 
@@ -49,7 +62,7 @@ export default class TextInput extends Component {
 
         }else{
 
-            this.props.onChange(e.target.value);
+            this.props.onChange(val);
         }
     }
 
@@ -113,6 +126,12 @@ export default class TextInput extends Component {
                 {
                     this.props.title?
                     <div className={styles.tput_title} style={{...title_st, ...this.props.titleStyle}}>{this.props.title}</div>:null
+                }
+
+                {
+                    this.props.value?
+                    <div className={styles.top_title+" fdc2"}>{this.props.title?this.props.title:this.props.placeholder}</div>:
+                    null
                 }
                 
                 <input className={styles.tput_input+" bdyt "+this.props.inputClassName} 

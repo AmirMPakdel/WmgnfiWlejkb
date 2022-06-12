@@ -384,7 +384,11 @@ export default class StudentAuthController{
         if(pw.valid){
             newState.register_password_error = false;
         }else{
-            newState.register_password_error = pw.message;
+            if(vs.register_password.length < 8){
+                newState.register_password_error = "رمزعبور باید حداقل 8 کاراکتر باشد.";
+            }else{
+                newState.register_password_error = pw.message;
+            }
             can = false;
         }
 

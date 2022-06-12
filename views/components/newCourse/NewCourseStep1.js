@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import MainButton from "@/views/components/global/MainButton";
 import styles from "./NewCourseStep1.module.css";
 import SelectSearch from "@/views/components/global/SelectSearch";
+import TextInput from "../global/TextInput";
+import { InputFilter } from "@/utils/validation";
 
 export default class NewCourseStep1 extends Component {
 
@@ -76,17 +78,23 @@ export default class NewCourseStep1 extends Component {
                     
                     <div className={styles.sec_title}>{"عنوان و قیمت دوره"}</div>
 
+                    
                     <div className={styles.info_sec1+" cpnt"}>{text1}</div>
 
-                    <input className={styles.txinput1} placeholder={"عنوان دوره"}
+                    <TextInput className={styles.txinput1} 
+                    placeholder={"عنوان دوره"}
                     value={ps.title}
-                    onChange={(e)=>this.onChangeInput("title", e.target.value)}/>
+                    maxLength={32}
+                    onChange={(t)=>this.onChangeInput("title", t)}/>
 
                     <div className={styles.info_sec2}>{text2}</div>
 
-                    <input className={styles.txinput1+" cpnt"} placeholder={"قیمت دوره"}
+                    <TextInput className={styles.txinput1+" cpnt"} 
+                    placeholder={"قیمت دوره (تومان)"}
                     value={ps.price}
-                    onChange={(e)=>this.onChangeInput("price", e.target.value)}/>
+                    type={"price"}
+                    inputFilter={InputFilter.price}
+                    onChange={(t)=>this.onChangeInput("price", t)}/>
 
                     <div className={styles.info_sec2}>{text3}</div>
 

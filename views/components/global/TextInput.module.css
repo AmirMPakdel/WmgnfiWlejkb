@@ -32,3 +32,13 @@
     font-weight: 500;
     direction: rtl;
 }
+
+.top_title{
+    position: absolute;
+    background-color: white;
+    padding: 0 0.5rem;
+    top: -0.5rem;
+    right: 0.8rem;
+    font-size: 0.66rem;
+
+}

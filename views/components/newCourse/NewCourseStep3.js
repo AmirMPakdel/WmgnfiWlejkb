@@ -5,6 +5,7 @@ import SelectBox from "@/views/components/global/SelectBox";
 import chest from "@/utils/chest";
 import EducatorsCrudModal from "@/views/components/modal/educators/EducatorsCrudModal";
 import myServer from "@/utils/myServer";
+import { priceFormattoInteger } from "@/utils/price";
 
 export default class NewCourseStep3 extends Component {
 
@@ -84,7 +85,7 @@ export default class NewCourseStep3 extends Component {
         let ps = this.props.parent.state;
         let params = {
             title: ps.title,
-            price: Number(ps.price),
+            price: Number(priceFormattoInteger(ps.price)),
             is_encrypted: ps.is_encrypted,
             educators: this.state.selected_edu_keys,
             category_id: ps.category,
