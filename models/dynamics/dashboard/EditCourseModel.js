@@ -1,6 +1,7 @@
 import myServer from "@/utils/myServer";
 import _ from "lodash"
 import { findInJsonArray } from "@/utils/helpers";
+import { priceFormat, priceFormattoInteger } from "@/utils/price";
 
 export default class EditCourseModel{
     
@@ -55,6 +56,10 @@ export default class EditCourseModel{
                 }
 
                 data.data.content_hierarchy = apiContentHierarchy2MyHierarchy(data.data);
+
+                data.data.price = priceFormat(data.data.price);
+                
+                data.data.discount_price = priceFormat(data.data.discount_price);
 
                 cb(null, data);
             

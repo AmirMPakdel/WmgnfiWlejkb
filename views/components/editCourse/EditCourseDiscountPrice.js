@@ -53,7 +53,7 @@ export default class EditCourseDiscountPrice extends Component {
             <div className={styles.con}>
 
                 <EditableTitle
-                title={"قیمت دوره با تخفیف"}
+                title={"قیمت دوره با تخفیف (تومان)"}
                 status={st.discount_price}
                 onEdit={this.onEdit}
                 onSubmit={this.onSubmit}
@@ -74,7 +74,8 @@ export default class EditCourseDiscountPrice extends Component {
                 maxLength={12}
                 value={nw.discount_price}
                 oldValue={od.discount_price}
-                inputFilter={InputFilter.integer}
+                inputFilter={InputFilter.price}
+                type={"price"}
                 onChange={this.onChange}/>
 
             </div>

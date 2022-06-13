@@ -67,6 +67,14 @@ export default class EditCourseBackground extends Component {
                 onSubmit={this.onSubmit}
                 onCancel={this.onCancel}/>
 
+                <ul className={styles.info_sec}>
+
+                    <li className={"engNum"}>{"اندازه پیشنهادی برای عکس پس زمینه دوره 1600x720 پیکسل است."}</li>
+
+                    <li className={"engNum"}>{"حداکثر سایز عکس 2MB است."}</li>
+
+                </ul>
+
                 <EditableImage
                 ref={r=>this.EditableImage=r}
                 onSelect={this.onSelect}

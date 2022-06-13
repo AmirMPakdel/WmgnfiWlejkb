@@ -60,12 +60,6 @@ export default class EditableImage extends Component {
             }, ()=>{
                 this.props.onSelect();
             });
-
-            if(file.size < (2*1024*1024)){
-
-            }else{
-                chest.openNotification("عکس انتخابی حجم بالای 2 مگابایت دارد", "error");
-            }
         };
     }
 

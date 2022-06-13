@@ -76,4 +76,9 @@ export default class CourseInvoiceController{
             v.setState({confirm_loading:false});
         });
     }
+
+    onFreeRegisterConfirm=()=>{
+
+        //TODO: handle this with server api
+    }
 }

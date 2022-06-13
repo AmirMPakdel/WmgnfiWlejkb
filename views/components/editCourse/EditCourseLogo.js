@@ -67,6 +67,14 @@ export default class EditCourseLogo extends Component {
                 onSubmit={this.onSubmit}
                 onCancel={this.onCancel}/>
 
+                <ul className={styles.info_sec}>
+
+                    <li className={"engNum"}>{"اندازه پیشنهادی برای لوگوی دوره 512x512 پیکسل است."}</li>
+
+                    <li className={"engNum"}>{"حداکثر سایز عکس 1MB است."}</li>
+
+                </ul>
+
                 <EditableImage
                 ref={r=>this.EditableImage=r}
                 onSelect={this.onSelect}
@@ -74,6 +82,7 @@ export default class EditCourseLogo extends Component {
                 defaultSrc={"/statics/default_img/default_logo.png"}
                 uploadKey={nw.logo}
                 oldUploadKey={od.logo}/>
+
 
             </div>
         )

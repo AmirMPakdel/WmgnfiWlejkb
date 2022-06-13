@@ -56,6 +56,10 @@ export default class CourseInvoice extends Component {
         if(!(this.state.rules_accept && this.state.selected_portal)){return};
         this.controller.onConfirm();
     }
+
+    onFreeRegisterConfirm=()=>{
+        this.controller.onFreeRegisterConfirm();
+    }
     
     render(){
         let crs = this.state.course;
@@ -111,7 +115,13 @@ export default class CourseInvoice extends Component {
 
                                 <ListRow title={"تاریخ"} value={getCurrentShamsiDate()}/>
 
-                                <ListRow title={"قیمت دوره"} value={priceFormat(price)+" تومان"}/>
+                                {
+                                    total_price != 0?
+                                    <ListRow title={"قیمت دوره"} value={priceFormat(price)+" تومان"}/>
+                                    :
+                                    <ListRow title={"قیمت دوره"} value={"رایگان"}/>
+
+                                }
 
                                 <ListRow title={"درصد تخفیف"} value={off_percent+"%"}/>
 
@@ -121,41 +131,58 @@ export default class CourseInvoice extends Component {
 
                                 <ListRow title={"مبلغ کل"} value={priceFormat(total_price)+" تومان"}/>
 
-                                <div className={styles.protal_title+" tilt"}>{"انتخاب درگاه پرداخت"}</div>
+                                {
+                                    total_price != 0?
+                                    <>
+                                    <div className={styles.protal_title+" tilt"}>{"انتخاب درگاه پرداخت"}</div>
 
-                                <div className={styles.portal_con}>
-                                    {
-                                        this.state.portals.map((v,i)=>(
+                                    <div className={styles.portal_con}>
+                                        {
+                                            this.state.portals.map((v,i)=>(
 
-                                            <div key={i} className={styles.portal_item_con+" amp_btn "+ ((this.state.selected_portal==v.id)?"btc2 ":"blc2 ")}
-                                            onClick={()=>this.onPortal(v.name)}>
+                                                <div key={i} className={styles.portal_item_con+" amp_btn "+ ((this.state.selected_portal==v.id)?"btc2 ":"blc2 ")}
+                                                onClick={()=>this.onPortal(v.name)}>
 
-                                                <img className={styles.portal_item_icon} src={v.logo}/>
-                                                
-                                                <div className={styles.portal_item_text+" cpnt"}>{v.title}</div>
+                                                    <img className={styles.portal_item_icon} src={v.logo}/>
+                                                    
+                                                    <div className={styles.portal_item_text+" cpnt"}>{v.title}</div>
 
-                                                <Radio checked={this.state.selected_portal==v.name}/>
+                                                    <Radio checked={this.state.selected_portal==v.name}/>
 
-                                            </div>
-                                        ))
-                                    }
-                                </div>
-
-                                <div className={styles.invoice_checkbox_con}>
-
-                                    <Checkbox checked={this.state.rules_accept} onClick={this.onAccept}/>
-
-                                    <div className={styles.invoice_checkbox+" bdyt"}>
-                                        {"با زدن تیک، قوانین پرداخت این سایت را پذیرفته ام."}
+                                                </div>
+                                            ))
+                                        }
                                     </div>
 
-                                </div>
+                                    <div className={styles.invoice_checkbox_con}>
 
-                                <MainButton className={styles.invoice_confirm_btn}
-                                title={"پرداخت"}
-                                disabled={!(this.state.rules_accept && this.state.selected_portal)}
-                                loading={this.state.confirm_loading}
-                                onClick={this.onConfirm}/>
+                                        <Checkbox checked={this.state.rules_accept} onClick={this.onAccept}/>
+
+                                        <div className={styles.invoice_checkbox+" bdyt"}>
+                                            {"با زدن تیک، قوانین پرداخت این سایت را پذیرفته ام."}
+                                        </div>
+
+                                    </div>
+
+                                    <MainButton className={styles.invoice_confirm_btn}
+                                    title={"پرداخت"}
+                                    disabled={!(this.state.rules_accept && this.state.selected_portal)}
+                                    loading={this.state.confirm_loading}
+                                    onClick={this.onConfirm}/>
+                                    
+                                    </>
+                                    :
+                                    <>
+
+                                    <MainButton className={styles.invoice_confirm_btn}
+                                    title={"ثبت نام رایگان"}
+                                    loading={this.state.confirm_loading}
+                                    onClick={this.onFreeRegisterConfirm}/>
+                                    
+                                    </>
+                                }
+
+                                
 
                             </div>
 

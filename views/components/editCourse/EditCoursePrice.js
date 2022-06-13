@@ -4,7 +4,7 @@ import EditCoursePriceController from "@/controllers/components/editCourse/EditC
 import EditableTitle from "@/views/components/editable/EditableTitle";
 import EditableText from "@/views/components/editable/EditableText";
 import { InputFilter } from "@/utils/validation";
-import ntpt from "number-to-persian-text";
+import { priceFormattoInteger } from "@/utils/price";
 
 /**
 * Props of EditCoursePrice Component
@@ -55,11 +55,17 @@ export default class EditCoursePrice extends Component {
             <div className={styles.con}>
 
                 <EditableTitle
-                title={"قیمت دوره"}
+                title={"قیمت دوره (تومان)"}
                 status={st.price}
                 onEdit={this.onEdit}
                 onSubmit={this.onSubmit}
                 onCancel={this.onCancel}/>
+
+                <ul className={styles.info_sec2}>
+                    
+                    <li>{"برای رایگان کردن دوره، مقدار صفر وارد نمایید."}</li>
+                    
+                </ul>
 
                 <EditableText
                 className={styles.edit_text}
@@ -68,17 +74,14 @@ export default class EditCoursePrice extends Component {
                 maxLength={12}
                 value={nw.price}
                 oldValue={od.price}
-                inputFilter={InputFilter.integer}
+                inputFilter={InputFilter.price}
+                type={"price"}
                 onChange={this.onChange}/>
 
-                <ul className={styles.info_sec}>
+                <ul className={styles.info_sec2}>
                     {
-                        od.price === 0?
+                        od.price == 0?
                         <li>{"دوره بصورت رایگان در سایت قرار گرفته است."}</li>:null
-                    }
-                    {
-                        od.price != 0?
-                        <li>{ntpt(450)}</li>:null
                     }
                     
                 </ul>

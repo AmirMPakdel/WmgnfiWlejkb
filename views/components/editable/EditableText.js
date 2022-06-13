@@ -1,3 +1,4 @@
+import { priceFormat, priceFormattoInteger } from "@/utils/price";
 import React, { Component } from "react";
 import styles from "./EditableText.module.css";
 
@@ -13,6 +14,7 @@ import styles from "./EditableText.module.css";
 * @property {number} maxLength
 * @property {placeholder} placeholder
 * @property {function} inputFilter
+* @property {"password"|"price"} type
 * 
 * @extends {Component<Props>}
 */
@@ -54,10 +56,22 @@ export default class EditableText extends Component {
     onChange = (e)=>{
         if(!this.props.onChange) return;
 
+        let val = e.target.value;
+
+        if(val == ""){
+            this.props.onChange(val);
+            return;
+        }
+
+        if(this.props.type == "price"){
+            val = priceFormattoInteger(val);
+            val = priceFormat(val);
+        }
+
         if(this.props.inputFilter){
 
             let {value , error} = 
-            this.props.inputFilter(this.props.value, e.target.value);
+            this.props.inputFilter(this.props.value, val);
 
             this.props.onChange(value);
 
@@ -65,7 +79,7 @@ export default class EditableText extends Component {
 
         }else{
 
-            this.props.onChange(e.target.value);
+            this.props.onChange(val);
         }
     }
 

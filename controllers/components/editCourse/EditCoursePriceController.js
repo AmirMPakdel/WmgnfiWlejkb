@@ -1,6 +1,7 @@
 import EditCoursePriceModel from "@/models/components/editCourse/EditCoursePriceModel";
 import chest from "@/utils/chest";
 import { getUrlPart } from "@/utils/helpers";
+import { priceFormattoInteger } from "@/utils/price";
 import EditCoursePrice from "@/views/components/editCourse/EditCoursePrice";
 
 export default class EditCoursePriceController{
@@ -20,6 +21,8 @@ export default class EditCoursePriceController{
     
     onSubmit(){
 
+        if(!this.validationCheck())return;
+
         this.view.EditableText.onSubmit();
 
         let p = this.view.props.parent;
@@ -38,7 +41,7 @@ export default class EditCoursePriceController{
 
             let params = {
                 course_id : getUrlPart(3),
-                price: ps.new_values.price,
+                price: priceFormattoInteger(ps.new_values.price),
             }
 
             this.model.save(params, (err, data)=>{
@@ -55,6 +58,24 @@ export default class EditCoursePriceController{
 
             });
         }
+    }
+
+    validationCheck(){
+
+        let valid = true;
+
+        let p = this.view.props.parent;
+        let ps = p.state;
+
+        let price = priceFormattoInteger(ps.new_values.price);
+        let discount_price = priceFormattoInteger(ps.old_values.discount_price);
+
+        if(Number(price) < Number(discount_price)){
+            valid = false;
+            chest.openNotification('مقدار قیمت دوره نمی تواند از "قیمت دوره با احتساب تخفیف" کمتر باشد.', "error", {duration:8})
+        }
+
+        return valid;
     }
 
     onCancel(){

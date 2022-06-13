@@ -67,6 +67,14 @@ export default class EditCourseIntroVideo extends Component {
                 onSubmit={this.onSubmit}
                 onCancel={this.onCancel}/>
 
+                <ul className={styles.info_sec}>
+
+                    <li className={"engNum"}>{"ویدیویی کوتاه برای معرفی دوره خود بارگذاری نمایید."}</li>
+
+                    <li className={"engNum"}>{"حداکثر سایز ویدیو 100MB است."}</li>
+
+                </ul>
+
                 <EditableVideo
                 ref={r=>this.EditableImage=r}
                 onSelect={this.onSelect}

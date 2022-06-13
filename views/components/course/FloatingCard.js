@@ -6,7 +6,6 @@ import Price from "@/views/components/global/Price";
 import VideoCard from "@/views/components/global/VideoCard";
 import styles from "./FloatingCard.module.css";
 import IconLine from "@/views/components/course/IconLine";
-import { getUrlPart } from "@/utils/helpers";
 
 /**
 * Props of FloatingCard Component
@@ -20,7 +19,8 @@ import { getUrlPart } from "@/utils/helpers";
 export default class FloatingCard extends Component {
 
     onBuy=()=>{
-        window.location.href = env.PATHS.COURSE_INVOICE+getUrlPart(2);
+        
+        this.props.parent.onBuy();
     }
     
     render(){

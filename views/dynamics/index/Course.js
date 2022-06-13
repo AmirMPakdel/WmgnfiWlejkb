@@ -14,6 +14,9 @@ import IndexLayout from "@/views/layouts/IndexLayout";
 import WrapperT1 from "@/views/layouts/WrapperT1";
 import styles from "./Course.module.css";
 import Observer from "@/utils/observer";
+import chest from "@/utils/chest";
+import StudentAuthModal from "@/views/components/modal/global/StudentAuthModal";
+import { getUrlPart } from "@/utils/helpers";
 
 export default class Course extends Component {
 
@@ -45,6 +48,21 @@ export default class Course extends Component {
 
     removeFromWishlist=()=>{
         this.controller.removeFromWishlist();
+    }
+
+    onBuy=()=>{
+
+        // if hasn't logedin
+        if(this.state.course.access_type == "1"){
+
+            setTimeout(()=>{
+                chest.ModalLayout.setAndShowModal(1, <StudentAuthModal closable={false}/>);
+            }, 600);
+
+        }else{
+
+            window.location.href = env.PATHS.COURSE_INVOICE+getUrlPart(2);
+        }
     }
 
     render(){

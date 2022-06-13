@@ -10,7 +10,15 @@
 }
 
 .info_sec{
-    padding: 2rem 3rem;
+    padding: 0 3rem;
+    margin-top: 1rem;
+    padding-bottom: 0.5rem;
+    width: 100%;
+}
+
+.info_sec2{
+    padding: 0 3rem;
+    margin-top: 1rem;
     padding-bottom: 0.5rem;
     width: 100%;
 }

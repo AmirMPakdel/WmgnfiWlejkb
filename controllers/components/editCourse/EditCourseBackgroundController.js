@@ -36,6 +36,11 @@ export default class EditCourseBackgroundController{
 
     onSubmit(image_file){
 
+        if(image_file.size > 2*1024*1024 ){
+            chest.openNotification(<p className={"engNum"}>{"حداکثر سایز عکس 2MB است."}</p>, "error");
+            return;
+        }
+
         let status = this.view.props.parent.state.status;
         status.cover = "loading";
         this.view.props.parent.setState({status});

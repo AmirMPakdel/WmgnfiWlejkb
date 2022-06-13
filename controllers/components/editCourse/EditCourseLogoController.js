@@ -35,6 +35,11 @@ export default class EditCourseLogoController{
 
     onSubmit(image_file){
 
+        if(image_file.size > 1*1024*1024 ){
+            chest.openNotification(<p className={"engNum"}>{"حداکثر سایز عکس 1MB است."}</p>, "error");
+            return;
+        }
+
         let status = this.view.props.parent.state.status;
         status.logo = "loading";
         this.view.props.parent.setState({status});

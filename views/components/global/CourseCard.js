@@ -40,7 +40,7 @@ export default class CourseCard extends Component {
 
                     <img className={styles.educator_icon} src={"/statics/svg2/educator_gray.svg"}/>
 
-                    <div className={styles.educator_name+" fdc1"}>{d.educators_name[0]}</div>
+                    <div className={styles.educator_name+" fdc1"}>{d.educators_name.join(" ,")}</div>
 
                 </div>
 

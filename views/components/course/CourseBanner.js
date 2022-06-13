@@ -23,7 +23,8 @@ import { sqlTimeStamp2ShamsiDate } from "@/utils/time";
 export default class CourseBanner extends Component {
 
     onBuy=()=>{
-        window.location.href = env.PATHS.COURSE_INVOICE+getUrlPart(2);
+
+        this.props.parent.onBuy();
     }
 
     onShare=()=>{

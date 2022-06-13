@@ -34,19 +34,33 @@ export default class Price extends Component {
 
                     <div className={styles.price+" tilt"}>
 
-                        <div className={styles.currency+" cpnt"}>{"تومان"}</div>
+                        {
+                            this.props.withDiscount != 0?
+                            <>
+                                <div className={styles.currency+" cpnt"}>{"تومان"}</div>
 
-                        {priceFormat(this.props.withDiscount)}
+                                {priceFormat(this.props.withDiscount)}
+                            </>
+                            :
+                            <div className={styles.currency+" cpnt"} style={{fontWeight:"bold"}}>{"رایگان"}</div>
+                        }
 
                     </div>
 
                     </>
                     :
                     <div className={styles.price+" tilt"}>
+                        
+                        {
+                            this.props.price != 0?
+                            <>
+                                <div className={styles.currency+" cpnt"}>{"تومان"}</div>
 
-                        <div className={styles.currency+" cpnt"}>{"تومان"}</div>
-
-                        {priceFormat(this.props.price)}
+                                {priceFormat(this.props.price)}
+                            </>
+                            :
+                            <div className={styles.currency+" cpnt"} style={{fontWeight:"bold"}}>{"رایگان"}</div>
+                        }
 
                     </div>
                 }

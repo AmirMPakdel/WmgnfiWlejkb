@@ -12,6 +12,13 @@
     margin-top: 1rem;
 }
 
+.info_sec{
+    padding: 0 3rem;
+    margin-top: 1rem;
+    padding-bottom: 0.5rem;
+    width: 100%;
+}
+
 @media(max-width:1024px){
     
 }

@@ -47,18 +47,12 @@ export default class EditableVideo extends Component {
             return;
         }
 
-        if(file.size < (480*1024*1024)){
-
-            this.setState({
-                url : URL.createObjectURL(file),
-                file: file,
-            }, ()=>{
-                this.props.onSelect();
-            });
-
-        }else{
-            chest.openNotification("ویدیوی انتخابی حجم بالای 480 مگابایت دارد", "error");
-        }
+        this.setState({
+            url : URL.createObjectURL(file),
+            file: file,
+        }, ()=>{
+            this.props.onSelect();
+        });
     }
 
     onEdit = ()=>{

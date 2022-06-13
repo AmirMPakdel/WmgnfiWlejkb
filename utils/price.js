@@ -93,7 +93,7 @@ export function calcDiscountPercent(price, discount_price){
 
         price = Number(price);
         discount_price = Number(discount_price);
-        let p = (discount_price*100) / price;
+        let p = 100 - (discount_price*100) / price;
         return Math.floor(p);
     }else{
         return 0;

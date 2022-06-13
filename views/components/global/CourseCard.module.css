@@ -20,16 +20,20 @@
     direction: rtl;
     align-items: center;
     width: 100%;
-    padding: 0.3rem;
+    padding: 0.5rem 0.3rem;
 }
 
 .educator_icon{
-    height: 1.5rem;
+    height: 1.4rem;
 }
 
 .educator_name{
     margin-right: 0.5rem;
     padding-top: 0.2rem;
+    font-size: 0.74rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .title{

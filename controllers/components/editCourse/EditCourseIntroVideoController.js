@@ -35,6 +35,11 @@ export default class EditCourseIntroVideoController{
 
     onSubmit(file){
 
+        if(file.size > 100*1024*1024 ){
+            chest.openNotification(<p className={"engNum"}>{"حداکثر سایز ویدیو 100MB است."}</p>, "error");
+            return;
+        }
+
         let status = this.view.props.parent.state.status;
         status.intro_video = "loading";
         this.view.props.parent.setState({status});
