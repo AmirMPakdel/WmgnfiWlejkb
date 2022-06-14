@@ -102,36 +102,36 @@ export default class SideMenu extends Component {
 
                 <a className={styles.sidemenu_title+" ftc2i"} href={env.PATHS.MINFO_HOMEPAGE}>{"Minfo"}</a>
 
-                <SideMenuBtn title="داشبورد" icon={CategorySvg}
+                <SideMenuBtn title="داشبورد" icon={"sidebar_overview.svg"}
                 onClick={this.onSelect} active_page={this.state.active_page} name="overview"/>
 
-                <SideMenuBtn title="دوره های من" icon={WorkSvg}
+                <SideMenuBtn title="دوره های من" icon={"sidebar_myCourses.svg"}
                 onClick={this.onSelect} active_page={this.state.active_page} name="myCourses"/>
 
                 {/* <SideMenuBtn title="مقالات" icon={DocumentSvg}
                 onClick={this.onSelect} active_page={this.state.active_page} name="myArticles"/> */}
 
-                <SideMenuBtn title="صفحه اصلی" icon={DocumentSvg}
+                <SideMenuBtn title="صفحه اصلی" icon={"sidebar_mainPage.svg"}
                 onClick={this.onSelect} active_page={this.state.active_page} name="homePage"/>
 
-                <SideMenuBtn title="ایجاد دوره" icon={PlusSqrSvg}
+                <SideMenuBtn title="ایجاد دوره" icon={"sidebar_addCourse.svg"}
                 onClick={this.onSelect} active_page={this.state.active_page} name="newCourse"/>
 
                 {/* <SideMenuBtn title="تالار گفتگو" icon={"/svg/ed_dbrd_forum.svg"}
                 onClick={this.onSelect} active_page={this.state.active_page} name="forum"/> */}
 
-                <SideMenuBtn title="تنظیمات" icon={SettingSvg}
+                <SideMenuBtn title="تنظیمات" icon={"sidebar_settings.svg"}
                 onClick={this.onSelect} active_page={this.state.active_page} name="settings"/>
 
-                <SideMenuBtn title="گزارش‌های مالی" icon={ActivitySvg}
+                <SideMenuBtn title="گزارش‌های مالی" icon={"sidebar_financials.svg"}
                 onClick={this.onSelect} active_page={this.state.active_page} name="financialReports"/>
 
-                <SideMenuBtn title="افزایش اعتبار" icon={ArrowUpSqrSvg}
+                <SideMenuBtn title="افزایش اعتبار" icon={"sidebar_buyCredit.svg"}
                 onClick={this.onSelect} active_page={this.state.active_page} name="buyCredit"/>
 
                 <div className={styles.sidemenu_wrapper1}>
 
-                    <SideMenuBtn title={this.state.name} icon={ProfileSvg}
+                    <SideMenuBtn title={this.state.name} icon={"sidebar_profile.svg"}
                     onClick={this.onSelect} active_page={this.state.active_page} name="profile" active/>
 
                 </div>
@@ -150,11 +150,11 @@ function SideMenuBtn(props){
         if(!props.active)s.opacity = 0.5;
         line_s.opacity = 0;
     }
-    const Icon = props.icon;
+    
     return(
         <div className={styles.smbtn_con+" amp_btn"} style={s} onClick={()=>props.onClick(props.name)}>
             <div className={styles.smbtn_right_line} style={line_s}/>
-                <Icon className={styles.smbtn_icon}/>
+                <img src={"/statics/svg/dashboard/"+props.icon} className={styles.smbtn_icon}/>
             <div className={styles.smbtn_title}>{props.title}</div>
         </div>
     )
