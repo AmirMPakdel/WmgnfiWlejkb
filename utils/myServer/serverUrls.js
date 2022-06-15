@@ -115,6 +115,7 @@ const ServerUrls = {
     STD_SET_COURSE_SCORE: domain+prefixes.STA+"/course/score/update",
 
     //student transaction
+    STD_FREE_COURSE_REGISTER: domain+prefixes.STA+"/free_course/register",
     STD_CREATE_TRANSACTION: domain+prefixes.STA+"/transaction/generate",
     STD_GET_TRANSACTION: domain+prefixes.STA+"/transaction/get",
     STD_OPEN_TRANSACTION_PORTAL: domain+prefixes.STA+"/course/pay",

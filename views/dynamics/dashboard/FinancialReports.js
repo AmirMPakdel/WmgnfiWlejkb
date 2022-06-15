@@ -178,6 +178,11 @@ const table1_columns = [
         dataIndex: 'title',
     },
     {
+        title: 'وضعیت',
+        dataIndex: 'success',
+        render: t=>(t?<div className="fsc cpt">موفق</div>:<div className="fec cpt">ناموفق</div>),
+    },
+    {
         title: 'تاریخ',
         dataIndex: 'created_at',
         render: (text)=>(sqlTimeStamp2ShamsiDate(text)),
@@ -202,6 +207,11 @@ const table2_columns = [
     {
         title: 'نوع پرداخت',
         dataIndex: 'title',
+    },
+    {
+        title: 'وضعیت',
+        dataIndex: 'success',
+        render: t=>(t?<div className="fsc cpt">موفق</div>:<div className="fec cpt">ناموفق</div>),
     },
     {
         title: 'تاریخ',

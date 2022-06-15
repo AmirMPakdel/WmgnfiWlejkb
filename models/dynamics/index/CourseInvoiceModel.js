@@ -89,5 +89,34 @@ export default class CourseInvoiceModel{
             }
         });
     }
+
+    /**
+    * 
+    * @param {object} params
+    * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
+    */
+    freeRegister(params, cb){
+    
+        if(env.MOCKING_SERVER){
+            setTimeout(()=>{
+                cb(null, {
+                    result_code:env.SC.SUCCESS
+                });
+            }, 2000, cb);
+            return;
+        }
+        
+        myServer.Post(myServer.urls.STD_FREE_COURSE_REGISTER, params, {}, (err, data)=>{
+    
+            if(!err){
+            
+                cb(null, data);
+            
+            }else{
+            
+                myServer.ErrorHandler.type1(err);
+            }
+        });
+    }
     
 }

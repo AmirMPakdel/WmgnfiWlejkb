@@ -79,6 +79,11 @@ export default class CourseInvoiceController{
 
     onFreeRegisterConfirm=()=>{
 
-        //TODO: handle this with server api
+        let v = this.view;
+        v.setState({confirm_loading:true});
+
+        this.model.freeRegister(params, (err, data)=>{
+            
+        })
     }
 }
