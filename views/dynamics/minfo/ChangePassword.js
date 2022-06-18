@@ -39,6 +39,8 @@ export default class ChangePassword extends Component {
     }
     
     componentDidMount(){
+
+        this.controller.setupPageTitle();
     }
 
     onMobileInput=(v)=>{
@@ -123,7 +125,7 @@ class InserPhonenumber extends Component{
         return(
             <div className={styles.con1}>
 
-                <div className={styles.title1}>{"فراموشی رمز عبور"}</div>
+                <div className={styles.title1}>{"تغییر رمزعبور"}</div>
 
                 <div className={styles.sub1}>{"شماره موبایل حساب کاربری خود را وارد نمایید."}</div>
 

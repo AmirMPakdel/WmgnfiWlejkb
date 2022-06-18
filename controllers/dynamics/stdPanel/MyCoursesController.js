@@ -37,5 +37,12 @@ export default class MyCoursesController{
                 })
             }
         })
+
+        this.setupPageTitle();
+    }
+
+    setupPageTitle(){
+
+        document.title = "دوره های من"+" | پنل دانش آموز "+" | مینفو";
     }
 }

@@ -58,6 +58,8 @@ export default class Auth extends Component {
     }
 
     componentDidMount(){
+
+        this.controller.setupPageTitle();
     }
 
     onMobileInput=(v)=>{

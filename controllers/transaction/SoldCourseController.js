@@ -26,5 +26,12 @@ export default class SoldCourseController{
                 });
             }
         });
+    
+        this.setupPageTitle();
+    }
+
+    setupPageTitle(){
+
+        document.title = "نتیجه تراکنش"+" | مینفو";
     }
 }

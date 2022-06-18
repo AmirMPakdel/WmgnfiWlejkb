@@ -27,6 +27,13 @@ export default class NewCourseController{
                 })
             }
         });
+
+        this.setupPageTitle();
+    }
+
+    setupPageTitle(){
+        
+        document.title = "ایجاد دوره "+" | داشبورد کاربر"+" | مینفو";
     }
     
 }

@@ -4,6 +4,7 @@ import { priceFormat } from "@/utils/price";
 import { sqlTimeStamp2ShamsiDateTime } from "@/utils/time";
 import ListRow from "@/views/components/buyCredit/ListRow";
 import Loading from "@/views/components/global/Loading";
+import MainButton from "@/views/components/global/MainButton";
 import StudentPanelLayout from "@/views/layouts/StudentPanelLayout";
 import WrapperT1 from "@/views/layouts/WrapperT1";
 import React, { Component } from "react";
@@ -35,6 +36,11 @@ export default class ViewReciept extends Component {
     
     componentDidMount(){
     }
+
+    onBack=()=>{
+
+        window.history.back();
+    }
     
     render(){
 
@@ -57,9 +63,11 @@ export default class ViewReciept extends Component {
                         <>
                             <div className={styles.card+" md_card_shd bgw"}>
 
-                            {/* <div className={styles.title+" tilt md_card_shd bglc1"}>{"فاکتور خرید اعتبار"}</div> */}
+                            <div className={styles.title+" tilt md_card_shd bglc1"}>{"فاکتور خرید دوره"}</div>
 
                             <div className={styles.list_wrapper}>
+
+                                <ListRow title="عنوان دوره" value={dt.course_title}/>
 
                                 {
                                     dt.success?
@@ -111,6 +119,10 @@ export default class ViewReciept extends Component {
 
 
                                 <div className={styles.btn_wrapper} ref={r=>this.btn_wrapper=r}>
+
+                                    <MainButton className={styles.confirm_btn}
+                                    title={"بازگشت"}
+                                    onClick={this.onBack}/>
 
                                     {/* {
                                         dt.success?

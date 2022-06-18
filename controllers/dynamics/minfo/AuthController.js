@@ -17,6 +17,11 @@ export default class AuthController{
         this.model = new AuthModel();
     }
 
+    setupPageTitle(){
+
+        document.title = "ثبت نام/ورود در مینفو"+" | مینفو";
+    }
+
     mobileConfirm(){
 
         if(this.lock)return;

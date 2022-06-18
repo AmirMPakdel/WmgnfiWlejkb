@@ -8,6 +8,7 @@ import Price from "./Price";
 * @typedef Props
 * @property {string} className
 * @property {React.CSSProperties} style
+* @property {boolean} hideRating
 * 
 * @extends {Component<Props>}
 */
@@ -53,13 +54,17 @@ export default class CourseCard extends Component {
                     withDiscount={d.discount_price}
                     />
 
-                    <div className={styles.rating_con+" fdc1"}>
+                    {
+                        this.props.hideRating?
+                        null:
+                        <div className={styles.rating_con+" fdc1"}>
 
-                        <img className={styles.rating_icon} 
-                        src={"/statics/svg/rating_fullstar_black.svg"}/>
-                        {d.score}
+                            <img className={styles.rating_icon} 
+                            src={"/statics/svg/rating_fullstar_black.svg"}/>
+                            {d.score}
 
-                    </div>
+                        </div>
+                    }
 
                 </div>
                 

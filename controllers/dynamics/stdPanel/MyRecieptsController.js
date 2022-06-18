@@ -37,6 +37,13 @@ export default class MyRecieptsController{
                 })
             }
         })
+
+        this.setupPageTitle();
+    }
+
+    setupPageTitle(){
+
+        document.title = "فاکتور های خرید"+" | پنل دانش آموز "+" | مینفو";
     }
     
 }

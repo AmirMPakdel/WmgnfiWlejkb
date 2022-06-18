@@ -25,8 +25,15 @@ export default class BuyCreditController{
                     incomes: user.total_saved_income,
                     portals: d,
                 });
+
+                this.setupPageTitle();
             }
         });
+    }
+
+    setupPageTitle(){
+        
+        document.title = "خرید و افزایش اعتبار "+" | داشبورد کاربر"+" | مینفو";
     }
 
     continueCheck=()=>{

@@ -54,6 +54,13 @@ export default class EditProfileController{
                 })
             }
         })
+
+        this.setupPageTitle();
+    }
+
+    setupPageTitle(){
+
+        document.title = "ویرایش پروفایل دانش آموز"+" | پنل دانش آموز "+" | مینفو";
     }
 
     updateStudentInfo(){

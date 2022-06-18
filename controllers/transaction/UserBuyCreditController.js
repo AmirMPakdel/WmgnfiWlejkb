@@ -26,6 +26,13 @@ export default class UserBuyCreditController{
                 });
             }
         });
+    
+        this.setupPageTitle();
+    }
+
+    setupPageTitle(){
+
+        document.title = "نتیجه تراکنش"+" | مینفو";
     }
     
 }

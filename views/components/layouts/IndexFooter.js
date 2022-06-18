@@ -163,7 +163,7 @@ const transforSocialMedias=(data)=>{
     }
     if(d.whatsapp){
         links.push({
-            icon:"/statics/svg2/footer_twitter.svg",
+            icon:"/statics/svg2/footer_whatsapp.svg",
             url: "https://wa.me/"+ d.whatsapp,
         });
     }

@@ -29,6 +29,13 @@ export default class OverviewController{
                 }, cb);
             }
         });
+
+        this.setupPageTitle();
+    }
+
+    setupPageTitle(){
+        
+        document.title = "وضعیت و آمار سایت "+" | داشبورد کاربر"+" | مینفو";
     }
 
     loadChartData(){

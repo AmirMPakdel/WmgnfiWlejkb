@@ -37,9 +37,17 @@ export default class HomePageController{
                         links: JSON.parse(footer.footer_links),
                         numbers: JSON.parse(footer.footer_telephones),
                     }
+
                     Observer.execute("onFooterChange", footer_data);
+
+                    this.setupPageTitle();
                 });
             }
         });
+    }
+
+    setupPageTitle(){
+        
+        document.title = "سایت فروش دوره های آموزشی "+" | مینفو";
     }
 }

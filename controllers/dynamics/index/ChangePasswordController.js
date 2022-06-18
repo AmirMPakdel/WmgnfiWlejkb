@@ -10,7 +10,12 @@ export default class ChangePasswordController{
         this.view = view;
         this.model = new ChangePasswordModel();
     }
-    
+
+    setupPageTitle(){
+
+        document.title = "تغییر رمزعبور "+" | مینفو";
+    }
+
     onMobileConfirm(){
 
         let res = this.step1InputCheck();

@@ -29,8 +29,15 @@ export default class PreviewCourseController{
                     loading:false,
                     course: data.data,
                 })
+                
+                this.setupPageTitle(data.data);
             }
         });
+    }
+
+    setupPageTitle(course){
+        
+        document.title = "پیش نمایش دوره " +course.title + " | داشبورد کاربر "+"| مینفو ";
     }
     
 }

@@ -6,6 +6,8 @@ import Course from "@/views/dynamics/index/Course";
 import MainButton from "../global/MainButton";
 import { getTenant, getUrlPart } from "@/utils/helpers";
 import myServer from "@/utils/myServer";
+import chest from "@/utils/chest";
+import ViewFreeContentModal from "../modal/course/ViewFreeContentModal";
 
 /**
 * Props of ContentCard Component
@@ -36,7 +38,7 @@ export default class ContentCard extends Component {
 
         let c = this.props.parent.state.course;
         let heading = this.props.data;
-        let contents = extractContents(heading, c);
+        let contents = heading.contents;
 
         let src="/statics/svg/closed_ccard_icn.svg";
         if(this.state.open){src="/statics/svg/opened_ccard_icn.svg"}
@@ -75,6 +77,14 @@ export default class ContentCard extends Component {
 
 class ContentRow extends Component{
 
+    onOpenContent=(data)=>{
+
+        let modal = <ViewFreeContentModal
+        onClose={()=>{chest.ModalLayout.closeAndDelete(1)}}
+        data={data}/>
+        chest.ModalLayout.setAndShowModal(1, modal);
+    }
+
     /*
         access == "1" => need login
         access == "2" => needs to buy the course 
@@ -88,8 +98,8 @@ class ContentRow extends Component{
         if(d.is_free){
             title = <span>{d.title} <span className={styles.crow_free_t}>{"رایگان"}</span></span>
         }
-        let play_tab_href = createPlayUrl(d);
         let download_href = createDownloadUrl(d, getUrlPart(2));
+
         return(
             <div className={styles.crow_con}>
 
@@ -101,9 +111,7 @@ class ContentRow extends Component{
                     d.is_free?
                     <>
                     <a className={styles.crow_play} 
-                    href={play_tab_href}
-                    target="_blank" 
-                    rel="noopener noreferrer">
+                    onClick={()=>this.onOpenContent(d)}>
                         {"نمایش"}
                     </a>
                     </>
@@ -123,39 +131,6 @@ class ContentRow extends Component{
     }
 }
 
-function extractContents(heading, course){
-
-    let ch = course.content_hierarchy;
-    ch = JSON.parse(ch);
-
-    let content_ids = [];
-
-    ch.forEach((v)=>{
-        if(v.h_id === heading.id){
-            content_ids = v.content_ids;
-        }
-    });
-
-    let heading_contents = [];
-    course.contents.forEach((v1)=>{
-        content_ids.forEach((v2)=>{
-            if(v1.id == v2){
-                heading_contents.push(v1);
-            }
-        });
-    });
-
-    return heading_contents;
-}
-
-function createPlayUrl(data){
-
-    if(data.url && data.is_free){
-        return myServer.MediaFiles.freeCourseMedia(data.url);
-    }
-
-    return null;
-}
 
 function createDownloadUrl(data, course_id){
 
@@ -164,14 +139,4 @@ function createDownloadUrl(data, course_id){
     }
 
     return myServer.MediaFiles.courseMedia(course_id, data.id, data.url);
-}
-
-function createDownloadName(url){
-
-    if(!url){
-        return null;
-    }
-
-    let url_array = url.split("/");
-    return url_array[url_array.length-1];
 }

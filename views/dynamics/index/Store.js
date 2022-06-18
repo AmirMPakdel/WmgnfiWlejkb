@@ -151,7 +151,8 @@ export default class Store extends Component {
 
                                     {
                                         this.state.list.map((v,i)=>(
-                                            <CourseCard className={styles.card} 
+                                            <CourseCard className={styles.card}
+                                            hideRating={true}
                                             key={i} data={v}/>
                                         ))
                                     }

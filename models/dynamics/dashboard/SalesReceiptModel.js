@@ -15,7 +15,7 @@ export default class SalesReceiptModel{
             return;
         }
     
-        myServer.Post(myServer.urls.SOMEURL, params, {}, (err, data)=>{
+        myServer.Post(myServer.urls.DASH_SOLD_TRANSACTION_DETAIL, params, {}, (err, data)=>{
     
             if(!err){
             

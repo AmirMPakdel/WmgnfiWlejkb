@@ -29,6 +29,13 @@ export default class SelectSite extends Component {
     
     componentDidMount(){
         this.input.input.focus();
+
+        this.setupPageTitle()
+    }
+
+    setupPageTitle=()=>{
+
+        document.title = "انتخاب سایت"+" | مینفو";
     }
 
     invalidSubdomain=()=>{
@@ -74,14 +81,14 @@ export default class SelectSite extends Component {
                 <div className={styles.wrapper}>
 
                     <div className={styles.title}>
-                        {"نام سایت موردنظر خود را به انگلیسی وارد نمایید."}
+                        {"نام ساب دامین سایت موردنظر خود را به انگلیسی وارد نمایید."}
                     </div>
 
                     <TextInput
                     className={styles.textInput}
                     inputClassName={styles.input}
                     ref={r=>this.input=r}
-                    placeholder="نام سایت"
+                    placeholder="ساب دامین"
                     value={this.state.subdomain}
                     inputFilter={InputFilter.tenantInputFilter}
                     OnEnterKeyPressed={this.onCheckAndGo}

@@ -37,6 +37,13 @@ export default class MyWishlistController{
                 })
             }
         })
+
+        this.setupPageTitle();
+    }
+
+    setupPageTitle(){
+
+        document.title = "علاقه مندی ها"+" | پنل دانش آموز "+" | مینفو";
     }
     
 }

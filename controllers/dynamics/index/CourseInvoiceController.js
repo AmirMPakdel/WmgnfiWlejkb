@@ -1,4 +1,5 @@
 import CourseInvoiceModel from "@/models/dynamics/index/CourseInvoiceModel";
+import chest from "@/utils/chest";
 import { getCookie } from "@/utils/cookie";
 import { getTenant, getUrlPart } from "@/utils/helpers";
 import myServer from "@/utils/myServer";
@@ -35,11 +36,18 @@ export default class CourseInvoiceController{
                             course,
                             portals,
                         });
+
+                        this.setupPageTitle(course);
                     }
                 });
                 }catch(e){console.log(e);}
             }
         });
+    }
+
+    setupPageTitle(course){
+
+        document.title = "پیش فاکتور خرید  "+course.title+" | مینفو";
     }
 
     onConfirm(){
@@ -79,11 +87,34 @@ export default class CourseInvoiceController{
 
     onFreeRegisterConfirm=()=>{
 
+        if(this.lock_register){return};
+
         let v = this.view;
         v.setState({confirm_loading:true});
 
+        this.lock_register = true;
+
+        let params = {
+            course_id: getUrlPart(2)
+        }
+
         this.model.freeRegister(params, (err, data)=>{
             
-        })
+            if(data.result_code === env.SC.SUCCESS){
+
+                chest.openNotification("ثبت نام در دروه با موفقیت انجام گردید.", "success");
+
+                setTimeout(()=>{
+                    window.location.href = env.PATHS.STUDENT_COURSES;
+                }, 2000);
+
+                v.setState({confirm_loading:false});
+
+            }else{
+
+                this.lock_register = false;
+                v.setState({confirm_loading:false});
+            }
+        });
     }
 }

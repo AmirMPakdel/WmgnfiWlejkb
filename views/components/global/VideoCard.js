@@ -9,6 +9,7 @@ import styles from "./VideoCard.module.css";
  * @property {string} thumbnail
  * @property {string} playBtnClassName
  * @property {string} uploadKey
+ * @property {boolean} is_free
  * 
  * @extends {Component<Props>}
  */
@@ -33,13 +34,20 @@ export default class VideoCard extends Component {
         
         let addClass = "";
 
+        let src = "";
+        if(this.props.is_free){
+            src = myServer.MediaFiles.freeCourseMedia(this.props.uploadKey);
+        }else{
+            src = myServer.MediaFiles.publicVideo(this.props.uploadKey);
+        }
+
         return(
             <div className={styles.con+" "+this.props.className+" "+addClass}
             >
 
                 <video className={styles.video} 
                 ref={r=>this.video=r}
-                src={myServer.MediaFiles.publicVideo(this.props.uploadKey)}
+                src={src}
                 controls={this.state.controls}/>
 
                 {

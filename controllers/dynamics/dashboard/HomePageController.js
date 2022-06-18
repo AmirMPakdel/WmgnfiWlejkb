@@ -37,8 +37,15 @@ export default class HomePageController{
                     hierarchy: d.hierarchy,
                     new_hierarchy: _.cloneDeep(d.hierarchy),
                 });
+
+                this.setupPageTitle();
             }
         });
+    }
+
+    setupPageTitle(){
+        
+        document.title = "تنظیم صفحه اصلی سایت "+" | داشبورد کاربر"+" | مینفو";
     }
 
     onSortElements(){

@@ -11,7 +11,7 @@ export default class MyCoursesController{
     
     load=()=>{
 
-        try{
+        
         this.view.setState({loading:true});
 
         let params = {
@@ -46,7 +46,11 @@ export default class MyCoursesController{
 
         });
 
-    }catch(e){console.log(e);}
+        this.setupPageTitle();
+    }
 
+    setupPageTitle(){
+        
+        document.title = "دوره های من "+" | داشبورد کاربر"+" | مینفو";
     }
 }

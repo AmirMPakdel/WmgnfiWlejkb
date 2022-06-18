@@ -18,6 +18,16 @@ import EditSitesIconModal from "@/views/components/modal/settings/EditSitesIconM
 */
 export default class Settings extends Component {
 
+    componentDidMount(){
+
+        this.setupPageTitle();
+    }
+
+    setupPageTitle=()=>{
+        
+        document.title = "تنظیمات سایت "+" | داشبورد کاربر"+" | مینفو";
+    }
+
     onEducators=()=>{
         let modal = <EducatorsCrudModal editable={true}/>
         chest.ModalLayout.setAndShowModal(1, modal);

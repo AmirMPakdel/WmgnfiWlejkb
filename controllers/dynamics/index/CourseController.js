@@ -1,5 +1,6 @@
 import CourseModel from "@/models/dynamics/index/CourseModel";
 import { getUrlPart } from "@/utils/helpers";
+import Storage from "@/utils/storage";
 import Course from "@/views/dynamics/index/Course";
 
 export default class CourseController{
@@ -25,13 +26,24 @@ export default class CourseController{
                 data.data.subjects = JSON.parse(data.data.subjects);
                 data.data.requirements = JSON.parse(data.data.requirements);
 
-                console.log(data.data.subjects);
                 this.view.setState({
                     loading:false,
                     course: data.data,
-                })
+                });
+
+                this.setupPageTitle(data.data)
             }
         });
+    }
+
+    setupPageTitle(course){
+        
+        let site_title = "";
+        let site_info = Storage.get("site_info");
+        if(site_info && site_info.page_title){
+            site_title = " | "+ site_info.page_title;
+        }
+        document.title = "فروش "+course.title+site_title+" | مینفو";
     }
 
     addToWishlist(){
@@ -85,5 +97,7 @@ export default class CourseController{
             this.view.fav_btn_lock = false;
         });
     }
+
+    
     
 }

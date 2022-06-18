@@ -37,6 +37,8 @@ export default class StoreController{
                         });
                     }
                 });
+
+                this.setupPageTitle();
             }
         });
     }
@@ -69,6 +71,11 @@ export default class StoreController{
             });
 
         }, 1000);
+    }
+
+    setupPageTitle(){
+        
+        document.title = "فروشگاه دوره ها "+" | مینفو";
     }
 
     onPageChange(page){

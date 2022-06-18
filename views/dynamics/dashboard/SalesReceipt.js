@@ -32,8 +32,8 @@ export default class SalesReceipt extends Component {
         this.controller.load()
     }
 
-    onConfirm=()=>{
-        window.location.href = env.PATHS.STUDENT_COURSES;
+    onBack=()=>{
+        window.history.back();
     }
 
     onPrint=()=>{
@@ -64,6 +64,11 @@ export default class SalesReceipt extends Component {
         let date = dateTime[0];
         let time = dateTime[1];
 
+        let course_href = "";
+        if(dt && dt.course_id && dt.course_title){
+            course_href = env.PATHS.COURSE+dt.course_id+"/"+dt.course_title.split(" ").join("-");
+        }
+
         return(
             <IndexLayout accessType="userL1"
             showWithoutAuth={false}>
@@ -81,6 +86,8 @@ export default class SalesReceipt extends Component {
                     <div className={styles.title+" tilt md_card_shd bglc1"}>{"فاکتور خرید دوره"}</div>
 
                     <div className={styles.list_wrapper}>
+
+                        <ListRow title="عنوان دوره" value={<a href={course_href} target="_blank" rel="noopener noreferrer">{dt.course_title}</a>}/>
 
                         {
                             dt.success?
@@ -133,9 +140,9 @@ export default class SalesReceipt extends Component {
 
                         <div className={styles.btn_wrapper} ref={r=>this.btn_wrapper=r}>
 
-                            <MainButton className={styles.confirm_btn}
-                            title={"پنل کاربری"}
-                            onClick={this.onConfirm}/>
+                            {/* <MainButton className={styles.confirm_btn}
+                            title={"بازگشت"}
+                            onClick={this.onBack}/> */}
 
                             {/* {
                                 dt.success?

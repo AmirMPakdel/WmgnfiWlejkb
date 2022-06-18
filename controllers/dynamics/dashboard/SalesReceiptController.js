@@ -24,7 +24,15 @@ export default class SalesReceiptController{
                     loading: false,
                     details: data.data,
                 });
+
+                this.setupPageTitle(data.data);
             }
         });
+
+        
+    }
+
+    setupPageTitle(data){
+        document.title = "رسید پرداخت  " +data.course_title + " | داشبورد کاربر "+"| مینفو ";
     }
 }

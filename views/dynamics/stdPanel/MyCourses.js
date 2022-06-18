@@ -88,7 +88,7 @@ class MyCourseCard extends Component{
 
     onShow=()=>{
 
-        window.location.href = env.PATHS.COURSE+ this.props.data.id;
+        window.location.href = env.PATHS.COURSE+ this.props.data.id+"/"+this.props.data.title.split(" ").join("-");
     }
 
     onLicense=()=>{

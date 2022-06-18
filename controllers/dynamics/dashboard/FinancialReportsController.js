@@ -34,8 +34,15 @@ export default class FinancialReportsController{
                     currentPage: page,
                     table: "1",
                 });
+
+                this.setupPageTitle();
             }
         });
+    }
+
+    setupPageTitle(){
+        
+        document.title = "گزارش های مالی "+ " | داشبورد کاربر "+"| مینفو ";
     }
 
     loadCreditBoughtTable(page=1){

@@ -53,17 +53,18 @@ export default class CourseBanner extends Component {
 
                 <div className={styles.row1+"  flc1i cpnt"}>
 
-                    <div className={styles.row1_div}>{"آخرین بروزرسانی : "+ sqlTimeStamp2ShamsiDate(c.updated_at)}</div>
+                    <div className={styles.row1_div}>{"آخرین بروزرسانی : "+ sqlTimeStamp2ShamsiDate(c.last_update)}</div>
                     <div className={styles.row1_div}>|</div>
                     <div className={styles.row1_div}>{"شرکت کننده در دوره"+ " : " +priceFormat(c.sells)}</div>
-                    <div className={styles.row1_div}>|</div>
+                    {/* TODO:: uncomment when rating feature added */}
+                    {/* <div className={styles.row1_div}>|</div>
                     <div className={styles.rating_sec+" "+styles.row1_div}>
                         <Rating className={styles.rating}
                         rate={c.score}
                         disabled={1}
                         onChange={this.onRate}/>
                         {"( "+c.score+" )"}
-                    </div>
+                    </div> */}
 
                 </div>
 

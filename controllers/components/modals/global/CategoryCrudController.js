@@ -124,7 +124,7 @@ export default class CategoryCrudModalController{
 
             if(data.result_code===env.SC.SUCCESS){
 
-                Storage.store("update_categories", true);
+                Storage.remove("categories");
 
                 let id = (data.data.g1_id | data.data.g2 | data.data.g3);
                 let newNode = {id, title, level}
@@ -276,7 +276,7 @@ export default class CategoryCrudModalController{
 
             if(data.result_code===env.SC.SUCCESS){
 
-                Storage.store("update_categories", true);
+                Storage.remove("categories");
 
                 let level = node.level;
                 let v = this.view;
@@ -407,7 +407,7 @@ export default class CategoryCrudModalController{
 
             if(data.result_code===env.SC.SUCCESS){
 
-                Storage.store("update_categories", true);
+                Storage.remove("categories");
 
                 let level = node.level;
                 let v = this.view;

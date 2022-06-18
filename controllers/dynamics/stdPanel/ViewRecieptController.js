@@ -24,8 +24,15 @@ export default class ViewRecieptController{
                     loading: false,
                     details: data.data,
                 });
+                this.setupPageTitle(data.data);
             }
         });
+
+    }
+
+    setupPageTitle(course){
+
+        document.title = "فاکتور خرید "+course.course_title+" | پنل دانش آموز "+" | مینفو";
     }
     
 }

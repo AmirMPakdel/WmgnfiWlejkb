@@ -32,6 +32,8 @@ export default class BuyCourse extends Component {
         this.controller.load()
     }
 
+    
+
     onConfirm=()=>{
         window.location.href = env.PATHS.STUDENT_COURSES;
     }
@@ -56,6 +58,11 @@ export default class BuyCourse extends Component {
         this.btn_wrapper.style.display="flex";
     }
     
+    onBack=()=>{
+
+        window.location.href = env.PATHS.COURSE+""+this.state.details.course_id+"/"+this.state.details.course_title.split(" ").join("-");
+    }
+
     render(){
 
         let dt = this.state.details;
@@ -133,9 +140,16 @@ export default class BuyCourse extends Component {
 
                         <div className={styles.btn_wrapper} ref={r=>this.btn_wrapper=r}>
 
+                        {
+                            dt.success?
                             <MainButton className={styles.confirm_btn}
                             title={"پنل کاربری"}
                             onClick={this.onConfirm}/>
+                            :
+                            <MainButton className={styles.confirm_btn}
+                            title={"بازگشت"}
+                            onClick={this.onBack}/>
+                        }
 
                             {/* {
                                 dt.success?

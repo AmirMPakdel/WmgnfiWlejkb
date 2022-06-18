@@ -17,9 +17,8 @@ export default class CategorySelectModel{
         }
     
         let categories = Storage.get("categories");
-        let update_categories = Storage.get("update_categories");
         
-        if(categories && !update_categories){
+        if(categories){
 
             cb(null, {
                 result_code:env.SC.SUCCESS,
@@ -33,7 +32,6 @@ export default class CategorySelectModel{
     
             if(!err){
             
-                Storage.store("update_categories", false);
                 Storage.store("categories", data.data);
                 cb(null, data);
             

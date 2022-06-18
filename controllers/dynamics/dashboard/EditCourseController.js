@@ -29,8 +29,15 @@ export default class EditCourseController{
                     loading:false,
                     new_values: _.cloneDeep(data.data),
                     old_values: _.cloneDeep(data.data),
-                })
+                });
+
+                this.setupPageTitle(data.data);
             }
         })
+    }
+
+    setupPageTitle(course){
+        
+        document.title = "ویرایش دوره " +course.title + " | داشبورد کاربر "+"| مینفو ";
     }
 }

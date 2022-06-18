@@ -17,6 +17,7 @@ import Observer from "@/utils/observer";
 import chest from "@/utils/chest";
 import StudentAuthModal from "@/views/components/modal/global/StudentAuthModal";
 import { getUrlPart } from "@/utils/helpers";
+import { getCookie } from "@/utils/cookie";
 
 export default class Course extends Component {
 
@@ -53,11 +54,11 @@ export default class Course extends Component {
     onBuy=()=>{
 
         // if hasn't logedin
-        if(this.state.course.access_type == "1"){
+        if(!getCookie(env.STUDENT_TOKEN_KEY) || this.state.course.access_type == "1"){
 
             setTimeout(()=>{
-                chest.ModalLayout.setAndShowModal(1, <StudentAuthModal closable={false}/>);
-            }, 600);
+                chest.ModalLayout.setAndShowModal(1, <StudentAuthModal closable={true}/>);
+            }, 300);
 
         }else{
 
@@ -117,9 +118,9 @@ export default class Course extends Component {
                     <>
                     <SectionTitle title="محتوای دوره"/>
                     {
-                        c.headings.map((v,i)=>(
+                        c.sorted_content.map((v,i)=>(
                             <ContentCard key={i}
-                            open={i===0}
+                            open={true}
                             data={v}
                             parent={this}/>
                         ))

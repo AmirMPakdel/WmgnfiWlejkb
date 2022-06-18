@@ -69,6 +69,12 @@ export default class ProfileController{
                 });
             }
         });
+        this.setupPageTitle();
+    }
+
+    setupPageTitle(){
+        
+        document.title = "پروفایل کاربر "+" | داشبورد کاربر"+" | مینفو";
     }
 
     onShowNationalCodeAlert(){
