@@ -37,6 +37,8 @@
 .dt_logo_img{
     height: 100%;
     width: auto;
+    cursor: pointer;
+    user-select: none;
 }
 
 .dt_links_con{

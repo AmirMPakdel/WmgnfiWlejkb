@@ -9,6 +9,8 @@ import Price from "./Price";
 * @property {string} className
 * @property {React.CSSProperties} style
 * @property {boolean} hideRating
+* @property {boolean} directLogoUrl
+* @property {boolean} disableLink
 * 
 * @extends {Component<Props>}
 */
@@ -28,14 +30,27 @@ export default class CourseCard extends Component {
     render(){
 
         let d = this.props.data;
-        let link_title = d.title.split(" ").join("-");
-        let link = "/course/" + d.id + "/" + link_title;
+
+        let link_title = "";
+        let link = "";
+        if(!this.props.disableLink){
+            link_title = d.title.split(" ").join("-");
+            link = "/course/" + d.id + "/" + link_title;
+        }
+
+        let logo_url = "";
+        if(this.props.directLogoUrl){
+            logo_url = d.logo;
+        }else{
+            logo_url = myServer.MediaFiles.publicImage(d.logo);
+        }
+        
 
         return(
-            <a href={link} className={styles.con+" sm_card_shd "+this.props.className}>
+            <a href={this.props.disableLink?undefined:link} className={styles.con+" sm_card_shd "+this.props.className}>
                 
                 <div className={styles.card_image+" sm_card_shd"}
-                style={{backgroundImage:`url("${myServer.MediaFiles.publicImage(d.logo)}")`}}/>
+                style={{backgroundImage:`url("${logo_url}")`}}/>
 
                 <div className={styles.row1}>
 

@@ -8,6 +8,7 @@ import VideoCard from "@/views/components/global/VideoCard";
 * @typedef Props
 * @property {string} className
 * @property {React.CSSProperties} style
+* @property {boolean} directUrl
 * 
 * @extends {Component<Props>}
 */
@@ -30,7 +31,8 @@ export default class InfoBox extends Component {
             return <NoMedia data={this.props.data}/>
         }else{
             return <WithMedia index={this.props.index}
-            data={this.props.data}/>
+            data={this.props.data}
+            directUrl={this.props.directUrl}/>
         }
         return null
     }
@@ -76,6 +78,13 @@ class WithMedia extends Component {
             wm_wrapper = styles.wm_wrapper_right
         }
 
+        let url = "";
+        if(this.props.directUrl){
+            url = d.url;
+        }else{
+            url = myServer.MediaFiles.publicImage(d.url);
+        }
+
         return(
         <div className={styles.wm_con}>
 
@@ -93,7 +102,7 @@ class WithMedia extends Component {
 
                 {
                     d.type=="ct_image"?
-                    <img className={styles.wm_media_pic} src={myServer.MediaFiles.publicImage(d.url)}/>:
+                    <img className={styles.wm_media_pic} src={url}/>:
                     <VideoCard className={styles.wm_media_video}
                     uploadKey={d.url}/>
                 }

@@ -22,12 +22,16 @@ export default class HomePageController{
                 let d = data.data;
 
                 d.hierarchy = normalizeHierarchy(d.hierarchy, d.elements);
+                
                 let elements = sortElementsBasedOnHierarchy(d.elements, d.hierarchy);
 
                 let footer = extractFooterData(d);
 
+                d = setShowDefaultHomePage(d, elements);
+
                 v.setState({
                     loading:false,
+                    show_default: d.show_default,
                     elements,
                     intro: d.intro,
                     hierarchy: d.hierarchy,
@@ -50,4 +54,15 @@ export default class HomePageController{
         
         document.title = "سایت فروش دوره های آموزشی "+" | مینفو";
     }
+}
+
+function setShowDefaultHomePage(data, elements) {
+
+    if(data.cover == null && elements.length == 2){
+
+        data.show_default = true;
+    }else{
+        data.show_default = false;
+    }
+    return data;
 }

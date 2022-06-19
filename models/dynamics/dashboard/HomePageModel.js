@@ -169,8 +169,6 @@ export const handleFirstTimeIntroData = (intro_data)=>{
         link: null,
         link_title: null,
         template: 1,
-        text: default_intro_text,
-        title: default_intro_title,
     }
     
     return intro_data;

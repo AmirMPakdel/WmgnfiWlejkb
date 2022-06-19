@@ -37,7 +37,6 @@ export default class IndexHeader extends Component {
 
     getStudent=(err, data)=>{
 
-        
         if(data.result_code === env.SC.SUCCESS){
 
             let student = data.data;
@@ -101,7 +100,7 @@ export default class IndexHeader extends Component {
 
                         <div className={styles.dt_logo_con}>
 
-                            <img className={styles.dt_logo_img} 
+                            <img className={styles.dt_logo_img} onClick={()=>window.location.href=env.PATHS.HOMEPAGE}
                             src={"/statics/default_img/default_header_logo.png"}/>
 
                         </div>

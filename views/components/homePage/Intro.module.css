@@ -38,7 +38,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 5%;
+    /* padding: 0 5%; */
+    padding-right: 2rem;
 }
 
 .ib_image{
@@ -61,6 +62,8 @@
     margin-top: 1rem;
     width: 100%;
     min-height: 8rem;
+    white-space: pre-wrap;
+    font-weight: 500;
 }
 
 .ib_link{

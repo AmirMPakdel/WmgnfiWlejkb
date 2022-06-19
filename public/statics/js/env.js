@@ -64,6 +64,7 @@ var env = {
         USER_DASHBOARD: "/dashboard",
         USER_OVERVIEW: "/dashboard/overview",
         USER_MYCOURSES: "/dashboard/myCourses",
+        USER_EDIT_HOMEPAGE: "/dashboard/homePage",
         USER_NEW_COURSE: "/dashboard/newCourse",
         USER_BUY_CREDIT: "/dashboard/buyCredit",
         USER_EDIT_COURSE: "/dashboard/editCourse/",

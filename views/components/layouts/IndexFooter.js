@@ -96,7 +96,7 @@ export default class IndexFooter extends Component {
                     
                     <span>{"با"}
                     <a href="https://minfo.ir">{" مینفو "}</a>
-                    {"سایتت رو به سادگی بساز و دوره‌‌هات رو بفروش."}</span>
+                    {"سایتت رو به سادگی بساز و دوره‌‌هات رو بفروش"}</span>
 
                 </div>
                 
