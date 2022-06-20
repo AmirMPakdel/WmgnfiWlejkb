@@ -22,7 +22,6 @@ export default class Intro extends Component {
     
     componentDidMount(){
 
-        console.log(this.props.data);
     }
     
     render(){
@@ -65,7 +64,7 @@ class InfoBox extends Component {
 
                     <div className={styles.ib_title_holder}>
 
-                        <div className={styles.ib_title+" tilt bgtc1 fdc1 sm_card_shd"}>{d.title}</div>
+                        <div className={styles.ib_title+" tilt bgtc1 fdc1 sm_card_shd"}>{d.title?d.title:DEFAULT_INFO_BOX_DATA.title}</div>
 
                     </div>
 
@@ -76,7 +75,7 @@ class InfoBox extends Component {
 
                         <div className={styles.ib_sec2}>
 
-                            <div className={styles.ib_text+" bdyt"}>{d.text}</div>
+                            <div className={styles.ib_text+" bdyt"}>{d.text?d.text:DEFAULT_INFO_BOX_DATA.text}</div>
 
                             {
                                 d.has_link?
@@ -115,9 +114,9 @@ class SingleImage extends Component {
 }
 
 const text1 = "تبریک میگیم بهت!\n"+"فروشگاه آموزشیت راه اندازی شده و الان وقتش رسیده تا صفحه سایتت رو شخصی سازی کنی. "+
-"تمامی اجزای صفحه اصلی سایت قابلیت شخصی سازی دارن و میتونی به راحتی با چند کلیک سایت منحصر به فرد خودت رو داشته باشی. "+
+"تمامی اجزای صفحه اصلی سایت ازجمله همین بخشی که داری میخونی قابلیت شخصی سازی دارن و میتونی به راحتی با چند کلیک سایت منحصر به فرد خودت رو داشته باشی. "+
 "مثال هایی از اجزایی که میتونی به سایتت اضافه کنی رو تو این صفحه بصورت پیش فرض آوردیم. کافیه به داشبورد ادمین سایت بری و بخش صفحه اصلی از منو سمت راستش "+
-"اجزای سایتت رو مدیریت کنی. برای راهنمایی بیشتر باهامون در ارتباط باش تا کمکت کنیم سایت بهتر و  بهینه تری بسازی. "+
+"اجزای سایتت رو مدیریت کنی. برای راهنمایی بیشتر باهامون در ارتباط باش تا کمکت کنیم سایت بهتر و بهینه تری بسازی. "+
 "بعد از اینکه با مدیریت صفحه اصلی آشنا شدی از همون داشبورد ادمین وارد بخش ایجاد دوره شو و چند تا دوره باکیفیت تو سایتت ایجاد کن. "+
 "میتونی دوره هات رو تو بخش دوره های من ویرایش کنی و کلی اطلاعات برای دورت به نمایش بذاری و در نهایت منتشرشون کنی."+
 "\ پس سریع تر شروع کن.";

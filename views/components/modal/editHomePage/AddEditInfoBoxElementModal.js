@@ -124,13 +124,13 @@ export default class AddEditInfoBoxElementModal extends Component {
                                 title={"اضافه کردن لینک"}
                                 onClick={this.onHasLink}/>
 
-                                <Popover overlayClassName={styles.link_pop_overlay}
+                                {/* <Popover overlayClassName={styles.link_pop_overlay}
                                 content={<img className={styles.link_pop_con} 
                                 src={"https://gamefa.com/wp-content/uploads/2022/03/robert-pattinson-the-batman-768x384.jpg.webp"}/>}>
 
                                     <img className={styles.link_help} src={"/statics/svg2/question.svg"}/>
                                 
-                                </Popover>
+                                </Popover> */}
 
                             </div>:
                             <div className={styles.link_con2}>

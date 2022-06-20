@@ -6,6 +6,7 @@ import Price from "@/views/components/global/Price";
 import VideoCard from "@/views/components/global/VideoCard";
 import styles from "./FloatingCard.module.css";
 import IconLine from "@/views/components/course/IconLine";
+import myServer from "@/utils/myServer";
 
 /**
 * Props of FloatingCard Component
@@ -26,14 +27,22 @@ export default class FloatingCard extends Component {
     render(){
         let ps = this.props.parent.state;
         let c = ps.course;
+
         return(
             <Affix offsetTop={108} style={{ position: 'absolute', top: 30, left: 15 }}>
 
                 <div className={styles.fltcrd_con+" bglc1i "}>
 
-                    <VideoCard className={styles.fltcrd_video}
-                    uploadKey={c.intro_video.url}
-                    playBtnClassName={styles.fltcrd_video_playbtn}/>
+                    {
+                        c.intro_video.url?
+                        <VideoCard className={styles.fltcrd_video}
+                        uploadKey={c.intro_video.url}
+                        thumbnail={myServer.MediaFiles.publicImage(c.logo)}
+                        playBtnClassName={styles.fltcrd_video_playbtn}/>
+                        :
+                        <div className={styles.fltcrd_video_default_img}
+                        style={{backgroundImage:`url(${myServer.MediaFiles.publicImage(c.logo, "course_image")})`}}/>
+                    }
 
                     <div className={styles.fltcrd_sec1}>
 

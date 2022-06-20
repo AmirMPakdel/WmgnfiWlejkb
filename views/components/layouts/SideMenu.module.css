@@ -14,10 +14,23 @@
 .sidemenu_title{
     font-size: 1.875rem;
     align-self: center;
-    margin-top: 2rem;
+    margin-top: 1.2rem;
     height: 4rem;
     user-select: none;
 }
+
+.menu_logo_img{
+    width: auto;
+    height: 100%;
+    margin-left: 0.8rem;
+    transform: scale(2.8);
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
 .smbtn_con{
     display: flex;
     direction: rtl;

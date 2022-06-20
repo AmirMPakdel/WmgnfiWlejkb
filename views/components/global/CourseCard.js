@@ -44,6 +44,10 @@ export default class CourseCard extends Component {
         }else{
             logo_url = myServer.MediaFiles.publicImage(d.logo);
         }
+
+        if(!d.logo){
+            logo_url = "/statics/default_img/default_course_image.png";
+        }
         
 
         return(

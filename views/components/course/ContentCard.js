@@ -100,28 +100,43 @@ class ContentRow extends Component{
         }
         let download_href = createDownloadUrl(d, getUrlPart(2));
 
+        let icon = "";
+        if(d.type == "ct_video"){
+            icon = "/statics/svg/crs_content_video.svg";
+        }else if(d.type == "ct_document"){
+            icon = "/statics/svg/crs_content_document.svg";
+        }else if(d.type == "ct_voice"){
+            icon = "/statics/svg/crs_content_audio.svg";
+        }
+
         return(
             <div className={styles.crow_con}>
 
                 <IconLine className={styles.crow_icon_line+" cpnti"} 
-                icon="/statics/svg/crs_play_icn.svg" 
+                icon={icon}
                 text={title}/>
 
                 {
                     d.is_free?
                     <>
-                    <a className={styles.crow_play} 
-                    onClick={()=>this.onOpenContent(d)}>
-                        {"نمایش"}
+                    <a className={styles.crow_icon_con} onClick={()=>this.onOpenContent(d)}>
+                        <img className={styles.crow_icon} src={"/statics/svg/crs_content_play.svg"}/>
+                        <a>{"نمایش"}</a>
                     </a>
                     </>
                     :
                     <>
                     {
                         access == "4"?
-                        <a className={styles.crow_dl} href={download_href}>{"دانلود"}</a>
+                        <a className={styles.crow_icon_con} href={download_href}>
+                            <img className={styles.crow_icon} src={"/statics/svg/crs_content_download.svg"}/>
+                            {"دانلود"}
+                        </a>
                         :
-                        <div className={styles.crow_locked}>{"قفل"}</div>
+                        <div className={styles.crow_icon_con}>
+                            <img className={styles.crow_icon} src={"/statics/svg/crs_content_lock.svg"}/>
+                            {"قفل"}
+                        </div>
                     }
                     </>
                 }

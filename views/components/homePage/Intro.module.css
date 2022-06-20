@@ -15,7 +15,7 @@
     justify-content: center;
     width: 100%;
     min-height: calc(100vh - 5.6rem);
-    padding: 5% 10%;
+    padding: 5% calc(12% - 5rem);
 }
 
 .ib_title_holder{

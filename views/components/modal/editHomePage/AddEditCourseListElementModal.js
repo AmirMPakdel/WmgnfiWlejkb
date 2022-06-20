@@ -8,6 +8,7 @@ import MainButton from "@/views/components/global/MainButton";
 import Dropdown from "@/views/components/global/Dropdown";
 import CategorySelectModal from "../global/CategorySelectModal";
 import HomePage from "@/views/dynamics/dashboard/HomePage";
+import Storage from "@/utils/storage";
 
 /**
 * Props of AddEditCourseListElementModal Component
@@ -27,7 +28,8 @@ export default class AddEditCourseListElementModal extends Component {
             confirm_loading:false,
             ordering_item:null,
             active_grouping:false,
-            checkedGroupKey:[]
+            checkedGroupKey:[],
+            selected_title:"",
         }
     }
     
@@ -50,8 +52,6 @@ export default class AddEditCourseListElementModal extends Component {
     }
 
     onSelectGroups=()=>{
-
-        console.log("this.state.checkedGroupKey",this.state.checkedGroupKey);
         
         let modal = <CategorySelectModal multiSelect={false}
         defaultCheckedKeys={this.state.checkedGroupKey}
@@ -68,7 +68,16 @@ export default class AddEditCourseListElementModal extends Component {
 
     onGroupConfirm=(checkedKeys)=>{
 
-        this.setState({checkedGroupKey: [checkedKeys[0]]}, ()=>{
+        let groups = this.controller.extractSelectedGroups(checkedKeys[0], Storage.get("categories"));
+
+        //console.log(groups);
+
+        let group_title = groups[groups.length-1].title;
+
+        let selected_title = group_title;
+        //console.log(group_title);
+
+        this.setState({checkedGroupKey: [checkedKeys[0]], selected_title}, ()=>{
             chest.ModalLayout.closeAndDelete(2);
         });
     }

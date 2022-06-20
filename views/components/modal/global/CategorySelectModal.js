@@ -47,7 +47,7 @@ export default class CategorySelectModal extends Component {
     onConfirm=()=>{
 
         if(this.props.onConfirm){
-            this.props.onConfirm(this.state.checkedKeys, this.state.checkedTitles);
+            this.props.onConfirm(this.state.checkedKeys);
         }else{
             chest.ModalLayout.closeAndDelete(1);
         }

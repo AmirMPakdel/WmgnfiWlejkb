@@ -102,8 +102,30 @@ export default class Course extends Component {
                                 <IconLine key={i} className={styles.crs_points} 
                                 icon_className={styles.crs_points_icn}
                                 text_className={styles.crs_points_txt} 
-                                icon={"/statics/img/square_b.svg"} 
+                                icon={"/statics/svg/crs_row_icn.svg"} 
                                 text={v}/>
+                            ))
+                        }
+                    </div>
+                    </>
+                    :null
+                }
+
+                <div className={styles.space1}/>
+
+                {
+                    c.requirements?
+                    <>
+                    <SectionTitle title="پیش نیاز های دوره"/>
+                    <div className={styles.req_sec+" bglc1i"}>
+                        {
+                            
+                            c.requirements.map((v,i)=>(
+                            <IconLine key={i} className={styles.crs_points} 
+                            icon_className={styles.crs_points_icn}
+                            text_className={styles.crs_points_txt} 
+                            icon={"/statics/svg/crs_row_icn.svg"} 
+                            text={v}/>
                             ))
                         }
                     </div>
@@ -129,27 +151,6 @@ export default class Course extends Component {
                     null
                 }
 
-                <div className={styles.space1}/>
-
-                {
-                    c.requirements?
-                    <>
-                    <SectionTitle title="پیش نیاز های دوره"/>
-                    <div className={styles.req_sec+" bglc1i"}>
-                        {
-                            
-                            c.requirements.map((v,i)=>(
-                            <IconLine key={i} className={styles.crs_points} 
-                            icon_className={styles.crs_points_icn}
-                            text_className={styles.crs_points_txt} 
-                            icon={"/statics/img/square_b.svg"} 
-                            text={v}/>
-                            ))
-                        }
-                    </div>
-                    </>
-                    :null
-                }
 
                 <div className={styles.space1}/>
 

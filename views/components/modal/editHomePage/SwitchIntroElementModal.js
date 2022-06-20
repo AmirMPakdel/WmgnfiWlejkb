@@ -21,7 +21,8 @@ export default class SwitchIntroElementModal extends Component {
 
         this.state = {
             template: this.props.template,
-            info_text: template2Info(this.props.template)
+            info_text: template2Info(this.props.template),
+            guide_image_src: "/statics/img/guide_intro_default.jpg",
         }
     }
     
@@ -36,7 +37,14 @@ export default class SwitchIntroElementModal extends Component {
 
     onTypeSelect=(template)=>{
 
-        this.setState({template, info_text: template2Info(template)});
+        let guide_image_src = "";
+        if(template == 1){
+            guide_image_src = "/statics/img/guide_intro_default.jpg";
+        }else if(template == 2){
+            guide_image_src = "/statics/img/guide_intro_banner.jpg";
+        }
+
+        this.setState({template, info_text: template2Info(template), guide_image_src});
     }
 
     onConfirm=()=>{
@@ -76,6 +84,8 @@ export default class SwitchIntroElementModal extends Component {
 
                         </div>
                         
+                        <img className={styles.guide_image+" sm_card_shd"} src={this.state.guide_image_src}/>
+
                         <div className={styles.info2+" bdyt "}>{this.state.info_text}</div>
 
                     </div>

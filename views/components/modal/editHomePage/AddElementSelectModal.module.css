@@ -46,6 +46,12 @@
     margin-top: 1rem;
 }
 
+.guide_image{
+    height: 12rem;
+    margin: 1rem;
+    border-radius: 1rem;
+}
+
 .confirm_btn{
     width: 16rem;
     margin-top: 2rem;

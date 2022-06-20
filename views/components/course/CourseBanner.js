@@ -45,10 +45,17 @@ export default class CourseBanner extends Component {
         let c = ps.course;
         return(
             <>
-                <div className={styles.back_img} style={{backgroundImage:`url(${myServer.MediaFiles.publicImage(c.cover)})`}}/>
+                <div className={styles.back_img} style={{backgroundImage:`url(${myServer.MediaFiles.publicImage(c.cover, "course_image")})`}}/>
 
                 <div className={styles.title+" ftc1i btc1i tilt"}>
                     {c.title}
+                </div>
+
+                <div className={styles.educator_con}>
+                    
+                    <img className={styles.educator_icon} src={"/statics/svg/educator_bold_white.svg"}/>
+                    {c.educators.map(e=>e.first_name+" "+e.last_name).join("، ")}
+
                 </div>
 
                 <div className={styles.row1+"  flc1i cpnt"}>
@@ -68,13 +75,13 @@ export default class CourseBanner extends Component {
 
                 </div>
 
-                <div className={styles.dashed+" dashed_line_lc2"}/>
+                {/* <div className={styles.dashed+" dashed_line_lc2"}/> */}
 
                 <div className={styles.row2+" flc1i bdyt"}>
                     {c.short_desc}
                 </div>
 
-                <div className={styles.dashed+" "+styles.dashed2+" dashed_line_lc2"}/>
+                {/* <div className={styles.dashed+" "+styles.dashed2+" dashed_line_lc2"}/> */}
 
                 <div className={styles.row3}>
 
@@ -103,8 +110,16 @@ export default class CourseBanner extends Component {
 
                     <div className={styles.dashed+" dashed_line_lc2"}/>
 
-                    <VideoCard className={styles.tablet_video}
-                    uploadKey={c.intro_video.url}/>
+                    {
+                        c.intro_video.url?
+                        <VideoCard className={styles.tablet_video}
+                        thumbnail={myServer.MediaFiles.publicImage(c.logo)}
+                        uploadKey={c.intro_video.url}/>
+                        :
+                        <div className={styles.default_intro_video_image}
+                        style={{backgroundImage:`url(${myServer.MediaFiles.publicImage(c.logo, "course_image")})`}}/>
+                    }
+                    
 
                     <div className={styles.tablet_sec1+" flc1"}>
 

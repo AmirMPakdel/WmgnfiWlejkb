@@ -104,9 +104,14 @@ export default class EditableElementCardController{
 
             if(data.result_code === env.SC.SUCCESS){
 
-                chest.openNotification(
-                    "آیتم "+title+" "
-                    +"برای عموم پنهان شد.", "success");
+                let message = "";
+                if(!visible){
+                    message = "آیتم "+title+" "+"برای عموم پنهان شد.";
+                }else{
+                    message = "آیتم "+title+" " +"به نمایش گذاشته شد."
+                }
+
+                chest.openNotification(message, "success");
                 
             }else{
 

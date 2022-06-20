@@ -20,6 +20,10 @@ export default class VideoCard extends Component {
         is_playing:false,
     }
 
+    componentDidMount(){
+        this.video.thu
+    }
+
     onPlay=()=>{
         if(!this.state.is_playing){
             this.video.play();
@@ -48,6 +52,7 @@ export default class VideoCard extends Component {
                 <video className={styles.video} 
                 ref={r=>this.video=r}
                 src={src}
+                poster={this.props.thumbnail || undefined}
                 controls={this.state.controls}/>
 
                 {

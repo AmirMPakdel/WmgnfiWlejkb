@@ -19,7 +19,8 @@ export default class AddElementSelectModal extends Component {
     constructor(props){
         super(props);
         this.state = {
-            selected_type: null,
+            selected_type: "3",
+            guide_image_src:"/statics/img/guide_infobox.jpg",
         }
     }
     
@@ -40,7 +41,14 @@ export default class AddElementSelectModal extends Component {
 
     onSelect=(type)=>{
 
-        this.setState({selected_type:type});
+        let guide_image_src = "";
+        if(type == "3"){
+            guide_image_src = "/statics/img/guide_infobox.jpg";
+        }else if(type == "4"){
+            guide_image_src = "/statics/img/guide_courselist.jpg";
+        }
+
+        this.setState({selected_type:type, guide_image_src});
     }
     
     render(){
@@ -73,6 +81,8 @@ export default class AddElementSelectModal extends Component {
 
                     </div>
 
+                    <img className={styles.guide_image+" sm_card_shd"} src={this.state.guide_image_src}/>
+
                     <MainButton className={styles.confirm_btn}
                     title={"ادامه"}
                     onClick={this.onContinue}/>
@@ -95,12 +105,12 @@ class TypeSelect extends Component{
 
                 <div className={styles.ts_title+" bdyt"}>{this.props.title}</div>
 
-                <Popover overlayClassName={styles.ts_pop_overlay}
+                {/* <Popover overlayClassName={styles.ts_pop_overlay}
                 content={<img className={styles.ts_pop_con} src={this.props.helpSrc}/>}>
 
                     <img className={styles.ts_help} src={"/statics/svg2/question.svg"}/>
                 
-                </Popover>
+                </Popover> */}
 
             </div>
         )

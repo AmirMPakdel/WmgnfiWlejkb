@@ -42,15 +42,15 @@ export default class PreviewCourse extends Component {
     render(){
         let c = this.state.course;
         return(
-            <IndexLayout accessType="userL1"
-            showWithoutAuth={false}>
+            <IndexLayout accessType="noAuth"
+            showWithoutAuth={false}
+            footerAutoLoad={true}>
 
             {
                 this.state.loading?
                 <Loading style={{minHeight:"75vh"}}/>
                 :
                 <>
-
                 <WrapperT1 style={{minHeight:"auto"}}>
 
                 <div className={styles.sec1}>
@@ -65,61 +65,76 @@ export default class PreviewCourse extends Component {
 
                 <div className={styles.sec2}>
 
-                <SectionTitle title="چه چیزی در این دوره یاد خواهید گرفت؟"/>
-
                 {
                     c.subjects?
+                    <>
+                    <SectionTitle title="چه چیزی در این دوره یاد خواهید گرفت؟"/>
                     <div className={styles.sec3+" bglc1i"}>
                         {
                             c.subjects.map((v,i)=>(
                                 <IconLine key={i} className={styles.crs_points} 
                                 icon_className={styles.crs_points_icn}
                                 text_className={styles.crs_points_txt} 
-                                icon={"/statics/img/square_b.svg"} 
+                                icon={"/statics/svg/crs_row_icn.svg"} 
                                 text={v}/>
                             ))
                         }
                     </div>
+                    </>
                     :null
                 }
 
                 <div className={styles.space1}/>
 
-                <SectionTitle title="محتوای دوره"/>
-                {
-                    c.headings?
-                    c.headings.map((v,i)=>(
-                        <ContentCard key={i}
-                        open={i===0}
-                        data={v}
-                        parent={this}/>
-                    )):
-                    null
-                }
-                <div className={styles.space1}/>
-
-                <SectionTitle title="پیش نیاز های دوره"/>
-
                 {
                     c.requirements?
-                    <div className={styles.req_sec}>
+                    <>
+                    <SectionTitle title="پیش نیاز های دوره"/>
+                    <div className={styles.req_sec+" bglc1i"}>
                         {
                             
                             c.requirements.map((v,i)=>(
-                            <IconLine key={i} icon_className={styles.square_icon} 
-                            icon={"/statics/img/square_b.svg"} 
+                            <IconLine key={i} className={styles.crs_points} 
+                            icon_className={styles.crs_points_icn}
+                            text_className={styles.crs_points_txt} 
+                            icon={"/statics/svg/crs_row_icn.svg"} 
                             text={v}/>
                             ))
                         }
                     </div>
+                    </>
                     :null
                 }
 
                 <div className={styles.space1}/>
 
-                <SectionTitle title="توضیحات دوره"/>
+                {
+                    c.headings?
+                    <>
+                    <SectionTitle title="محتوای دوره"/>
+                    {
+                        c.sorted_content.map((v,i)=>(
+                            <ContentCard key={i}
+                            open={true}
+                            data={v}
+                            parent={this}/>
+                        ))
+                    }
+                    </>:
+                    null
+                }
 
-                <CourseInfo parent={this}/>
+
+                <div className={styles.space1}/>
+
+                {
+                    c.long_desc?
+                    <>
+                    <SectionTitle title="توضیحات دوره"/>
+                    <CourseInfo parent={this}/>
+                    </>
+                    :null
+                }
 
                 {/* <div className={styles.space1}/>
 
@@ -134,7 +149,6 @@ export default class PreviewCourse extends Component {
                 <SectionTitle title="مقالات پیشنهادی"/>
 
                 <RecommandedArticles/> */}
-
 
                 </div>
 

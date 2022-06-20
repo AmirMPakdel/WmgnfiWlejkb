@@ -95,16 +95,13 @@ export default class CourseModel{
             }
         });
     }
-
-    
-    
 }
 
 function contentHeadingSort(course){
 
-    let h = course.headings;
-    let c = course.contents;
-    let ch = course.content_hierarchy;
+    let h = course.headings || [];
+    let c = course.contents || [];
+    let ch = course.content_hierarchy || "[]";
 
     let newContent = [];
 

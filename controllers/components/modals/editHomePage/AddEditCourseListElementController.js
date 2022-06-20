@@ -74,11 +74,66 @@ export default class AddEditCourseListElementController{
 
         return valid;
     }
+
+    extractSelectedGroups (group, groupList){
+
+        let key = group;
+        
+        if(!key || !groupList) return [];
+    
+        let ids = key.split("-");
+        let level = ids.length;
+        let groups = [];
+    
+        let l1 = null;
+        groupList.forEach((g1)=>{
+            if(g1.id == ids[0]){
+                l1 = g1;
+                groups.push({id:l1.id, key:l1.id, title:l1.title});
+            }
+        });
+    
+        let l2 = null;
+        if(level > 1 && l1){
+            let groupL2 = l1.groups;
+            groupL2.forEach((g2)=>{
+                if(g2.id == ids[1]){
+                    l2 = g2;
+                    groups.push({id:l2.id, key:l1.id+"-"+l2.id, title:l2.title});
+                }
+            });
+        }
+    
+        if(level > 2 && l2){
+            let l3 = null;
+            let groupL3 = l2.groups;
+            groupL3.forEach((g3)=>{
+                if(g3.id == ids[2]){
+                    l3 = g3;
+                    groups.push({id:l3.id, key:l1.id+"-"+l2.id+"-"+l3.id, title:l3.title});
+                }
+            });
+        }
+    
+        return groups;
+    }
 }
 
 const generateTitle = (vs)=>{
 
-    return vs.ordering_item.title;
+    if(vs.active_grouping){
+
+        let part1 = vs.ordering_item.title.split("ها")[0];
+
+        let part2 = vs.selected_title;
+
+        return part1+"دوره‌های "+part2;
+
+    }else{
+
+        return vs.ordering_item.title;
+    }
+    
 }
 
 const generateGroupingObj = (keys)=>{
@@ -95,3 +150,4 @@ const generateGroupingObj = (keys)=>{
 
     return obj;
 }
+
