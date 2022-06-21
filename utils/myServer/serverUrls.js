@@ -65,7 +65,7 @@ const ServerUrls = {
     COURSE_CREATE: domain+prefixes.UTA+"/courses/create",
     COURSE_FETCH: domain+prefixes.UTA+"/course/load",
     COURSE_EDIT: domain+prefixes.UTA+"/course/edit/",
-    COURSE_PUBLISH_REQUEST: domain+prefixes.MA+"/user/course/validation/check",
+    COURSE_PUBLISH_REQUEST: domain+prefixes.UTA+"/course/check_validation",
 
     //user MyCourses
     MY_COURSES_FETCH: domain+prefixes.UTA+"/courses/fetch/",

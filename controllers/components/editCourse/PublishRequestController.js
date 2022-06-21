@@ -1,5 +1,7 @@
 import PublishRequest from "@/views/components/editCourse/PublishRequest";
 import PublishRequestModel from "@/models/components/editCourse/PublishRequestModel";
+import { getUrlPart } from "@/utils/helpers";
+import chest from "@/utils/chest";
 
 export default class PublishRequestController{
     
@@ -17,14 +19,18 @@ export default class PublishRequestController{
 
             this.view.setState({request_loading:true});
 
-            let params = {};
+            let params = {
+                course_id:getUrlPart(3)
+            };
 
             this.model.sendRequest(params, (err, data)=>{
 
                 if(data.result_code === env.SC.SUCCESS){
 
+                    chest.openNotification("دوره با موفقیت منتشر گردید.", "success");
+
                     let EditCourse = this.view.props.parent;
-                    EditCourse.state.new_values.validation_status = "is_checking";
+                    EditCourse.state.new_values.validation_status = "valid";
                     this.view.setState({request_loading:true}, ()=>{
                         EditCourse.setState({new_values: EditCourse.state.new_values});
                     });
