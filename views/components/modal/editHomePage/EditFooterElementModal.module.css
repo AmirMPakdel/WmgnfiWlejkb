@@ -66,6 +66,25 @@
     margin-bottom: 0 !important;
 }
 
+.examp_con{
+    width: 100%;
+    padding: 0 1rem;
+    margin-top: 0.5rem;
+}
+
+.examp_title{
+    font-weight: 500;
+    width: 100%;
+    direction: rtl;
+    text-align: right;
+}
+
+.examp_value{
+    width: 100%;
+    font-family: IranSansEng;
+    direction: ltr;
+    text-align: left;
+}
 
 .confirm_btn{
     width: 16rem;

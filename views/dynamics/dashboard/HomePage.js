@@ -56,11 +56,11 @@ export default class HomePage extends Component {
     }
 
     openHomePage=()=>{
-        if(this.hompPageWin){
-            this.hompPageWin.location.reload();
-            this.hompPageWin.focus();
+        if(this.homePageTab && this.homePageTab.location && this.homePageTab.location.reload){
+            this.homePageTab.location.reload();
+            this.homePageTab.focus();
         }else{
-            this.hompPageWin = window.open(env.PATHS.HOMEPAGE);
+            this.homePageTab = window.open(env.PATHS.HOMEPAGE);
         }
     }
     

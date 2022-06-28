@@ -80,29 +80,54 @@ export default class EditFooterElementModal extends Component {
                         onChange={t=>this.onInput("email", t)}
                         value={this.state.email}/>
 
+                        <div className={styles.examp_con}>
+                            <div className={styles.examp_title}>{"مثال آدرس ایمیل : "}</div>
+                            <div className={styles.examp_value}>{"minfo.ecourse@gmail.com"}</div>
+                        </div>
+
                         <TextInput className={styles.input1}
                         placeholder={"واتس اپ"}
                         inputStyle={{direction:"ltr"}}
                         onChange={t=>this.onInput("whatsapp", t)}
                         value={this.state.whatsapp}/>
 
+                        <div className={styles.examp_con}>
+                            <div className={styles.examp_title}>{"مثال لینک واتس اپ برای شماره 09125005050 : "}</div>
+                            <div className={styles.examp_value}>{"https://api.whatsapp.com/send?phone=989125005050"}</div>
+                        </div>
+
                         <TextInput className={styles.input1}
                         placeholder={"تلگرام"}
                         inputStyle={{direction:"ltr"}}
                         onChange={t=>this.onInput("telegram", t)}
                         value={this.state.telegram}/>
+                        
+                        <div className={styles.examp_con}>
+                            <div className={styles.examp_title}>{"مثال لینک تلگرام برای آی دی minfo : "}</div>
+                            <div className={styles.examp_value}>{"https://t.me/minfo"}</div>
+                        </div>
 
                         <TextInput className={styles.input1}
                         placeholder={"اینستاگرام"}
                         inputStyle={{direction:"ltr"}}
                         onChange={t=>this.onInput("instagram", t)}
                         value={this.state.instagram}/>
+                        
+                        <div className={styles.examp_con}>
+                            <div className={styles.examp_title}>{"مثال لینک اینستاگرام برای نام کاربری minfo : "}</div>
+                            <div className={styles.examp_value}>{"https://www.instagram.com/minfo"}</div>
+                        </div>
 
                         <TextInput className={styles.input1}
                         inputStyle={{direction:"ltr"}}
                         placeholder={"لینکدین"}
                         onChange={t=>this.onInput("linkedin", t)}
                         value={this.state.linkedin}/>
+
+                        <div className={styles.examp_con}>
+                            <div className={styles.examp_title}>{"مثال لینک لینکدین : "}</div>
+                            <div className={styles.examp_value}>{"https://www.linkedin.com/in/williamhgates"}</div>
+                        </div>
 
                         <div className={styles.title2+" tilt"}>{"شماره تماس"}</div>
 

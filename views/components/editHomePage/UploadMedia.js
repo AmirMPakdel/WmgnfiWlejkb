@@ -19,7 +19,7 @@ export default class UploadMedia extends Component {
             src: null,
             file: null,
         }
-        if(props.defaultUploadKey && props.type == "image"){
+        if(props.defaultUploadKey && props.type == "image" ){
             this.state.src = myServer.MediaFiles.publicImage(props.defaultUploadKey);
         }
         if(props.defaultUploadKey && props.type == "video"){

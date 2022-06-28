@@ -223,7 +223,7 @@ const setDefaultIntro = (props)=>{
         link_title: d.link_title,
         link_url: d.link,
         cover: d.cover,
-        defaultCover: "/statics/default_img/default_site_intro_cover.jpg",
+        defaultCover: "/statics/default_img/default_site_intro_cover.png",
     }
 
     return state;
