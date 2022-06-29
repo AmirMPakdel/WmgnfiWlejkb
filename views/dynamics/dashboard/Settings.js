@@ -7,6 +7,7 @@ import styles from "./Settings.module.css";
 import CategoryCrudModal from "@/views/components/modal/global/CategoryCrudModal";
 import EditSitesTitlesModal from "@/views/components/modal/settings/EditSitesTitlesModal";
 import EditSitesIconModal from "@/views/components/modal/settings/EditSitesIconModal";
+import EditHeaderLogoModal from "@/views/components/modal/settings/EditHeaderLogoModal";
 
 /**
 * Props of Settings Component
@@ -48,6 +49,11 @@ export default class Settings extends Component {
         chest.ModalLayout.setAndShowModal(1, modal);
     }
     
+    onHeaderLogo=()=>{
+        let modal = <EditHeaderLogoModal/>
+        chest.ModalLayout.setAndShowModal(1, modal);
+    }
+
     render(){
         return(
             <EducatorDashboardLayout accessType="userL1"
@@ -81,13 +87,25 @@ export default class Settings extends Component {
 
                             </div>
 
+                            
+
+                            <div className={styles.setting_card+" md_card_shd amp_btn bglc1"} onClick={this.onHeaderLogo}>
+
+                                <div className={styles.setting_card_t+" tilt"}>{"ویرایش لوگوی هدر سایت"}</div>
+
+                            </div>
+                            
+                        </div>
+
+                        {/* <div className={styles.row}>
+
                             <div className={styles.setting_card+" md_card_shd amp_btn bglc1"} onClick={this.onSitesLogo}>
 
                                 <div className={styles.setting_card_t+" tilt"}>{"ویرایش لوگوی سایت"}</div>
 
                             </div>
-                            
-                        </div>
+
+                        </div> */}
 
                     </div>
 

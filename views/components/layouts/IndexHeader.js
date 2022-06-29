@@ -5,6 +5,7 @@ import StudentAuthModal from "@/views/components/modal/global/StudentAuthModal";
 import Observer from "@/utils/observer";
 import { getStudent } from "@/controllers/layouts/AccessLayoutController";
 import { deleteCookie, getCookie } from "@/utils/cookie";
+import myServer from "@/utils/myServer";
 
 /**
 * Props of IndexHeader Component
@@ -22,10 +23,12 @@ export default class IndexHeader extends Component {
         this.state = {
             logedin: 0,
             username: "",
+            logo:null,
         }
 
         Observer.add("onAuthenticate", this.changeInfo);
         Observer.add("onStudentChange", this.changeInfo);
+        Observer.add("onSiteInfoChange", this.onSiteInfoChange);
     }
     
     componentDidMount(){
@@ -73,6 +76,11 @@ export default class IndexHeader extends Component {
         });
     }
 
+    onSiteInfoChange=(site_info)=>{
+
+        this.setState({logo: myServer.MediaFiles.publicImage(site_info.page_logo)})
+    }
+
     onStudentDashboard=()=>{
 
         window.location.href = env.PATHS.STUDENT_COURSES;
@@ -101,7 +109,7 @@ export default class IndexHeader extends Component {
                         <div className={styles.dt_logo_con}>
 
                             <img className={styles.dt_logo_img} onClick={()=>window.location.href=env.PATHS.HOMEPAGE}
-                            src={"/statics/default_img/default_header_logo.png"}/>
+                            src={this.state.logo}/>
 
                         </div>
 
@@ -144,7 +152,7 @@ export default class IndexHeader extends Component {
                     src={"/statics/svg2/menu.svg"}/>
 
                     <img className={styles.mob_logo_img}
-                    src={"/statics/default_img/default_header_logo.png"}/>
+                    src={this.state.logo}/>
 
                 </div>
 

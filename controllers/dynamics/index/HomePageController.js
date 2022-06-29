@@ -21,6 +21,8 @@ export default class HomePageController{
 
                 let d = data.data;
 
+                Observer.execute("onSiteInfoChange", d);
+
                 d.hierarchy = normalizeHierarchy(d.hierarchy, d.elements);
                 
                 let elements = sortElementsBasedOnHierarchy(d.elements, d.hierarchy);
