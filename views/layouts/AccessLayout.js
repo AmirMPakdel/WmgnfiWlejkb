@@ -19,7 +19,7 @@ export default class AccessLayout extends Component {
         this.controller = new AccessLayoutController(this);
 
         this.state = {
-            loading: true,
+            loading: props.accessType=="noAuth"?false:true,
             authenticated: false,
         }
     }
@@ -31,8 +31,6 @@ export default class AccessLayout extends Component {
         }else if(this.props.accessType === "userL1" || 
             this.props.accessType === "userL2"){
             this.controller.loadUser();
-        }else if(this.props.accessType === "noAuth"){
-            this.setState({loading: false});
         }
     }
     
