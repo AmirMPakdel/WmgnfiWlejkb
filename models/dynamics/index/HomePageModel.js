@@ -33,6 +33,13 @@ export default class HomePageModel{
 
                     //saving or updating mainpage footer data
                     Storage.store("footer", footer_data);
+
+                    //saving or updating site_info
+                    let site_info = Storage.get("site_info") || {};
+                    site_info.page_logo = d.page_logo;
+                    site_info.motto = d.motto;
+                    site_info.page_title = d.page_title;
+                    Storage.store("site_info", site_info);
         
                     let constElements = [
                         {

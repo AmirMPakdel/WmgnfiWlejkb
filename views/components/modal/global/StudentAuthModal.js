@@ -187,12 +187,10 @@ class MobilePage extends Component{
             title={"تایید"}
             onClick={p.onMobileConfirm}/>
 
-            <p style={{direction:"rtl", maxWidth:"20rem", textAlign:"center", marginTop:"1rem", fontSize:"11px"}}>
+            <p style={{direction:"rtl", maxWidth:"18rem", textAlign:"center", marginTop:"1rem", fontSize:"11px"}}>
                 با ورود و یا ثبت نام شما 
-                <a href={env.PATHS.MINFO_TERMS}> شرایط و قوانین </a>
-                استفاده از سرویس های سایت و 
-                <a href={env.PATHS.MINFO_PRIVACY}> قوانین حریم خصوصی </a>
-                آن را می‌پذیرید.
+                <a href={env.PATHS.STUDENT_RULES} target="_blank" rel="noopener noreferrer"> شرایط و قوانین </a>
+                استفاده از خدمات و محصولات سایت را می‌پذیرید.
             </p>
 
             </>

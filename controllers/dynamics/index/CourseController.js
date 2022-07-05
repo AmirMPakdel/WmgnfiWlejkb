@@ -1,4 +1,6 @@
 import CourseModel from "@/models/dynamics/index/CourseModel";
+import chest from "@/utils/chest";
+import { getCookie } from "@/utils/cookie";
 import { getUrlPart } from "@/utils/helpers";
 import Storage from "@/utils/storage";
 import Course from "@/views/dynamics/index/Course";
@@ -47,6 +49,12 @@ export default class CourseController{
     }
 
     addToWishlist(){
+
+        if(!getCookie(env.STUDENT_TOKEN_KEY)){
+
+            chest.openNotification("برای افزودن دوره به لیست علاقه مندی ها ابتدا وارد حساب کاربری خود شوید.", "alert");
+            return;
+        }
 
         let v = this.view;
         if(v.fav_btn_lock){return};

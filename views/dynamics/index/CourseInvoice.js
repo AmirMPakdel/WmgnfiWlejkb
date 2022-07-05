@@ -158,9 +158,11 @@ export default class CourseInvoice extends Component {
 
                                         <Checkbox checked={this.state.rules_accept} onClick={this.onAccept}/>
 
-                                        <div className={styles.invoice_checkbox+" bdyt"}>
-                                            {"با زدن تیک، قوانین پرداخت این سایت را پذیرفته ام."}
-                                        </div>
+                                        <span className={styles.invoice_checkbox+" bdyt"}>
+                                            {"با زدن تیک، "}
+                                            <a href={env.PATHS.STUDENT_RULES+"?sec=purchase_rules"} target="_blank" rel="noreferrer noopener">{"قوانین پرداخت "}</a>
+                                            {"این سایت را پذیرفته ام."}
+                                        </span>
 
                                     </div>
 

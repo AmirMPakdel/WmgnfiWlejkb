@@ -3,6 +3,7 @@ import UploadFileModel from "@/models/global/UploadFileModel";
 import chest from "@/utils/chest";
 import { getCookie } from "@/utils/cookie";
 import { fileType2Ext, getTenant } from "@/utils/helpers";
+import Storage from "@/utils/storage";
 import EditHeaderLogoModal from "@/views/components/modal/settings/EditHeaderLogoModal";
 
 export default class EditHeaderLogoController{
@@ -118,6 +119,9 @@ export default class EditHeaderLogoController{
                                 this.model.save(params4, (err4, data4)=>{
                                     
                                     if(data4.result_code == env.SC.SUCCESS){
+
+                                        let site_info = Storage.get("site_info") || {};
+                                        site_info.page_logo = params3.upload_key;
 
                                         chest.openNotification("لوگوی هدر سایت با موفقیت ویرایش شد.", "success");
                         

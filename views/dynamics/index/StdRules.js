@@ -24,6 +24,8 @@ export default class StdRules extends Component {
     
     componentDidMount(){
 
+        document.title = "قوانین و شرایط سایت | مینفو"
+
         if(getParamByName("sec") === "purchase_rules"){
             this.puchase_rules.scrollIntoView();
         }

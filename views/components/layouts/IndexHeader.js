@@ -6,6 +6,7 @@ import Observer from "@/utils/observer";
 import { getStudent } from "@/controllers/layouts/AccessLayoutController";
 import { deleteCookie, getCookie } from "@/utils/cookie";
 import myServer from "@/utils/myServer";
+import Storage from "@/utils/storage";
 
 /**
 * Props of IndexHeader Component
@@ -24,6 +25,11 @@ export default class IndexHeader extends Component {
             logedin: 0,
             username: "",
             logo:null,
+        }
+
+        let site_info = Storage.get("site_info");
+        if(site_info && site_info.page_logo){ 
+            this.state.logo=myServer.MediaFiles.publicImage(site_info.page_logo);
         }
 
         Observer.add("onAuthenticate", this.changeInfo);

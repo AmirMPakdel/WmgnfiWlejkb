@@ -1,5 +1,6 @@
 import HomePageModel from "@/models/dynamics/index/HomePageModel";
 import Observer from "@/utils/observer";
+import Storage from "@/utils/storage";
 import HomePage from "@/views/dynamics/index/HomePage";
 import { extractFooterData, normalizeHierarchy, sortElementsBasedOnHierarchy } from "../dashboard/HomePageController";
 
