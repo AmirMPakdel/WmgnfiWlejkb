@@ -28,8 +28,8 @@ export default class IndexHeader extends Component {
         }
 
         let site_info = Storage.get("site_info");
-        if(site_info && site_info.page_logo){ 
-            this.state.logo=myServer.MediaFiles.publicImage(site_info.page_logo);
+        if(site_info){ 
+            this.state.logo = myServer.MediaFiles.publicImage(site_info.page_logo, "header_logo");
         }
 
         Observer.add("onAuthenticate", this.changeInfo);
@@ -84,7 +84,7 @@ export default class IndexHeader extends Component {
 
     onSiteInfoChange=(site_info)=>{
 
-        this.setState({logo: myServer.MediaFiles.publicImage(site_info.page_logo)})
+        this.setState({logo: myServer.MediaFiles.publicImage(site_info.page_logo, "header_logo")});
     }
 
     onStudentDashboard=()=>{
