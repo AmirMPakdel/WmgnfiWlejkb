@@ -49,24 +49,28 @@ export default class PublishRequestController{
             ve.push("(محتویات دوره) " + "برای انتشار می بایست حداقل "+env.LIMITS.MIN_VALID_CONTENTS_PUBLISH+" محتوا برای دوره خود بارگذاری نمایید.");
         }
 
-        if(!ov.logo){
-            ve.push("بارگذاری لوگوی دوره الزامی است.");
+        if(!ov.g1){
+            ve.push("دسته بندی دوره مشخص نشده است.");
         }
 
-        if(!ov.cover){
-            ve.push("بارگذاری عکس پس زمینه دوره الزامی است.");
-        }
+        // if(!ov.logo){
+        //     ve.push("بارگذاری لوگوی دوره الزامی است.");
+        // }
 
-        if(!ov.intro_video || !ov.intro_video.id){
-            ve.push("بارگذاری فیلم معرفی دوره الزامی است.");
-        }
+        // if(!ov.cover){
+        //     ve.push("بارگذاری عکس پس زمینه دوره الزامی است.");
+        // }
+
+        // if(!ov.intro_video || !ov.intro_video.id){
+        //     ve.push("بارگذاری فیلم معرفی دوره الزامی است.");
+        // }
 
         if(!ov.educators.length){
             ve.push("برای هر دوره وارد کردن حداقل یک مدرس الزامی است.");
         }
 
-        if(!ov.duration){
-            ve.push("مدت زمان دوره می بایست حداقل "+ env.LIMITS.MIN_VALID_COURSE_DURATION+" ساعت باید.");
+        if(!ov.duration || ov.duration < env.LIMITS.MIN_VALID_COURSE_DURATION){
+            ve.push("مدت زمان دوره می بایست حداقل "+ env.LIMITS.MIN_VALID_COURSE_DURATION+" دقیقه باید.");
         }
 
         if(!ov.short_desc || ov.short_desc.length < env.LIMITS.MIN_VALID_SHORT_DESC){
@@ -76,8 +80,6 @@ export default class PublishRequestController{
         if(!ov.long_desc || ov.long_desc.length < env.LIMITS.MIN_VALID_LONG_DESC){
             ve.push("توضیحات کامل دوره می بایست حداقل "+ env.LIMITS.MIN_VALID_LONG_DESC+" کارکتر باشد.");
         }
-
-        //TODO: for price
 
         if(ov.subjects.length < env.LIMITS.MIN_VALID_COURSE_SUBJECTS){
             ve.push("تعداد مورادی که در این دوره  تدریس می شود می بایست حداقل "+ env.LIMITS.MIN_VALID_COURSE_SUBJECTS+" باشد.");

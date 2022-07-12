@@ -46,6 +46,10 @@ export default class AddContentModal extends Component {
     }
 
     onCancel=()=>{
+        if(this.state.status==="uploading"){
+            chest.openNotification("لطفا تا پایان آپلود منتظر بمانید.", "alert");
+            return;
+        }
         this.controller.onCancel();
     }
 

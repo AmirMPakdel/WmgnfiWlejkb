@@ -1,4 +1,5 @@
 import HomePageModel from "@/models/dynamics/index/HomePageModel";
+import { setMetaTag } from "@/utils/helpers";
 import Observer from "@/utils/observer";
 import Storage from "@/utils/storage";
 import HomePage from "@/views/dynamics/index/HomePage";
@@ -12,7 +13,7 @@ export default class HomePageController{
         this.model = new HomePageModel();
     }
     
-    loadElements(){
+    loadElements(cb){
 
         let v = this.view;
 
@@ -47,16 +48,13 @@ export default class HomePageController{
 
                     Observer.execute("onFooterChange", footer_data);
 
-                    this.setupPageTitle();
+                    if(cb){cb()};
                 });
             }
         });
     }
 
-    setupPageTitle(){
-        
-        document.title = "سایت فروش دوره های آموزشی "+" | مینفو";
-    }
+    
 }
 
 function setShowDefaultHomePage(data, elements) {

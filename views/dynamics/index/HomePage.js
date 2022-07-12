@@ -1,4 +1,5 @@
 import HomePageController from "@/controllers/dynamics/index/HomePageController";
+import { setSiteInfo } from "@/utils/helpers";
 import Loading from "@/views/components/global/Loading";
 import CourseList from "@/views/components/homePage/CourseList";
 import DefaultCourseList from "@/views/components/homePage/DefaultCourseList";
@@ -33,7 +34,12 @@ export default class HomePage extends Component {
     
     componentDidMount(){
 
-        this.controller.loadElements();
+        this.controller.loadElements( this.onLoadSiteInfo );
+    }
+
+    onLoadSiteInfo=()=>{
+
+        setSiteInfo(true);   
     }
     
     render(){

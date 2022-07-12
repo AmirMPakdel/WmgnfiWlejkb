@@ -1,7 +1,7 @@
 import CourseModel from "@/models/dynamics/index/CourseModel";
 import chest from "@/utils/chest";
 import { getCookie } from "@/utils/cookie";
-import { getUrlPart } from "@/utils/helpers";
+import { getUrlPart, setSiteInfo } from "@/utils/helpers";
 import Storage from "@/utils/storage";
 import Course from "@/views/dynamics/index/Course";
 
@@ -46,6 +46,8 @@ export default class CourseController{
             site_title = " | "+ site_info.page_title;
         }
         document.title = "فروش "+course.title+site_title+" | مینفو";
+
+        setSiteInfo(false);
     }
 
     addToWishlist(){

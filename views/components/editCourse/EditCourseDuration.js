@@ -56,7 +56,7 @@ export default class EditCourseDuration extends Component {
             <div className={styles.con}>
 
                 <EditableTitle
-                title={"مدت زمان آموزش (ساعت)"}
+                title={"مدت زمان آموزش (دقیقه)"}
                 status={st.duration}
                 onEdit={this.onEdit}
                 onSubmit={this.onSubmit}
@@ -67,10 +67,10 @@ export default class EditCourseDuration extends Component {
                 className={styles.edit_text}
                 inpuClassName={styles.edit_text_input}
                 ref={r=>this.EditableText=r}
-                maxLength={2}
+                maxLength={4}
                 value={nw.duration}
                 oldValue={od.duration}
-                placeholder={"مدت به ساعت"}
+                placeholder={"مدت به دقیقه"}
                 inputFilter={InputFilter.integer}
                 onChange={this.onChange}/>
 

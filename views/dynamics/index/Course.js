@@ -186,3 +186,19 @@ export default class Course extends Component {
         )
     }
 }
+
+export function duration2Hours(mins) {
+    
+    let hours = Math.floor(mins / 60);
+    let minutes = mins % 60;
+
+    let str = "";
+    if(hours){
+        str += hours+" ساعت ";
+        if(minutes){str += "و ";}
+    }
+    if(minutes){
+        str +=minutes+" دقیقه";
+    }
+    return str;
+}

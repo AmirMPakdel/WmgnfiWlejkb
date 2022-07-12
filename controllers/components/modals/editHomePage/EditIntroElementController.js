@@ -77,26 +77,29 @@ export default class EditIntroElementController{
         let vs = v.state;
         let valid = true;
 
-        if(!v.props.data.template && !v.UploadMedia.getFile()){
+        console.log(v.props.data);
+        console.log("vs", vs);
+
+        if(!vs.cover &&!v.UploadMedia.getFile()){
             valid=false;
             let message = "تصویری برای بارگذاری انتخاب نمایید.";
             chest.openNotification(message, "error");
         }
 
-        if(vs.type===1){
+        if(vs.template===1){
 
-            if(!vs.text.length){
-                valid=false;
-                vs.text_error = "متن توضیحات را پر کنید.";
-            }else{
-                vs.text_error = false;
-            }
-
-            if(!vs.title.length){
+            if(!vs.title){
                 valid=false;
                 vs.title_error = "عنوان در این حالت نمی تواند خالی باشد.";
             }else{
                 vs.title_error = false;
+            }
+
+            if(!vs.text){
+                valid=false;
+                vs.text_error = "متن توضیحات را پر کنید.";
+            }else{
+                vs.text_error = false;
             }
 
             if(vs.has_link){

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styles from "./CourseBanner.module.css";
 import myServer from "@/utils/myServer";
 import { priceFormat } from "@/utils/price";
-import Course from "@/views/dynamics/index/Course";
+import Course, { duration2Hours } from "@/views/dynamics/index/Course";
 import IconButton from "@/views/components/global/IconButton";
 import MainButton from "@/views/components/global/MainButton";
 import Price from "@/views/components/global/Price";
@@ -123,7 +123,7 @@ export default class CourseBanner extends Component {
 
                     <div className={styles.tablet_sec1+" flc1"}>
 
-                        <IconLine icon={"/statics/img/play_l-w.svg"} text={c.duration+" ساعت دوره"}/>
+                        <IconLine icon={"/statics/img/play_l-w.svg"} text={duration2Hours(c.duration)+" آموزش"}/>
 
                         <IconLine icon={"/statics/img/paper_l-w.svg"} text={c.headings.length+" سرفصل"}/>
 

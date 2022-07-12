@@ -66,6 +66,15 @@ export default class EditIntroElementModal extends Component {
 
         this.state[key] = value;
         this.setState(this.state);
+
+        if(key === "link_url"){
+            if(value){
+                this.link_url.input.style.direction="ltr"
+            }else{
+                this.link_url.input.style.direction="rtl"
+            }
+            
+        }
     }
 
     onHasLink=()=>{
@@ -90,7 +99,7 @@ export default class EditIntroElementModal extends Component {
     
     render(){
         return(
-            <div className={styles.con+" bglc1 btc2 xl_card_shd"}>
+            <div className={styles.con+" bgw btc2 xl_card_shd"}>
 
                 <CrossSvg className={styles.close_btn + " bglc1 amp_btn md_card_shd"}
                 stroke={env.THEME.dc1}
@@ -172,6 +181,7 @@ export default class EditIntroElementModal extends Component {
                                 </div>
 
                                 <TextInput className={styles.link_url_input}
+                                ref={r=>this.link_url=r}
                                 placeholder={"URL لینک"}
                                 onChange={t=>this.onInput("link_url", t)}
                                 value={this.state.link_url}

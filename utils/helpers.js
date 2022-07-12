@@ -1,4 +1,6 @@
+import React from "react";
 import { getCookie } from "./cookie";
+import Storage from "./storage";
 
 const helpers = {
     getTenant,
@@ -75,6 +77,37 @@ export function createMinfoHref(href) {
         if(href == "/"){return env.DOMAIN}
 
         return env.DOMAIN + href;
+    }
+}
+
+export function setMetaTag(name, content) {
+    let meta = document.getElementsByTagName('meta');
+    if(meta[name]){
+        meta[name].content = content; 
+    }else{
+        let node = document.createElement("meta");
+        node.setAttribute("name", name);
+        node.setAttribute("content", content);
+        document.getElementsByTagName("head")[0].appendChild(node);   
+    }
+}
+
+export function setSiteInfo(setTitle=false){
+
+    let site_info = Storage.get("site_info") || {};
+    
+    if(setTitle){
+        if(site_info.page_title){
+            document.title = site_info.page_title +" | "+" مینفو";
+        }else{
+            document.title = "سایت فروش دوره های آموزشی "+" | مینفو";
+        }
+    }
+    
+    if(site_info.motto){
+        setMetaTag("description", site_info.motto);
+    }else{
+        setMetaTag("description", "سایت فروش دوره های آموزشی  با مینفو");
     }
 }
 
