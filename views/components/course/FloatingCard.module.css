@@ -85,6 +85,14 @@
     transform: translateX(-0.1rem);
 }
 
+.free_price{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
 
 @media(max-width:1024px){
 

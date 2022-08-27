@@ -180,6 +180,14 @@
         margin-bottom: 1rem;
     }
 
+    .free_price{
+        width: 100%;
+        text-align: center;
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: white;
+    }
+
     .tablet_buy_btn{
         width: 60% !important;
         margin-top: 1rem !important;

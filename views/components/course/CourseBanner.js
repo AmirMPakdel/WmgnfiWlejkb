@@ -139,9 +139,13 @@ export default class CourseBanner extends Component {
                     
                     <div className={styles.price_wrapper+" flc1"}>
 
-                        <Price 
-                        withDiscount={c.discount_price}
-                        price={c.price}/>
+                        {
+                            c.price?
+                            <Price 
+                            withDiscount={c.discount_price}
+                            price={c.price}/>:
+                            <div className={styles.free_price}>{"رایگان"}</div>
+                        }
 
                     </div>
 
@@ -157,7 +161,7 @@ export default class CourseBanner extends Component {
                         <div className={styles.tablet_buy_btn+" bgsc fdc1 bdyt"}>{"خریداری شده"}</div>
                         :
                         <MainButton className={styles.tablet_buy_btn} 
-                        title={"خرید"}
+                        title={c.price?"خرید":"ثبت نام در دوره"}
                         onClick={this.onBuy}
                         whiteBorder={false}/>
                     }

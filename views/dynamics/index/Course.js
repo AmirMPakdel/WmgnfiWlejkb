@@ -110,12 +110,10 @@ export default class Course extends Component {
                     </>
                     :null
                 }
-
-                <div className={styles.space1}/>
-
                 {
                     c.requirements?
                     <>
+                    <div className={styles.space1}/>
                     <SectionTitle title="پیش نیاز های دوره"/>
                     <div className={styles.req_sec+" bglc1i"}>
                         {
@@ -132,12 +130,10 @@ export default class Course extends Component {
                     </>
                     :null
                 }
-
-                <div className={styles.space1}/>
-
                 {
                     c.headings?
                     <>
+                    <div className={styles.space1}/>
                     <SectionTitle title="محتوای دوره"/>
                     {
                         c.sorted_content.map((v,i)=>(
@@ -150,13 +146,10 @@ export default class Course extends Component {
                     </>:
                     null
                 }
-
-
-                <div className={styles.space1}/>
-
                 {
                     c.long_desc?
                     <>
+                    <div className={styles.space1}/>
                     <SectionTitle title="توضیحات دوره"/>
                     <CourseInfo parent={this}/>
                     </>

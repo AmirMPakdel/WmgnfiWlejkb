@@ -46,10 +46,14 @@ export default class FloatingCard extends Component {
 
                     <div className={styles.fltcrd_sec1}>
 
-                        <Price 
-                        withDiscount={c.discount_price}
-                        price={c.price}/>
-
+                        {
+                            c.price?
+                            <Price 
+                            withDiscount={c.discount_price}
+                            price={c.price}/>:
+                            <div className={styles.free_price+" fdc1"}>{"رایگان"}</div>
+                        }
+                        
                     </div>
 
                     {/* <MainButton className={styles.fltcrd_btn1} title={"افزودن به سبد خرید"}/>
@@ -60,7 +64,8 @@ export default class FloatingCard extends Component {
                         c.access_type == "3" || c.access_type == "4"?
                         <div className={styles.fltcrd_btn3+" bgsc fdc1 bdyt"}>{"خریداری شده"}</div>
                         :
-                        <MainButton className={styles.fltcrd_btn2} title={"خرید"}
+                        <MainButton className={styles.fltcrd_btn2}
+                        title={c.price?"خرید":"ثبت نام در دوره"}
                         onClick={this.onBuy}/>
                     }
                     
