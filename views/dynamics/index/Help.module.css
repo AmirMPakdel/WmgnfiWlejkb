@@ -26,7 +26,7 @@
     font-size: 2rem;
     font-weight: 700;
     position: absolute;
-    top: 8rem;
+    top: 12rem;
     right: 6rem;
 }
 
@@ -37,7 +37,7 @@
     direction: rtl;
     font-size: 1rem;
     position: absolute;
-    top: 14rem;
+    top: 18rem;
     right: 6rem;
     border-radius: 16px;
 }
@@ -65,4 +65,9 @@
     height: 2rem;
     left: 1.6rem;
     user-select: none;
+}
+
+.section_con{
+    width: calc(96% - 4rem);
+    margin-top: 4rem;
 }

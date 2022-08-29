@@ -1,3 +1,4 @@
+import MainHelpSection from "@/controllers/components/help/MainHelpSection";
 import IndexLayout from "@/views/layouts/IndexLayout";
 import WrapperT1 from "@/views/layouts/WrapperT1";
 import { AutoComplete, Input } from "node_modules/antd/lib/index";
@@ -83,6 +84,16 @@ export default class Help extends Component {
 
                     </div>
 
+                    <div className={styles.section_con}>
+
+                        {
+                            sections.map((v,i)=>(
+                                <MainHelpSection key={i} data={v}/>
+                            ))
+                        }
+
+                    </div>
+
 
                 </WrapperT1>
                 
@@ -90,3 +101,53 @@ export default class Help extends Component {
         )
     }
 }
+
+const sections = [
+    {
+        title:"خرید دوره",
+        sub:[
+            {
+                title:"ثبت نام در سایت",
+                info:"با وجود این‌که انتظار می‌رقت پش از انتشار خبر آیین‌نامه واردات خودرو، بازار روندی نزولی یه خود بگیرد، اما اتفاق دیگری افتاد، به طوری قیمت خودروها صعودی شد."
+            },
+            {
+                title:"ثبت نام در دوره",
+                info:"با وجود این‌که انتظار می‌رقت پش از انتشار خبر آیین‌نامه واردات خودرو، بازار روندی نزولی یه خود بگیرد، اما اتفاق دیگری افتاد، به طوری قیمت خودروها صعودی شد."
+            
+            },
+            {
+                title:"لیست دوره های خریداری شده",
+                info:"با وجود این‌که انتظار می‌رقت پش از انتشار خبر آیین‌نامه واردات خودرو، بازار روندی نزولی یه خود بگیرد، اما اتفاق دیگری افتاد، به طوری قیمت خودروها صعودی شد."
+            
+            }
+        ]
+    },
+    {
+        title:"خرید دوره",
+        sub:[
+            {
+                title:"ثبت نام در سایت",
+            },
+            {
+                title:"ثبت نام در دوره",
+            },
+            {
+                title:"لیست دوره های خریداری شده"
+            }
+        ]
+    },
+    {
+        title:"خرید دوره",
+        sub:[
+            {
+                title:"ثبت نام در سایت",
+            },
+            {
+                title:"ثبت نام در دوره",
+            },
+            {
+                title:"لیست دوره های خریداری شده"
+            }
+        ]
+    },
+]
