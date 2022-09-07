@@ -24,6 +24,7 @@ function MyApp({ Component, pageProps }) {
 
       <script src="/statics/js/theme.js"/>
       <script src="/statics/js/consts.js"/>
+      <script src="/statics/js/helpContent.js"/>
       <script src="/statics/js/env.js"/>
       <script src="/statics/js/poly.js"/>
 

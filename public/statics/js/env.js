@@ -104,4 +104,6 @@ var env = {
     UT:consts.UT,
 
     CT:consts.CT,
+
+    HELP_CONTNET:helpContent,
 }
