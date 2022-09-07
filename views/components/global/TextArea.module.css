@@ -32,3 +32,19 @@
     font-weight: 500;
     direction: rtl;
 }
+
+.tput_title{
+    font-size: 0.86rem;
+    color: #666666;
+    margin-right: 0.2rem;
+    user-select: none;
+}
+
+.top_title{
+    position: absolute;
+    background-color: white;
+    padding: 0 0.5rem;
+    top: -0.5rem;
+    right: 0.8rem;
+    font-size: 0.66rem;
+}

@@ -60,3 +60,29 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+
+@media(max-width:1024px){
+    
+}
+
+@media(max-width:767px){
+    
+    .card_con{
+        width: calc(100%);
+        margin-left: 0;
+        height: 5.8rem;
+        border-radius: 1rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        background-color: white;
+        padding: 1rem;
+        cursor: pointer;
+    }
+    
+    .card_con:nth-child(even){
+        width: 100%;
+        margin-left: 0;
+    }
+    
+}

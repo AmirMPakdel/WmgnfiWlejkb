@@ -123,9 +123,9 @@ export default class IndexHeader extends Component {
 
                             <a className={styles.dt_link+" fdc1i bdyt"} href={"/store"}>{"فروشگاه"}</a>
 
-                            <a className={styles.dt_link+" fdc1i bdyt"} href={"/comments"}>{"نظرات و پیشنهادات"}</a>
-
                             <a className={styles.dt_link+" fdc1i bdyt"} href={"/help"}>{"راهنما"}</a>
+
+                            <a className={styles.dt_link+" fdc1i bdyt"} href={"/contactUs"}>{"تماس با ما"}</a>
 
                         </div>
 
@@ -188,9 +188,9 @@ export default class IndexHeader extends Component {
 
                     <a className={styles.sm_link+" fdc1i bdyt"} href={"/store"}>{"فروشگاه"}</a>
 
-                    <a className={styles.sm_link+" fdc1i bdyt"} href={"/comments"}>{"نظرات و پیشنهادات"}</a>
-
                     <a className={styles.sm_link+" fdc1i bdyt"} href={"/help"}>{"راهنما"}</a>
+
+                    <a className={styles.sm_link+" fdc1i bdyt"} href={"/contactUs"}>{"تماس با ما"}</a>
 
                     <div className={styles.sm_divider+" bgtc1"}/>
 

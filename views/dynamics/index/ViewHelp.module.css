@@ -113,7 +113,54 @@
 }
 
 .selected_tree_itme{
-    color: rgb(129, 129, 255);
+    color: rgb(64, 153, 255);
     font-weight: 500;
     font-size: 0.9rem;
+}
+
+.mobile_category_btn_sec{
+    display: none;
+}
+
+@media(max-width:1024px){
+    
+
+}
+
+@media(max-width:767px){
+ 
+    .white_con{
+        width: calc(100% - 2rem);
+    }
+
+    .search_title{
+        font-size: 1.4rem;
+    }
+
+    .search_input_con{
+        min-width: 22rem;
+    }
+
+    .content_con{
+        width: calc(100% - 2rem);
+    }
+    
+    .content_wrapper{
+        width: calc(100% - 2rem);
+        margin-right: 0;
+        min-height: none;
+    }
+
+    .right_heading_tree_con{
+        display: none;
+    }
+
+    .mobile_category_btn_sec{
+        display: flex;
+        flex-direction: column;
+        direction: ltr;
+        width: 100%;
+        padding: 0 2rem;
+        margin-top: 1.5rem;
+    }
 }

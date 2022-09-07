@@ -25,3 +25,16 @@
     width: fit-content;
     border-radius: 1rem;
 }
+
+
+@media(max-width:1024px){
+    
+}
+
+@media(max-width:767px){
+    
+    .image1{
+        height: auto;
+        width: calc(100% - 2rem);
+    }
+}

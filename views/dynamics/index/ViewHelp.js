@@ -1,5 +1,8 @@
+import chest from "@/utils/chest";
+import MainButton from "@/views/components/global/MainButton";
 import HelpBreadcrumb from "@/views/components/help/HelpBreadcrumb";
 import HPRegister from "@/views/components/help/HPRegister";
+import HelpContentListModal from "@/views/components/modal/help/helpContentListModal";
 import IndexLayout from "@/views/layouts/IndexLayout";
 import WrapperT1 from "@/views/layouts/WrapperT1";
 import { AutoComplete } from "node_modules/antd/lib/index";
@@ -26,10 +29,9 @@ export default class ViewHelp extends Component {
                 {label:"خرید دوره", value:"خرید دوره"},
                 {label:"ثبت نام در سایت", value:"ثبت نام در سایت"},
             ]
-            
         }
 
-        this.state.help_page = <HPRegister/>
+        this.state.help_page = <HPRegister/>;
     }
     
     componentDidMount(){
@@ -41,6 +43,11 @@ export default class ViewHelp extends Component {
 
     onTreeSelect=(data, sub)=>{
 
+    }
+
+    onOpenList=()=>{
+
+        chest.ModalLayout.setAndShowModal(1, <HelpContentListModal/>)
     }
     
     render(){
@@ -87,6 +94,14 @@ export default class ViewHelp extends Component {
 
                     </div>
 
+                    <div className={styles.mobile_category_btn_sec}>
+
+                        <MainButton className={styles.categoru_btn}
+                        title={"فهرست مطالب"}
+                        onClick={this.onOpenList}/>
+
+                    </div>
+
                     <div className={styles.content_con}>
 
                         <div className={styles.content_wrapper}>
@@ -112,14 +127,12 @@ export default class ViewHelp extends Component {
                                         ))
                                     }
                                     </>
-                                    
                                 })
                             }
                              
                         </div>
 
                     </div>
-
 
                 </WrapperT1>
                 
