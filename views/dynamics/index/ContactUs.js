@@ -70,7 +70,7 @@ export default class ContactUs extends Component {
                             onChange={(t)=>this.onInput("full_name", t)}/>
 
                             <TextInput className={styles.input1}
-                            placeholder={"شماره موبایل یا ایمیل"}
+                            placeholder={"ایمیل"}
                             value={this.state.contact_number}
                             onChange={(t)=>this.onInput("contact_number", t)}/>
 
