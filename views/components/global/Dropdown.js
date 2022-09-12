@@ -10,9 +10,11 @@ import { Dropdown as AntDropdown } from "node_modules/antd/lib/index";
 * @property {string} className
 * @property {string} optionsClassName
 * @property {string} placeholder
+* @property {boolean} disabled
 * @property {{id:number, title:string}} defaultSelected 
 * @property {[{id:number, title:string}]} options
 * @property {({id:number, title:string})=>{}} onSelect
+* @property {{id:number, title:string}} value
 * 
 * @extends {Component<Props>}
 */
@@ -33,9 +35,16 @@ export default class Dropdown extends Component {
     }
 
     onSelect=(item)=>{
+        
+        if(this.props.value){
+            this.props.onSelect && this.props.onSelect(item);
+            return;
+        }
+
         this.setState({seleted:item}, ()=>{
             this.props.onSelect && this.props.onSelect(item);
         });
+
     }
     
     render(){
@@ -56,7 +65,8 @@ export default class Dropdown extends Component {
         return(
             <div className={this.props.className}>
 
-                <AntDropdown overlay={menu} trigger={['click']}>
+                <AntDropdown overlay={menu} trigger={['click']}
+                disabled={this.props.disabled}>
                 
                     <div className={styles.select_btn+" blc2 "} onClick={e => e.preventDefault()}>
 

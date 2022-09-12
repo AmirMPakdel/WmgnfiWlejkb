@@ -1,6 +1,32 @@
 import myServer from "@/utils/myServer";
 
 export default class ManageStudentsModel{
+
+    /**
+    * @param {object} params
+    * @param {import("@/models/jsdoc/RequestCallback").RequestCallback} cb 
+    */
+    getCourses(params, cb){
+    
+        if(env.MOCKING_SERVER){
+            setTimeout(()=>{
+                cb(null, {result_code:env.SC.SUCCESS});
+            }, 2000, cb);
+            return;
+        }
+    
+        myServer.Post(myServer.urls.MY_COURSES_FETCH+"999/1", params, {}, (err, data)=>{
+    
+            if(!err){
+            
+                cb(null, data);
+            
+            }else{
+            
+                myServer.ErrorHandler.type1(err);
+            }
+        });
+    }
     
     /**
     * @param {object} params
@@ -26,13 +52,14 @@ export default class ManageStudentsModel{
                 myServer.ErrorHandler.type1(err);
             }
         });
-    }   
+    }
 }
 
 const fakeStudentList = ()=>{
     let list = [];
     for(let i=0; i<20; i++){
         list.push({
+            "key":i+1,
             "id":i+1,
             "first_name": "امیرمحمد",
             "last_name": "پاکدل",

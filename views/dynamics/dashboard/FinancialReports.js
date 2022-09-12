@@ -75,6 +75,7 @@ export default class FinancialReports extends Component {
                             {
                                 this.state.table=="1"?
                                 <Table columns={table1_columns} 
+                                key={"id"}
                                 dataSource={this.state.data}
                                 rowClassName={(record,index)=>(index%2?styles.oddRow:styles.evenRow)}
                                 pagination={false}/>:null
@@ -82,6 +83,7 @@ export default class FinancialReports extends Component {
                             {
                                 this.state.table=="2"?
                                 <Table columns={table2_columns} 
+                                key={"id"}
                                 dataSource={this.state.data}
                                 rowClassName={(record,index)=>(index%2?styles.oddRow:styles.evenRow)}
                                 pagination={false}/>:null
@@ -89,6 +91,7 @@ export default class FinancialReports extends Component {
                             {
                                 this.state.table=="3"?
                                 <Table columns={table3_columns} 
+                                key={"id"}
                                 dataSource={this.state.data}
                                 rowClassName={(record,index)=>(index%2?styles.oddRow:styles.evenRow)}
                                 pagination={false}/>:null
@@ -169,6 +172,7 @@ function TabButton(props){
 }
 
 const table1_columns = [
+    
     {
         title: 'شناسه',
         dataIndex: 'id',

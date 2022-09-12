@@ -136,7 +136,7 @@ export default class SideMenu extends Component {
 
                 <div className={styles.sidemenu_wrapper1}>
 
-                    <SideMenuBtn title={this.state.name} icon={"sidebar_profile.svg"}
+                    <SideMenuBtn title={"ویرایش پروفایل"} icon={"sidebar_profile.svg"}
                     onClick={this.onSelect} active_page={this.state.active_page} name="profile" active/>
 
                 </div>
@@ -159,7 +159,7 @@ function SideMenuBtn(props){
     return(
         <div className={styles.smbtn_con+" amp_btn"} style={s} onClick={()=>props.onClick(props.name)}>
             <div className={styles.smbtn_right_line} style={line_s}/>
-                <img src={"/statics/svg/dashboard/"+props.icon} className={styles.smbtn_icon}/>
+            <img src={"/statics/svg/dashboard/"+props.icon} className={styles.smbtn_icon}/>
             <div className={styles.smbtn_title}>{props.title}</div>
         </div>
     )
