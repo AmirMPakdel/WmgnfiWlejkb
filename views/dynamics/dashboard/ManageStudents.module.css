@@ -18,6 +18,10 @@
     display: flex;
     direction: rtl;
     align-items: center;
+    width: 100%;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 1rem;
 }
 
 .sb_add_std{
@@ -59,9 +63,6 @@
     }
 
     .tbs_con{
-        width: 94%;
-        margin-right: 3%;
-        margin-left: 3%;
         justify-content: center;
     }
 
@@ -82,5 +83,17 @@
 
     .pagination{
         margin-top: 1.2rem !important;
+    }
+}
+
+@media(max-width:560px){
+
+    .tbs_con{
+        flex-direction: column;
+    }
+
+    .sb_add_std{
+        margin-left: 0;
+        margin-bottom: 1.6rem;
     }
 }

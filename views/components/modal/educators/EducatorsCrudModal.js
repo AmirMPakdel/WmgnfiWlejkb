@@ -44,7 +44,6 @@ export default class EducatorsCrudModal extends Component {
             searchedColumn: '',
         }
 
-        console.log(this.props.selectedRowKeys, this.props.selectedRows);
         if(this.props.selectedRowKeys && this.props.selectedRows){
             this.state.selected_row_keys = this.props.selectedRowKeys;
             this.state.selected_rows = this.props.selectedRows;

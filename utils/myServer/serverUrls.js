@@ -70,6 +70,10 @@ const ServerUrls = {
     //user MyCourses
     MY_COURSES_FETCH: domain+prefixes.UTA+"/courses/fetch/",
 
+    //user studentManagement
+    GET_COURSE_STUDENTS: domain+prefixes.UTA+"/course/students/fetch/",
+    ADD_STUDENTS_TO_COURSE: domain+prefixes.UTA+"/course/students/add",
+
     //user transaction
     FINANCIAL_LIST: domain+prefixes.UTA+"/dashboard/records/load/",
     DASH_SOLD_TRANSACTION_DETAIL: domain+prefixes.UTA+"/dashboard/student_transaction/load",
