@@ -9,7 +9,8 @@ import { ConfigProvider, Table } from "node_modules/antd/lib/index";
 import React, { Component } from "react";
 import styles from "./ManageStudents.module.css";
 
-const FINANCIAL_REPORTS_PAGE_SIZE = 20;
+
+const PAGE_SIZE = 100;
 
 /**
 * Props of ManageStudents Component
@@ -36,6 +37,12 @@ export default class ManageStudents extends Component {
                 {id: null, title:"همه"}
             ],
             selected_course:{id:null, title:"همه"},
+
+            selected_row_keys:[],
+            selected_rows:[],
+
+            searchText: '',
+            searchedColumn: '',
         }
     }
     
@@ -68,6 +75,47 @@ export default class ManageStudents extends Component {
     }
     
     render(){
+        const columns = [
+            {
+              title: 'نام خانوادگی',
+              dataIndex: 'last_name',
+              key: 'last_name',
+              width: '25%',
+              sorter: (a, b) => compare(a.last_name, b.last_name),
+              defaultSortOrder:"descend",//start the table with last_name ordered descend
+              sortDirections:["descend","ascend"],//first descend then ascend
+              ...this.controller.getColumnSearchProps('last_name'),
+            },
+            {
+              title: 'نام',
+              dataIndex: 'first_name',
+              key: 'first_name',
+              width: '25%',
+              sorter: (a, b) => compare(a.first_name, b.first_name),
+              sortDirections:["descend","ascend"],
+              ...this.controller.getColumnSearchProps('first_name'),
+            },
+            {
+                title: 'کد ملی',
+                dataIndex: 'national_code',
+                key: 'national_code',
+                width: '25%',
+                sorter: (a, b) => compare(a.national_code, b.national_code),
+                sortDirections:["descend","ascend"],
+                ...this.controller.getColumnSearchProps('national_code'),
+            },
+            {
+                title: 'موبایل',
+                dataIndex: 'phone_number',
+                key: 'phone_number',
+                width: '25%',
+                sorter: (a, b) => compare(a.phone_number, b.phone_number),
+                sortDirections:["descend","ascend"],
+                ...this.controller.getColumnSearchProps('phone_number'),
+            },
+            
+        ];
+
         return(
         <EducatorDashboardLayout accessType="userL1"
         showWithoutAuth={false}>
@@ -100,15 +148,17 @@ export default class ManageStudents extends Component {
 
                             {
                                 this.state.table=="1"?
-                                <Table columns={table1_columns} 
+                                <Table
                                 dataSource={this.state.data}
+                                columns={columns} 
                                 rowClassName={(record,index)=>(index%2?styles.oddRow:styles.evenRow)}
                                 pagination={false}/>:null
                             }
                             {
                                 this.state.table=="2"?
-                                <Table columns={table2_columns} 
+                                <Table
                                 dataSource={this.state.data}
+                                columns={columns} 
                                 rowClassName={(record,index)=>(index%2?styles.oddRow:styles.evenRow)}
                                 pagination={false}/>:null
                             }
@@ -123,7 +173,7 @@ export default class ManageStudents extends Component {
                         <Pagination className={styles.pagination}
                         onPageChange={this.onPageChange}
                         total={this.state.total}
-                        pageSize={FINANCIAL_REPORTS_PAGE_SIZE}
+                        pageSize={PAGE_SIZE}
                         currentPage={this.state.current_page}/>
 
                     </div>
@@ -135,6 +185,24 @@ export default class ManageStudents extends Component {
         </EducatorDashboardLayout>
         )
     }
+}
+
+const compareStrings = (a, b) => {
+    if (a < b) return 1;
+    if (a > b) return -1;
+  
+    return 0;
+  }
+  
+const compare = (a, b) => {
+    const splitA = a.split(" ");
+    const splitB = b.split(" ");
+    const lastA = splitA[splitA.length - 1];
+    const lastB = splitB[splitB.length - 1];
+
+    return lastA === lastB ?
+    compareStrings(splitA[0], splitB[0]) :
+    compareStrings(lastA, lastB);
 }
 
 const table1_columns = [
