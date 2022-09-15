@@ -20,7 +20,7 @@ var env = {
 
     MEDIA_PREFIX: "http://dl1.minfo.ir",
 
-    VERIFICATION_CODE_LENGTH : 4,
+    VERIFICATION_CODE_LENGTH : 5,
 
     LIMITS:{
         TOTAL_EDUCATOR_LIMIT: 100,

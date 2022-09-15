@@ -15,7 +15,7 @@ export default class SelectStudentsModal extends Component {
         super(props);
         this.controller = new SelectStudentsController(this);
         this.state = {
-        
+            
         }
     }
     

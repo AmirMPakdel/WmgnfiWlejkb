@@ -34,7 +34,7 @@ export default class ManageStudentsModel{
     */
     getCourseStudents(params, cb){
     
-        if(env.MOCKING_SERVER || 1){
+        if(env.MOCKING_SERVER || 0){
             setTimeout(()=>{
                 cb(null, {result_code:env.SC.SUCCESS, data:FakeCourseStudentsData});
             }, 2000, cb);
