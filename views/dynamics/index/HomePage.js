@@ -55,7 +55,7 @@ export default class HomePage extends Component {
                     this.state.loading?
                     <Loading className={styles.loading}/>
                     :
-                    <div className={styles.con+" bgw"}>
+                    <div className={styles.con+" bglc1"}>
 
                         <Intro data={this.state.intro}
                         show_default={this.state.show_default}/>

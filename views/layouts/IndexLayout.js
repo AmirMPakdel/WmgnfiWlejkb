@@ -22,7 +22,7 @@ export default class IndexLayout extends Component {
                 accessType={this.props.accessType}
                 showWithoutAuth={this.props.showWithoutAuth}>
                
-                    <div className={styles.con+" bglc2i"}>
+                    <div className={styles.con+" bglc1i"}>
 
                         <IndexHeader/>
 

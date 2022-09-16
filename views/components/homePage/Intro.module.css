@@ -1,5 +1,5 @@
 .container1{
-    min-height: calc(100vh - 5.6rem);
+    min-height: calc(100vh - 6.6rem);
     width: 86vw;
     border-radius: 0 0 1rem 1rem;
     overflow: hidden;
@@ -14,7 +14,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    min-height: calc(100vh - 5.6rem);
+    min-height: calc(100vh - 6.6rem);
     padding: 5% calc(12% - 5rem);
 }
 

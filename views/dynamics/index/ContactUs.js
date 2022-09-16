@@ -27,6 +27,8 @@ export default class ContactUs extends Component {
     }
     
     componentDidMount(){
+
+        document.title = "تماس با ما";
     }
 
     onInput=(k, v)=>{
@@ -41,7 +43,7 @@ export default class ContactUs extends Component {
             showWithoutAuth={false}
             footerAutoLoad={true}>
 
-                <WrapperT1 className={styles.wrapper}>
+                <WrapperT1 className={styles.wrapper+' sm_card_shd'}>
 
                     <div className={styles.con}>
 

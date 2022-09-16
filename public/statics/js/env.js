@@ -8,6 +8,8 @@ var env = {
 
     SMS_TIMER: 120,
 
+    TIMER_INTERVAL: 1000,
+
     TENANT_KEY: "__mgnftnt",
 
     TOKEN_KEY: "__mgnftk",

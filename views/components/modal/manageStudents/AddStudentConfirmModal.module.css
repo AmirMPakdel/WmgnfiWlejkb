@@ -1,6 +1,6 @@
 .con{
     width: 92vw;
-    height: 80vh;
+    height: auto;
     max-width: 46rem;
     min-height: 10rem;
     max-height: 38rem;
@@ -27,8 +27,6 @@
     margin-top: 1rem;
     max-height: calc(100% - 14rem);
     overflow-y: auto;
-    /* direction: rtl;
-    text-align: right; */
 }
 
 .table{
@@ -43,7 +41,7 @@
 }
 
 .table>tr>th{
-    text-align: center;
+    text-align: right;
 }
 
 .table>tr>td{
@@ -75,6 +73,7 @@
 }
 
 @media(max-width:767px){
+
     .sec1{
         width: 100%;
         max-width: 16rem;

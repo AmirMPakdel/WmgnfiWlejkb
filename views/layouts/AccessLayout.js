@@ -36,7 +36,7 @@ export default class AccessLayout extends Component {
     
     render(){
         return(
-            <div className={styles.layout+" bglc2i "}>
+            <div className={styles.layout+" bglc1i "}>
 
                 {
                     this.state.loading?

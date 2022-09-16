@@ -34,8 +34,10 @@ export default class SelectStudentsController{
 
     onConfirm=(selected_row_keys, selected_rows)=>{
 
-        console.log(selected_row_keys);
-        console.log(selected_rows);
+        if(!selected_row_keys.length){
+            this.view.onCancel();
+            return;
+        }
 
         let jsx = 
         <AddStudentConfirmModal 

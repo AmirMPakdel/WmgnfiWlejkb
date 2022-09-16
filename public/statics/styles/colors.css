@@ -96,13 +96,26 @@
     secondary light color
 **/
 .bglc2{
-    background-color: #EAEAEA;
+    background-color: #F4F4F4;
 }
 .flc2{
-    color: #EAEAEA;
+    color: #F4F4F4;
 }
 .blc2{
-    border-color: #EAEAEA;
+    border-color: #F4F4F4;
+}
+
+/**
+    third light color
+**/
+.bglc3{
+    background-color: #E6E6E6;
+}
+.flc3{
+    color: #E6E6E6;
+}
+.blc3{
+    border-color: #E6E6E6;
 }
 
 /**
@@ -136,7 +149,7 @@
 }
 
 .dashed_line_lc2{
-    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23EAEAEAFF' stroke-width='4' stroke-dasharray='6%2c 14' stroke-dashoffset='12' stroke-linecap='square'/%3e%3c/svg%3e");
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23F4F4F4FF' stroke-width='4' stroke-dasharray='6%2c 14' stroke-dashoffset='12' stroke-linecap='square'/%3e%3c/svg%3e");
 }
 
 .dashed_line_dc1{
@@ -249,13 +262,26 @@
     secondary light color
 **/
 .bglc2i{
-    background-color: #EAEAEA !important;
+    background-color: #F4F4F4 !important;
 }
 .flc2i{
-    color: #EAEAEA !important;
+    color: #F4F4F4 !important;
 }
 .blc2i{
-    border-color: #EAEAEA !important;
+    border-color: #F4F4F4 !important;
+}
+
+/**
+    third light color
+**/
+.bglc2i{
+    background-color: #E6E6E6 !important;
+}
+.flc2i{
+    color: #E6E6E6 !important;
+}
+.blc2i{
+    border-color: #E6E6E6 !important;
 }
 
 /**

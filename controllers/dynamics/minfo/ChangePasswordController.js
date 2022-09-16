@@ -135,7 +135,7 @@ export default class ChangePasswordController{
                 this.clearSmsCountdown();
             }
             
-        }, 80)
+        }, env.TIMER_INTERVAL)
     }
 
     clearSmsCountdown(){

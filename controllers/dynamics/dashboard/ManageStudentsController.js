@@ -70,6 +70,8 @@ export default class ManageStudentsController{
                 });
             }
         });
+
+        this.setupPageTitle()
     }
 
     onCourseSelect=(obj)=>{
@@ -191,5 +193,10 @@ export default class ManageStudentsController{
     handleReset = clearFilters => {
         clearFilters();
         this.view.setState({ searchText: '' });
+    }
+
+    setupPageTitle(){
+        
+        document.title = "مدیریت دانش آموزان "+" | داشبورد کاربر"+" | مینفو";
     }
 }

@@ -19,7 +19,7 @@ export default class DefaultCourseList extends Component {
     
     render(){
         return(
-            <div className={styles.con+" bglc1"}>
+            <div className={styles.con+" bgw sm_card_shd"}>
 
                 <div className={styles.title_sec+" fdc2 tilt"}>
                     <span className={styles.left_dashes+" ftc1"}>&#8211; &#8211; &#8212;</span>

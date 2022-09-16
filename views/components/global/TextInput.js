@@ -121,7 +121,7 @@ export default class TextInput extends Component {
         }
 
         return(
-            <div className={styles.tput_con +" blc2 "+add_class} style={this.props.style}>
+            <div className={styles.tput_con +" blc3 "+add_class} style={this.props.style}>
                 
                 {
                     this.props.title?
@@ -130,7 +130,7 @@ export default class TextInput extends Component {
 
                 {
                     this.props.value?
-                    <div className={styles.top_title+" fdc2"}>{this.props.title?this.props.title:this.props.placeholder}</div>:
+                    <div className={styles.top_title+" fdc3"}>{this.props.title?this.props.title:this.props.placeholder}</div>:
                     null
                 }
                 

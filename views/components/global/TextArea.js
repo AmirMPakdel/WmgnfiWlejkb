@@ -87,7 +87,7 @@ export default class TextArea extends Component {
         }
 
         return(
-            <div className={styles.con+" blc2 "+add_class}>
+            <div className={styles.con+" blc3 "+add_class}>
 
                 {
                     this.props.title?
@@ -96,7 +96,7 @@ export default class TextArea extends Component {
 
                 {
                     this.props.value?
-                    <div className={styles.top_title+" fdc2"}>{this.props.title?this.props.title:this.props.placeholder}</div>:
+                    <div className={styles.top_title+" fdc3"}>{this.props.title?this.props.title:this.props.placeholder}</div>:
                     null
                 }
                 

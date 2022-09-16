@@ -219,7 +219,7 @@ export default class AuthController{
                 this.clearSmsCountdown();
             }
             
-        }, 80)
+        }, env.TIMER_INTERVAL)
     }
 
     clearSmsCountdown(){

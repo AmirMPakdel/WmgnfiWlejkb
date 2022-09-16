@@ -58,7 +58,7 @@ class InfoBox extends Component {
             cover = myServer.MediaFiles.publicImage(d.cover)
         }
         return(
-            <div className={styles.container1+" bglc1"}>
+            <div className={styles.container1+" bgw sm_card_shd"}>
 
                 <div className={styles.ib_wrapper1}>
 

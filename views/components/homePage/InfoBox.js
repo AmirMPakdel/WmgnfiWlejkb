@@ -45,7 +45,7 @@ class NoMedia extends Component {
         let d = this.props.data;
 
         return(
-            <div className={styles.nmd_con+" bglc1"}>
+            <div className={styles.nmd_con+" bgw sm_card_shd"}>
 
                 <div className={styles.nmd_title+" tilt"}>{d.title}</div>
 

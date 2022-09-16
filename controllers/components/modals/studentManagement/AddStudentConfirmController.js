@@ -13,6 +13,7 @@ export default class AddStudentConfirmController{
     
     onConfirm=()=>{
 
+
         this.view.setState({loading:true});
 
         let params = {

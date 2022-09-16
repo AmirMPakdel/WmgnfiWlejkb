@@ -27,10 +27,6 @@ export default class AddStudentConfirmModal extends Component {
         }
 
         this.selectedList = this.props.selectedList;
-
-        this.selectedList = this.selectedList.concat(this.selectedList,this.selectedList,this.selectedList,this.selectedList)
-        this.selectedList = this.selectedList.concat(this.selectedList,this.selectedList,this.selectedList,this.selectedList)
-
         this.selectedKeys = this.props.selectedKeys;
     }
 
