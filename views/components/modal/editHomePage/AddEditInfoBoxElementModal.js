@@ -108,7 +108,7 @@ export default class AddEditInfoBoxElementModal extends Component {
                         inputFilter={InputFilter.persianNameInputFilter}/>
 
                         <TextArea className={styles.text_input}
-                        title={"متن توضیحات"}
+                        placeholder={"متن توضیحات"}
                         onChange={t=>this.onInput("text", t)}
                         value={this.state.text}
                         error={this.state.text_error}

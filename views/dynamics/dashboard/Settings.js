@@ -65,47 +65,24 @@ export default class Settings extends Component {
 
                         <div className={styles.row}>
 
-                            <div className={styles.setting_card+" md_card_shd amp_btn bglc1"} onClick={this.onEducators}>
+                            <Card  onClick={this.onEducators}
+                            title={"ویرایش دبیران"}/>
 
-                                <div className={styles.setting_card_t+" tilt"}>{"ویرایش دبیران"}</div>
-
-                            </div>
-
-                            <div className={styles.setting_card+" md_card_shd amp_btn bglc1"} onClick={this.onCategories}>
-
-                                <div className={styles.setting_card_t+" tilt"}>{"ویرایش دسته بندی"}</div>
-
-                            </div>
+                            <Card  onClick={this.onCategories}
+                            title={"ویرایش دسته بندی"}/>
 
                         </div>
 
                         <div className={styles.row}>
 
-                            <div className={styles.setting_card+" md_card_shd amp_btn bglc1"} onClick={this.onSitesTitle}>
-
-                                <div className={styles.setting_card_t+" tilt"}>{"ویرایش عنوان سایت"}</div>
-
-                            </div>
+                            <Card  onClick={this.onSitesTitle}
+                            title={"ویرایش عنوان سایت"}/>
 
                             
-
-                            <div className={styles.setting_card+" md_card_shd amp_btn bglc1"} onClick={this.onHeaderLogo}>
-
-                                <div className={styles.setting_card_t+" tilt"}>{"ویرایش لوگوی هدر سایت"}</div>
-
-                            </div>
+                            <Card  onClick={this.onHeaderLogo}
+                            title={"ویرایش لوگوی هدر سایت"}/>
                             
                         </div>
-
-                        {/* <div className={styles.row}>
-
-                            <div className={styles.setting_card+" md_card_shd amp_btn bglc1"} onClick={this.onSitesLogo}>
-
-                                <div className={styles.setting_card_t+" tilt"}>{"ویرایش لوگوی سایت"}</div>
-
-                            </div>
-
-                        </div> */}
 
                     </div>
 
@@ -113,4 +90,15 @@ export default class Settings extends Component {
             </EducatorDashboardLayout>
         )
     }
+}
+
+function Card(props){
+
+    return(
+        <div className={styles.setting_card+" md_card_shd amp_btn bgw"} onClick={props.onClick}>
+
+            <div className={styles.setting_card_t+" tilt"}>{props.title}</div>
+
+        </div>
+    )
 }

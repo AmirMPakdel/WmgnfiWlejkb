@@ -1,5 +1,5 @@
 .con{
-    width: calc(100% - 2rem);
+    width: calc(96% - 4rem);
     padding: 2rem calc(2rem + 5vw);
     padding-bottom: 1rem;
     margin-top: 2rem;
@@ -29,6 +29,11 @@
 
 .social_link{
     margin: 0 0.4rem;
+    transition: 1200ms ease;
+}
+
+.social_link:hover{
+    transform:rotateZ(360deg)
 }
 
 .footer_minfo{
@@ -51,6 +56,7 @@
         flex-direction: column;
         align-items: center;
         padding: 2rem 1rem;
+        width: calc(100% - 2rem);
     }
 
     .contact_numbers{

@@ -90,7 +90,7 @@ class CourseCard extends Component{
                 <div className={styles.cc_sec1}>
 
                     <div className={styles.cc_img}
-                    style={{backgroundImage:`url(${myServer.MediaFiles.publicImage(d.logo, "logo")})`}}/>
+                    style={{backgroundImage:`url(${myServer.MediaFiles.publicImage(d.logo, "course_image")})`}}/>
 
                     <div className={styles.cc_title+" bdyt"}>{d.title}</div>
 

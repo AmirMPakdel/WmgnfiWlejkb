@@ -137,7 +137,7 @@ export default class EditIntroElementModal extends Component {
                         error={this.state.title_error}/>
 
                         <TextArea className={styles.text_input}
-                        title={"متن توضیحات"}
+                        placeholder={"متن توضیحات"}
                         onChange={t=>this.onInput("text", t)}
                         value={this.state.text}
                         error={this.state.text_error}

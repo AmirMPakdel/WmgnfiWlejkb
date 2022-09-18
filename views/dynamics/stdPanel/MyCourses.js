@@ -86,9 +86,19 @@ export default class MyCourses extends Component {
 
 class MyCourseCard extends Component{
 
+    componentDidMount(){
+
+        this.con.onmouseenter=()=>{
+            this.title.style.color = "#333";
+        }
+        this.con.onmouseleave=()=>{
+            this.title.style.color = "#939597";
+        }
+    }
+
     onShow=()=>{
 
-        window.location.href = env.PATHS.COURSE+ this.props.data.id+"/"+this.props.data.title.split(" ").join("-");
+        window.open(env.PATHS.COURSE+ this.props.data.id+"/"+this.props.data.title.split(" ").join("-"))
     }
 
     onLicense=()=>{
@@ -99,12 +109,14 @@ class MyCourseCard extends Component{
     render(){
         let d = this.props.data;
         return(
-            <div className={styles.mcc_con+" bgw"}>
+            <div className={styles.mcc_con+" sm_card_shd bgw"}
+            ref={r=>this.con=r}>
 
                 <div className={styles.mcc_icon}
-                style={{ backgroundImage:`url("${myServer.MediaFiles.publicImage(d.logo)}")`}}/>
+                style={{ backgroundImage:`url("${myServer.MediaFiles.publicImage(d.logo, "course_image")}")`}}/>
 
-                <div className={styles.mcc_title+" bdyt"}>{d.title}</div>
+                <div className={styles.mcc_title+" fdc2 bdyt"}
+                ref={r=>this.title=r}>{d.title}</div>
                 
                 <div className={styles.mcc_sec1}>
 

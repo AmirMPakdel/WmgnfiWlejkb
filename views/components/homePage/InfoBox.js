@@ -88,7 +88,7 @@ class WithMedia extends Component {
         return(
         <div className={styles.wm_con}>
 
-        <div className={card_con+" bglc1"}>
+        <div className={card_con+" bgw sm_card_shd"}>
 
             <div className={wm_wrapper}>
 

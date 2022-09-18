@@ -21,7 +21,7 @@
 
 .sec1{
     margin-top: 4rem;
-    min-width: 70%;
+    width: 70%;
     max-width: 18rem;
     display: flex;
     align-items: center;

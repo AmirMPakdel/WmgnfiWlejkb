@@ -25,6 +25,14 @@ export default class CourseCard extends Component {
     }
     
     componentDidMount(){
+        this.con.onmouseenter=()=>{
+            this.image.style.filter = "brightness(1.05)"
+            this.title.style.color = "#333"
+        }
+        this.con.onmouseleave=()=>{
+            this.image.style.filter = "brightness(1)"
+            this.title.style.color = "#939597"
+        }
     }
     
     render(){
@@ -51,9 +59,12 @@ export default class CourseCard extends Component {
         
 
         return(
-            <a href={this.props.disableLink?undefined:link} className={styles.con+" sm_card_shd "+this.props.className}>
+            <a href={this.props.disableLink?undefined:link} 
+            ref={r=>this.con=r}
+            className={styles.con+" sm_card_shd "+this.props.className}>
                 
                 <div className={styles.card_image+" sm_card_shd"}
+                ref={r=>this.image=r}
                 style={{backgroundImage:`url("${logo_url}")`}}/>
 
                 <div className={styles.row1}>
@@ -64,7 +75,8 @@ export default class CourseCard extends Component {
 
                 </div>
 
-                <div className={styles.title+" fdc2"}>{d.title}</div>
+                <div className={styles.title+" fdc2"}
+                ref={r=>this.title=r}>{d.title}</div>
 
                 <div className={styles.row2}>
 

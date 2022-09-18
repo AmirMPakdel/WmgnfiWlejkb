@@ -13,7 +13,7 @@ import EmptyList from "@/views/components/global/EmptyList";
 import Observer from "@/utils/observer";
 import { getParamByName } from "@/utils/helpers";
 
-export const STORE_PAGE_SIZE = 10;
+export const STORE_PAGE_SIZE = 12;
 
 /**
 * Props of Store Component

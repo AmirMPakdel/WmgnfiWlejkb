@@ -142,10 +142,12 @@ export default class RightSideFilter extends Component {
 
                 <ConfigProvider direction="rtl">
 
-                    <Input.Search placeholder="جستجو" 
-                    allowClear size="large"
-                    onSearch={this.onSearch} 
-                    style={{width: "96%",marginBottom:"1rem"}}/>
+                    <div className={styles.search_top+" blc3"}>
+                        <Input.Search placeholder="جستجو"
+                        allowClear size="large"
+                        onSearch={this.onSearch} 
+                        style={{border:"none"}}/>
+                    </div>
                     
                 </ConfigProvider>
 

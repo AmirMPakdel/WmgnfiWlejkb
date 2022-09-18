@@ -4,10 +4,10 @@
     align-items: center;
     width: fit-content;
     border-radius: 0.85rem;
-    height: 2.375rem;
+    /* height: 2.375rem; */
+    height: 3rem;
     direction: rtl;
     padding: 0 1rem;
-    transition: 400ms ease;
     user-select: none;
 }
 
@@ -38,4 +38,9 @@
 
 .title{
     font-weight: 500;
+}
+
+.mbtn_con:hover{
+    background: rgb(251,173,22);
+    background: linear-gradient(45deg, rgba(251,173,22,1) 0%, rgba(245,223,77,1) 80%);
 }

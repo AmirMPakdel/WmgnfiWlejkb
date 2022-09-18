@@ -41,7 +41,7 @@ export default class RemoveWishlistModal extends Component {
         let title = "آیا می خواهید دوره مورد نظر را از لیست علاقه مندی خود حذف کنید؟";
 
         return(
-            <div className={styles.con+" bglc1 btc2 lg_card_shd"}>
+            <div className={styles.con+" bglc1 lg_card_shd"}>
 
                 {
                     this.state.loading?
@@ -54,12 +54,12 @@ export default class RemoveWishlistModal extends Component {
 
                         <div className={styles.sec1}>
 
-                            <MainButton className={"bgec"}
+                            <MainButton className={styles.right_btn+" bgec"}
                             titleClassName={"flc1i"}
                             title={"حذف"}
                             onClick={this.onDelete}/>
 
-                            <MainButton className={""} 
+                            <MainButton className={styles.left_btn} 
                             title={"انصراف"}
                             borderMode={true}
                             onClick={this.onCancel}/>

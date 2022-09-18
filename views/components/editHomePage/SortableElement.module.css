@@ -24,6 +24,14 @@
     -webkit-user-drag: none;
 }
 
+.sort_sec:hover{
+    cursor: grab;
+}
+
+.sort_sec:active{
+    cursor: grabbing;
+}
+
 .wrapper1{
     height: 100%;
     width: calc(100% - 10rem);

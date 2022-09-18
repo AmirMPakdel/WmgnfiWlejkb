@@ -61,12 +61,18 @@ export default class EditableElementCard extends Component {
                 <div className={styles.visible_sec}>
 
                 {
-                    d.visible?
-                    <img className={styles.visiblity+((d.el_type==1 || d.el_type==2)?"":" amp_btn")} 
-                    src={"/statics/svg2/visible_icon.svg"} onClick={this.onToggleVisibility}/>
-                    :
-                    <img className={styles.visiblity+" amp_btn"} 
-                    src={"/statics/svg2/visible_not_icon.svg"} onClick={this.onToggleVisibility}/>
+                    (d.el_type==1 || d.el_type==2)?
+                    null:
+                    <>
+                    {
+                        d.visible?
+                        <img className={styles.visiblity+((d.el_type==1 || d.el_type==2)?"":" amp_btn")} 
+                        src={"/statics/svg2/visible_icon.svg"} onClick={this.onToggleVisibility}/>
+                        :
+                        <img className={styles.visiblity+" amp_btn"} 
+                        src={"/statics/svg2/visible_not_icon.svg"} onClick={this.onToggleVisibility}/>
+                    }
+                    </>
                 }
 
                 </div>

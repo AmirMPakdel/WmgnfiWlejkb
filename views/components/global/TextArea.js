@@ -89,10 +89,10 @@ export default class TextArea extends Component {
         return(
             <div className={styles.con+" blc3 "+add_class}>
 
-                {
+                {/* {
                     this.props.title?
                     <div className={styles.tput_title} style={{...title_st, ...this.props.titleStyle}}>{this.props.title}</div>:null
-                }
+                } */}
 
                 {
                     this.props.value?
@@ -100,9 +100,9 @@ export default class TextArea extends Component {
                     null
                 }
                 
-                <textarea className={styles.textarea+" bdyt "} 
+                <textarea className={styles.textarea+" bdyt "}
                 placeholder={this.props.placeholder}
-                value={this.props.value} 
+                value={this.props.value}
                 maxLength={this.props.maxLength}
                 onChange={this.onChange}/>
 

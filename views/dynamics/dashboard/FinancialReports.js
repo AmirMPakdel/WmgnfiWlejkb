@@ -67,7 +67,7 @@ export default class FinancialReports extends Component {
                     this.state.loading?
                     <Loading style={{minHeight:"calc(80vh - 6rem)"}}/>:
                     <>
-                    <div className={styles.table_wrapper+" sm_card_shd"}>
+                    <div className={styles.table_wrapper+" btc2 sm_card_shd"}>
 
                         <div className={styles.table_scroller}>
                         <ConfigProvider direction={"rtl"}>

@@ -92,7 +92,7 @@ class MyRecieptItem extends Component{
     render(){
         let d = this.props.data;
         return(
-            <div className={styles.itm_con+" bgw"}>
+            <div className={styles.itm_con+" sm_card_shd bgw"}>
 
                 <div className={styles.itm_right_sec}>
 

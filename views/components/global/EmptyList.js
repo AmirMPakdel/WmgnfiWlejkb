@@ -20,7 +20,7 @@ export default class EmptyList extends Component {
                 {
                     this.props.title?
                     <div className={styles.text+" hrot"}>{this.props.title}</div>:
-                    <div className={styles.text+" hrot"}>{"آیتمی برای نمایش موجود نیست"}</div>
+                    <div className={styles.text+" hrot"}>{"!آیتمی برای نمایش موجود نیست"}</div>
                 }
                 
             </div>

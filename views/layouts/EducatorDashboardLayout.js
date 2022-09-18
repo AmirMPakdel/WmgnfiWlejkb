@@ -11,6 +11,7 @@ import NotificationSvg from "@/views/svgs/Notification";
 import HamburgerSvg from "@/views/svgs/Hamburger";
 import CrossSvg from "@/views/svgs/Cross";
 import { deleteCookie } from "@/utils/cookie";
+import { Tooltip } from "node_modules/antd/lib/index";
 
 
 /**
@@ -63,7 +64,7 @@ export default class EducatorDashboardLayout extends Component {
                 
                     <div className={styles.layout}>
                         
-                        <div className={styles.header_bar+" bgwi"}>
+                        <div className={styles.header_bar+" sm_card_shd bgwi"}>
 
                             <SideMenu/>
 
@@ -86,8 +87,10 @@ export default class EducatorDashboardLayout extends Component {
                                     <div className={styles.badge}>{"21"}</div>
                                 </div> */}
 
-                                <LogoutSvg className={styles.logout_img+" amp_btn"}
-                                onClick={this.onLogout}/>
+                                <Tooltip title={"خروج"}>
+                                    <LogoutSvg className={styles.logout_img+" amp_btn"}
+                                    onClick={this.onLogout}/>
+                                </Tooltip>
 
                             </div>
                             

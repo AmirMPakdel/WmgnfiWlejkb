@@ -8,6 +8,8 @@
     margin-top: 2rem;
     overflow: hidden;
     border-radius: 0.8rem;
+    border-width: 1px;
+    border-style: solid;
 }
 
 .table_scroller{

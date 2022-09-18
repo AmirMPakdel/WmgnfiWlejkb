@@ -1,5 +1,6 @@
 import IndexFooterController from "@/controllers/components/layouts/IndexFooterController";
 import Observer from "@/utils/observer";
+import { Tooltip } from "node_modules/antd/lib/index";
 import React, { Component } from "react";
 import styles from "./IndexFooter.module.css";
 
@@ -57,12 +58,12 @@ export default class IndexFooter extends Component {
         let social_medias = this.state.social_links;
 
         return(
-            <div className={styles.con+" bgw "}>
+            <div className={styles.con+" bgw md_card_shd"}>
 
                 <div className={styles.contact_numbers}>
 
                     {
-                        numbers.length? "شماره تماس ":null
+                        numbers.length? "شماره تماس: ":null
                     }
 
                     {
@@ -84,8 +85,10 @@ export default class IndexFooter extends Component {
                         social_medias.map((v,i)=>(
                             <a key={"soc"+i} className={styles.social_link} href={v.url}
                             target="_blank" rel="noopener noreferrer">
+                                <Tooltip title={v.tooltip}>
                                 <img className={styles.social_img}
                                 src={v.icon}/>
+                                </Tooltip>
                             </a>
                         ))
                     }
@@ -141,30 +144,35 @@ const transforSocialMedias=(data)=>{
         links.push({
             icon:"/statics/svg2/footer_email.svg",
             url:"mailto:" + d.email,
+            tooltip:"ایمیل",
         });
     }
     if(d.instagram){
         links.push({
             icon:"/statics/svg2/footer_instagram.svg",
             url:d.instagram,
+            tooltip:"اینستاگرام",
         });
     }
     if(d.linkedin){
         links.push({
             icon:"/statics/svg2/footer_linkedin.svg",
             url:d.linkedin,
+            tooltip:"لینکدین",
         });
     }
     if(d.telegram){
         links.push({
             icon:"/statics/svg2/footer_telegram.svg",
             url:d.telegram,
+            tooltip:"تلگرام",
         });
     }
     if(d.whatsapp){
         links.push({
             icon:"/statics/svg2/footer_whatsapp.svg",
             url: "https://wa.me/"+ d.whatsapp,
+            tooltip:"واتس اپ",
         });
     }
     return links;

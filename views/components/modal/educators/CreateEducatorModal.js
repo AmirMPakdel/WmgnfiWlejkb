@@ -100,7 +100,7 @@ export default class CreateEducatorModal extends Component {
                         inputFilter={InputFilter.persianNameInputFilter}/>
 
                         <TextArea className={styles.form_ta}
-                        title={"بایو"}
+                        placeholder={"بایو"}
                         onChange={t=>this.onInput("bio", t)}
                         value={this.state.bio}
                         error={this.state.bio_error}/>

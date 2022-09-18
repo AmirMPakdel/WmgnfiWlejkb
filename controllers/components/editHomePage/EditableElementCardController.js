@@ -83,11 +83,11 @@ export default class EditableElementCardController{
 
         let el_type = this.view.props.data.el_type;
         
-        if(el_type == 1 || el_type == 2){
+        // if(el_type == 1 || el_type == 2){
 
-            chest.openNotification("شروع سایت و فوتر قابل پنهان سازی نمی باشند.", "alert");
-            return;
-        }
+        //     chest.openNotification("شروع سایت و فوتر قابل پنهان سازی نمی باشند.", "alert");
+        //     return;
+        // }
 
         let visible = v.props.data.visible;
         

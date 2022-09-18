@@ -105,7 +105,7 @@ export default class HomePage extends Component {
                         !this.state.sortMode?
                         <MainButton
                         className={styles.open_homePage_btn}
-                        title={"نمایش صفحه اصلی وبسایت"}
+                        title={"نمایش صفحه اصلی وب‌سایت"}
                         onClick={this.openHomePage}/>
                         :null
                     }

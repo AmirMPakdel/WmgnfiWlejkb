@@ -100,14 +100,14 @@ export default class SideMenu extends Component {
         return (
             <div ref={r=>this.SideMenu=r} className={styles.sidemenu_con}>
 
-                <a className={styles.sidemenu_title+" ftc2i"} onClick={()=>window.location.href=env.PATHS.MINFO_HOMEPAGE}>
+                <a className={styles.sidemenu_title+" ftc2i"} onClick={()=>window.open(env.PATHS.MINFO_HOMEPAGE)}>
                     <img className={styles.menu_logo_img} src={"/statics/svg/dashboard/menu_minfo_logo.svg"}/>
                 </a>
 
                 <SideMenuBtn title="داشبورد" icon={"sidebar_overview.svg"}
                 onClick={this.onSelect} active_page={this.state.active_page} name="overview"/>
 
-                <SideMenuBtn title="دوره های من" icon={"sidebar_myCourses.svg"}
+                <SideMenuBtn title="دوره‌های من" icon={"sidebar_myCourses.svg"}
                 onClick={this.onSelect} active_page={this.state.active_page} name="myCourses"/>
 
                 {/* <SideMenuBtn title="مقالات" icon={DocumentSvg}
@@ -130,14 +130,14 @@ export default class SideMenu extends Component {
 
                 <SideMenuBtn title="گزارش‌های مالی" icon={"sidebar_financials.svg"}
                 onClick={this.onSelect} active_page={this.state.active_page} name="financialReports"/>
-
-                <SideMenuBtn title="افزایش اعتبار" icon={"sidebar_buyCredit.svg"}
-                onClick={this.onSelect} active_page={this.state.active_page} name="buyCredit"/>
+                
+                {/*<SideMenuBtn title="افزایش اعتبار" icon={"sidebar_buyCredit.svg"}
+                onClick={this.onSelect} active_page={this.state.active_page} name="buyCredit"/> */}
 
                 <div className={styles.sidemenu_wrapper1}>
 
-                    <SideMenuBtn title={"ویرایش پروفایل"} icon={"sidebar_profile.svg"}
-                    onClick={this.onSelect} active_page={this.state.active_page} name="profile" active/>
+                    <SideMenuBtn title={"حساب کاربری"} icon={"sidebar_profile.svg"}
+                    onClick={this.onSelect} active_page={this.state.active_page} name="profile"/>
 
                 </div>
                 

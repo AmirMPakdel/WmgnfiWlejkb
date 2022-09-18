@@ -7,6 +7,8 @@ import LogoutSvg from "@/views/svgs/Logout";
 import ProfileSvg from "@/views/svgs/Profile";
 import { deleteCookie } from "@/utils/cookie";
 import { HomeOutlined } from "@ant-design/icons"
+import IndexHeader from "../components/layouts/IndexHeader";
+import IndexFooter from "../components/layouts/IndexFooter";
 
 /**
 * Props of StudentPanelLayout Component
@@ -55,11 +57,11 @@ export default class StudentPanelLayout extends Component {
 
                     <div className={styles.layout}>
 
-                        {/* <IndexHeader/> */}
+                        <IndexHeader/>
 
                         <div className={styles.upper_sec}>
 
-                            <div className={styles.username+" tilt flc1"}>
+                            <div className={styles.username+" btc1 tilt flc1"}>
                                 <ProfileSvg className={styles.user_icon}
                                 stroke={"#FFF"}/>
                                 {this.state.username}
@@ -67,23 +69,21 @@ export default class StudentPanelLayout extends Component {
 
                             <div className={styles.tab_btn_wrapper}>
 
-                                <TabBtn title={"دوره های من"}
+                                <TabBtn title={"دوره‌های من"}
                                 href={env.PATHS.STUDENT_COURSES}/>
 
-                                <TabBtn title={"علاقه مندی ها"}
+                                <TabBtn title={"علاقه‌مندی‌ها"}
                                 href={env.PATHS.STUDENT_WISHLIST}/>
 
-                                <TabBtn title={"فاکتور ها"}
+                                <TabBtn title={"سفارش‌های من"}
                                 href={env.PATHS.STUDENT_RECIEPTS}/>
 
-                                <TabBtn title={"ویرایش پروفایل"}
+                                <TabBtn title={"اطلاعات کاربری"}
                                 href={env.PATHS.STUDENT_EDIT_PROFILE}/>
 
                             </div>
 
                             <div className={styles.left_side}>
-
-                                
 
                                 <div className={styles.link_con} onClick={this.onLogout}>
 
@@ -94,17 +94,15 @@ export default class StudentPanelLayout extends Component {
 
                                 </div>
 
-                                <a className={styles.link_con} href={env.PATHS.HOMEPAGE}>
+                                {/* <a className={styles.link_con} href={env.PATHS.HOMEPAGE}>
 
                                     <div className={styles.logout_text+" flc1 cpnt"}>{"خانه"}</div>
 
                                     <HomeOutlined className={styles.home_icon}/>
 
-                                </a>
+                                </a> */}
 
                             </div>
-
-                            
 
                         </div>
                         
@@ -112,7 +110,7 @@ export default class StudentPanelLayout extends Component {
                             {this.props.children}
                         </div>
 
-                        {/* <div className={styles.mock_footer}>FOOTER</div> */}
+                        <IndexFooter/>
 
                     </div>
                 
@@ -122,19 +120,31 @@ export default class StudentPanelLayout extends Component {
     }
 }
 
-function TabBtn(props){
+class TabBtn extends Component{
 
-    let add_class="";
-    if(window.location.href.search(props.href) != -1){
-        add_class=styles.tab_btn_border_selected;
+    componentDidMount(){
+        this.con.onmouseenter=()=>{
+            this.con.style.color="#f5df4d";
+        }
+        this.con.onmouseleave=()=>{
+            this.con.style.color="#fff";
+        }
     }
-    return(
-        <a className={styles.tab_btn+" flc1"}
-        href={props.href}>
-            {
-                props.title
-            }
-            <div className={styles.tab_btn_border+" bgw "+add_class}/>
-        </a>
-    )
+
+    render(){
+        let add_class="";
+        if(window.location.href.search(this.props.href) != -1){
+            add_class=styles.tab_btn_border_selected;
+        }
+        return(
+            <a className={styles.tab_btn+" flc1"}
+            ref={r=>this.con=r}
+            href={this.props.href}>
+                {
+                    this.props.title
+                }
+                <div className={styles.tab_btn_border+" bgw "+add_class}/>
+            </a>
+        )
+    }
 }
