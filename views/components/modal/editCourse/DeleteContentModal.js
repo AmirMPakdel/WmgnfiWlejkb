@@ -4,6 +4,8 @@ import DeleteContentController from "@/controllers/components/modals/editCourse/
 import EditCourseContents from "@/views/components/editCourse/EditCourseContents";
 import MainButton from "@/views/components/global/MainButton";
 import CrossSvg from "@/views/svgs/Cross";
+import CloseModalLayout from "../CloseModalLayout";
+import YesNoModalLayout from "../YesNoModalLayout";
 
 /**
 * Props of DeleteContentModal Component
@@ -40,29 +42,20 @@ export default class DeleteContentModal extends Component {
     render(){
         let content = this.props.content;
         return(
-            <div className={styles.con+" bglc2 "}>
-
-                <CrossSvg className={styles.close_btn + " bglc1 amp_btn md_card_shd"} 
-                stroke={env.THEME.dc1}
-                onClick={this.onCancel}/>
+            <YesNoModalLayout className={styles.con}
+            wrapperClass={styles.wrapper}
+            closable={false}
+            positiveClassName={styles.submit_btn+" bgec"}
+            positiveLoading={this.state.delete_loading}
+            positiveTitle={"حذف"}
+            onPositive={this.onDelete}
+            negativeClassName={styles.cancel_btn}
+            negativeTitle={"انصراف"}
+            onNegative={this.onCancel}>
 
                 <div className={styles.title+" tilt"}>{"محتوای "+content.title+" حذف شود؟"}</div>
-
-                <div className={styles.sec1}>
-
-                    <MainButton className={styles.submit_btn+" bgec"}
-                    title={"حذف"}
-                    onClick={this.onDelete}
-                    loading={this.state.delete_loading}/>
-
-                    <MainButton className={styles.cancel_btn}
-                    title={"انصراف"}
-                    borderMode
-                    onClick={this.onCancel}/>
-
-                </div>
                 
-            </div>
+            </YesNoModalLayout>
         )
     }
 }

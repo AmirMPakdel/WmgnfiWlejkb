@@ -1,0 +1,15 @@
+.sec1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+    direction: rtl;
+}
+
+.submit_btn{
+    margin-left: 1rem;
+}
+
+.cancel_btn{
+    margin-right: 1rem;
+}

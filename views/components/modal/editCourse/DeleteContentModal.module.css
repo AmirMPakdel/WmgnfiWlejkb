@@ -1,9 +1,12 @@
 .con{
     padding: 2rem 3rem;
+    border-radius: 1rem;
+}
+
+.wrapper{
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-radius: 1rem;
 }
 
 .close_btn{
@@ -46,7 +49,7 @@
 @media(max-width:767px){
 
     .con{
-        width: 86vw;
+        width: calc(100vw - 1rem);
     } 
 
     .submit_btn{

@@ -120,7 +120,7 @@
 @media(max-width:767px){
 
     .con{
-        width: 86vw;
+        width: calc(100vw - 1rem);
         margin: 0;
         padding: 0;
     }

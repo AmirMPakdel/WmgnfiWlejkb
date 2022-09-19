@@ -4,6 +4,7 @@ import VideoCard from "../../global/VideoCard";
 import styles from "./ViewFreeContentModal.module.css";
 import myServer from "@/utils/myServer";
 import Observer from "@/utils/observer";
+import CloseModalLayout from "../CloseModalLayout";
 
 /**
 * Props of ViewFreeContentModal Component
@@ -66,43 +67,39 @@ export default class ViewFreeContentModal extends Component {
         let title = "آیا از حذف دسته با عنوان \""+ d.title+"\" اطمینان دارید؟";
 
         return(
-            <div className={styles.con+" bglc1 btc2 xl_card_shd"}>
+            
+            <CloseModalLayout className={styles.con}
+            wrapperClass={styles.wrapper}
+            onClose={this.onClose}>
 
-                <CrossSvg className={styles.close_btn + " bglc1 amp_btn md_card_shd"}
-                stroke={env.THEME.dc1}
-                onClick={this.onClose}/>
-
-                <div className={styles.wrapper}>
-
-                    <div className={styles.title+" tilt"}>{d.title}</div>
+                <div className={styles.title+" tilt"}>{d.title}</div>
 
 
-                    {
-                        d.type === "ct_voice"?
-                        <audio className={styles.voice_con} controls 
-                        src={myServer.MediaFiles.freeCourseMedia(this.props.data.url)}/>
-                        :null
-                    }
+                {
+                    d.type === "ct_voice"?
+                    <audio className={styles.voice_con} controls 
+                    src={myServer.MediaFiles.freeCourseMedia(this.props.data.url)}/>
+                    :null
+                }
 
-                    {
-                        d.type === "ct_video"?
-                        <VideoCard className={styles.video_con}
-                        uploadKey={this.props.data.url}
-                        is_free={true}/>
-                        :null
-                    }
+                {
+                    d.type === "ct_video"?
+                    <VideoCard className={styles.video_con}
+                    uploadKey={this.props.data.url}
+                    is_free={true}/>
+                    :null
+                }
 
-                    {
-                        d.type === "ct_document"?
-                        <iframe src={"https://docs.google.com/gview?url="+myServer.MediaFiles.freeCourseMedia(this.props.data.url)+"&embedded=true"} 
-                        frameborder="0" width={this.state.doc_width} height={this.state.doc_height} >
-                        </iframe>
-                        :null
-                    }
+                {
+                    d.type === "ct_document"?
+                    <iframe src={"https://docs.google.com/gview?url="+myServer.MediaFiles.freeCourseMedia(this.props.data.url)+"&embedded=true"} 
+                    frameborder="0" width={this.state.doc_width} height={this.state.doc_height} >
+                    </iframe>
+                    :null
+                }
 
-                </div>
-
-            </div>
+                
+            </CloseModalLayout>
         )
     }
 }

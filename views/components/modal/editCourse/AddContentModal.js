@@ -9,6 +9,7 @@ import {InfoCircleFilled, CloseCircleFilled} from "@ant-design/icons"
 import MainButton from "@/views/components/global/MainButton";
 import { Radio } from "node_modules/antd/lib/index";
 import CrossSvg from "@/views/svgs/Cross";
+import CloseModalLayout from "../CloseModalLayout";
 
 
 /**
@@ -118,98 +119,92 @@ export default class AddContentModal extends Component {
         let type_title = type2Title(this.props.type);
 
         return(
-            <div className={styles.con+" bglc1 "}>
+            <CloseModalLayout className={styles.con}
+            wrapperClass={styles.wrapper}
+            onClose={this.onCancel}>
 
-                <CrossSvg className={styles.close_btn + " bglc1 amp_btn md_card_shd"} 
-                stroke={env.THEME.dc1}
-                onClick={this.onCancel}/>
+                <div className={styles.title+" tilt"}>{"عنوان محتوای "+ type_title}</div>
 
-                <div className={styles.wrapper}>
+                <TextInput className={styles.title_input}
+                ref={r=>this.TextInput=r}
+                onChange={this.onInput}
+                value={this.state.title}
+                disabled={this.state.status==="uploading"}
+                placeholder={"عنوان محتوا"}/>
 
-                    <div className={styles.title+" tilt"}>{"عنوان محتوای "+ type_title}</div>
+                <div className={styles.title+" tilt"}>
 
-                    <TextInput className={styles.title_input}
-                    ref={r=>this.TextInput=r}
-                    onChange={this.onInput}
-                    value={this.state.title}
-                    disabled={this.state.status==="uploading"}
-                    placeholder={"عنوان محتوا"}/>
-
-                    <div className={styles.title+" tilt"}>
-
-                        {"نوع دسترسی کاربر"}
-                        <ConfigProvider direction="rtl">
-                        <Tooltip className={styles.info_tt}
-                        placement="left" title={access_info_text}>
-                            <InfoCircleFilled/>
-                        </Tooltip>
-                        </ConfigProvider>
-                    </div>
-
-                    <div className={styles.select_row+" bdyt"} onClick={()=>this.onAccess(1)}>
-
-                        <Radio className={styles.select} checked={this.state.is_free===1}/>
-                        {"محتوای رایگان و قابل دانلود برای عموم"}
-                    </div>
-                    <div className={styles.select_row+" bdyt"} onClick={()=>this.onAccess(0)}>
-                        <Radio className={styles.select} checked={this.state.is_free===0}/>
-                        {"محتوای قابل دانلود برای خریداران این دوره"}
-                    </div>
-
-                    <div className={styles.info1+" cpnt"}>
-                        {"لطفا نوع دسترسی کاربر را با دقت انتخاب کنید زیرا بعد از ثبت قابل تغییر نخواهد بود."}
-                    </div>
-
-                    <div className={styles.title+" tilt"}>{"آپلود محتوا"}</div>
-
-                    {
-                        this.state.status === "select"?
-                        <MainButton className={styles.upload_btn}
-                        onClick={this.onSelectFile}
-                        title="انتخاب فایل"/>:null
-                    }
-
-                    <input style={{display:"none"}} 
-                    onClick={this.onInputClick}
-                    ref={r=>this.input=r}
-                    onChange={this.onInputChange}
-                    type={"file"} accept={type2FileAccept(this.props.type)}/>
-
-                    {
-                        this.state.status === "uploading"?
-                        <Progress className={styles.upload_progress} 
-                        strokeColor="#FBAD16"
-                        trailColor="#EAEAEA"
-                        percent={this.state.upload_percent} 
-                        size="default" status="active" />:
-                        null
-                    }
-
-                    {
-                        this.state.status === "ready"?
-                        <div className={styles.file_name+" btc2 "}>
-                            {this.state.file_name}
-                            <CloseCircleFilled className={styles.remove_file+" amp_btn"}
-                            onClick={this.onRemoveFile}/>
-                        </div>:null
-                    }
-                    
-                    {
-                        this.state.status === "ready" || this.state.status === "uploading"?
-                        <div className={styles.sec1}>
-
-                        <MainButton className={styles.creat_btn}
-                        title="بارگذاری و ثبت"
-                        disabled={!this.state.can_continue || this.state.status==="uploading"}
-                        loading={this.upload_loading}
-                        onClick={this.onCreate}/>
-
-                        </div>:null
-                    }
-                    
+                    {"نوع دسترسی کاربر"}
+                    <ConfigProvider direction="rtl">
+                    <Tooltip className={styles.info_tt}
+                    placement="left" title={access_info_text}>
+                        <InfoCircleFilled/>
+                    </Tooltip>
+                    </ConfigProvider>
                 </div>
 
-            </div>
+                <div className={styles.select_row+" bdyt"} onClick={()=>this.onAccess(1)}>
+
+                    <Radio className={styles.select} checked={this.state.is_free===1}/>
+                    {"محتوای رایگان و قابل دانلود برای عموم"}
+                </div>
+                <div className={styles.select_row+" bdyt"} onClick={()=>this.onAccess(0)}>
+                    <Radio className={styles.select} checked={this.state.is_free===0}/>
+                    {"محتوای قابل دانلود برای خریداران این دوره"}
+                </div>
+
+                <div className={styles.info1+" cpnt"}>
+                    {"لطفا نوع دسترسی کاربر را با دقت انتخاب کنید زیرا بعد از ثبت قابل تغییر نخواهد بود."}
+                </div>
+
+                <div className={styles.title+" tilt"}>{"آپلود محتوا"}</div>
+
+                {
+                    this.state.status === "select"?
+                    <MainButton className={styles.upload_btn}
+                    onClick={this.onSelectFile}
+                    title="انتخاب فایل"/>:null
+                }
+
+                <input style={{display:"none"}} 
+                onClick={this.onInputClick}
+                ref={r=>this.input=r}
+                onChange={this.onInputChange}
+                type={"file"} accept={type2FileAccept(this.props.type)}/>
+
+                {
+                    this.state.status === "uploading"?
+                    <Progress className={styles.upload_progress} 
+                    strokeColor="#FBAD16"
+                    trailColor="#EAEAEA"
+                    percent={this.state.upload_percent} 
+                    size="default" status="active" />:
+                    null
+                }
+
+                {
+                    this.state.status === "ready"?
+                    <div className={styles.file_name+" btc2 "}>
+                        {this.state.file_name}
+                        <CloseCircleFilled className={styles.remove_file+" amp_btn"}
+                        onClick={this.onRemoveFile}/>
+                    </div>:null
+                }
+                
+                {
+                    this.state.status === "ready" || this.state.status === "uploading"?
+                    <div className={styles.sec1}>
+
+                    <MainButton className={styles.creat_btn}
+                    title="بارگذاری و ثبت"
+                    disabled={!this.state.can_continue || this.state.status==="uploading"}
+                    loading={this.upload_loading}
+                    onClick={this.onCreate}/>
+
+                    </div>:null
+                }
+                
+            </CloseModalLayout>
         )
     }
 }

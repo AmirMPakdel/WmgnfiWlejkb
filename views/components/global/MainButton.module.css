@@ -9,6 +9,7 @@
     direction: rtl;
     padding: 0 1rem;
     user-select: none;
+    transition: 200ms ease;
 }
 
 .left_arrow{
@@ -41,6 +42,7 @@
 }
 
 .mbtn_con:hover{
-    background: rgb(251,173,22);
-    background: linear-gradient(45deg, rgba(251,173,22,1) 0%, rgba(245,223,77,1) 80%);
+    /* background: rgb(251,173,22);
+    background: linear-gradient(45deg, rgba(251,173,22,1) 0%, rgba(245,223,77,1) 80%); */
+    transform: scale(1.04);
 }
