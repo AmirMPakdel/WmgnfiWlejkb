@@ -3,7 +3,7 @@ import chest from "@/utils/chest";
 import EditCourseContents from "@/views/components/editCourse/EditCourseContents";
 import AddContentModal from "@/views/components/modal/editCourse/AddContentModal";
 import styles from "./NewContentTypeModal.module.css";
-import CrossSvg from "@/views/svgs/Cross";
+import CloseModalLayout from "../CloseModalLayout";
 
 /**
 * Props of NewContentTypeModal Component
@@ -63,13 +63,10 @@ export default class NewContentTypeModal extends Component {
     }
     
     render(){
-        let type_btn = styles.type_btn + " bgtc1 btc2 tilt amp_btn"
+        let type_btn = styles.type_btn + " bgtc1 tilt amp_btn"
         return(
-            <div className={styles.con+" bglc1 "}>
-
-                <CrossSvg className={styles.close_btn + " bglc1 amp_btn md_card_shd"} 
-                stroke={env.THEME.dc1}
-                onClick={this.onCancel}/>
+            <CloseModalLayout className={styles.con+" bglc1 "}
+            onClose={this.onCancel}>
 
                 <div className={styles.title+" tilt"}>{"نوع محتوای جدید را انتخاب کنید."}</div>
 
@@ -79,7 +76,7 @@ export default class NewContentTypeModal extends Component {
 
                 <div className={type_btn} onClick={this.onText}>{"فایل متنی"} <span>{"(pdf)"}</span> </div>
                 
-            </div>
+            </CloseModalLayout>
         )
     }
 }

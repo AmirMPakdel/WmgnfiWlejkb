@@ -8,7 +8,6 @@ import styles from "./AddContentModal.module.css";
 import {InfoCircleFilled, CloseCircleFilled} from "@ant-design/icons"
 import MainButton from "@/views/components/global/MainButton";
 import { Radio } from "node_modules/antd/lib/index";
-import CrossSvg from "@/views/svgs/Cross";
 import CloseModalLayout from "../CloseModalLayout";
 
 

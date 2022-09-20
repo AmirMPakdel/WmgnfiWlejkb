@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import styles from "./DeleteContentModal.module.css";
 import DeleteContentController from "@/controllers/components/modals/editCourse/DeleteContentController";
 import EditCourseContents from "@/views/components/editCourse/EditCourseContents";
-import MainButton from "@/views/components/global/MainButton";
-import CrossSvg from "@/views/svgs/Cross";
-import CloseModalLayout from "../CloseModalLayout";
 import YesNoModalLayout from "../YesNoModalLayout";
 
 /**
@@ -42,10 +39,10 @@ export default class DeleteContentModal extends Component {
     render(){
         let content = this.props.content;
         return(
-            <YesNoModalLayout className={styles.con}
+            <YesNoModalLayout className={styles.con+" bgw"}
             wrapperClass={styles.wrapper}
             closable={false}
-            positiveClassName={styles.submit_btn+" bgec"}
+            positiveClassName={styles.submit_btn+" bgec fwi"}
             positiveLoading={this.state.delete_loading}
             positiveTitle={"حذف"}
             onPositive={this.onDelete}

@@ -5,7 +5,7 @@ import EditCourseContents from "@/views/components/editCourse/EditCourseContents
 import MainButton from "@/views/components/global/MainButton";
 import TextInput from "@/views/components/global/TextInput";
 import styles from "./NewHeadingModal.module.css";
-import CrossSvg from "@/views/svgs/Cross";
+import CloseModalLayout from "../CloseModalLayout";
 
 /**
 * Props of NewHeading Component
@@ -46,11 +46,8 @@ export default class NewHeadingModal extends Component {
     
     render(){
         return(
-            <div className={styles.con+" bglc2 "}>
-
-                <CrossSvg className={styles.close_btn + " bglc1 amp_btn md_card_shd"} 
-                stroke={env.THEME.dc1}
-                onClick={this.onCancel}/>
+            <CloseModalLayout className={styles.con+" bgw "}
+            onClose={this.onCancel}>
 
                 <div className={styles.title+" tilt"}>{"ایجاد سرفصل جدید"}</div>
 
@@ -67,7 +64,7 @@ export default class NewHeadingModal extends Component {
                 onClick={this.onCreate}
                 loading={this.state.create_loading}/>
                 
-            </div>
+            </CloseModalLayout>
         )
     }
 }

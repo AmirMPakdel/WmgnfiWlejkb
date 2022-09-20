@@ -47,12 +47,12 @@ export default class YesNoModalLayout extends Component {
                     title={this.props.positiveTitle}
                     onClick={this.props.onPositive}
                     borderMode={this.props.positiveBorderMode}
-                    loading={this.state.positiveLoading}/>
+                    loading={this.props.positiveLoading}/>
 
                     <MainButton className={styles.neg_btn+" "+this.props.negativeClassName}
                     title={this.props.negativeTitle}
                     borderMode={this.props.negativeBorderMode}
-                    onClick={this.onNegative}/>
+                    onClick={this.props.onNegative}/>
 
                 </div>
 

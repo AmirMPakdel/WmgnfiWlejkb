@@ -3,7 +3,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0.8rem 1.4rem;
     direction: rtl;
     transition: 300ms ease;
 }
@@ -17,9 +16,14 @@
     right: -1.1rem;
     top: -1.1rem;
     transition: 300ms ease;
+    z-index: 999;
 }
 
 .wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    direction: rtl;
 }
 
 .title1{

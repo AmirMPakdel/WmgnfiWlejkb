@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import CrossSvg from "@/views/svgs/Cross";
 import VideoCard from "../../global/VideoCard";
 import styles from "./ViewFreeContentModal.module.css";
 import myServer from "@/utils/myServer";

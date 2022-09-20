@@ -4,7 +4,7 @@ import TextInput from "@/views/components/global/TextInput";
 import styles from "./UpdateContentModal.module.css";
 import UpdateContentController from "@/controllers/components/modals/editCourse/UpdateContentController";
 import EditCourseContents from "@/views/components/editCourse/EditCourseContents";
-import CrossSvg from "@/views/svgs/Cross";
+import CloseModalLayout from "../CloseModalLayout";
 
 /**
 * Props of UpdateContentModal Component
@@ -59,11 +59,8 @@ export default class UpdateContentModal extends Component {
     
     render(){
         return(
-            <div className={styles.con+" bglc2 "}>
-
-                <CrossSvg className={styles.close_btn + " bglc1 amp_btn md_card_shd"} 
-                stroke={env.THEME.dc1}
-                onClick={this.onCancel}/>
+            <CloseModalLayout className={styles.con+" bgw"}
+            onClose={this.onCancel}>
 
                 <div className={styles.title+" tilt"}>{"ویرایش عنوان محتوا"}</div>
 
@@ -79,7 +76,7 @@ export default class UpdateContentModal extends Component {
                 onClick={this.onUpdate}
                 loading={this.state.update_loading}/>
                 
-            </div>
+            </CloseModalLayout>
         )
     }
 }

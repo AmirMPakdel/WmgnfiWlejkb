@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import DeleteHeadingController from "@/controllers/components/modals/editCourse/DeleteHeadingController";
 import MainButton from "@/views/components/global/MainButton";
 import styles from "./DeleteHeadingModal.module.css";
-import CrossSvg from "@/views/svgs/Cross";
+import CloseModalLayout from "../CloseModalLayout";
 
 /**
 * Props of DeleteHeadingModal Component
@@ -37,11 +37,9 @@ export default class DeleteHeadingModal extends Component {
     render(){
         let heading = this.props.heading;
         return(
-            <div className={styles.con+" bglc2 "}>
-
-                <CrossSvg className={styles.close_btn + " bglc1 amp_btn md_card_shd"} 
-                stroke={env.THEME.dc1}
-                onClick={this.onCancel}/>
+            <CloseModalLayout className={styles.con+" bgw"}
+            wrapperClass={styles.wrapper}
+            onClose={this.onCancel}>
 
                 {
                     heading.children.length?
@@ -63,7 +61,7 @@ export default class DeleteHeadingModal extends Component {
 
                     <div className={styles.sec1}>
 
-                        <MainButton className={styles.submit_btn+" bgec"}
+                        <MainButton className={styles.submit_btn+" fw bgec"}
                         title={"حذف"}
                         onClick={this.onDelete}
                         loading={this.state.delete_loading}/>
@@ -76,8 +74,7 @@ export default class DeleteHeadingModal extends Component {
                     </div>
                     </>
                 }
-                
-            </div>
+            </CloseModalLayout>
         )
     }
 }

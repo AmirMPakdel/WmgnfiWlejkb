@@ -4,7 +4,7 @@ import { InputFilter } from "@/utils/validation";
 import MainButton from "@/views/components/global/MainButton";
 import TextInput from "@/views/components/global/TextInput";
 import styles from "./UpdateHeadingModal.module.css";
-import CrossSvg from "@/views/svgs/Cross";
+import CloseModalLayout from "../CloseModalLayout";
 
 /**
 * Props of UpdateHeadingModal Component
@@ -57,11 +57,8 @@ export default class UpdateHeadingModal extends Component {
     
     render(){
         return(
-            <div className={styles.con+" bglc2 "}>
-
-                <CrossSvg className={styles.close_btn + " bglc1 amp_btn md_card_shd"} 
-                stroke={env.THEME.dc1}
-                onClick={this.onCancel}/>
+            <CloseModalLayout className={styles.con+" bglc2 "}
+            onClose={this.onCancel}>
 
                 <div className={styles.title+" tilt"}>{"ویرایش عنوان سرفصل"}</div>
 
@@ -78,7 +75,7 @@ export default class UpdateHeadingModal extends Component {
                 onClick={this.onUpdate}
                 loading={this.state.update_loading}/>
                 
-            </div>
+            </CloseModalLayout>
         )
     }
 }
