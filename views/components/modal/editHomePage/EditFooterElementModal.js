@@ -5,6 +5,7 @@ import MainButton from "../../global/MainButton";
 import TextInput from "../../global/TextInput";
 import CrossSvg from "@/views/svgs/Cross";
 import HomePage from "@/views/dynamics/dashboard/HomePage";
+import CloseModalLayout from "../CloseModalLayout";
 /**
 * Props of EditFooterElementModal Component
 * @typedef Props
@@ -58,11 +59,8 @@ export default class EditFooterElementModal extends Component {
     
     render(){
         return(
-            <div className={styles.con+" bglc1 btc2 xl_card_shd"}>
-
-                <CrossSvg className={styles.close_btn + " bglc1 amp_btn md_card_shd"}
-                stroke={env.THEME.dc1}
-                onClick={this.onCancel}/>
+            <CloseModalLayout className={styles.con+" bgw btc2 xl_card_shd"}
+            onClose={this.onCancel}>
 
                 <div className={styles.title+" tilt "}>{"تنظیمات فوتر"}</div>
 
@@ -168,7 +166,7 @@ export default class EditFooterElementModal extends Component {
 
                 </div>
 
-            </div>
+            </CloseModalLayout>
         )
     }
 }

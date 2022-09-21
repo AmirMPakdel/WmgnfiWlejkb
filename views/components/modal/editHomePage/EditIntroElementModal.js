@@ -11,6 +11,7 @@ import { Popover, Radio } from "node_modules/antd/lib/index";
 import UploadMedia from "../../editHomePage/UploadMedia";
 import SwitchIntroElementModal from "./SwitchIntroElementModal";
 import HomePage from "@/views/dynamics/dashboard/HomePage";
+import CloseModalLayout from "../CloseModalLayout";
 
 /**
 * Props of EditIntroElementModal Component
@@ -99,11 +100,8 @@ export default class EditIntroElementModal extends Component {
     
     render(){
         return(
-            <div className={styles.con+" bgw btc2 xl_card_shd"}>
-
-                <CrossSvg className={styles.close_btn + " bglc1 amp_btn md_card_shd"}
-                stroke={env.THEME.dc1}
-                onClick={this.onCancel}/>
+            <CloseModalLayout className={styles.con+" bgw btc2 xl_card_shd"}
+            onClose={this.onCancel}>
 
                 <div className={styles.title+" tilt "}>{"تنظیمات شروع سایت"}</div>
 
@@ -216,7 +214,7 @@ export default class EditIntroElementModal extends Component {
 
                 </div>
 
-            </div>
+            </CloseModalLayout>
         )
     }
 }

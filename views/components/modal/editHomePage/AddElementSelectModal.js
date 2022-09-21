@@ -3,6 +3,7 @@ import MainButton from "@/views/components/global/MainButton";
 import CrossSvg from "@/views/svgs/Cross";
 import styles from "./AddElementSelectModal.module.css";
 import { Popover, Radio } from "node_modules/antd/lib/index";
+import CloseModalLayout from "../CloseModalLayout";
 
 /**
 * Props of AddElementSelectModal Component
@@ -53,11 +54,8 @@ export default class AddElementSelectModal extends Component {
     
     render(){
         return(
-            <div className={styles.con+" bglc1 btc2 xl_card_shd"}>
-
-                <CrossSvg className={styles.close_btn + " bglc1 amp_btn md_card_shd"}
-                stroke={env.THEME.dc1}
-                onClick={this.onCancel}/>
+            <CloseModalLayout className={styles.con+" bgw btc2 xl_card_shd"}
+            onClose={this.onCancel}>
 
                 <div className={styles.wrapper}>
 
@@ -89,7 +87,7 @@ export default class AddElementSelectModal extends Component {
                     
                 </div>
                 
-            </div>
+            </CloseModalLayout>
         )
     }
 }

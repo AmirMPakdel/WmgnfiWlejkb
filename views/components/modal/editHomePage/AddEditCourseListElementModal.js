@@ -9,6 +9,7 @@ import Dropdown from "@/views/components/global/Dropdown";
 import CategorySelectModal from "../global/CategorySelectModal";
 import HomePage from "@/views/dynamics/dashboard/HomePage";
 import Storage from "@/utils/storage";
+import CloseModalLayout from "../CloseModalLayout";
 
 /**
 * Props of AddEditCourseListElementModal Component
@@ -93,11 +94,8 @@ export default class AddEditCourseListElementModal extends Component {
     
     render(){
         return(
-            <div className={styles.con+" bglc1 btc2 xl_card_shd"}>
-
-                <CrossSvg className={styles.close_btn + " bglc1 amp_btn md_card_shd"}
-                stroke={env.THEME.dc1}
-                onClick={this.onCancel}/>
+            <CloseModalLayout className={styles.con+" bgw btc2 xl_card_shd"}
+            onClose={this.onCancel}>
 
                 {
                     this.props.mode=="edit"?
@@ -145,7 +143,7 @@ export default class AddEditCourseListElementModal extends Component {
 
                 </div>
 
-            </div>
+            </CloseModalLayout>
         )
     }
 }

@@ -9,6 +9,7 @@ import { Popover, Radio } from "node_modules/antd/lib/index";
 import UploadMedia from "../../editHomePage/UploadMedia";
 import AddEditInfoBoxElementController from "@/controllers/components/modals/editHomePage/AddEditInfoBoxElementController";
 import HomePage from "@/views/dynamics/dashboard/HomePage";
+import CloseModalLayout from "../CloseModalLayout";
 
 /**
 * Props of AddEditInfoBoxElementModal Component
@@ -84,11 +85,8 @@ export default class AddEditInfoBoxElementModal extends Component {
     
     render(){
         return(
-            <div className={styles.con+" bglc1 btc2 xl_card_shd"}>
-
-                <CrossSvg className={styles.close_btn + " bglc1 amp_btn md_card_shd"}
-                stroke={env.THEME.dc1}
-                onClick={this.onCancel}/>
+            <CloseModalLayout className={styles.con+" bgw btc2 xl_card_shd"}
+            onClose={this.onCancel}>
 
                 {
                     this.props.mode=="edit"?
@@ -123,14 +121,6 @@ export default class AddEditInfoBoxElementModal extends Component {
                                 <MainButton className={styles.add_link_btn}
                                 title={"اضافه کردن لینک"}
                                 onClick={this.onHasLink}/>
-
-                                {/* <Popover overlayClassName={styles.link_pop_overlay}
-                                content={<img className={styles.link_pop_con} 
-                                src={"https://gamefa.com/wp-content/uploads/2022/03/robert-pattinson-the-batman-768x384.jpg.webp"}/>}>
-
-                                    <img className={styles.link_help} src={"/statics/svg2/question.svg"}/>
-                                
-                                </Popover> */}
 
                             </div>:
                             <div className={styles.link_con2}>
@@ -214,7 +204,7 @@ export default class AddEditInfoBoxElementModal extends Component {
 
                 </div>
 
-            </div>
+            </CloseModalLayout>
         )
     }
 }

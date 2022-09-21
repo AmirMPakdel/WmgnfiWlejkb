@@ -5,6 +5,7 @@ import CrossSvg from "@/views/svgs/Cross";
 import chest from "@/utils/chest";
 import { Radio } from "node_modules/antd/lib/index";
 import EditIntroElementModal from "./EditIntroElementModal";
+import CloseModalLayout from "../CloseModalLayout";
 
 /**
 * Props of SwitchIntroElementModal Component
@@ -58,11 +59,8 @@ export default class SwitchIntroElementModal extends Component {
     
     render(){
         return(
-            <div className={styles.con+" bglc1 btc2 xl_card_shd"}>
-
-                <CrossSvg className={styles.close_btn + " bglc1 amp_btn md_card_shd"}
-                stroke={env.THEME.dc1}
-                onClick={this.onCancel}/>
+            <CloseModalLayout className={styles.con+" bgw btc2 xl_card_shd"}
+            onClose={this.onCancel}>
 
                 <div className={styles.title+" tilt "}>{"تغییر حالت شروع سایت"}</div>
 
@@ -101,7 +99,7 @@ export default class SwitchIntroElementModal extends Component {
 
                 </div>
 
-            </div>
+            </CloseModalLayout>
         )
     }
 }
