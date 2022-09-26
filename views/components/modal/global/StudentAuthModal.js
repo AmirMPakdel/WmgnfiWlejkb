@@ -7,12 +7,14 @@ import MainButton from "../../global/MainButton";
 import { InputFilter } from "@/utils/validation";
 import Loading from "../../global/Loading";
 import StudentAuthController from "@/controllers/components/modals/global/StudentAuthController";
+import CloseModalLayout from "../CloseModalLayout";
 
 /**
 * Props of StudentAuthModal Component
 * @typedef Props
 * @property {string} className
 * @property {React.CSSProperties} style
+* @property {boolean} closable
 * 
 * @extends {Component<Props>}
 */
@@ -109,39 +111,31 @@ export default class StudentAuthModal extends Component {
     
     render(){
         return(
-            <div className={styles.con+" bglc1 "}>
-
-                {
-                    this.props.closable===false?
-                    null:
-                    <CrossSvg className={styles.close_btn + " bglc1 amp_btn md_card_shd"}
-                    stroke={env.THEME.dc1}
-                    onClick={this.onCancel}/>
-                }
-                <div className={styles.wrapper}>
-                {
-                    this.state.page === "Loading"?
-                    <Loading/>:null
-                }
-                {
-                    this.state.page === "MobilePage"?
-                    <MobilePage parent={this}/>:null
-                }
-                {
-                    this.state.page === "PasswordPage"?
-                    <PasswordPage parent={this}/>:null
-                }
-                {
-                    this.state.page === "VerificationPage"?
-                    <VerificationPage parent={this}/>:null
-                }
-                {
-                    this.state.page === "RegisterPage"?
-                    <RegisterPage parent={this}/>:null
-                }
-                </div>
-            
-            </div>
+            <CloseModalLayout className={styles.con+" bgw xl_card_shd"}
+            wrapperClass={styles.wrapper}
+            closable={this.props.closable}
+            onClose={this.onCancel}>
+            {
+                this.state.page === "Loading"?
+                <Loading/>:null
+            }
+            {
+                this.state.page === "MobilePage"?
+                <MobilePage parent={this}/>:null
+            }
+            {
+                this.state.page === "PasswordPage"?
+                <PasswordPage parent={this}/>:null
+            }
+            {
+                this.state.page === "VerificationPage"?
+                <VerificationPage parent={this}/>:null
+            }
+            {
+                this.state.page === "RegisterPage"?
+                <RegisterPage parent={this}/>:null
+            }
+            </CloseModalLayout>
         )
     }
 }

@@ -8,6 +8,7 @@ import chest from "@/utils/chest";
 import Loading from "@/views/components/global/Loading";
 import CrossSvg from "@/views/svgs/Cross";
 import SelectStudentsController from "@/controllers/components/modals/studentManagement/SelectStudentsController";
+import CloseModalLayout from "../CloseModalLayout";
 
 /**
  * Props of SelectStudentsModal Component
@@ -199,11 +200,8 @@ export default class SelectStudentsModal extends Component {
         }
 
         return(
-            <div className={styles.con+" bglc1 btc2 xl_card_shd"}>
-
-                <CrossSvg className={styles.close_btn + " bglc1 amp_btn md_card_shd"}
-                stroke={env.THEME.dc1}
-                onClick={this.onCancel}/>
+            <CloseModalLayout className={styles.con+" bgw xl_card_shd"}
+            onClose={this.onCancel}>
 
                 {
                     this.state.loading?
@@ -247,7 +245,7 @@ export default class SelectStudentsModal extends Component {
                     </>:null
                 }
                 
-            </div>
+            </CloseModalLayout>
         )
     }
 }

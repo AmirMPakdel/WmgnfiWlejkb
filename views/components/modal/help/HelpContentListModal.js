@@ -2,6 +2,7 @@ import chest from "@/utils/chest";
 import React, { Component } from "react";
 import styles from "./HelpContentListModal.module.css";
 import CrossSvg from "@/views/svgs/Cross";
+import CloseModalLayout from "../CloseModalLayout";
 
 /**
 * Props of HelpContentListModal Component
@@ -37,13 +38,9 @@ export default class HelpContentListModal extends Component {
     
     render(){
         return(
-            <div className={styles.con+" md_card_shd "+this.props.className}>
-
-                <CrossSvg className={styles.close_btn + " bglc1 amp_btn md_card_shd"}
-                stroke={env.THEME.dc1}
-                onClick={this.onClose}/>
-
-                <div className={styles.wrapper}>
+            <CloseModalLayout className={styles.con+" bgw xl_card_shd"}
+            wrapperClass={styles.wrapper}
+            onClose={this.onClose}>
 
                 <div className={styles.right_heading_tree_con+" sm_card_shd"}>
 
@@ -62,12 +59,9 @@ export default class HelpContentListModal extends Component {
                             </>
                         })
                     }
-                    
-                    </div>
-
                 </div>
                 
-            </div>
+            </CloseModalLayout>
         )
     }
 }

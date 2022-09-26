@@ -11,6 +11,7 @@ import EducatorsCrudController from "@/controllers/components/modals/educators/E
 import AskDeleteEducatorModal from "@/views/components/modal/educators/AskDeleteEducatorModal";
 import EditEducatorModal from "@/views/components/modal/educators/EditEducatorModal";
 import CrossSvg from "@/views/svgs/Cross";
+import CloseModalLayout from "../CloseModalLayout";
 
 /**
  * Props of EducatorsCrudModal Component
@@ -230,11 +231,9 @@ export default class EducatorsCrudModal extends Component {
         }
 
         return(
-            <div className={styles.con+" bglc1 btc2 xl_card_shd"}>
-
-                <CrossSvg className={styles.close_btn + " bglc1 amp_btn md_card_shd"}
-                stroke={env.THEME.dc1}
-                onClick={this.onCancel}/>
+            <CloseModalLayout className={styles.con+" bgw xl_card_shd"}
+            wrapperClass={styles.wrapper}
+            onClose={this.onCancel}>
 
                 {
                     this.state.loading?
@@ -283,7 +282,7 @@ export default class EducatorsCrudModal extends Component {
                     </>:null
                 }
                 
-            </div>
+            </CloseModalLayout>
         )
     }
 }

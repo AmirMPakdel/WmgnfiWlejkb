@@ -4,6 +4,7 @@ import CrossSvg from "@/views/svgs/Cross";
 import CourseLicenseController from "@/controllers/components/modals/stdPanel/CourseLicenseController";
 import Loading from "../../global/Loading";
 import MainButton from "../../global/MainButton";
+import CloseModalLayout from "../CloseModalLayout";
 
 /**
 * Props of CourseLicenseModal Component
@@ -42,11 +43,8 @@ export default class CourseLicenseModal extends Component {
         let d = this.props.data;
         let s = this.state;
         return(
-            <div className={styles.con+" bgw btc2 xl_card_shd"}>
-
-                <CrossSvg className={styles.close_btn + " bglc1 amp_btn md_card_shd"}
-                stroke={env.THEME.dc1}
-                onClick={this.onCancel}/>
+            <CloseModalLayout className={styles.con+" bgw xl_card_shd"}
+            onClose={this.onCancel}>
 
                 {
                     this.state.loading?
@@ -103,7 +101,7 @@ export default class CourseLicenseModal extends Component {
 
                 }
 
-            </div>
+            </CloseModalLayout>
         )
     }
 }

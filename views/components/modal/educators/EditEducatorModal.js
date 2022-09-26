@@ -8,6 +8,7 @@ import TextInput from "@/views/components/global/TextInput";
 import styles from "./EditEducatorModal.module.css";
 import UploadEducatorImage from "@/views/components/educator/UploadEducatorImage";
 import CrossSvg from "@/views/svgs/Cross";
+import CloseModalLayout from "../CloseModalLayout";
 
 /**
 * Props of EditEducatorModal Component
@@ -67,57 +68,51 @@ export default class EditEducatorModal extends Component {
     
     render(){
         return( 
-            <div className={styles.con+" bglc1 btc2 xl_card_shd"}>
+            <CloseModalLayout className={styles.con+" bgw xl_card_shd"}
+            wrapperClass={styles.wrapper}
+            onClose={this.onCancel}>
 
-                <CrossSvg className={styles.close_btn + " bglc1 amp_btn md_card_shd"}
-                stroke={env.THEME.dc1}
-                onClick={this.onCancel}/>
+                <div className={styles.title+" tilt "}>{"ویرایش دبیر"}</div>
 
-                <div className={styles.wrapper}>
+                <div className={styles.form_body}>
 
-                    <div className={styles.title+" tilt "}>{"ویرایش دبیر"}</div>
+                    <UploadEducatorImage
+                    uploadKey={this.state.image}
+                    ref={r=>this.UploadEducatorImage=r}/>
 
-                    <div className={styles.form_body}>
+                    <TextInput className={styles.form_input}
+                    style={{marginTop:"2.5rem"}}
+                    placeholder={"نام"}
+                    onChange={t=>this.onInput("first_name", t)}
+                    value={this.state.first_name}
+                    error={this.state.first_name_error}
+                    inputFilter={InputFilter.persianNameInputFilter}/>
 
-                        <UploadEducatorImage
-                        uploadKey={this.state.image}
-                        ref={r=>this.UploadEducatorImage=r}/>
+                    <TextInput className={styles.form_input}
+                    placeholder={"نام خانوادگی"}
+                    onChange={t=>this.onInput("last_name", t)}
+                    value={this.state.last_name}
+                    error={this.state.last_name_error}
+                    inputFilter={InputFilter.persianNameInputFilter}/>
 
-                        <TextInput className={styles.form_input}
-                        style={{marginTop:"2.5rem"}}
-                        placeholder={"نام"}
-                        onChange={t=>this.onInput("first_name", t)}
-                        value={this.state.first_name}
-                        error={this.state.first_name_error}
-                        inputFilter={InputFilter.persianNameInputFilter}/>
-
-                        <TextInput className={styles.form_input}
-                        placeholder={"نام خانوادگی"}
-                        onChange={t=>this.onInput("last_name", t)}
-                        value={this.state.last_name}
-                        error={this.state.last_name_error}
-                        inputFilter={InputFilter.persianNameInputFilter}/>
-
-                        <TextArea className={styles.form_ta}
-                        placeholder={"بایو"}
-                        onChange={t=>this.onInput("bio", t)}
-                        value={this.state.bio}
-                        error={this.state.bio_error}/>
-
-                    </div>
-
-                    <div className={styles.sec1}>
-                        
-                        <MainButton className={styles.confirm_btn}
-                        title={"ویرایش"}
-                        loading={this.state.btn_loading}
-                        onClick={this.onEdit}/>
-
-                    </div>
+                    <TextArea className={styles.form_ta}
+                    placeholder={"بایو"}
+                    onChange={t=>this.onInput("bio", t)}
+                    value={this.state.bio}
+                    error={this.state.bio_error}/>
 
                 </div>
 
-            </div>
+                <div className={styles.sec1}>
+                    
+                    <MainButton className={styles.confirm_btn}
+                    title={"ویرایش"}
+                    loading={this.state.btn_loading}
+                    onClick={this.onEdit}/>
+
+                </div>
+
+            </CloseModalLayout>
         )
     }
 }
