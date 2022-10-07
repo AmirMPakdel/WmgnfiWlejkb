@@ -4,6 +4,7 @@ import chest from "@/utils/chest";
 import Loading from "@/views/components/global/Loading";
 import MainButton from "@/views/components/global/MainButton";
 import styles from "./AskDeleteEducatorModal.module.css";
+import YesNoModalLayout from "../YesNoModalLayout";
 
 /**
 * Props of AskDeleteEducatorModal Component
@@ -30,6 +31,10 @@ export default class AskDeleteEducatorModal extends Component {
     
 
     onCancel=()=>{
+        if(this.state.loading){
+            return;
+        }
+        
         if(this.props.onCancel){
             this.props.onCancel();
         }else{
@@ -49,34 +54,20 @@ export default class AskDeleteEducatorModal extends Component {
         let title = "آیا می خواهید دبیر با نام " +d.first_name+" "+d.last_name+" را از لیست دبیران خود حذف کنید؟";
 
         return(
-            <div className={styles.con+" bglc1 btc2 lg_card_shd"}>
+            <YesNoModalLayout className={styles.con+" bgw lg_card_shd"}
+            closable={false}
+            positiveClassName={"bgec flc1i"}
+            positiveTitle={"حذف"}
+            onPositive={this.onDelete}
+            positiveLoading={this.state.loading}
+            negativeClassName={""}
+            negativeBorderMode={true}
+            negativeTitle={"انصراف"}
+            onNegative={this.onCancel}>
 
-                {
-                    this.state.loading?
-                    <Loading style={{minHeight:"12rem"}} scale={0.8}/>:null
-                }
-                {
-                    !this.state.loading?
-                    <>
-                        <div className={styles.title+" tilt"}>{title}</div>
+                <div className={styles.title+" tilt"}>{title}</div>
 
-                        <div className={styles.sec1}>
-
-                            <MainButton className={"bgec"}
-                            titleClassName={"flc1i"}
-                            title={"حذف"}
-                            onClick={this.onDelete}/>
-
-                            <MainButton className={""} 
-                            title={"انصراف"}
-                            borderMode={true}
-                            onClick={this.onCancel}/>
-
-                        </div>
-                    </>:null
-                }
-
-            </div>
+            </YesNoModalLayout>
         )
     }
 }

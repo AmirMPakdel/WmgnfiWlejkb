@@ -6,6 +6,7 @@ import MainButton from "@/views/components/global/MainButton";
 import Loading from "@/views/components/global/Loading";
 import chest from "@/utils/chest";
 import { Tree } from "node_modules/antd/lib/index";
+import CloseModalLayout from "../CloseModalLayout";
 
 /**
 * Props of CategorySelectModal Component
@@ -84,100 +85,93 @@ export default class CategorySelectModal extends Component {
     
     render(){
         return(
-            <div className={styles.con+" bgw btc2 xl_card_shd"}>
+            <CloseModalLayout className={styles.con+" bgw xl_card_shd"}
+            wrapperClass={styles.wrapper}
+            onClose={this.onCancel}>
 
-                <CrossSvg className={styles.close_btn + " bglc1 amp_btn md_card_shd"}
-                stroke={env.THEME.dc1}
-                onClick={this.onCancel}/>
+                <div className={styles.title+" tilt "}>{"انتخاب دسته بندی"}</div>
 
-                <div className={styles.wrapper}>
+                <MainButton className={styles.crud_btn}
+                title={"ویرایش"}
+                onClick={this.onCrud}/>
 
-                
-                    <div className={styles.title+" tilt "}>{"انتخاب دسته بندی"}</div>
+                <div className={styles.form_body}>
+                    
+                    <Tree
+                    checkable={true}
+                    showLine={true}
+                    showIcon={false}
+                    showLeafIcon={false}
+                    checkedKeys={this.state.checkedKeys}
+                    onSelect={this.onSelect}
+                    onCheck={this.onCheck}
+                    treeData={
 
-                    <MainButton className={styles.crud_btn}
-                    title={"ویرایش"}
-                    onClick={this.onCrud}/>
+                        this.state.list.map((l1, i1)=>{
 
-                    <div className={styles.form_body}>
-                        
-                        <Tree
-                        checkable={true}
-                        showLine={true}
-                        showIcon={false}
-                        showLeafIcon={false}
-                        checkedKeys={this.state.checkedKeys}
-                        onSelect={this.onSelect}
-                        onCheck={this.onCheck}
-                        treeData={
+                            return {
+                                title: 
+                                (<div className={styles.parent_node}>
+                                    
+                                    {l1.title}
+                    
+                                </div>),
+                    
+                                key:`${l1.id}`,
+                    
+                                children:
+                                    l1.groups && l1.groups.length? l1.groups.map((l2,i2)=>{
 
-                            this.state.list.map((l1, i1)=>{
-
-                                return {
-                                    title: 
-                                    (<div className={styles.parent_node}>
                                         
-                                        {l1.title}
-                        
-                                    </div>),
-                        
-                                    key:`${l1.id}`,
-                        
-                                    children:
-                                        l1.groups && l1.groups.length? l1.groups.map((l2,i2)=>{
+                                        return {
+                                            title: 
+                                            (<div className={styles.parent_node}>
+                    
+                                                {l2.title}
+                                                
+                                            </div>),
+                    
+                                            key:`${l1.id}-${l2.id}`,
 
-                                            
-                                            return {
-                                                title: 
-                                                (<div className={styles.parent_node}>
-                        
-                                                    {l2.title}
-                                                    
-                                                </div>),
-                        
-                                                key:`${l1.id}-${l2.id}`,
-
-                                                children:
-                                                    l2.groups && l2.groups.length? l2.groups.map((l3,i3)=>{
-                        
-                                                        return {
-                                                            title: 
-                                                            (<div className={styles.parent_node}>
-                        
-                                                                {l3.title}
-                        
-                                                            </div>),
-                        
-                                                            key:`${l1.id}-${l2.id}-${l3.id}`,
-                                                        }
-                                                    }):
-                                                    undefined
-                                            }
-                                        }):
-                                        undefined
-                                }
-                            })
-                        }/>
-
-                    </div>
-
-                    <div className={styles.sec1}>
-                        
-                        <MainButton className={styles.confirm_btn}
-                        title={"تایید"}
-                        loading={this.state.btn_loading}
-                        onClick={this.onConfirm}/>
-
-                    </div>
-
-                    {
-                        this.state.loading?
-                        <Loading className={styles.loading+" bglc1"}/>:null
-                    }
+                                            children:
+                                            l2.groups && l2.groups.length? l2.groups.map((l3,i3)=>{
+                
+                                                return {
+                                                    title: 
+                                                    (<div className={styles.parent_node}>
+                
+                                                        {l3.title}
+                
+                                                    </div>),
+                
+                                                    key:`${l1.id}-${l2.id}-${l3.id}`,
+                                                }
+                                            }):
+                                            undefined
+                                        }
+                                    }):
+                                    undefined
+                            }
+                        })
+                    }/>
 
                 </div>
 
-            </div>
+                <div className={styles.sec1}>
+                    
+                    <MainButton className={styles.confirm_btn}
+                    title={"تایید"}
+                    loading={this.state.btn_loading}
+                    onClick={this.onConfirm}/>
+
+                </div>
+
+                {
+                    this.state.loading?
+                    <Loading className={styles.loading+" bglc1"}/>:null
+                }
+
+            </CloseModalLayout>
         )
     }
 }

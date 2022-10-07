@@ -6,6 +6,7 @@ import CrossSvg from "@/views/svgs/Cross";
 import EditSitesTitlesController from "@/controllers/components/modals/settings/EditSitesTitlesController";
 import TextInput from "../../global/TextInput";
 import Loading from "../../global/Loading";
+import CloseModalLayout from "../CloseModalLayout";
 
 /**
 * Props of EditSitesTitlesModal Component
@@ -47,11 +48,8 @@ export default class EditSitesTitlesModal extends Component {
     render(){
 
         return(
-            <div className={styles.con+" bglc1 btc2 xl_card_shd"}>
-
-                <CrossSvg className={styles.close_btn + " bglc1 amp_btn md_card_shd"}
-                stroke={env.THEME.dc1}
-                onClick={this.onCancel}/>
+            <CloseModalLayout className={styles.con+" bgw xl_card_shd"}
+            onClose={this.onCancel}>
 
                 {
                     this.state.loading?
@@ -86,7 +84,7 @@ export default class EditSitesTitlesModal extends Component {
                     </div>
                 }
 
-            </div>
+            </CloseModalLayout>
         )
     }
 }

@@ -25,6 +25,18 @@ export default class CourseLicenseController{
             if(data.result_code === env.SC.SUCCESS){
 
                 let d = data.data;
+                
+                try{
+                    d.device_one = JSON.parse(d.device_one)
+                }catch(e){
+                    d.device_one = {}
+                }
+                try{
+                    d.device_two = JSON.parse(d.device_two)
+                }catch(e){
+                    d.device_two = {}
+                }
+                
                 v.setState({
                     loading: false,
                     license: d.key,

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Loading from "../../global/Loading";
 import MainButton from "../../global/MainButton";
+import YesNoModalLayout from "../YesNoModalLayout";
 import styles from "./AskDeleteCategoryModal.module.css";
 
 /**
@@ -31,6 +32,10 @@ export default class AskDeleteCategoryModal extends Component {
     }
 
     onCancel = ()=>{
+        if(this.state.loading){
+            return;
+        }
+        
         if(this.props.onCancel){
             this.props.onCancel();
         }
@@ -41,34 +46,20 @@ export default class AskDeleteCategoryModal extends Component {
         let title = "آیا از حذف دسته با عنوان \""+ d.title+"\" اطمینان دارید؟";
 
         return(
-            <div className={styles.con+" bglc1 btc2 lg_card_shd"}>
+            <YesNoModalLayout className={styles.con+" bgw lg_card_shd"}
+            closable={false}
+            positiveClassName={"bgec flc1i"}
+            positiveTitle={"حذف"}
+            onPositive={this.onConfirm}
+            positiveLoading={this.state.loading}
+            negativeClassName={""}
+            negativeBorderMode={true}
+            negativeTitle={"انصراف"}
+            onNegative={this.onCancel}>
 
-                {
-                    this.state.loading?
-                    <Loading style={{minHeight:"12rem"}} scale={0.8}/>:null
-                }
-                {
-                    !this.state.loading?
-                    <>
-                        <div className={styles.title+" tilt"}>{title}</div>
+                <div className={styles.title+" tilt"}>{title}</div>
 
-                        <div className={styles.sec1}>
-
-                            <MainButton className={"bgec"}
-                            titleClassName={"flc1i"}
-                            title={"حذف"}
-                            onClick={this.onConfirm}/>
-
-                            <MainButton className={""} 
-                            title={"انصراف"}
-                            borderMode={true}
-                            onClick={this.onCancel}/>
-
-                        </div>
-                    </>:null
-                }
-
-            </div>
+            </YesNoModalLayout>
         )
     }
 }

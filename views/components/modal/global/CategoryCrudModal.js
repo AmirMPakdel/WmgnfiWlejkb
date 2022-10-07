@@ -6,6 +6,7 @@ import MainButton from "../../global/MainButton";
 import CategoryCrudController from "@/controllers/components/modals/global/CategoryCrudController";
 import Loading from "../../global/Loading";
 import chest from "@/utils/chest";
+import CloseModalLayout from "../CloseModalLayout";
 
 /**
 * Props of CategoryCrudModal Component
@@ -94,175 +95,145 @@ export default class CategoryCrudModal extends Component {
     
     render(){
         return(
-            <div className={styles.con+" bglc1 btc2 xl_card_shd"}>
+            <CloseModalLayout className={styles.con+" bgw xl_card_shd"}
+            wrapperClass={styles.wrapper}
+            onClose={this.onCancel}>
 
-                <CrossSvg className={styles.close_btn + " bglc1 amp_btn md_card_shd"}
-                stroke={env.THEME.dc1}
-                onClick={this.onCancel}/>
+                <div className={styles.title+" tilt "}>{"ویرایش دسته بندی ها"}</div>
 
-                <div className={styles.wrapper}>
+                <div className={styles.form_body}>
+                    
+                    <MainButton className={styles.addLevel1}
+                    title={"ایجاد دسته سطح یک"}
+                    loading={this.state.btn_loading}
+                    onClick={()=>this.addChild()}/>
 
-                
-                    <div className={styles.title+" tilt "}>{"ویرایش دسته بندی ها"}</div>
+                    <Tree
+                    checkable={false}
+                    showLine={true}
+                    expandedKeys={this.state.expandedKeys}
+                    onExpand={this.onExpand}
+                    onSelect={this.onSelect}
+                    onCheck={this.onCheck}
+                    treeData={
 
-                    <div className={styles.form_body}>
-                        
-                        <MainButton className={styles.addLevel1}
-                        title={"ایجاد دسته سطح یک"}
-                        loading={this.state.btn_loading}
-                        onClick={()=>this.addChild()}/>
+                        this.state.list.map((l1, i1)=>{
 
-                        <Tree
-                        checkable={false}
-                        showLine={true}
-                        // defaultExpandedKeys={['0-0-0', '0-0-1']}
-                        // defaultSelectedKeys={['0-0-0', '0-0-1']}
-                        // defaultCheckedKeys={['0-0-0', '0-0-1']}
-                        expandedKeys={this.state.expandedKeys}
-                        onExpand={this.onExpand}
-                        onSelect={this.onSelect}
-                        onCheck={this.onCheck}
-                        treeData={
-
-                            this.state.list.map((l1, i1)=>{
-
-                                if(l1.mode == "add" || l1.mode == "edit"){
-                                    return {
-                                        title: 
-                                        (<div className={styles.parent_node}>
-
-                                            <input className={styles.node_input+" btc2"}
-                                            ref={r=>this.editingNode=r}/>
-    
-                                            <div className={styles.parent_node_operation}>
-    
-                                                <a className={styles.parent_node_add+" amp_btn fsc"}
-                                                onClick={()=>this.submitChild(l1, 1)}>{"ثبت"}</a>
-    
-                                                <a className={styles.parent_node_add+" amp_btn fec"}
-                                                onClick={()=>this.cancelChild(l1, 1)}>{"انصراف"}</a>
-                                                
-                                            </div>
-    
-                                        </div>),
-    
-                                        key:`${l1.id}`,
-                                    }
-                                }
-
+                            if(l1.mode == "add" || l1.mode == "edit"){
                                 return {
                                     title: 
                                     (<div className={styles.parent_node}>
-                                        
-                                        {l1.title}
-                                        
+
+                                        <input className={styles.node_input+" btc2"}
+                                        ref={r=>this.editingNode=r}/>
+
                                         <div className={styles.parent_node_operation}>
-                        
+
                                             <a className={styles.parent_node_add+" amp_btn fsc"}
-                                            onClick={()=>this.addChild(l1, 1)}>{"اضافه"}</a>
-                        
-                                            <a className={styles.parent_node_add+" amp_btn ftc2"}
-                                            onClick={()=>this.editChild(l1, 1)}>{"ویرایش"}</a>
-                        
+                                            onClick={()=>this.submitChild(l1, 1)}>{"ثبت"}</a>
+
                                             <a className={styles.parent_node_add+" amp_btn fec"}
-                                            onClick={()=>this.deleteChild(l1, 1)}>{"حذف"}</a>
+                                            onClick={()=>this.cancelChild(l1, 1)}>{"انصراف"}</a>
                                             
                                         </div>
-                        
-                                    </div>),
-                        
-                                    key:`${l1.id}`,
-                        
-                                    children:
-                                        l1.groups && l1.groups.length? l1.groups.map((l2,i2)=>{
 
-                                            if(l2.mode == "add" || l2.mode == "edit"){
-                                                return {
-                                                    title: 
-                                                    (<div className={styles.parent_node}>
-            
-                                                        <input className={styles.node_input+" btc2"}
-                                                        ref={r=>this.editingNode=r}/>
-                
-                                                        <div className={styles.parent_node_operation}>
-                
-                                                            <a className={styles.parent_node_add+" amp_btn fsc"}
-                                                            onClick={()=>this.submitChild(l2, 2, l1)}>{"ثبت"}</a>
-                
-                                                            <a className={styles.parent_node_add+" amp_btn fec"}
-                                                            onClick={()=>this.cancelChild(l2, 2, l1)}>{"انصراف"}</a>
-                                                            
-                                                        </div>
-                
-                                                    </div>),
-                
-                                                    key:`${l1.id}-${l2.id}`,
-                                                }
-                                            }
-                        
+                                    </div>),
+
+                                    key:`${l1.id}`,
+                                }
+                            }
+
+                            return {
+                                title: 
+                                (<div className={styles.parent_node}>
+                                    
+                                    {l1.title}
+                                    
+                                    <div className={styles.parent_node_operation}>
+                    
+                                        <a className={styles.parent_node_add+" amp_btn fsc"}
+                                        onClick={()=>this.addChild(l1, 1)}>{"اضافه"}</a>
+                    
+                                        <a className={styles.parent_node_add+" amp_btn ftc2"}
+                                        onClick={()=>this.editChild(l1, 1)}>{"ویرایش"}</a>
+                    
+                                        <a className={styles.parent_node_add+" amp_btn fec"}
+                                        onClick={()=>this.deleteChild(l1, 1)}>{"حذف"}</a>
+                                        
+                                    </div>
+                    
+                                </div>),
+                    
+                                key:`${l1.id}`,
+                    
+                                children:
+                                    l1.groups && l1.groups.length? l1.groups.map((l2,i2)=>{
+
+                                        if(l2.mode == "add" || l2.mode == "edit"){
                                             return {
                                                 title: 
                                                 (<div className={styles.parent_node}>
-                        
-                                                    {l2.title}
-                        
+        
+                                                    <input className={styles.node_input+" btc2"}
+                                                    ref={r=>this.editingNode=r}/>
+            
                                                     <div className={styles.parent_node_operation}>
-                        
+            
                                                         <a className={styles.parent_node_add+" amp_btn fsc"}
-                                                        onClick={()=>this.addChild(l2, 2, l1)}>{"اضافه"}</a>
-                        
-                                                        <a className={styles.parent_node_add+" amp_btn ftc2"}
-                                                        onClick={()=>this.editChild(l2, 2, l1)}>{"ویرایش"}</a>
-                        
+                                                        onClick={()=>this.submitChild(l2, 2, l1)}>{"ثبت"}</a>
+            
                                                         <a className={styles.parent_node_add+" amp_btn fec"}
-                                                        onClick={()=>this.deleteChild(l2, 2, l1)}>{"حذف"}</a>
+                                                        onClick={()=>this.cancelChild(l2, 2, l1)}>{"انصراف"}</a>
                                                         
                                                     </div>
-                                                    
+            
                                                 </div>),
-                        
+            
                                                 key:`${l1.id}-${l2.id}`,
+                                            }
+                                        }
+                    
+                                        return {
+                                            title: 
+                                            (<div className={styles.parent_node}>
+                    
+                                                {l2.title}
+                    
+                                                <div className={styles.parent_node_operation}>
+                    
+                                                    <a className={styles.parent_node_add+" amp_btn fsc"}
+                                                    onClick={()=>this.addChild(l2, 2, l1)}>{"اضافه"}</a>
+                    
+                                                    <a className={styles.parent_node_add+" amp_btn ftc2"}
+                                                    onClick={()=>this.editChild(l2, 2, l1)}>{"ویرایش"}</a>
+                    
+                                                    <a className={styles.parent_node_add+" amp_btn fec"}
+                                                    onClick={()=>this.deleteChild(l2, 2, l1)}>{"حذف"}</a>
+                                                    
+                                                </div>
+                                                
+                                            </div>),
+                    
+                                            key:`${l1.id}-${l2.id}`,
 
-                                                children:
-                                                    l2.groups && l2.groups.length? l2.groups.map((l3,i3)=>{
-                        
-                                                        if(l3.mode == "add" || l3.mode == "edit"){
-                                                            return {
-                                                                title: 
-                                                                (<div className={styles.parent_node}>
-                        
-                                                                    <input className={styles.node_input+" btc2"}
-                                                                    ref={r=>this.editingNode=r}/>
-                            
-                                                                    <div className={styles.parent_node_operation}>
-                            
-                                                                        <a className={styles.parent_node_add+" amp_btn fsc"}
-                                                                        onClick={()=>this.submitChild(l3, 3, l2)}>{"ثبت"}</a>
-
-                                                                        <a className={styles.parent_node_add+" amp_btn fec"}
-                                                                        onClick={()=>this.cancelChild(l3, 3, l2)}>{"انصراف"}</a>
-                                                                        
-                                                                    </div>
-                            
-                                                                </div>),
-                            
-                                                                key:`${l1.id}-${l2.id}-${l3.id}`,
-                                                            }
-                                                        }
-                        
+                                            children:
+                                                l2.groups && l2.groups.length? l2.groups.map((l3,i3)=>{
+                    
+                                                    if(l3.mode == "add" || l3.mode == "edit"){
                                                         return {
                                                             title: 
                                                             (<div className={styles.parent_node}>
-                        
-                                                                {l3.title}
+                    
+                                                                <input className={styles.node_input+" btc2"}
+                                                                ref={r=>this.editingNode=r}/>
                         
                                                                 <div className={styles.parent_node_operation}>
                         
-                                                                    <a className={styles.parent_node_add+" amp_btn ftc2"}
-                                                                    onClick={()=>this.editChild(l3, 3, l2)}>{"ویرایش"}</a>
-                        
+                                                                    <a className={styles.parent_node_add+" amp_btn fsc"}
+                                                                    onClick={()=>this.submitChild(l3, 3, l2)}>{"ثبت"}</a>
+
                                                                     <a className={styles.parent_node_add+" amp_btn fec"}
-                                                                    onClick={()=>this.deleteChild(l3, 3, l2)}>{"حذف"}</a>
+                                                                    onClick={()=>this.cancelChild(l3, 3, l2)}>{"انصراف"}</a>
                                                                     
                                                                 </div>
                         
@@ -270,34 +241,45 @@ export default class CategoryCrudModal extends Component {
                         
                                                             key:`${l1.id}-${l2.id}-${l3.id}`,
                                                         }
-                                                    }):
-                                                    undefined
-                                            }
-                                        }):
-                                        undefined
-                                }
-                            })
-                        }/>
-
-                    </div>
-
-                    {/* <div className={styles.sec1}>
-                        
-                        <MainButton className={styles.confirm_btn}
-                        title={"بستن"}
-                        loading={this.state.btn_loading}
-                        onClick={this.onConfirm}/>
-
-                    </div> */}
-
-                    {
-                        this.state.loading?
-                        <Loading className={styles.loading+" bglc1"}/>:null
-                    }
+                                                    }
+                    
+                                                    return {
+                                                        title: 
+                                                        (<div className={styles.parent_node}>
+                    
+                                                            {l3.title}
+                    
+                                                            <div className={styles.parent_node_operation}>
+                    
+                                                                <a className={styles.parent_node_add+" amp_btn ftc2"}
+                                                                onClick={()=>this.editChild(l3, 3, l2)}>{"ویرایش"}</a>
+                    
+                                                                <a className={styles.parent_node_add+" amp_btn fec"}
+                                                                onClick={()=>this.deleteChild(l3, 3, l2)}>{"حذف"}</a>
+                                                                
+                                                            </div>
+                    
+                                                        </div>),
+                    
+                                                        key:`${l1.id}-${l2.id}-${l3.id}`,
+                                                    }
+                                                }):
+                                                undefined
+                                        }
+                                    }):
+                                    undefined
+                            }
+                        })
+                    }/>
 
                 </div>
 
-            </div>
+                {
+                    this.state.loading?
+                    <Loading className={styles.loading+" bglc1"}/>:null
+                }
+
+            </CloseModalLayout>
         )
     }
 }
