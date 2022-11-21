@@ -1,8 +1,7 @@
 import RemoveWishlistController from "@/controllers/components/modals/stdPanel/RemoveWishlistController";
 import chest from "@/utils/chest";
 import React, { Component } from "react";
-import Loading from "../../global/Loading";
-import MainButton from "../../global/MainButton";
+import YesNoModalLayout from "../YesNoModalLayout";
 import styles from "./RemoveWishlistModal.module.css";
 
 /**

@@ -44,6 +44,7 @@ export default class CourseLicenseModal extends Component {
         let s = this.state;
         return(
             <CloseModalLayout className={styles.con+" bgw xl_card_shd"}
+            wrapperClass={styles.wrapper}
             onClose={this.onCancel}>
 
                 {
