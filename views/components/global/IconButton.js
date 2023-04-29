@@ -25,7 +25,7 @@ export default class IconButton extends Component {
 
         if(p.borderMode){
 
-            add_class+= styles.border_mode+" flc1 ";
+            add_class+= styles.border_mode+" btc2 ";
 
         }else{
 
@@ -46,7 +46,9 @@ export default class IconButton extends Component {
                     <>
                         {
                             typeof this.props.icon === "string"?
-                            <img className={styles.icon} src={this.props.icon}/>:
+                            <img className={styles.icon +" "+this.props.iconClassName} 
+                            src={this.props.icon}/>
+                            :
                             <this.props.icon className={styles.icon +" "+this.props.iconClassName}
                             {...this.props.iconProps}/>
                         }

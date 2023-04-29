@@ -1,0 +1,21 @@
+.con{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    direction: rtl;
+}
+
+.right_img{
+    width: 6rem;
+}
+
+.title{
+    font-size: 2rem;
+    font-weight: 900;
+    margin: 0 1rem;
+}
+
+.left_img{
+    width: 6rem;
+}

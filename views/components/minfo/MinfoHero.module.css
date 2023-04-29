@@ -1,0 +1,62 @@
+
+.con{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    direction: rtl;
+    height: calc(100vh - 6.875rem);
+    padding: 0 4rem;
+
+}
+
+.hero_img{
+    height: 68%;
+    max-width: 40%;
+    padding-right: 4rem;
+}
+
+.hero_left_side{
+    width: 40%;
+    height: 60%;
+    padding-top: 4rem;
+}
+
+.tx1{
+    font-weight: bold;
+    white-space: nowrap;
+    font-size: 1.3rem !important;
+}
+
+.tx2{
+    font-weight: 900;
+    font-size: 3rem !important;
+    max-width: 35rem;
+    margin-top: 0.5rem;
+}
+
+.tx3{
+    opacity: 0.7;
+    white-space: nowrap;
+    font-size: 0.9rem !important;
+    margin-top: 1rem;
+}
+
+.btn_con{
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+    width: 100%;
+    direction: rtl;
+}
+
+.free_btn{
+    width: 10rem;
+}
+
+.more_btn{
+    width: 10rem;
+    direction: ltr;
+}
+

@@ -1,0 +1,52 @@
+.con{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 6.875rem;
+    background-color: white;
+    direction: rtl;
+    padding: 0.5rem calc(3rem + 5vw);
+}
+
+.right_side{
+    display: flex;
+    align-items: center;
+    direction: rtl;
+}
+
+.logo{
+    height: 3rem;
+    margin-left: 2rem;
+}
+
+.links{
+    color: #212121 !important;
+    font-weight: bold;
+    margin: 0 0.8rem;
+}
+
+.left_side{
+    display: flex;
+    align-items: center;
+    direction: ltr;
+}
+
+.login_btn{
+    width: 10rem;
+    direction: rtl;
+    color: white !important;
+}
+
+.login_icon{
+    height: 1.2rem;
+    width: 1.2rem;
+    margin: 0 0.7rem;
+}
+
+.signup_btn{
+    width: 10rem;
+    direction: rtl;
+    background-color: white !important;
+    margin-left: 1rem;
+}

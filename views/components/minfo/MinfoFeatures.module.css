@@ -1,0 +1,8 @@
+.con{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    direction: rtl;
+    height: calc(100vh - 6.875rem);
+    padding: 0 4rem;
+}

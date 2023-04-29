@@ -5,11 +5,11 @@
     width: fit-content;
     border-radius: 0.85rem;
     /* height: 2.375rem; */
-    height: 3rem;
+    height: 2.5rem;
     direction: rtl;
     padding: 0 1rem;
     user-select: none;
-    transition: 200ms ease;
+    transition: 100ms ease;
 }
 
 .left_arrow{
@@ -39,10 +39,11 @@
 
 .title{
     font-weight: 500;
+    white-space: nowrap;
 }
 
 .mbtn_con:hover{
     /* background: rgb(251,173,22);
     background: linear-gradient(45deg, rgba(251,173,22,1) 0%, rgba(245,223,77,1) 80%); */
-    transform: scale(1.04);
+    opacity: 0.7;
 }
