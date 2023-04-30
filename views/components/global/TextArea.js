@@ -96,11 +96,11 @@ export default class TextArea extends Component {
 
                 {
                     this.props.value?
-                    <div className={styles.top_title+" fdc3"}>{this.props.title?this.props.title:this.props.placeholder}</div>:
+                    <div className={styles.top_title+" fdc3 "+this.props.topTitleClassName}>{this.props.title?this.props.title:this.props.placeholder}</div>:
                     null
                 }
                 
-                <textarea className={styles.textarea+" bdyt "}
+                <textarea className={styles.textarea+" bdyt "+this.props.inputClassName}
                 placeholder={this.props.placeholder}
                 value={this.props.value}
                 maxLength={this.props.maxLength}

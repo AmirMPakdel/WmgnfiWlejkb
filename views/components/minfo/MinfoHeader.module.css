@@ -1,4 +1,10 @@
 .con{
+    position: fixed;
+    position: sticky;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    background-color: white;
     width: 100%;
     display: flex;
     align-items: center;
@@ -7,6 +13,7 @@
     background-color: white;
     direction: rtl;
     padding: 0.5rem calc(3rem + 5vw);
+    transition: 200ms ease;
 }
 
 .right_side{

@@ -16,7 +16,7 @@ export default class MinfoHeader extends Component {
         super(props);
         //this.controller = new MinfoHeaderController(this);
         this.state = {
-        
+            
         }
 
         this.links=[
@@ -38,15 +38,33 @@ export default class MinfoHeader extends Component {
     componentDidMount(){
 
         this.addShadow();
+
+        window.addEventListener("scroll", this.onScrollListener);
+    }
+
+    componentWillUnmount(){
+
+        window.removeEventListener("scroll", this.onScrollListener);
+    }
+
+    onScrollListener=(e)=>{
+
+        if(window.scrollY < 100 && this.shadow_is_visible){
+            this.removeShadow();
+        }else if(window.scrollY >= 100 && !this.shadow_is_visible){
+            this.addShadow();
+        }
     }
 
     addShadow=()=>{
 
+        this.shadow_is_visible = true;
         this.con.style.boxShadow = "2px 4px 12px -2px rgba(0, 0, 0, 0.25)";
     }
 
     removeShadow=()=>{
 
+        this.shadow_is_visible = false;
         this.con.style.boxShadow = "unset";
     }
     

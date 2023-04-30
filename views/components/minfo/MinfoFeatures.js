@@ -28,8 +28,57 @@ export default class MinfoFeatures extends Component {
             <div className={styles.con}>
 
                 <MinfoSectionHeader title="ویژگی ها"/>
+
+                <div className={styles.wrapper}>
+
+                    <div className={styles.right_side}>
+
+                        <div className={styles.sec}>
+
+                            <img className={styles.sec_icon} src={"/statics/svg/minfo-features-fast.svg"}/>
+
+                            <div className={styles.sec_title}>{"سریع"}</div>
+
+                            <div className={styles.sec_text}>
+                                {text1}
+                            </div>
+
+                        </div>
+
+                        <div className={styles.sec}>
+
+                            <img className={styles.sec_icon} src={"/statics/svg/minfo-features-secure.svg"}/>
+
+                            <div className={styles.sec_title}>{"ایمن"}</div>
+
+                            <div className={styles.sec_text}>
+                                {text1}
+                            </div>
+
+                        </div>
+
+                        <div className={styles.sec}>
+
+                            <img className={styles.sec_icon} src={"/statics/svg/minfo-features-easy.svg"}/>
+
+                            <div className={styles.sec_title}>{"آسان"}</div>
+
+                            <div className={styles.sec_text}>
+                                {text1}
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <img className={styles.left_img} 
+                    src={"/statics/svg/minfo-features-image1.svg"}/>
+
+                </div>
                 
             </div>
         )
     }
 }
+
+const text1 = "متن توضیحات متن توضیحات متن توضیحات متن توضیحات متن توضیحات متن توضیحات متن توضیحامتن توضیحات متن توضیحات متن توضیحات متن توضیحات متن توضیحات متن توضیحات متن توضیحا";

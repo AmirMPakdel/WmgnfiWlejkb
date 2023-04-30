@@ -3,6 +3,46 @@
     flex-direction: column;
     width: 100%;
     direction: rtl;
-    height: calc(100vh - 6.875rem);
-    padding: 0 4rem;
+    min-height: calc(100vh - 6.875rem);
+    padding: 2rem 4rem;
+}
+
+.wrapper{
+    padding: 0 calc(4rem + 10vw);
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.right_side{
+    width: 80%;
+}
+
+.left_img{
+    width: 20%;
+    padding: 0 1rem;
+}
+
+.sec{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.sec_icon{
+    width: 4.5rem;
+}
+
+.sec_title{
+    margin-right: 1rem;
+    font-size: 2rem;
+    font-weight: bold;
+    width: calc(100% - 5.5rem);
+    padding-top: 0.8rem;
+}
+
+.sec_text{
+    font-size: 1rem;
+    margin-top: 1.2rem;
+    max-width: 42rem;
 }

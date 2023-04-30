@@ -1,0 +1,101 @@
+.con{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -4rem;
+}
+
+.wrapper{
+    width: calc(48rem + 20vw);
+    background-color: #212121;
+    border-radius: 1rem;
+    top: 4rem;
+    z-index: 10;
+    padding: 2rem 4rem;
+    box-shadow: 2px 4px 12px -2px rgba(0, 0, 0, 0.25);
+}
+
+.sec{
+    display: flex;
+    direction: rtl;
+    justify-content: space-between;
+    padding-top: 2rem;
+}
+
+.left_image{
+    height: 100%;
+    max-width: 20rem;
+}
+
+.wrapper2{
+    direction: rtl;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+    width: calc(100% - 20rem);
+    padding-left: 4rem;
+}
+
+.topTitleClassName{
+    color: white !important;
+    background-color: #212121 !important;
+}
+
+.title_ti{
+    width: 48%;
+    margin-left: 4%;
+    background-color: transparent !important;
+    color: white;
+}
+
+.email_ti{
+    width: 48%;
+    background-color: transparent !important;
+    color: white;
+}
+
+.message_ti{
+    width: 100%;
+    background-color: transparent !important;
+    color: white;
+    direction: rtl;
+    height: 10rem;
+}
+
+.input_title_ti{
+    background-color: transparent !important;
+    color: white;
+    width: 100%;
+}
+
+.input_title_ti::placeholder{
+    color: white !important;
+    opacity: 0.9 !important;
+}
+
+.message_ti_input{
+    background-color: transparent !important;
+}
+
+.message_ti_input::placeholder{
+    color: white !important;
+    opacity: 0.9 !important;
+}
+
+.row1{
+    width: 100%;
+    display: flex;
+}
+
+.send_btn{
+    position: absolute;
+    left: 0;
+    margin-left: 0 !important;
+    color: white !important;
+    width: 10rem;
+    margin-top: 1.6rem;
+}

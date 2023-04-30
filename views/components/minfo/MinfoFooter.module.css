@@ -1,0 +1,55 @@
+.con{
+    width: 100%;
+}
+
+.sec{
+    display: flex;
+    flex-wrap: wrap;
+    direction: rtl;
+    padding: 3rem calc(4rem + 10vw);
+    padding-top: 7rem;
+    width: 100%;
+    min-height: 16rem;
+    background-color: #373737;
+    justify-content: space-between;
+    align-content: space-between;
+}
+
+.sec1{
+    margin-left: 2rem;
+}
+
+.logo{
+    height: 5rem;
+}
+
+.text1{
+    color: white;
+    margin-top: 1rem;
+    max-width: 26rem;
+    font-size: 1rem;
+}
+
+.sec2{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.link{
+    width: 4rem;
+    margin: 0.5rem;
+}
+
+.rights{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: 400;
+    font-size: 1rem;
+    padding: 1rem 0;
+    direction: rtl;
+    text-align: center;
+}

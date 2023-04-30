@@ -23,9 +23,25 @@ export default class MinfoSectionHeader extends Component {
     }
     
     render(){
+
+        if(this.props.darkMode){
+
+            return(
+                <div className={styles.con}>
+                
+                <img className={styles.right_img} src={"/statics/svg/minfo-title-right-wing-light.svg"}/>
+
+                <div className={styles.title+" fwi"}>{this.props.title}</div>
+
+                <img className={styles.left_img} src={"/statics/svg/minfo-title-left-wing-light.svg"}/>
+                
+            </div>
+            )
+        }
+
         return(
             <div className={styles.con}>
-
+                
                 <img className={styles.right_img} src={"/statics/svg/minfo-title-right-wing.svg"}/>
 
                 <div className={styles.title}>{this.props.title}</div>

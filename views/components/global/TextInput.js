@@ -123,14 +123,14 @@ export default class TextInput extends Component {
         return(
             <div className={styles.tput_con +" blc3 "+add_class} style={this.props.style}>
                 
-                {
-                    this.props.title?
+                {/* {
+                    this.props.title && !this.props.value?
                     <div className={styles.tput_title} style={{...title_st, ...this.props.titleStyle}}>{this.props.title}</div>:null
-                }
+                } */}
 
                 {
                     this.props.value?
-                    <div className={styles.top_title+" fdc3"}>{this.props.title?this.props.title:this.props.placeholder}</div>:
+                    <div className={styles.top_title+" fdc3 "+this.props.topTitleClassName}>{this.props.title?this.props.title:this.props.placeholder}</div>:
                     null
                 }
                 

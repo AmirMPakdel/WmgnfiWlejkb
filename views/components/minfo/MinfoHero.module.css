@@ -6,20 +6,21 @@
     justify-content: space-evenly;
     width: 100%;
     direction: rtl;
-    height: calc(100vh - 6.875rem);
-    padding: 0 4rem;
+    min-height: calc(100vh - 6.875rem);
+    padding: 2rem 4rem;
 }
 
 .hero_img{
-    height: 68%;
-    max-width: 40%;
-    padding-right: 4rem;
+    height: 74%;
+    width: 40%;
+    max-width: 42rem;
+    padding-right: 6rem;
 }
 
 .hero_left_side{
     width: 40%;
     height: 60%;
-    padding-top: 4rem;
+    padding-top: 1rem;
 }
 
 .tx1{
