@@ -1,9 +1,11 @@
-.con{
+.wrapper{
+    width: 100%;
     position: fixed;
-    position: sticky;
     top: 0;
     right: 0;
     z-index: 100;
+}
+.con{
     background-color: white;
     width: 100%;
     display: flex;
@@ -14,6 +16,19 @@
     direction: rtl;
     padding: 0.5rem calc(3rem + 5vw);
     transition: 200ms ease;
+}
+
+.mobile_con{
+    direction: rtl;
+    display: none;
+}
+
+.side_menu_con{
+    direction: rtl;
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 .right_side{
@@ -56,4 +71,132 @@
     direction: rtl;
     background-color: white !important;
     margin-left: 1rem;
+}
+
+@media(max-width:1024px){
+
+    .con{
+        display: none;
+    }
+
+    .mobile_con{
+        display: flex;
+        height: 6.25rem;
+        width: 100%;
+        justify-content: space-between;
+        padding: 0 2rem;
+        align-items: center;
+        z-index: 100;
+        background-color: white;
+    }
+
+    .mob_menu_btn{
+        width: 2rem;
+        padding: 0.3rem;
+        margin-left: 8rem;
+        cursor: pointer;
+    }
+
+    .mob_logo_img{
+        height: 3.2rem;
+    }
+
+    .side_menu_con{
+        display: flex;
+        right: -16rem;
+        top: 0;
+        width: 15rem;
+        height: 100vh;
+        z-index: 101;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-right: 1rem;
+        transition: ease 300ms;
+        background-color: white;
+    }
+
+    .sm_close_btn{
+        margin-right: 1.2rem;
+        width: 2rem;
+        padding: 0.3rem;
+        margin-top: 2.2rem;
+        margin-bottom: 1rem;
+        cursor: pointer;
+        opacity: 0.8;
+    }
+
+    .sm_divider{
+        width: calc(100% - 1rem);
+        height: 2px;
+        margin-top: 1rem;
+    }
+
+    .sm_login_btn{
+        display: flex;
+        padding: 0.5rem 0.8rem;
+        border-style: solid;
+        border-width: 2px;
+        border-radius: 0.8rem;
+        align-items: center;
+        margin-top: 1.6rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .sm_logedin_btn{
+        display: flex;
+        padding: 0.5rem 0.8rem;
+        border-radius: 0.8rem;
+        align-items: center;
+        margin-top: 1.6rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .sm_link{
+        margin-top: 1.6rem;
+        padding-right: 0.6rem;
+    }
+
+    .menu_signup_btn{
+        
+        width: 5rem !important;
+        background-color: white !important;
+        justify-content: flex-start !important;
+        padding: 0.5rem 0 !important;
+        margin-right: 0.8rem !important;
+        margin-top: 0.25rem;
+        margin-bottom: 0.25rem;
+    }
+}
+
+@media(max-width:767px){
+
+    .header_con{
+        height: 3rem;
+    }
+
+    .plchldr_con{
+        height: 3rem;
+    }
+
+    .mobile_con{
+        height: 3rem;
+    }
+
+    .mob_menu_btn{
+        width: 2rem;
+        padding: 0.4rem;
+        cursor: pointer;
+    }
+
+    .mob_logo_img{
+        height: 2.8rem;
+    }
+
+    .sm_close_btn{
+        margin-right: calc(7vw - 1rem);
+        width: 2rem;
+        padding: 0.4rem;
+        margin-top: 0.4rem;
+        cursor: pointer;
+    }
 }

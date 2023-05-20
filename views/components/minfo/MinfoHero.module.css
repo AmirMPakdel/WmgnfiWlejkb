@@ -14,7 +14,7 @@
     height: 74%;
     width: 40%;
     max-width: 42rem;
-    padding-right: 6rem;
+    padding-right: calc(10vw - 2rem);
 }
 
 .hero_left_side{
@@ -60,3 +60,40 @@
     direction: ltr;
 }
 
+@media(max-width:1270px){
+    
+    .hero_left_side{
+        width: 50%;
+    }
+}
+
+@media(max-width:1024px){
+
+    .con{
+        flex-direction: column;
+        padding: 1rem 10vw;
+        padding-top: 9rem;
+        align-items: center;
+    }
+
+    .hero_img{
+        width: 100%;
+        max-height: 40vh;
+        min-height: 26rem;
+        padding-right: unset;
+    }
+
+    .hero_left_side{
+        width: 40%;
+        padding-top: unset;
+    }
+    
+}
+
+@media(max-width:767px){
+
+    .con{
+        background-color: red;
+    }
+      
+}
