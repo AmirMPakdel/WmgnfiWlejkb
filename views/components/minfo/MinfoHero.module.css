@@ -84,16 +84,66 @@
     }
 
     .hero_left_side{
-        width: 40%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
         padding-top: unset;
+        margin-top: 2rem;
+        align-items: center;
+    }
+
+    .tx1{
+        text-align: center;
     }
     
+    .tx2{
+        text-align: center;
+    }
+    
+    .tx3{
+        text-align: center;
+    }
+    
+    .btn_con{
+        justify-content: center;
+    }
 }
 
 @media(max-width:767px){
 
     .con{
-        background-color: red;
+        flex-direction: column;
+        padding: 1rem 10vw;
+        padding-top: 4.5rem;
+        align-items: center;
+    }
+
+    .hero_img{
+        max-height: 11.5rem;
+        min-height: unset;
+    }
+
+    .tx1{
+        font-size: 1rem !important;
+    }
+    
+    .tx2{
+        text-align: center;
+        font-size: 1.6rem !important;
+    }
+    
+    .tx3{
+        text-align: center;
+        font-size: 0.8rem !important;
+        white-space: pre-wrap;
+    }
+    
+    .btn_con{
+        flex-direction: column;
+    }
+
+    .free_btn, .more_btn{
+        width: 100% !important;
     }
       
 }

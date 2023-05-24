@@ -160,7 +160,10 @@ export function toggleMultiSelect(value, array){
  * @returns {String}
  */
 export function getUrlPart(part){
-    let array = window.location.href.split("/");
+    let url = window.location.href;
+    url = url.split("#")[0];
+    url = url.split("?")[0];
+    let array = url.split("/");
     return(array[part+2]);
 }
 

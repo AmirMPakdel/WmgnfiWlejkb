@@ -31,6 +31,9 @@ export default class MinfoFeatures extends Component {
 
                 <div className={styles.wrapper}>
 
+                    <img className={styles.top_img} 
+                    src={"/statics/svg/minfo-features-image2.svg"}/>
+
                     <div className={styles.right_side}>
 
                         <div className={styles.sec}>

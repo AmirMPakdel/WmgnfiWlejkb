@@ -19,3 +19,20 @@
 .left_img{
     width: 6rem;
 }
+
+
+@media(max-width:1024px){
+    
+}
+
+@media(max-width:767px){
+    
+    .title{
+        font-size: 1.6rem;
+        white-space: nowrap;
+    }
+
+    .right_img, .left_img{
+        width: 4rem;
+    }
+}
