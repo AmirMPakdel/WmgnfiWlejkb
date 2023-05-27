@@ -9,18 +9,6 @@
     padding-bottom: 0;
 }
 
-.wrapper{
-    padding: 0 calc(4rem + 10vw);
-    width: 100%;
-    display: flex;
-    align-items: center;
-    margin-top: 6rem;
-    justify-content: center;
-    align-items: center;
-    justify-items: center;
-    align-content: center;
-}
-
 .period_selector{
     width: fit-content;
     display: flex;
@@ -54,6 +42,21 @@
     align-items: center;
     font-size: 1rem;
     font-weight: 700;
+}
+
+.wrapper{
+    padding: 0 calc(4rem + 5vw);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 6rem;
+    justify-content: center;
+}
+
+.wrapper2{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 .pc_con{
@@ -103,7 +106,6 @@
     flex-wrap: wrap;
     width: 100%;
     margin-top: 1rem;
-    
 }
 
 .pc_row_icon{
@@ -135,7 +137,53 @@
 
 
 @media(max-width:1024px){
+    .con{
+        min-height: calc(100vh - 3rem);
+        padding: 2rem 0;
+    }
     
+    .period_selector{
+        height: 3rem;
+        margin-top: 3rem;
+    }
+    
+    .psb_con{
+        width: 4.6rem;
+        font-size: 0.8rem;
+    }
+    
+    .psb_con_active{
+        width: 4.6rem;
+        font-size: 0.8rem;
+    }
+
+    .wrapper{
+        padding: 0;
+        margin-top: 4rem;
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .wrapper2{
+        padding-top: 1rem;
+        padding-right: 2rem;
+        padding-left: 2rem;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .wrapper2::-webkit-scrollbar{
+        height: 0.5rem;
+    }
+    
+    .pc_con{
+        padding: 2rem 1.5rem;
+        width: 16rem;
+        min-width: 16rem;
+    }
 }
 
 @media(max-width:767px){
@@ -145,102 +193,39 @@
         padding: 2rem 0;
     }
     
-    .wrapper{
-        padding: 0 1rem;
-        margin-top: 4rem;
-        width: 100%;
-        overflow-x: auto;
-    }
-    
     .period_selector{
         height: 3rem;
         margin-top: 3rem;
     }
     
     .psb_con{
-        width: 4rem;
+        width: 4.6rem;
         font-size: 0.8rem;
     }
     
     .psb_con_active{
-        width: 4rem;
+        width: 4.6rem;
         font-size: 0.8rem;
+    }
+
+    .wrapper{
+        padding: 0;
+        margin-top: 4rem;
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .wrapper2{
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 100%;
+        overflow-x: auto;
     }
     
     .pc_con{
         padding: 2rem 1.5rem;
-    }
-    
-    .pc_wrapper{
-        width: 13rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        border-radius: 1rem;
-        background-color: rgb(255, 255, 255);
-        cursor: pointer;
-        user-select: none;
-        transition: 200ms ease;
-    }
-    
-    .pc_wrapper:hover{
-        transform: scale(1.03);
-    }
-    
-    .pc_heading{
-        bottom: 2rem;
-        width: 10rem;
-        height: 4.6rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        border-radius: 1rem;
-        background-color: white;
-    }
-    
-    .pc_icon{
-        height: 3rem;
-    }
-    
-    .title{
-        font-size: 1.25rem;
-        font-weight: 900;
-        color: black;
-    }
-    
-    .pc_wrapper2{
-        display: flex;
-        flex-wrap: wrap;
-        width: 100%;
-        margin-top: 1rem;
-        
-    }
-    
-    .pc_row_icon{
-        width: 1.5rem;
-        height: 1.5rem;
-        margin-top: 1rem;
-        margin-right: 1rem;
-    }
-    
-    .pc_row_text{
-        width: calc(100% - 4.5rem);
-        margin-right: 1rem;
-        font-size: 1rem;
-        padding-top: 1.1rem;
-        margin-left: 1rem;
-    }
-    
-    .pc_price{
-        font-size: 1.14rem;
-        font-weight: 700;
-        color: black;
-        width: 100%;
-        margin-top: 1rem;
-        padding-top: 1rem;
-        margin-bottom: 1rem;
-        text-align: center;
-        border-top: rgb(222, 222, 222) dashed 1px;
+        width: 16rem;
+        min-width: 16rem;
     }
 }

@@ -40,7 +40,7 @@ export default class MinfoSendMessage extends Component {
                 
                 <div className={styles.wrapper}>
 
-                    <MinfoSectionHeader title={"ارسال پیام به مینفو"}
+                    <MinfoSectionHeader title={"ارسال پیام"}
                     darkMode={true}/>
 
                     <div className={styles.sec}>

@@ -55,20 +55,20 @@
 .email_ti{
     width: 48%;
     background-color: transparent !important;
-    color: white;
+    color: white !important;
 }
 
 .message_ti{
     width: 100%;
     background-color: transparent !important;
-    color: white;
+    color: white !important;
     direction: rtl;
     height: 10rem;
 }
 
 .input_title_ti{
     background-color: transparent !important;
-    color: white;
+    color: white !important;
     width: 100%;
 }
 
@@ -98,4 +98,45 @@
     color: white !important;
     width: 10rem;
     margin-top: 1.6rem;
+}
+
+
+@media(max-width:1024px){
+    
+    .wrapper{
+        width: calc(100% - 2rem);
+        max-width: 36rem;
+        padding: 1rem;
+    }
+
+    .wrapper2{
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .left_image{
+        display: none;
+    }
+
+    .title_ti{
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .email_ti{
+        width: 100%;
+    }
+
+    .send_btn{
+        position: relative;
+        left: unset;
+        margin-left: 0 !important;
+        width: 100%;
+        margin-top: 1.6rem;
+    }
+}
+
+@media(max-width:767px){
+    
+    
 }

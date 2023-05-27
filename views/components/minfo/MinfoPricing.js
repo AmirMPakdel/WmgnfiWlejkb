@@ -80,6 +80,8 @@ export default class MinfoPricing extends Component {
 
                 <div className={styles.wrapper}>
 
+                    <div className={styles.wrapper2}>
+
                     <PricingCard
                         icon={"/statics/svg/minfo-pricing-plan1.svg"}
                         title={"رایگان"}
@@ -124,6 +126,8 @@ export default class MinfoPricing extends Component {
                         users={this.state.users[4]}
                         price={this.state.prices[4]}
                     />
+
+                    </div>
 
                 </div>
                 
