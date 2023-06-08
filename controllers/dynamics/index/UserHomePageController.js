@@ -1,4 +1,4 @@
-import HomePageModel from "@/models/dynamics/index/HomePageModel";
+import UserHomePageModel from "@/models/dynamics/index/UserHomePageModel";
 import { setMetaTag } from "@/utils/helpers";
 import Observer from "@/utils/observer";
 import Storage from "@/utils/storage";
@@ -10,7 +10,7 @@ export default class HomePageController{
     /**@param {HomePage} view*/
     constructor(view){
         this.view = view;
-        this.model = new HomePageModel();
+        this.model = new UserHomePageModel();
     }
     
     loadElements(cb){

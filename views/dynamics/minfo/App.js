@@ -1,16 +1,8 @@
 import 'antd/dist/antd.css';
 import {ChestComponent} from '@/utils/chest';
 import Head from 'next/head';
-import dynamic from 'next/dynamic';
 import React, { Component as C } from "react";
-import { getUrlPart } from '@/utils/helpers';
 
-function checkIsMainSite(){
-
-  let p2 = getUrlPart(1)
-
-  return p2=="minfo"?true:false;
-}
 
 export default class App extends C {
 
@@ -71,4 +63,63 @@ export default class App extends C {
     </>
     )
   }
+}
+
+function checkIsMainSite(){
+
+  if(getTenant()){
+
+    return false;
+
+  }else{
+    
+    return true;
+  }
+}
+
+export function isDevEnv() {
+    
+  if(location.hostname === "localhost"){
+      return true;
+  }
+  return false;
+}
+
+function getCookie(cname){
+
+  let name = cname + "=";
+
+  let ca = document.cookie.split(";");
+
+  for (let i = 0; i < ca.length; i++) {
+
+      let c = ca[i];
+
+      while (c.charAt(0) == " ") {
+
+          c = c.substring(1);
+
+      }
+
+      if (c.indexOf(name) == 0) {
+
+          return c.substring(name.length, c.length);
+      }
+  }
+  
+  return "";
+}
+
+function getTenant(){
+  let tenant_name = null;
+  // for testing and dev environment
+  if(isDevEnv()){
+      tenant_name = getCookie("__mgnftnt");
+  }else{ // for deployment environment
+      let splited_hn = location.hostname.split(".");
+      if(splited_hn.length == 3){
+          tenant_name = splited_hn[0];
+      }
+  }
+  return tenant_name;
 }
