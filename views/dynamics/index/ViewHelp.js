@@ -2,7 +2,7 @@ import chest from "@/utils/chest";
 import MainButton from "@/views/components/global/MainButton";
 import HelpBreadcrumb from "@/views/components/help/HelpBreadcrumb";
 import HPRegister from "@/views/components/help/HPRegister";
-import HelpContentListModal from "@/views/components/modal/help/helpContentListModal";
+import HelpContentListModal from "@/views/components/modal/help/HelpContentListModal";
 import IndexLayout from "@/views/layouts/IndexLayout";
 import WrapperT1 from "@/views/layouts/WrapperT1";
 import { AutoComplete } from "node_modules/antd/lib/index";
