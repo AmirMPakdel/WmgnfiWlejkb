@@ -32,7 +32,7 @@ export default class MinfoFooter extends Component {
 
                         <img className={styles.logo} src={"/statics/svg/minfo-footer-logo.svg"}/>
 
-                        <div className={styles.text1}>{"توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات"}</div>
+                        <div className={styles.text1}>{text_footer}</div>
 
                     </div>
 
@@ -54,3 +54,6 @@ export default class MinfoFooter extends Component {
         )
     }
 }
+
+const text_footer = "تیم مینفو همواره در تلاش است در ارائه خدمات به مشتریان خود پیشرو باشد. "+
+"تمامی زحمات کشیده شده در این تیم برای آماده سازی بستری جامع، آسان و ایمن برای آموزش مردم ایران است."

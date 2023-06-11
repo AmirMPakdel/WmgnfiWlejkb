@@ -4,6 +4,7 @@ import MinfoSectionHeader from "./MinfoSectionHeader";
 import TextInput from "../global/TextInput";
 import TextArea from "../global/TextArea";
 import IconButton from "../global/IconButton";
+import chest from "@/utils/chest";
 
 /**
 * Props of MinfoSendMessage Component
@@ -32,6 +33,23 @@ export default class MinfoSendMessage extends Component {
 
         this.state[name] = v;
         this.setState(this.state);
+    }
+
+    sendMessage=()=>{
+
+        if(!this.state.title || !this.state.email || !this.state.message){
+            return;
+        }
+
+        this.setState({
+            title:"",
+            email:"",
+            message:"",
+        });
+
+        setTimeout(()=>{
+            chest.openNotification("پیام شما برای کارشناسان مینفو ارسال شد.", "success");
+        }, 900);
     }
     
     render(){
@@ -75,7 +93,8 @@ export default class MinfoSendMessage extends Component {
 
                                 <IconButton className={styles.send_btn}
                                 title="ارسال"
-                                icon={"/statics/svg/minfo-send-white.svg"}/>
+                                icon={"/statics/svg/minfo-send-white.svg"}
+                                onClick={this.sendMessage}/>
 
                             </div>
 

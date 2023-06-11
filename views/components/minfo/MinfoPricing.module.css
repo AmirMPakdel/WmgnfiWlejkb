@@ -6,7 +6,12 @@
     direction: rtl;
     min-height: calc(100vh - 6.875rem);
     padding: 2rem 4rem;
-    padding-bottom: 0;
+    margin-bottom: 2rem;
+}
+
+.anchor{
+    position: absolute;
+    top: -10rem;   
 }
 
 .period_selector{
@@ -135,11 +140,28 @@
     border-top: rgb(222, 222, 222) dashed 1px;
 }
 
+@media(max-width:1258px){
+
+    .wrapper{
+        padding: 0;
+        margin-top: 4rem;
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .anchor{
+        top: -6rem;   
+    }
+}
 
 @media(max-width:1024px){
     .con{
         min-height: calc(100vh - 3rem);
         padding: 2rem 0;
+    }
+
+    .anchor{
+        top: -4rem;   
     }
     
     .period_selector{
