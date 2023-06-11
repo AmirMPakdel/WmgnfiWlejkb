@@ -57,7 +57,7 @@ export default class CourseLicenseModal extends Component {
 
                         <div className={styles.form_body}>
 
-                            <div className={styles.license_con+" btc2i"}>
+                            <div className={styles.license_con+" tbc2i"}>
 
                                 <input className={styles.license}
                                 value={this.state.license}

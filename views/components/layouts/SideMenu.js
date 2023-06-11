@@ -100,7 +100,7 @@ export default class SideMenu extends Component {
         return (
             <div ref={r=>this.SideMenu=r} className={styles.sidemenu_con}>
 
-                <a className={styles.sidemenu_title+" ftc2i"} onClick={()=>window.open(env.PATHS.MINFO_HOMEPAGE)}>
+                <a className={styles.sidemenu_title+" tc2i"} onClick={()=>window.open(env.PATHS.MINFO_HOMEPAGE)}>
                     <img className={styles.menu_logo_img} src={"/statics/svg/dashboard/menu_minfo_logo.svg"}/>
                 </a>
 

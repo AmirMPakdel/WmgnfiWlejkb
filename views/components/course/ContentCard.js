@@ -96,7 +96,7 @@ class ContentRow extends Component{
         let access = this.props.access;
         let title = d.title;
         if(d.is_free){
-            title = <span>{d.title} <span className={styles.crow_free_t+" ftc2"}>{"رایگان"}</span></span>
+            title = <span>{d.title} <span className={styles.crow_free_t+" tc2"}>{"رایگان"}</span></span>
         }
         let download_href = createDownloadUrl(d, getUrlPart(2));
 

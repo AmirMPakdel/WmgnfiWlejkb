@@ -48,9 +48,9 @@ export default class AskDeleteElementModal extends Component {
         let title = "آیا می خواهید آیتم صفحه اول سایت با عنوان \" " +d.title+" \" را حذف کنید؟";
 
         return(
-            <YesNoModalLayout className={styles.con+" bgw btc2 lg_card_shd"}
+            <YesNoModalLayout className={styles.con+" bgw tbc2 lg_card_shd"}
             closable={false}
-            positiveClassName={"bgec flc1i"}
+            positiveClassName={"tbgcerr flc1i"}
             positiveTitle={"حذف"}
             onPositive={this.onConfirm}
             positiveLoading={this.state.loading}

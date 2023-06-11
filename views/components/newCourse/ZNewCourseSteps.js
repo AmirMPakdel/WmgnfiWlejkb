@@ -28,7 +28,7 @@ function Step(props){
     let add_class="";
     let title_class="";
     if(props.step == props.number){
-        add_class+=styles.step_con_active+" bgtc1i ";
+        add_class+=styles.step_con_active+" tbgc1i ";
         title_class+=styles.step_title_active+" ";
     }
 
@@ -52,7 +52,7 @@ function Line(props){
     }
 
     if(props.number < props.step){
-        add_class += " bgtc1i ";
+        add_class += " tbgc1i ";
     }
 
     return(

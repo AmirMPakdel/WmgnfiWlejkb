@@ -100,7 +100,7 @@ class MyRecieptItem extends Component{
 
                     <div className={styles.itm_row}>
 
-                        <div className={styles.itm_success+(d.success?" fsc":" fec")}>{d.success?"موفق":"ناموفق"}</div>
+                        <div className={styles.itm_success+(d.success?" tcscs":" tcerr")}>{d.success?"موفق":"ناموفق"}</div>
 
                         <div className={styles.itm_date}>{sqlTimeStamp2ShamsiDateTime(d.date)}</div>
 

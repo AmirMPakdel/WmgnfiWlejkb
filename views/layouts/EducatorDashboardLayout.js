@@ -28,6 +28,7 @@ export default class EducatorDashboardLayout extends Component {
     }
 
     componentDidMount(){
+        changeCSSVars(themes.userDefault);
         Observer.add("onSideMenuToggle", this.onSideMenuToggle);
     }
 

@@ -40,6 +40,7 @@ export default class ChangePassword extends Component {
     
     componentDidMount(){
 
+        changeCSSVars(themes.userDefault);
         this.controller.setupPageTitle();
     }
 

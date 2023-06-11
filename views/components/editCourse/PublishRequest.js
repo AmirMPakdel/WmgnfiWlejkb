@@ -63,9 +63,9 @@ export default class PublishRequest extends Component {
             {
                 nw.validation_status === "not_valid" && nw.validation_status_message.length?
                 <>
-                <div className={styles.error_title+" fec tilt "}>{"عدم تایید انتشار"}</div>
+                <div className={styles.error_title+" tcerr tilt "}>{"عدم تایید انتشار"}</div>
 
-                <div className={styles.error_list+" bdyt fec"}>
+                <div className={styles.error_list+" bdyt tcerr"}>
 
                     <div className={styles.error_sub+" bdyt "}>{error1}</div>
 
@@ -83,9 +83,9 @@ export default class PublishRequest extends Component {
             {
                 ps.validation_errors.length?
                 <>
-                <div className={styles.error_title+" fec tilt "}>{"خطای انتشار"}</div>
+                <div className={styles.error_title+" tcerr tilt "}>{"خطای انتشار"}</div>
 
-                <div className={styles.error_list+" bdyt fec"}>
+                <div className={styles.error_list+" bdyt tcerr"}>
 
                     <div className={styles.error_sub+" bdyt "}>{error2}</div>
 

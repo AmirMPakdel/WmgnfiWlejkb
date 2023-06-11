@@ -140,7 +140,7 @@ function setColors(){
     // let tc1 = getCookie("tc1");
 
     // let sheet = document.createElement('style')
-    // sheet.innerHTML = `.bgtc1 {background-color: ${tc1};}`;
+    // sheet.innerHTML = `.tbgc1 {background-color: ${tc1};}`;
     // document.body.appendChild(sheet);
 }
 

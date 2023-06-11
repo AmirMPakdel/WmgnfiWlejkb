@@ -124,15 +124,15 @@ export default class CategoryCrudModal extends Component {
                                     title: 
                                     (<div className={styles.parent_node}>
 
-                                        <input className={styles.node_input+" btc2"}
+                                        <input className={styles.node_input+" tbc2"}
                                         ref={r=>this.editingNode=r}/>
 
                                         <div className={styles.parent_node_operation}>
 
-                                            <a className={styles.parent_node_add+" amp_btn fsc"}
+                                            <a className={styles.parent_node_add+" amp_btn tcscs"}
                                             onClick={()=>this.submitChild(l1, 1)}>{"ثبت"}</a>
 
-                                            <a className={styles.parent_node_add+" amp_btn fec"}
+                                            <a className={styles.parent_node_add+" amp_btn tcerr"}
                                             onClick={()=>this.cancelChild(l1, 1)}>{"انصراف"}</a>
                                             
                                         </div>
@@ -151,13 +151,13 @@ export default class CategoryCrudModal extends Component {
                                     
                                     <div className={styles.parent_node_operation}>
                     
-                                        <a className={styles.parent_node_add+" amp_btn fsc"}
+                                        <a className={styles.parent_node_add+" amp_btn tcscs"}
                                         onClick={()=>this.addChild(l1, 1)}>{"اضافه"}</a>
                     
-                                        <a className={styles.parent_node_add+" amp_btn ftc2"}
+                                        <a className={styles.parent_node_add+" amp_btn tc2"}
                                         onClick={()=>this.editChild(l1, 1)}>{"ویرایش"}</a>
                     
-                                        <a className={styles.parent_node_add+" amp_btn fec"}
+                                        <a className={styles.parent_node_add+" amp_btn tcerr"}
                                         onClick={()=>this.deleteChild(l1, 1)}>{"حذف"}</a>
                                         
                                     </div>
@@ -174,15 +174,15 @@ export default class CategoryCrudModal extends Component {
                                                 title: 
                                                 (<div className={styles.parent_node}>
         
-                                                    <input className={styles.node_input+" btc2"}
+                                                    <input className={styles.node_input+" tbc2"}
                                                     ref={r=>this.editingNode=r}/>
             
                                                     <div className={styles.parent_node_operation}>
             
-                                                        <a className={styles.parent_node_add+" amp_btn fsc"}
+                                                        <a className={styles.parent_node_add+" amp_btn tcscs"}
                                                         onClick={()=>this.submitChild(l2, 2, l1)}>{"ثبت"}</a>
             
-                                                        <a className={styles.parent_node_add+" amp_btn fec"}
+                                                        <a className={styles.parent_node_add+" amp_btn tcerr"}
                                                         onClick={()=>this.cancelChild(l2, 2, l1)}>{"انصراف"}</a>
                                                         
                                                     </div>
@@ -201,13 +201,13 @@ export default class CategoryCrudModal extends Component {
                     
                                                 <div className={styles.parent_node_operation}>
                     
-                                                    <a className={styles.parent_node_add+" amp_btn fsc"}
+                                                    <a className={styles.parent_node_add+" amp_btn tcscs"}
                                                     onClick={()=>this.addChild(l2, 2, l1)}>{"اضافه"}</a>
                     
-                                                    <a className={styles.parent_node_add+" amp_btn ftc2"}
+                                                    <a className={styles.parent_node_add+" amp_btn tc2"}
                                                     onClick={()=>this.editChild(l2, 2, l1)}>{"ویرایش"}</a>
                     
-                                                    <a className={styles.parent_node_add+" amp_btn fec"}
+                                                    <a className={styles.parent_node_add+" amp_btn tcerr"}
                                                     onClick={()=>this.deleteChild(l2, 2, l1)}>{"حذف"}</a>
                                                     
                                                 </div>
@@ -224,15 +224,15 @@ export default class CategoryCrudModal extends Component {
                                                             title: 
                                                             (<div className={styles.parent_node}>
                     
-                                                                <input className={styles.node_input+" btc2"}
+                                                                <input className={styles.node_input+" tbc2"}
                                                                 ref={r=>this.editingNode=r}/>
                         
                                                                 <div className={styles.parent_node_operation}>
                         
-                                                                    <a className={styles.parent_node_add+" amp_btn fsc"}
+                                                                    <a className={styles.parent_node_add+" amp_btn tcscs"}
                                                                     onClick={()=>this.submitChild(l3, 3, l2)}>{"ثبت"}</a>
 
-                                                                    <a className={styles.parent_node_add+" amp_btn fec"}
+                                                                    <a className={styles.parent_node_add+" amp_btn tcerr"}
                                                                     onClick={()=>this.cancelChild(l3, 3, l2)}>{"انصراف"}</a>
                                                                     
                                                                 </div>
@@ -251,10 +251,10 @@ export default class CategoryCrudModal extends Component {
                     
                                                             <div className={styles.parent_node_operation}>
                     
-                                                                <a className={styles.parent_node_add+" amp_btn ftc2"}
+                                                                <a className={styles.parent_node_add+" amp_btn tc2"}
                                                                 onClick={()=>this.editChild(l3, 3, l2)}>{"ویرایش"}</a>
                     
-                                                                <a className={styles.parent_node_add+" amp_btn fec"}
+                                                                <a className={styles.parent_node_add+" amp_btn tcerr"}
                                                                 onClick={()=>this.deleteChild(l3, 3, l2)}>{"حذف"}</a>
                                                                 
                                                             </div>

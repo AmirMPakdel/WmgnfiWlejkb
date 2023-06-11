@@ -20,6 +20,9 @@ export default class Minfo extends Component {
 
     constructor(props){
         super(props);
+    }
+
+    componentDidMount(){
         
     }
     

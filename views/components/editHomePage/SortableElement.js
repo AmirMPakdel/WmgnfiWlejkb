@@ -46,7 +46,7 @@ export default class SortableElement extends Component {
 
                 <div className={styles.wrapper1}>
 
-                    <div className={styles.name_sec+" tilt bgtc1"}>
+                    <div className={styles.name_sec+" tilt tbgc1"}>
                         {
                             type2Name(d.el_type)
                         }

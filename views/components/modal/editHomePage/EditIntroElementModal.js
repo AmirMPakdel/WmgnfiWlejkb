@@ -100,7 +100,7 @@ export default class EditIntroElementModal extends Component {
     
     render(){
         return(
-            <CloseModalLayout className={styles.con+" bgw btc2 xl_card_shd"}
+            <CloseModalLayout className={styles.con+" bgw tbc2 xl_card_shd"}
             onClose={this.onCancel}>
 
                 <div className={styles.title+" tilt "}>{"تنظیمات شروع سایت"}</div>
@@ -164,7 +164,7 @@ export default class EditIntroElementModal extends Component {
                                 
                                 <div className={styles.link_row1}>
 
-                                    <MainButton className={styles.remove_link_btn+" bgeci"}
+                                    <MainButton className={styles.remove_link_btn+" tbgcerri"}
                                     titleClassName={"flc1i"}
                                     title={"حذف لینک"}
                                     onClick={this.onRemoveLink}/>

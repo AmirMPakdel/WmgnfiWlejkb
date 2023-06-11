@@ -102,7 +102,7 @@ export default class UploadMedia extends Component {
 
                 <div className={styles.wrapper+" blc2 bgw "}>
 
-                    <div className={styles.upload_btn+" bgtc1 amp_btn"}
+                    <div className={styles.upload_btn+" tbgc1 amp_btn"}
                     onClick={this.onSelect}>
                         
                         <UploadSVG className={styles.upload_svg}/>

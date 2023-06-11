@@ -96,6 +96,11 @@ export default class MinfoHeader extends Component {
 
         this.SideMenu.style.transform = "translateX(0)";
     }
+
+    onLogin=()=>{
+        
+        window.location.href = "/minfo/auth";
+    }
     
     render(){
         return(
@@ -126,12 +131,14 @@ export default class MinfoHeader extends Component {
                         <IconButton className={styles.login_btn}
                         title="ورود"
                         icon={"/statics/svg/user-white.svg"}
-                        iconClassName={styles.login_icon}/>
+                        iconClassName={styles.login_icon}
+                        onClick={this.onLogin}/>
 
                         <IconButton className={styles.signup_btn}
                         title="ثبت نام"
                         icon={"/statics/svg/signup-black.svg"}
-                        iconClassName={styles.login_icon}/>
+                        iconClassName={styles.login_icon}
+                        onClick={this.onLogin}/>
 
                     </div>
                     
@@ -150,14 +157,15 @@ export default class MinfoHeader extends Component {
                     <IconButton className={styles.signup_btn}
                     title="ورود"
                     icon={"/statics/svg/user-black.svg"}
-                    iconClassName={styles.login_icon}/>
+                    iconClassName={styles.login_icon}
+                    onClick={this.onLogin}/>
 
                     <div ref={r=>this.SideMenu=r} className={styles.side_menu_con+" md_card_shd"}>
 
                         <img className={styles.sm_close_btn} onClick={this.closeSideMenu}
                         src={"/statics/svg2/close.svg"}/>
 
-                        <div className={styles.sm_divider+" bgtc1"}/>
+                        <div className={styles.sm_divider+" tbgc1"}/>
 
                         {
                             this.state.logedin?
@@ -171,15 +179,17 @@ export default class MinfoHeader extends Component {
                             <MainButton className={styles.menu_signup_btn}
                             title="ثبت نام"
                             icon={"/statics/svg/signup-black.svg"}
-                            iconClassName={styles.login_icon}/>
+                            iconClassName={styles.login_icon}
+                            onClick={this.onLogin}/>
                             <MainButton className={styles.menu_signup_btn}
                             title="ورود"
                             icon={"/statics/svg/user-black.svg"}
-                            iconClassName={styles.login_icon}/>
+                            iconClassName={styles.login_icon}
+                            onClick={this.onLogin}/>
                             </>
                         }
 
-                        <div className={styles.sm_divider+" bgtc1"}/>
+                        <div className={styles.sm_divider+" tbgc1"}/>
 
                         {
                             this.links.map((v,i)=>(
@@ -191,7 +201,7 @@ export default class MinfoHeader extends Component {
                             ))
                         }
 
-                        <div className={styles.sm_divider+" bgtc1"}/>
+                        <div className={styles.sm_divider+" tbgc1"}/>
 
                     </div>
                 </div>

@@ -70,7 +70,7 @@ export default class AmountSelection extends Component {
                 {
                     generatePrices(ps.payment_type, ps.incomes).map((v,i)=>(
 
-                        <div key={i} className={styles.item_con+" amp_btn "+((ps.amount==v)?"btc2 ":"blc2 ")}
+                        <div key={i} className={styles.item_con+" amp_btn "+((ps.amount==v)?"tbc2 ":"blc2 ")}
                         onClick={()=>this.onAmount(v)}>
 
                             <Radio checked={ps.amount == v}/>
@@ -81,7 +81,7 @@ export default class AmountSelection extends Component {
                     ))
                 }
                 
-                <div className={styles.item_con+" amp_btn "+((ps.user_input)?"btc2 ":"blc2 ")}
+                <div className={styles.item_con+" amp_btn "+((ps.user_input)?"tbc2 ":"blc2 ")}
                 onClick={this.onAmountInput}>
 
                     <Radio checked={ps.user_input}/>

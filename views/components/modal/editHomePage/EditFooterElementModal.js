@@ -59,7 +59,7 @@ export default class EditFooterElementModal extends Component {
     
     render(){
         return(
-            <CloseModalLayout className={styles.con+" bgw btc2 xl_card_shd"}
+            <CloseModalLayout className={styles.con+" bgw tbc2 xl_card_shd"}
             onClose={this.onCancel}>
 
                 <div className={styles.title+" tilt "}>{"تنظیمات فوتر"}</div>

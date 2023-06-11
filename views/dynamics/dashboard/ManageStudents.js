@@ -248,7 +248,7 @@ const table2_columns = [
     {
         title: 'دسترسی',
         dataIndex: 'access',
-        render: t=>(t?<div className="fsc cpt">فعال</div>:<div className="fec cpt">غیرفعال</div>),
+        render: t=>(t?<div className="tcscs cpt">فعال</div>:<div className="tcerr cpt">غیرفعال</div>),
     }
 ];
 

@@ -23,13 +23,13 @@ export default function MyApp({Component, pageProps}){
         <link rel="stylesheet" href="/statics/styles/shadows.css"/>
         <link rel="stylesheet" href="/statics/styles/animate.min.css"/>
 
-        <link rel="stylesheet" href={"/statics/styles/main_colors.css"}/>
-
         <script src="/statics/js/theme.js"/>
         <script src="/statics/js/consts.js"/>
         <script src="/statics/js/helpContent.js"/>
         <script src="/statics/js/env.js"/>
         <script src="/statics/js/poly.js"/>
+        <script src="/statics/js/dynamicStyling.js"/>
+        <script src="/statics/js/themes.js"/>
 
       </Head>
       <ChestComponent/>

@@ -64,7 +64,7 @@ class InfoBox extends Component {
 
                     <div className={styles.ib_title_holder}>
 
-                        <div className={styles.ib_title+" tilt bgtc1 fdc1 sm_card_shd"}>{d.title?d.title:DEFAULT_INFO_BOX_DATA.title}</div>
+                        <div className={styles.ib_title+" tilt tbgc1 fdc1 sm_card_shd"}>{d.title?d.title:DEFAULT_INFO_BOX_DATA.title}</div>
 
                     </div>
 
@@ -79,7 +79,7 @@ class InfoBox extends Component {
 
                             {
                                 d.has_link?
-                                <a className={styles.ib_link+" bdyt bgtc1 fdc1"} href={d.link}>{d.link_title}</a>
+                                <a className={styles.ib_link+" bdyt tbgc1 fdc1"} href={d.link}>{d.link_title}</a>
                                 :null
                             }
 

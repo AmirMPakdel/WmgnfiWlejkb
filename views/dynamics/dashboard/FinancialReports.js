@@ -67,7 +67,7 @@ export default class FinancialReports extends Component {
                     this.state.loading?
                     <Loading style={{minHeight:"calc(80vh - 6rem)"}}/>:
                     <>
-                    <div className={styles.table_wrapper+" btc2 sm_card_shd"}>
+                    <div className={styles.table_wrapper+" tbc2 sm_card_shd"}>
 
                         <div className={styles.table_scroller}>
                         <ConfigProvider direction={"rtl"}>
@@ -159,7 +159,7 @@ class TabSelectBar extends Component{
 function TabButton(props){
     let addClass = "";
     if(props.selected){
-        addClass += " bgtc1"
+        addClass += " tbgc1"
     }
     if(props.className){
         addClass += " "+props.className;
@@ -184,7 +184,7 @@ const table1_columns = [
     {
         title: 'وضعیت',
         dataIndex: 'success',
-        render: t=>(t?<div className="fsc cpt">موفق</div>:<div className="fec cpt">ناموفق</div>),
+        render: t=>(t?<div className="tcscs cpt">موفق</div>:<div className="tcerr cpt">ناموفق</div>),
     },
     {
         title: 'تاریخ',
@@ -215,7 +215,7 @@ const table2_columns = [
     {
         title: 'وضعیت',
         dataIndex: 'success',
-        render: t=>(t?<div className="fsc cpt">موفق</div>:<div className="fec cpt">ناموفق</div>),
+        render: t=>(t?<div className="tcscs cpt">موفق</div>:<div className="tcerr cpt">ناموفق</div>),
     },
     {
         title: 'تاریخ',

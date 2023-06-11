@@ -54,7 +54,7 @@ class NoMedia extends Component {
                 <div className={styles.mnd_link_wrapper}>
                 {
                     d.has_link?
-                    <a className={styles.nmd_link+" bdyt bgtc1 fdc1"} 
+                    <a className={styles.nmd_link+" bdyt tbgc1 fdc1"} 
                     href={d.link}>{d.link_title}</a>
                     :null
                 }
@@ -93,9 +93,9 @@ class WithMedia extends Component {
             <div className={wm_wrapper}>
 
                 <div className={styles.wm_title_sec+" fdc2 tilt"}>
-                    <span className={styles.wm_left_dashes+" ftc1"}>&#8211; &#8211; &#8212;</span>
+                    <span className={styles.wm_left_dashes+" tc1"}>&#8211; &#8211; &#8212;</span>
                     <span>{d.title}</span>
-                    <span className={styles.wm_right_dashes+" ftc1"}>&#8212; &#8211; &#8211;</span>
+                    <span className={styles.wm_right_dashes+" tc1"}>&#8212; &#8211; &#8211;</span>
                 </div>
 
                 <div className={styles.wm_media_con}>
@@ -115,7 +115,7 @@ class WithMedia extends Component {
 
                     {
                         d.has_link?
-                        <a className={styles.wm_link+" bdyt bgtc1 fdc1"} 
+                        <a className={styles.wm_link+" bdyt tbgc1 fdc1"} 
                         href={d.link}>{d.link_title}</a>
                         :null
                     }

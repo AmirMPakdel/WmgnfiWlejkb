@@ -61,7 +61,7 @@ export default class DeleteHeadingModal extends Component {
 
                     <div className={styles.sec1}>
 
-                        <MainButton className={styles.submit_btn+" fw bgec"}
+                        <MainButton className={styles.submit_btn+" fw tbgcerr"}
                         title={"حذف"}
                         onClick={this.onDelete}
                         loading={this.state.delete_loading}/>

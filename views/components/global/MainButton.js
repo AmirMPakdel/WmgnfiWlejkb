@@ -47,7 +47,7 @@ export default class MainButton extends Component {
 
         if(this.props.borderMode){
 
-            add_class += styles.border_mode+" btc1 ";
+            add_class += styles.border_mode+" tbc1 ";
 
         }else if(this.props.whiteBorder){
 
@@ -55,7 +55,7 @@ export default class MainButton extends Component {
         
         }else{
 
-            add_class += "bgtc1 ";
+            add_class += "tbgc1 ";
         }
 
         if(!this.props.rightArrow && !this.props.leftArrow){

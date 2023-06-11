@@ -56,7 +56,7 @@ export default class AskDeleteEducatorModal extends Component {
         return(
             <YesNoModalLayout className={styles.con+" bgw lg_card_shd"}
             closable={false}
-            positiveClassName={"bgec flc1i"}
+            positiveClassName={"tbgcerr flc1i"}
             positiveTitle={"حذف"}
             onPositive={this.onDelete}
             positiveLoading={this.state.loading}

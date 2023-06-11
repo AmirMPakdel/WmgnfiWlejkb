@@ -273,7 +273,7 @@ class FilterModal extends Component{
 
     render(){
         return(
-            <div className={styles.fmodal_con+" bglc1 btc2 xl_card_shd"}>
+            <div className={styles.fmodal_con+" bglc1 tbc2 xl_card_shd"}>
 
                 <CrossSvg className={styles.close_btn + " bglc1 amp_btn md_card_shd"}
                 stroke={env.THEME.dc1}

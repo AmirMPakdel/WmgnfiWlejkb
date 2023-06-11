@@ -172,7 +172,7 @@ export default class EditCourseContents extends Component {
                     dropPlaceholder={{
                         animationDuration: 150,
                         showOnTop: true,
-                        className: styles.heading_card_preview+" btc2 bgtc1"
+                        className: styles.heading_card_preview+" tbc2 tbgc1"
                     }}>
                     {nw.content_hierarchy.children.map((item, item_index) => {
                         return (
@@ -185,15 +185,15 @@ export default class EditCourseContents extends Component {
                                         st.content_hierarchy == "edit"?
                                         <>
 
-                                        <VeggieBurgerSvg className={styles.heading_drag_handle+" title_bar_grabber  ftc2"}
+                                        <VeggieBurgerSvg className={styles.heading_drag_handle+" title_bar_grabber  tc2"}
                                         stroke={env.THEME.tc2}/>
 
                                         <div className={styles.heading_text+" tilt"}>{item.title}</div>
 
-                                        <EditSqrSvg className={styles.heading_edit+" amp_btn bgtc1"}
+                                        <EditSqrSvg className={styles.heading_edit+" amp_btn tbgc1"}
                                         onClick={()=>this.onUpdateHeading(item)}/>
 
-                                        <DeleteSvg className={styles.heading_delete+" amp_btn bgec"}
+                                        <DeleteSvg className={styles.heading_delete+" amp_btn tbgcerr"}
                                         onClick={()=>this.onDeleteHeading(item)}/>
                                         </>
                                         :
@@ -210,7 +210,7 @@ export default class EditCourseContents extends Component {
                                 dropPlaceholder={{                      
                                     animationDuration: 150,
                                     showOnTop: true,
-                                    className: styles.content_card_preview+" btc2 bgtc1"
+                                    className: styles.content_card_preview+" tbc2 tbgc1"
                                 }}>
                                 {
                                 item.children.map((sub, sub_index)=>{
@@ -223,13 +223,13 @@ export default class EditCourseContents extends Component {
                                                     st.content_hierarchy == "edit"?
                                                     <>
 
-                                                    <VeggieBurgerSvg className={styles.heading_drag_handle+" content_bar_grabber ftc2"}
+                                                    <VeggieBurgerSvg className={styles.heading_drag_handle+" content_bar_grabber tc2"}
                                                     stroke={env.THEME.tc2}/>
 
-                                                    <EditSqrSvg className={styles.content_edit+" amp_btn bgtc1"}
+                                                    <EditSqrSvg className={styles.content_edit+" amp_btn tbgc1"}
                                                     onClick={()=>this.onUpdateContent(item, sub)}/>
 
-                                                    <DeleteSvg className={styles.content_delete+" amp_btn bgec"}
+                                                    <DeleteSvg className={styles.content_delete+" amp_btn tbgcerr"}
                                                     onClick={()=>this.onDeleteContent(item, sub)}/>
                                                     </>
                                                     :null

@@ -114,7 +114,7 @@ export default class EditCourseSubjects extends Component {
                     dropPlaceholder={{                      
                         animationDuration: 150,
                         showOnTop: true,
-                        className: styles.content_card_preview+" btc2 bgtc1"
+                        className: styles.content_card_preview+" tbc2 tbgc1"
                     }}>
                     {
                     nw.subjects.map((v, i)=>(
@@ -124,14 +124,14 @@ export default class EditCourseSubjects extends Component {
                                 <>
                                 <div className={styles.input_con} key={i}>
 
-                                    <VeggieBurgerSvg className={styles.drag_handler+" ftc2"}
+                                    <VeggieBurgerSvg className={styles.drag_handler+" tc2"}
                                     stroke={env.THEME.tc2}/>
 
                                     <TextInput className={styles.input+" bgwc"}
                                     value={v}
                                     onChange={(t)=>this.onInputChange(t, i)}/>
 
-                                    <DeleteSvg className={styles.delete_btn+" bgec amp_btn"}
+                                    <DeleteSvg className={styles.delete_btn+" tbgcerr amp_btn"}
                                     onClick={()=>this.onDelete(v)}/>
 
                                 </div>

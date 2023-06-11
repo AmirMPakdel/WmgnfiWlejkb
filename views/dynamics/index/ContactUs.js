@@ -27,7 +27,6 @@ export default class ContactUs extends Component {
     }
     
     componentDidMount(){
-
         document.title = "تماس با ما";
     }
 

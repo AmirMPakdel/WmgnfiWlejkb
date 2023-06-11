@@ -72,7 +72,7 @@ export default class EditHeaderLogoModal extends Component {
                             onChange={this.onFile}
                             ref={r=>this.input=r}/>
 
-                            <div className={styles.img_con+" btc1 amp_btn"}>
+                            <div className={styles.img_con+" tbc1 amp_btn"}>
 
                                 <img className={styles.img} 
                                 src={this.state.file?this.state.image_src:myServer.MediaFiles.publicImage(this.state.logo, "header_logo")}/>

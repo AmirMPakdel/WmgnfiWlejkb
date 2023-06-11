@@ -46,7 +46,7 @@ export default class MinfoFooter extends Component {
 
                 </div>
 
-                <div className={styles.rights+" bgtc1"}>
+                <div className={styles.rights+" tbgc1"}>
                     {"کلیه حقوق برای مینفو محفوظ می باشد."}
                 </div>
                 

@@ -57,7 +57,7 @@ export default class Pagination extends Component {
 
                     {
                         can_go_next?
-                        <div className={styles.next+" ftc2 amp_btn"} 
+                        <div className={styles.next+" tc2 amp_btn"} 
                         onClick={()=>this.props.onPageChange(this.props.currentPage+1)}>
                             {"بعدی"}
                             <RightOutlined style={{marginLeft:"0.5rem"}}/>
@@ -65,7 +65,7 @@ export default class Pagination extends Component {
                     }
                     {
                         can_go_back?
-                        <div className={styles.back+" ftc2 amp_btn"} 
+                        <div className={styles.back+" tc2 amp_btn"} 
                         onClick={()=>this.props.onPageChange(this.props.currentPage-1)}>
                             <LeftOutlined style={{marginRight:"0.5rem"}}/>
                             {"قبلی"}

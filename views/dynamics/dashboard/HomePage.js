@@ -89,7 +89,7 @@ export default class HomePage extends Component {
                         <div className={styles.control_bar_sec2}>
 
                             <MainButton
-                            className={styles.confirm_sort+" bgsc"}
+                            className={styles.confirm_sort+" tbgcscs"}
                             title={"ثبت"}
                             onClick={this.onConfirmSortElements}/>
 

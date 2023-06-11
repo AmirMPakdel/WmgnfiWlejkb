@@ -68,7 +68,7 @@ export default class SelectBox extends Component {
 
                 {
                     this.props.editable?
-                    <PlusSqrSvg className={styles.add_btn+" amp_btn bgtc1"}
+                    <PlusSqrSvg className={styles.add_btn+" amp_btn tbgc1"}
                     stroke={env.THEME.dc1}
                     onClick={this.onAdd}/>:null
                 }

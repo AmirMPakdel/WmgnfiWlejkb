@@ -68,7 +68,7 @@ export default class SortElementList extends Component {
                     // dropPlaceholder={{
                     //     animationDuration: 150,
                     //     showOnTop: true,
-                    //     className: styles.heading_card_preview+" btc2 bgtc1"
+                    //     className: styles.heading_card_preview+" tbc2 tbgc1"
                     // }}
                     >
                     

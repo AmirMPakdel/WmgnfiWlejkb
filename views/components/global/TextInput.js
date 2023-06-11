@@ -110,7 +110,7 @@ export default class TextInput extends Component {
 
         if(this.props.error){
 
-            add_class += " beci ";
+            add_class += " tbcerri ";
         }
 
         let m_input_type = "";
@@ -147,7 +147,7 @@ export default class TextInput extends Component {
 
                 {
                     this.props.error || this.state.error?
-                    <div className={styles.error+" fec"}>{this.props.error || this.state.error}</div>:null
+                    <div className={styles.error+" tcerr"}>{this.props.error || this.state.error}</div>:null
                 }
 
             </div>

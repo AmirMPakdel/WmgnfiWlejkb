@@ -183,7 +183,7 @@ export default class AddContentModal extends Component {
 
                 {
                     this.state.status === "ready"?
-                    <div className={styles.file_name+" btc2 "}>
+                    <div className={styles.file_name+" tbc2 "}>
                         {this.state.file_name}
                         <CloseCircleFilled className={styles.remove_file+" amp_btn"}
                         onClick={this.onRemoveFile}/>

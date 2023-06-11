@@ -47,7 +47,7 @@ export default class CourseBanner extends Component {
             <>
                 <div className={styles.back_img} style={{backgroundImage:`url(${myServer.MediaFiles.publicImage(c.cover, "course_image")})`}}/>
 
-                <div className={styles.title+" ftc1i btc1i tilt"}>
+                <div className={styles.title+" tc1i tbc1i tilt"}>
                     {c.title}
                 </div>
 
@@ -85,9 +85,11 @@ export default class CourseBanner extends Component {
 
                 <div className={styles.row3}>
 
-                    <IconButton className={styles.tablet_icon_btn} borderMode
+                    <IconButton className={styles.tablet_icon_btn} 
+                    borderMode
                     onClick={this.onShare}
-                    icon={"/statics/img/send_l-w.svg"} title={"به اشتراک گذاری"}/>
+                    icon={"/statics/img/send_l-w.svg"} 
+                    title={<div className={styles.tablet_icon_btn_t}>{"به اشتراک گذاری"}</div>}/>
 
                     {
                         c.is_favorite?
@@ -158,7 +160,7 @@ export default class CourseBanner extends Component {
 
                     {
                         c.access_type == "3" || c.access_type == "4"?
-                        <div className={styles.tablet_buy_btn+" bgsc fdc1 bdyt"}>{"خریداری شده"}</div>
+                        <div className={styles.tablet_buy_btn+" tbgcscs fdc1 bdyt"}>{"خریداری شده"}</div>
                         :
                         <MainButton className={styles.tablet_buy_btn} 
                         title={c.price?"خرید":"ثبت نام در دوره"}

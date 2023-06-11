@@ -14,6 +14,11 @@ import IndextFooter from "@/views/components/layouts/IndexFooter";
  * @extends {Component<Props>}
  */
 export default class IndexLayout extends Component {
+
+    componentDidMount(){
+
+        changeCSSVars(themes.userDefault);
+    }
     
     render(){
         return(

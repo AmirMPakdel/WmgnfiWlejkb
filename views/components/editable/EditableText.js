@@ -97,7 +97,7 @@ export default class EditableText extends Component {
 
                 {
                     this.props.error || this.state.error?
-                    <div className={styles.error+" fec"}>{this.props.error || this.state.error}</div>:null
+                    <div className={styles.error+" tcerr"}>{this.props.error || this.state.error}</div>:null
                 }
                 
             </div>

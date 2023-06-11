@@ -6,7 +6,7 @@ const ContactUs = dynamic(() => import("@/views/dynamics/index/ContactUs"), { ss
 export default class contactUs extends Component {
 
   componentDidMount(){
-
+    
   }
   
   render(){

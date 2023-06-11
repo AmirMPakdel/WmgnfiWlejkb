@@ -33,6 +33,7 @@ export default class StudentPanelLayout extends Component {
     }
     
     componentDidMount(){
+        changeCSSVars(themes.userDefault);
     }
 
     onStudentChange=(student)=>{
@@ -61,7 +62,7 @@ export default class StudentPanelLayout extends Component {
 
                         <div className={styles.upper_sec}>
 
-                            <div className={styles.username+" btc1 tilt flc1"}>
+                            <div className={styles.username+" tbc1 tilt flc1"}>
                                 <ProfileSvg className={styles.user_icon}
                                 stroke={"#FFF"}/>
                                 {this.state.username}

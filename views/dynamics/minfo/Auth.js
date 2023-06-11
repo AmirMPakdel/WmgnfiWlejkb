@@ -59,6 +59,8 @@ export default class Auth extends Component {
 
     componentDidMount(){
 
+
+        changeCSSVars(themes.userDefault);
         this.controller.setupPageTitle();
     }
 
@@ -287,7 +289,7 @@ class VerificationPage extends Component{
                         
                 <div className={styles.sub1}>
                     {"حساب کاربری با این شماره موبایل وجود ندارد. برای ثبت نام کد ارسالی به شماره موبایل "}
-                    <span className={"ftc2"}>{ps.mobile}</span>
+                    <span className={"tc2"}>{ps.mobile}</span>
                     {" را وارد نمایید."}
                 </div>
 

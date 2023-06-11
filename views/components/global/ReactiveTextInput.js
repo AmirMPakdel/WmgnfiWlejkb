@@ -72,11 +72,11 @@ export default class ReactiveTextInput extends Component {
         }
 
         if(this.props.status=="error"){
-            add_class += " beci ";
-            message_add_class += " feci ";
+            add_class += " tbcerri ";
+            message_add_class += " tcerri ";
         }else if(this.props.status=="success"){
-            add_class += " bsci ";
-            message_add_class += " fsci ";
+            add_class += " tbcscsi ";
+            message_add_class += " tcscsi ";
         }
 
 

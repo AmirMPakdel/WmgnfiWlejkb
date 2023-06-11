@@ -104,9 +104,10 @@
 }
 
 .tablet_icon_btn_t{
-    width: 8rem;
     white-space: normal;
     padding-top: 0.2rem;
+    margin-left: 0.5rem;
+    color: white !important;
 }
 
 @media(max-width:1024px){

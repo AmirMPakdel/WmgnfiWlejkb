@@ -79,7 +79,7 @@ export default class EditableElementCard extends Component {
 
                 <div className={styles.wrapper1}>
 
-                    <div className={styles.name_sec+" tilt bgtc1"}>
+                    <div className={styles.name_sec+" tilt tbgc1"}>
                         {
                             type2Name(d.el_type)
                         }
@@ -93,7 +93,7 @@ export default class EditableElementCard extends Component {
 
                 </div>
 
-                <div className={control_sec+" bgtc1"}>
+                <div className={control_sec+" tbgc1"}>
 
                     {
                         (d.el_type==1 || d.el_type==2)?

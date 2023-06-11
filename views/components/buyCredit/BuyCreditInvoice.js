@@ -118,7 +118,7 @@ export default class BuyCreditInvoice extends Component {
                     disabled={!this.state.accept}
                     onClick={this.onConfirm}/>
 
-                    <div className={styles.cancel_link+" bdyt ftc2 btc2 amp_btn"}
+                    <div className={styles.cancel_link+" bdyt tc2 tbc2 amp_btn"}
                     onClick={this.onCancel}>{"انصراف"}</div>
 
                 </div>

@@ -20,7 +20,7 @@ var env = {
 
     CONVERTOR_DOMAIN: "http://minfo.ir/conv",
 
-    MEDIA_PREFIX: "http://dl1.minfo.ir",
+    MEDIA_PREFIX: "http://dl2.minfo.ir",
 
     VERIFICATION_CODE_LENGTH : 5,
 

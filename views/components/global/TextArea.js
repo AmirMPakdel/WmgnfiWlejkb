@@ -83,7 +83,7 @@ export default class TextArea extends Component {
 
         if(this.props.error){
 
-            add_class += " beci ";
+            add_class += " tbcerri ";
         }
 
         return(
@@ -108,7 +108,7 @@ export default class TextArea extends Component {
 
                 {
                     this.props.error || this.state.error?
-                    <div className={styles.error+" fec"}>{this.props.error || this.state.error}</div>:null
+                    <div className={styles.error+" tcerr"}>{this.props.error || this.state.error}</div>:null
                 }
                 
             </div>

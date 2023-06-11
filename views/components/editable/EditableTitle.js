@@ -62,7 +62,7 @@ export default class EditableTitle extends Component {
 
                     {
                         this.props.status==="idle"?
-                        <IconButton className={styles.edit+" bgtc1 "}
+                        <IconButton className={styles.edit+" tbgc1 "}
                         icon={this.props.editIcon || EditSqrSvg}
                         onClick={this.onEdit}/>
                         :null
@@ -81,14 +81,14 @@ export default class EditableTitle extends Component {
                             iconClassName={styles.submit_icon}
                             disabled={true}/>
                             :
-                            <IconButton className={styles.edit+" bgsc "}
+                            <IconButton className={styles.edit+" tbgcscs "}
                             icon={TickSqrSvg}
                             iconClassName={styles.submit_icon}
                             onClick={this.onSubmit}/>
                         }
                         
 
-                        <IconButton className={styles.edit+" bgec "}
+                        <IconButton className={styles.edit+" tbgcerr "}
                         icon={CrossSvg}
                         iconClassName={styles.cancel_icon}
                         iconProps={{stroke:env.THEME.dc1}}

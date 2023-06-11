@@ -33,7 +33,7 @@ export default class MinfoHero extends Component {
 
                 <div className={styles.hero_left_side}>
 
-                    <div className={styles.tx1+" ftc2 tilt"}>{"مینفو؛ سریع، ایمن، آسان"}</div>
+                    <div className={styles.tx1+" tc2 tilt"}>{"مینفو؛ سریع، ایمن، آسان"}</div>
                     
                     <div className={styles.tx2}>{"بهترین مسیر برای فروش دوره‌های آموزشی"}</div>
 
@@ -44,7 +44,7 @@ export default class MinfoHero extends Component {
                         <MainButton className={styles.free_btn+" fwi"}
                         title="شروع رایگان"/>
 
-                        <IconButton className={styles.more_btn+" btc2i ftc2i"}
+                        <IconButton className={styles.more_btn+" tbc2i tc2i"}
                         title="اطلاعات بیشتر"
                         icon={"/statics/svg/left-arrow-primary.svg"}
                         borderMode={true}/>

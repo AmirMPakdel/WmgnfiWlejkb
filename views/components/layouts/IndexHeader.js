@@ -141,7 +141,7 @@ export default class IndexHeader extends Component {
                                 <div className={styles.dt_login_t+" fdc1"}>{"ورود / ثبت نام"}</div>
                             </div>
                             :
-                            <div className={styles.dt_logedin_btn+" amp_btn bgtc1"}
+                            <div className={styles.dt_logedin_btn+" amp_btn tbgc1"}
                             onClick={this.onStudentDashboard}>
                                 <img className={styles.dt_login_user_icon} src={"/statics/svg2/user.svg"}/>
                                 <div className={styles.dt_login_t+" fdc1"}>{this.state.username}</div>
@@ -167,7 +167,7 @@ export default class IndexHeader extends Component {
                     <img className={styles.sm_close_btn} onClick={this.closeSideMenu}
                     src={"/statics/svg2/close.svg"}/>
 
-                    <div className={styles.sm_divider+" bgtc1"}/>
+                    <div className={styles.sm_divider+" tbgc1"}/>
 
                     {
                         !this.state.logedin?
@@ -177,14 +177,14 @@ export default class IndexHeader extends Component {
                             <div className={styles.dt_login_t}>{"ورود / ثبت نام"}</div>
                         </div>
                         :
-                        <div className={styles.sm_logedin_btn+" amp_btn bgtc1"}
+                        <div className={styles.sm_logedin_btn+" amp_btn tbgc1"}
                             onClick={this.onStudentDashboard}>
                                 <img className={styles.dt_login_user_icon} src={"/statics/svg2/user.svg"}/>
                                 <div className={styles.dt_login_t+" fdc1"}>{this.state.username}</div>
                         </div>
                     }
 
-                    <div className={styles.sm_divider+" bgtc1"}/>
+                    <div className={styles.sm_divider+" tbgc1"}/>
 
                     <a className={styles.sm_link+" fdc1i bdyt"} href={"/store"}>{"فروشگاه"}</a>
 
@@ -192,7 +192,7 @@ export default class IndexHeader extends Component {
 
                     <a className={styles.sm_link+" fdc1i bdyt"} href={"/contactUs"}>{"تماس با ما"}</a>
 
-                    <div className={styles.sm_divider+" bgtc1"}/>
+                    <div className={styles.sm_divider+" tbgc1"}/>
 
                 </div>
                 

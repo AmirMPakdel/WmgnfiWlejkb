@@ -22,9 +22,9 @@ export default class DefaultCourseList extends Component {
             <div className={styles.con+" bgw sm_card_shd"}>
 
                 <div className={styles.title_sec+" fdc2 tilt"}>
-                    <span className={styles.left_dashes+" ftc1"}>&#8211; &#8211; &#8212;</span>
+                    <span className={styles.left_dashes+" tc1"}>&#8211; &#8211; &#8212;</span>
                     <span>{"پرفروش ترین دوره ها"}</span>
-                    <span className={styles.right_dashes+" ftc1"}>&#8212; &#8211; &#8211;</span>
+                    <span className={styles.right_dashes+" tc1"}>&#8212; &#8211; &#8211;</span>
                 </div>
 
                 <div className={styles.wrapper}>

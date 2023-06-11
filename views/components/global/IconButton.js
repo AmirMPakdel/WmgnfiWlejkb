@@ -25,11 +25,11 @@ export default class IconButton extends Component {
 
         if(p.borderMode){
 
-            add_class+= styles.border_mode+" btc2 ";
+            add_class+= styles.border_mode+" tbc2 ";
 
         }else{
 
-            add_class += "bgtc1 fdc1 ";
+            add_class += "tbgc1 fdc1 ";
         }
 
         if(p.disabled){

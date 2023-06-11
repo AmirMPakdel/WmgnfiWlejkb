@@ -140,7 +140,7 @@ export default class CourseInvoice extends Component {
                                         {
                                             this.state.portals.map((v,i)=>(
 
-                                                <div key={i} className={styles.portal_item_con+" amp_btn "+ ((this.state.selected_portal==v.id)?"btc2 ":"blc2 ")}
+                                                <div key={i} className={styles.portal_item_con+" amp_btn "+ ((this.state.selected_portal==v.id)?"tbc2 ":"blc2 ")}
                                                 onClick={()=>this.onPortal(v.name)}>
 
                                                     <img className={styles.portal_item_icon} src={v.logo}/>

@@ -29,7 +29,7 @@ export default class SelectSite extends Component {
     
     componentDidMount(){
         this.input.input.focus();
-
+        changeCSSVars(themes.userDefault);
         this.setupPageTitle()
     }
 

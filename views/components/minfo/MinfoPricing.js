@@ -50,7 +50,7 @@ export default class MinfoPricing extends Component {
 
                 <MinfoSectionHeader title="تعرفه ها"/>
 
-                <div className={styles.period_selector+" btc1"}>
+                <div className={styles.period_selector+" tbc1"}>
 
                     <PeriodSelectorBtn
                     periodName="month"
@@ -140,7 +140,7 @@ function PeriodSelectorBtn(props){
 
     return(
         <div className={props.selectedPeriod===props.periodName?
-        (styles.psb_con_active+" fwi bgtc1"):styles.psb_con}
+        (styles.psb_con_active+" fwi tbgc1"):styles.psb_con}
         onClick={()=>props.onSelect(props.periodName)}>
 
             {props.title}

@@ -42,7 +42,7 @@ export default class DeleteContentModal extends Component {
             <YesNoModalLayout className={styles.con+" bgw"}
             wrapperClass={styles.wrapper}
             closable={false}
-            positiveClassName={styles.submit_btn+" bgec fwi"}
+            positiveClassName={styles.submit_btn+" tbgcerr fwi"}
             positiveLoading={this.state.delete_loading}
             positiveTitle={"حذف"}
             onPositive={this.onDelete}

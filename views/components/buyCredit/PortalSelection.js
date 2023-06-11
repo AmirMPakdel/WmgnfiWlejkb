@@ -53,7 +53,7 @@ export default class PortalSelection extends Component {
                 {
                     ps.portals.map((v,i)=>(
 
-                        <div key={i} className={styles.item_con+" amp_btn "+ ((ps.selected_portal==v.id)?"btc2 ":"blc2 ")}
+                        <div key={i} className={styles.item_con+" amp_btn "+ ((ps.selected_portal==v.id)?"tbc2 ":"blc2 ")}
                         onClick={()=>this.onPortal(v)}>
 
                             <img className={styles.item_icon} src={v.logo}/>

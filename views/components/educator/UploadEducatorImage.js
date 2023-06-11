@@ -49,7 +49,7 @@ export default class UploadEducatorImage extends Component {
                 accept=".jpg"
                 ref={r=>this.input=r}/>
 
-                <div className={styles.img_con+" btc1 amp_btn"}>
+                <div className={styles.img_con+" tbc1 amp_btn"}>
                                 
                     {
                         this.state.image_src?
@@ -58,7 +58,7 @@ export default class UploadEducatorImage extends Component {
                             {
                                 this.props.uploadKey?
                                 <img className={styles.img} src={myServer.MediaFiles.publicImage(this.props.uploadKey)}/>:
-                                <div className={styles.add_img+" ftc2"}>+</div>
+                                <div className={styles.add_img+" tc2"}>+</div>
                             }
                         </>    
                     }

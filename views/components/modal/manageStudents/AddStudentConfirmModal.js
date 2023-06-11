@@ -56,7 +56,7 @@ export default class AddStudentConfirmModal extends Component {
         return(
             <YesNoModalLayout className={styles.con+" bgw lg_card_shd"}
             closable={false}
-            positiveClassName={"bgsc flc1i"}
+            positiveClassName={"tbgcscs flc1i"}
             positiveTitle={"تایید"}
             onPositive={this.onConfirm}
             positiveLoading={this.state.loading}

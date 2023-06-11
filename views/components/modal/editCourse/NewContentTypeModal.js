@@ -63,7 +63,7 @@ export default class NewContentTypeModal extends Component {
     }
     
     render(){
-        let type_btn = styles.type_btn + " bgtc1 tilt amp_btn"
+        let type_btn = styles.type_btn + " tbgc1 tilt amp_btn"
         return(
             <CloseModalLayout className={styles.con+" bglc1 "}
             onClose={this.onCancel}>

@@ -26,7 +26,7 @@ export default class Price extends Component {
 
                     <div className={styles.sec1}>
 
-                        <div className={styles.offPercent+" cpnt bgec flc1"}>{calculateOffPercent(this.props.price, this.props.withDiscount)+"%"}</div>
+                        <div className={styles.offPercent+" cpnt tbgcerr flc1"}>{calculateOffPercent(this.props.price, this.props.withDiscount)+"%"}</div>
 
                         <div className={styles.orginalPrice+" cpnt"}>{priceFormat(this.props.price)}</div>
 

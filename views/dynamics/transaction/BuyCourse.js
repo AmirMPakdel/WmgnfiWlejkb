@@ -91,12 +91,12 @@ export default class BuyCourse extends Component {
 
                         {
                             dt.success?
-                            <ListRow title={"نتیجه تراکنش"} value={"موفق"} valueClassName={"fsc"}/>:
+                            <ListRow title={"نتیجه تراکنش"} value={"موفق"} valueClassName={"tcscs"}/>:
                             <>
-                                <ListRow title={"نتیجه تراکنش"} value={"ناموفق"} valueClassName={"fec"}/>
+                                <ListRow title={"نتیجه تراکنش"} value={"ناموفق"} valueClassName={"tcerr"}/>
                                 
                                 <ListRow title={"پیغام خطا"}  value={dt.error_msg}
-                                vertical={true} titleClassName=" fec "/>
+                                vertical={true} titleClassName=" tcerr "/>
                             </>
                         }
                         
