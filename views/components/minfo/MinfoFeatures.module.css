@@ -7,6 +7,11 @@
     padding: 2rem 4rem;
 }
 
+.anchor{
+    position: absolute;
+    top: -10rem;   
+}
+
 .wrapper{
     padding: 0 calc(4rem + 10vw);
     width: 100%;
@@ -59,6 +64,10 @@
         padding: 0 2rem;
     }
 
+    .anchor{
+        top: -6rem;
+    }
+
     .top_img{
         display: block;
         width: 100%;
@@ -86,6 +95,10 @@
     .con{
         min-height: calc(100vh - 3rem);
         padding: 2rem 0rem;
+    }
+
+    .anchor{
+        top: -4rem;
     }
 
     .sec_icon{

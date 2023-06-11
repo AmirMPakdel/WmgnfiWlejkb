@@ -184,6 +184,7 @@ export default class MinfoHeader extends Component {
                         {
                             this.links.map((v,i)=>(
                                 <a key={i}
+                                onClick={this.closeSideMenu}
                                 className={styles.sm_link+" fdc1i bdyti"} 
                                 href={v.href}>
                                     {v.label}

@@ -26,7 +26,7 @@ export default class MinfoHero extends Component {
     
     render(){
         return(
-            <div className={styles.con}>
+            <div className={styles.con} id="minfo">
 
                 <img className={styles.hero_img}
                 src={"/statics/svg/minfo-intro-hero.svg"}/>

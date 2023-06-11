@@ -50,6 +50,8 @@ export default class MinfoPricing extends Component {
 
                 <MinfoSectionHeader title="تعرفه ها"/>
 
+                <div id="pricing" className={styles.anchor}/>
+
                 <div className={styles.period_selector+" btc1"}>
 
                     <PeriodSelectorBtn
