@@ -48,6 +48,8 @@ export default class MinfoPricing extends Component {
         return(
             <div className={styles.con}>
 
+                <div id="pricing" className={styles.anchor}/>
+
                 <MinfoSectionHeader title="تعرفه ها"/>
 
                 <div className={styles.period_selector+" tbc1"}>
