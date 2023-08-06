@@ -26,6 +26,15 @@
     direction: rtl;
 }
 
+.defaultWrapperClass{
+    width: 100%;
+    height: auto;
+    overflow-y: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
 .title1{
     font-weight: 700;
 }

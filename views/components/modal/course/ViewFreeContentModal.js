@@ -63,7 +63,6 @@ export default class ViewFreeContentModal extends Component {
     
     render(){
         let d = this.props.data;
-        let title = "آیا از حذف دسته با عنوان \""+ d.title+"\" اطمینان دارید؟";
 
         return(
             
@@ -72,7 +71,6 @@ export default class ViewFreeContentModal extends Component {
             onClose={this.onClose}>
 
                 <div className={styles.title+" tilt"}>{d.title}</div>
-
 
                 {
                     d.type === "ct_voice"?

@@ -31,6 +31,8 @@ export default class CloseModalLayout extends Component {
         let wrapperClass = "bgw ";
         if(this.props.wrapperClass){
             wrapperClass = this.props.wrapperClass;
+        }else{
+            wrapperClass = styles.defaultWrapperClass;
         }
 
         return(
